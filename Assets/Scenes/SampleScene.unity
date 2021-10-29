@@ -2081,7 +2081,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 474725499}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3, y: 0, z: 0}
+  m_LocalPosition: {x: 3, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1312672829}
@@ -8555,7 +8555,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 100
-  m_Sprite: {fileID: -5298758387263786056, guid: 78ec5425f90ad674fb7f106e59d0a9fe, type: 3}
+  m_Sprite: {fileID: -4499954356365318872, guid: a5e26aaebbaef064d8242d8103220b76, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -8605,6 +8605,10 @@ MonoBehaviour:
   moveSpeed: 2
   jumpVelocity: 4.5
   actualTargetTile: {fileID: 0}
+  moveAnimation: {fileID: 9100000, guid: 7b8c1d33b959eb940afc095f6598aa9c, type: 2}
+  idleAnimation: {fileID: 9100000, guid: 86c25c2542f0dc944bc9ce5ef2ab21b3, type: 2}
+  oldPositionX: 0
+  oldPositionZ: 0
 --- !u!65 &4200834975796257113
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8628,7 +8632,7 @@ Animator:
   m_GameObject: {fileID: 4200834975796257094}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 6ca5c09c2f809704a99d206fee7ad75d, type: 2}
+  m_Controller: {fileID: 9100000, guid: 86c25c2542f0dc944bc9ce5ef2ab21b3, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
