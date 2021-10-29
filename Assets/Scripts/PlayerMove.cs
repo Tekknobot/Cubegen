@@ -1,33 +1,43 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMove : TacticsMove
+public class PlayerMove : TacticsMove 
 {
     public RuntimeAnimatorController moveAnimation;
     public RuntimeAnimatorController idleAnimation;
-    
+
     public float oldPositionX;
     public float oldPositionZ;
 
-    // Start is called before the first frame update
-    void Start()
-    {
+	// Use this for initialization
+	void Start () 
+	{
         Init();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
+	}
+	
+	// Update is called once per frame
+	void Update () 
+	{
         Debug.DrawRay(transform.position, transform.forward);
 
-        if (!moving) {
+        if (!turn)
+        {
+            Animator animator = GameObject.FindGameObjectWithTag("Player").gameObject.GetComponent<Animator>();
+            animator.runtimeAnimatorController = idleAnimation;            
+            return;
+        }
+
+        if (!moving)
+        {
             FindSelectableTiles();
             CheckMouse();
-            GetComponent<SpriteRenderer>().flipX = false;
         }
-        else {
-            Move();
+        else
+        {
+            Animator animator = GameObject.FindGameObjectWithTag("Player").gameObject.GetComponent<Animator>();
+            animator.runtimeAnimatorController = moveAnimation;             
+            Move();             
         }
 
         if (transform.position.x > oldPositionX) {
@@ -41,28 +51,33 @@ public class PlayerMove : TacticsMove
         }     
         if (transform.position.z < oldPositionZ) {
             GetComponent<SpriteRenderer>().flipX = true;
-        }                 
-    }
+        }            
+	}
 
     void LateUpdate(){
         oldPositionX = transform.position.x;
         oldPositionZ = transform.position.z;
-    }
+    }    
 
-    void CheckMouse() {
-        if (Input.GetMouseButtonUp(0)) {
+    void CheckMouse()
+    {
+        if (Input.GetMouseButtonUp(0))
+        {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
             RaycastHit hit;
-            if (Physics.Raycast(ray, out hit)) {
-                if (hit.collider.tag == "Tile") {
-                    TileScript t = hit.collider.GetComponentInParent<TileScript>();
+            if (Physics.Raycast(ray, out hit))
+            {
+                if (hit.collider.tag == "Tile")
+                {
+                    Tile t = hit.collider.GetComponent<Tile>();
 
-                    if (t.selectable) {
+                    if (t.selectable)
+                    {
                         MoveToTile(t);
                     }
                 }
             }
         }
-    } 
+    }
 }
