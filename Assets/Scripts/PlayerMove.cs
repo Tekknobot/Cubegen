@@ -23,7 +23,7 @@ public class PlayerMove : TacticsMove
 
         if (!turn)
         {
-            Animator animator = GameObject.FindGameObjectWithTag("Player").gameObject.GetComponent<Animator>();
+            Animator animator = this.gameObject.GetComponent<Animator>();
             animator.runtimeAnimatorController = idleAnimation;            
             return;
         }
@@ -35,7 +35,7 @@ public class PlayerMove : TacticsMove
         }
         else
         {
-            Animator animator = GameObject.FindGameObjectWithTag("Player").gameObject.GetComponent<Animator>();
+            Animator animator = this.gameObject.GetComponent<Animator>();
             animator.runtimeAnimatorController = moveAnimation;             
             Move();             
         }

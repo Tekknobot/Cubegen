@@ -25,7 +25,7 @@ public class NPCMove : TacticsMove
 
         if (!turn)
         {
-            Animator animator = GameObject.FindGameObjectWithTag("NPC").gameObject.GetComponent<Animator>();
+            Animator animator = this.gameObject.GetComponent<Animator>();
             animator.runtimeAnimatorController = idleAnimation;            
             return;
         }
@@ -39,7 +39,7 @@ public class NPCMove : TacticsMove
         }
         else
         {
-            Animator animator = GameObject.FindGameObjectWithTag("NPC").gameObject.GetComponent<Animator>();
+            Animator animator = this.gameObject.GetComponent<Animator>();
             animator.runtimeAnimatorController = moveAnimation;             
             Move();
         }
