@@ -24,15 +24,17 @@ public class TacticsCamera : MonoBehaviour
         transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref velocity, smoothTime);       
     }
 
-    public void TargetCamera() {
+    public void TargetCameraOnPlayer() {
         foreach (GameObject playerPrefab in playerPrefabs) {
             if (playerPrefab.GetComponent<PlayerMove>().turn == true) {
                 target = playerPrefab.transform;
             }
         }
+    }
 
+    public void TargetCameraOnNPC() {
         foreach (GameObject npcPrefab in npcPrefabs) {
-            if (npcPrefab.GetComponent<PlayerMove>().turn == true) {
+            if (npcPrefab.GetComponent<NPCMove>().turn == true) {
                 target = npcPrefab.transform;
             }
         }         
