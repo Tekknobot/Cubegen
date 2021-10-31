@@ -38,6 +38,7 @@ public class PlayerMove : TacticsMove
             Animator animator = this.gameObject.GetComponent<Animator>();
             animator.runtimeAnimatorController = moveAnimation;             
             Move();             
+            GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().TargetCamera();
         }
 
         if (transform.position.x > oldPositionX) {
