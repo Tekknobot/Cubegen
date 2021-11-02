@@ -18,15 +18,17 @@ public class TacticsCamera : MonoBehaviour
     void Update()
     {
         // Define a target position above and behind the target transform
-        Vector3 targetPosition = target.TransformPoint(new Vector3(0, 0, 0));
-     
-        // Smoothly move the camera towards that target position
-        transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref velocity, smoothTime);       
+        if (target != null) {
+            Vector3 targetPosition = target.TransformPoint(new Vector3(0, 0, 0));
+        
+            // Smoothly move the camera towards that target position
+            transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref velocity, smoothTime);       
+        }
     }
 
     public void TargetCameraOnPlayer() {
         foreach (GameObject playerPrefab in playerPrefabs) {
-            if (playerPrefab.GetComponent<PlayerMove>().turn == true) {
+            if (playerPrefab.GetComponent<PlayerMove>().moving == true) {
                 target = playerPrefab.transform;
             }
         }
@@ -34,7 +36,7 @@ public class TacticsCamera : MonoBehaviour
 
     public void TargetCameraOnNPC() {
         foreach (GameObject npcPrefab in npcPrefabs) {
-            if (npcPrefab.GetComponent<NPCMove>().turn == true) {
+            if (npcPrefab.GetComponent<NPCMove>().moving == true) {
                 target = npcPrefab.transform;
             }
         }         

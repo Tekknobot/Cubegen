@@ -38,7 +38,7 @@ public class PlayerMove : TacticsMove
         else
         {
             Animator animator = this.gameObject.GetComponent<Animator>();
-            animator.runtimeAnimatorController = moveAnimation;             
+            animator.runtimeAnimatorController = moveAnimation;            
             Move();             
             GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().TargetCameraOnPlayer();
         }
@@ -72,7 +72,7 @@ public class PlayerMove : TacticsMove
                 if (hit.collider.tag == "Tile") {
                     Tile t = hit.collider.GetComponent<Tile>();
 
-                    if (t.selectable) {
+                    if (t.selectable && this.moving == false) {
                         tempGO.GetComponent<TacticsMove>().MoveToTile(t);
                         tempGO = this.transform.gameObject;
                     }
@@ -89,7 +89,6 @@ public class PlayerMove : TacticsMove
                     RemoveSelectableTiles();
                     hit.transform.gameObject.GetComponent<TacticsMove>().FindSelectableTiles();
                     hit.transform.gameObject.GetComponent<TacticsMove>().turn = true;
-
                     tempGO = hit.transform.gameObject;
                 }
             }            

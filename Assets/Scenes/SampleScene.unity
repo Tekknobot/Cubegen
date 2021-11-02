@@ -133,6 +133,7 @@ GameObject:
   m_Component:
   - component: {fileID: 14125123}
   - component: {fileID: 14125122}
+  - component: {fileID: 14125124}
   m_Layer: 0
   m_Name: TacticsCamera
   m_TagString: Untagged
@@ -152,7 +153,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3582b6f855da8843b79ed8383caeab4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 1010766584}
+  target: {fileID: 1601304100}
   smoothTime: 0.3
   playerPrefabs: []
   npcPrefabs: []
@@ -171,6 +172,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &14125124
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 14125121}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcf73769274fdf341b601435665cde5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dragSpeed: 0.05
 --- !u!1 &18289292
 GameObject:
   m_ObjectHideFlags: 0
@@ -14550,11 +14564,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1000196827}
   m_Mesh: {fileID: 565875663}
---- !u!4 &1010766584 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5577616169509501896, guid: 70a66b7b6355f2a4898dd7c014435152, type: 3}
-  m_PrefabInstance: {fileID: 165374664}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1011742150
 GameObject:
   m_ObjectHideFlags: 0
@@ -21842,6 +21851,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1597252088}
   m_Mesh: {fileID: 565875663}
+--- !u!4 &1601304100 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1210510214427515757, guid: eda202fb903788245b73083dc9e40b9c, type: 3}
+  m_PrefabInstance: {fileID: 799330945045193443}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1611788496
 GameObject:
   m_ObjectHideFlags: 0
