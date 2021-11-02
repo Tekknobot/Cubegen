@@ -10,10 +10,12 @@ public class PlayerMove : TacticsMove
     public float oldPositionX;
     public float oldPositionZ;
 
+    public GameObject tempGO;
+
 	// Use this for initialization
 	void Start () 
 	{
-        Init();
+        Init();        
 	}
 	
 	// Update is called once per frame
@@ -30,7 +32,7 @@ public class PlayerMove : TacticsMove
 
         if (!moving)
         {
-            FindSelectableTiles();
+            //FindSelectableTiles();
             CheckMouse();
         }
         else
@@ -58,27 +60,39 @@ public class PlayerMove : TacticsMove
     void LateUpdate(){
         oldPositionX = transform.position.x;
         oldPositionZ = transform.position.z;
-    }    
+    }
 
     void CheckMouse()
     {
-        if (Input.GetMouseButtonUp(0))
-        {
+        if (Input.GetMouseButtonUp(0)) {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
             RaycastHit hit;
-            if (Physics.Raycast(ray, out hit))
-            {
-                if (hit.collider.tag == "Tile")
-                {
+            if (Physics.Raycast(ray, out hit)) {
+                if (hit.collider.tag == "Tile") {
                     Tile t = hit.collider.GetComponent<Tile>();
 
-                    if (t.selectable)
-                    {
-                        MoveToTile(t);
+                    if (t.selectable) {
+                        tempGO.GetComponent<TacticsMove>().MoveToTile(t);
+                        tempGO = this.transform.gameObject;
                     }
                 }
             }
+        }
+    
+        if (Input.GetMouseButtonDown(0)) {
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+            RaycastHit hit;
+            if (Physics.Raycast(ray, out hit)) {
+                if (hit.collider.tag == "Player") {
+                    RemoveSelectableTiles();
+                    hit.transform.gameObject.GetComponent<TacticsMove>().FindSelectableTiles();
+                    hit.transform.gameObject.GetComponent<TacticsMove>().turn = true;
+
+                    tempGO = hit.transform.gameObject;
+                }
+            }            
         }
     }
 }

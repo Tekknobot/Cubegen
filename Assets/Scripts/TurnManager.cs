@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class TurnManager : MonoBehaviour 
 {
-    static Dictionary<string, List<TacticsMove>> units = new Dictionary<string, List<TacticsMove>>();
-    static Queue<string> turnKey = new Queue<string>();
-    static Queue<TacticsMove> turnTeam = new Queue<TacticsMove>();
+    public static Dictionary<string, List<TacticsMove>> units = new Dictionary<string, List<TacticsMove>>();
+    public static Queue<string> turnKey = new Queue<string>();
+    public static Queue<TacticsMove> turnTeam = new Queue<TacticsMove>();
 
 	// Use this for initialization
 	void Start () 
@@ -23,12 +23,11 @@ public class TurnManager : MonoBehaviour
         }
 	}
 
-    static void InitTeamTurnQueue()
+    public static void InitTeamTurnQueue()
     {
         List<TacticsMove> teamList = units[turnKey.Peek()];
 
-        foreach (TacticsMove unit in teamList)
-        {
+        foreach (TacticsMove unit in teamList) {
             turnTeam.Enqueue(unit);
         }
 

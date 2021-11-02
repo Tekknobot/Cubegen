@@ -36,7 +36,13 @@ public class TacticsMove : MonoBehaviour
 
         halfHeight = GetComponent<Collider>().bounds.extents.y;
 
-        TurnManager.AddUnit(this);
+        if (this.transform.gameObject.tag == "NPC") {
+            TurnManager.AddUnit(this);
+        }
+
+        if (this.transform.gameObject.tag == "Player") {
+            TurnManager.AddUnit(this);
+        }        
     }
 
     public void GetCurrentTile()
