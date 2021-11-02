@@ -24,6 +24,10 @@ public class TacticsCamera : MonoBehaviour
             // Smoothly move the camera towards that target position
             transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref velocity, smoothTime);       
         }
+
+        if (Input.GetKeyDown("space")) {
+            target = playerPrefabs[Random.Range(0,5)].transform;
+        }
     }
 
     public void TargetCameraOnPlayer() {
