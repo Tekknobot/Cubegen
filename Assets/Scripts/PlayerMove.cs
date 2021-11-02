@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerMove : TacticsMove 
 {
+    public bool selected = false;
+
     public RuntimeAnimatorController moveAnimation;
     public RuntimeAnimatorController idleAnimation;
 
@@ -12,10 +14,14 @@ public class PlayerMove : TacticsMove
 
     public GameObject tempGO;
 
+    public Material spriteDefault;
+    public Material spriteOutline;
+
 	// Use this for initialization
 	void Start () 
 	{
-        Init();        
+        Init();  
+        spriteDefault = GetComponent<SpriteRenderer>().material;      
 	}
 	
 	// Update is called once per frame
@@ -26,7 +32,7 @@ public class PlayerMove : TacticsMove
         if (!turn)
         {
             Animator animator = this.gameObject.GetComponent<Animator>();
-            animator.runtimeAnimatorController = idleAnimation;            
+            animator.runtimeAnimatorController = idleAnimation;  
             return;
         }
 
@@ -81,6 +87,7 @@ public class PlayerMove : TacticsMove
         }
     
         if (Input.GetMouseButtonDown(0)) {
+            this.transform.gameObject.GetComponent<SpriteRenderer>().material = spriteDefault;
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
             RaycastHit hit;
@@ -90,6 +97,7 @@ public class PlayerMove : TacticsMove
                     hit.transform.gameObject.GetComponent<TacticsMove>().FindSelectableTiles();
                     hit.transform.gameObject.GetComponent<TacticsMove>().turn = true;
                     tempGO = hit.transform.gameObject;
+                    hit.transform.gameObject.GetComponent<SpriteRenderer>().material = spriteOutline;
                 }
             }            
         }
