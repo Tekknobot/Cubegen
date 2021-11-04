@@ -2209,7 +2209,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 159569616}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.0000089406}
+  m_LocalPosition: {x: 0, y: 0, z: -0.0000071527}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1008762890}
@@ -2217,7 +2217,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 655.28, y: -482.5}
+  m_AnchoredPosition: {x: 655.28, y: -244}
   m_SizeDelta: {x: 610, y: 115}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &159569618
@@ -21252,7 +21252,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 720.00006, y: -98.75}
+  m_AnchoredPosition: {x: 720.28, y: -441.25}
   m_SizeDelta: {x: 480, y: 197.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1500229500
@@ -28213,21 +28213,101 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 133673688095291640, guid: 804961b1be04d4b40a026ff9166e93bf, type: 3}
+      propertyPath: MaxStars
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 133673688095291640, guid: 804961b1be04d4b40a026ff9166e93bf, type: 3}
+      propertyPath: StarSize
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 133673688095291640, guid: 804961b1be04d4b40a026ff9166e93bf, type: 3}
       propertyPath: theCamera
       value: 
       objectReference: {fileID: 519420031}
+    - target: {fileID: 133673688095291640, guid: 804961b1be04d4b40a026ff9166e93bf, type: 3}
+      propertyPath: FieldWidth
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 133673688095291640, guid: 804961b1be04d4b40a026ff9166e93bf, type: 3}
+      propertyPath: FieldHeight
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 133673688095291640, guid: 804961b1be04d4b40a026ff9166e93bf, type: 3}
+      propertyPath: StarSizeRange
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 178978277990039738, guid: 804961b1be04d4b40a026ff9166e93bf, type: 3}
+      propertyPath: MaxStars
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 178978277990039738, guid: 804961b1be04d4b40a026ff9166e93bf, type: 3}
+      propertyPath: StarSize
+      value: 0.02
+      objectReference: {fileID: 0}
     - target: {fileID: 178978277990039738, guid: 804961b1be04d4b40a026ff9166e93bf, type: 3}
       propertyPath: theCamera
       value: 
       objectReference: {fileID: 519420031}
+    - target: {fileID: 178978277990039738, guid: 804961b1be04d4b40a026ff9166e93bf, type: 3}
+      propertyPath: FieldWidth
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 178978277990039738, guid: 804961b1be04d4b40a026ff9166e93bf, type: 3}
+      propertyPath: FieldHeight
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 178978277990039738, guid: 804961b1be04d4b40a026ff9166e93bf, type: 3}
+      propertyPath: StarSizeRange
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 2189877182537021789, guid: 804961b1be04d4b40a026ff9166e93bf, type: 3}
+      propertyPath: MaxStars
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 2189877182537021789, guid: 804961b1be04d4b40a026ff9166e93bf, type: 3}
+      propertyPath: StarSize
+      value: 0.02
+      objectReference: {fileID: 0}
     - target: {fileID: 2189877182537021789, guid: 804961b1be04d4b40a026ff9166e93bf, type: 3}
       propertyPath: theCamera
       value: 
       objectReference: {fileID: 519420031}
+    - target: {fileID: 2189877182537021789, guid: 804961b1be04d4b40a026ff9166e93bf, type: 3}
+      propertyPath: FieldWidth
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 2189877182537021789, guid: 804961b1be04d4b40a026ff9166e93bf, type: 3}
+      propertyPath: FieldHeight
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 2189877182537021789, guid: 804961b1be04d4b40a026ff9166e93bf, type: 3}
+      propertyPath: StarSizeRange
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 3612930302728995958, guid: 804961b1be04d4b40a026ff9166e93bf, type: 3}
+      propertyPath: MaxStars
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 3612930302728995958, guid: 804961b1be04d4b40a026ff9166e93bf, type: 3}
+      propertyPath: StarSize
+      value: 0.02
+      objectReference: {fileID: 0}
     - target: {fileID: 3612930302728995958, guid: 804961b1be04d4b40a026ff9166e93bf, type: 3}
       propertyPath: theCamera
       value: 
       objectReference: {fileID: 519420031}
+    - target: {fileID: 3612930302728995958, guid: 804961b1be04d4b40a026ff9166e93bf, type: 3}
+      propertyPath: FieldWidth
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 3612930302728995958, guid: 804961b1be04d4b40a026ff9166e93bf, type: 3}
+      propertyPath: FieldHeight
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 3612930302728995958, guid: 804961b1be04d4b40a026ff9166e93bf, type: 3}
+      propertyPath: StarSizeRange
+      value: 0.02
+      objectReference: {fileID: 0}
     - target: {fileID: 7761005719701772244, guid: 804961b1be04d4b40a026ff9166e93bf, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -28277,13 +28357,53 @@ PrefabInstance:
       value: Starfield
       objectReference: {fileID: 0}
     - target: {fileID: 7761005720919819779, guid: 804961b1be04d4b40a026ff9166e93bf, type: 3}
+      propertyPath: MaxStars
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 7761005720919819779, guid: 804961b1be04d4b40a026ff9166e93bf, type: 3}
+      propertyPath: StarSize
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 7761005720919819779, guid: 804961b1be04d4b40a026ff9166e93bf, type: 3}
       propertyPath: theCamera
       value: 
       objectReference: {fileID: 519420031}
+    - target: {fileID: 7761005720919819779, guid: 804961b1be04d4b40a026ff9166e93bf, type: 3}
+      propertyPath: FieldWidth
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 7761005720919819779, guid: 804961b1be04d4b40a026ff9166e93bf, type: 3}
+      propertyPath: FieldHeight
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 7761005720919819779, guid: 804961b1be04d4b40a026ff9166e93bf, type: 3}
+      propertyPath: StarSizeRange
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 7761005721214343074, guid: 804961b1be04d4b40a026ff9166e93bf, type: 3}
+      propertyPath: MaxStars
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 7761005721214343074, guid: 804961b1be04d4b40a026ff9166e93bf, type: 3}
+      propertyPath: StarSize
+      value: 0.02
+      objectReference: {fileID: 0}
     - target: {fileID: 7761005721214343074, guid: 804961b1be04d4b40a026ff9166e93bf, type: 3}
       propertyPath: theCamera
       value: 
       objectReference: {fileID: 519420031}
+    - target: {fileID: 7761005721214343074, guid: 804961b1be04d4b40a026ff9166e93bf, type: 3}
+      propertyPath: FieldWidth
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 7761005721214343074, guid: 804961b1be04d4b40a026ff9166e93bf, type: 3}
+      propertyPath: FieldHeight
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 7761005721214343074, guid: 804961b1be04d4b40a026ff9166e93bf, type: 3}
+      propertyPath: StarSizeRange
+      value: 0.02
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 804961b1be04d4b40a026ff9166e93bf, type: 3}
 --- !u!1001 &5577616169287961594
