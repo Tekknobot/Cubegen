@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: f2104a29bb6410d4da470e516ee835df
+guid: f73c7456f634b474d9b19999905ae78b
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 2195321224978460844
-    second: UI_UnitHealth 0
+      213: 1845184531256649786
+    second: UI_TileProfile 0
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -82,13 +82,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: UI_UnitHealth 0
+      name: UI_TileProfile 0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 192
-        height: 56
+        height: 46
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -96,8 +96,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: ca077b6d509577e10800000000000000
-      internalID: 2195321224978460844
+      spriteID: a3829921e896b9910800000000000000
+      internalID: 1845184531256649786
       vertices: []
       indices: 
       edges: []
