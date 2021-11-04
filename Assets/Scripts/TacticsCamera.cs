@@ -27,7 +27,7 @@ public class TacticsCamera : MonoBehaviour
             transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref velocity, smoothTime);       
         }
 
-        if (Input.GetKeyDown("space")) {
+        if (Input.GetKeyDown("space") || Input.GetMouseButtonDown(1)) {
             target = playerPrefabs[playerPrefabsIndex++].transform;
             if (playerPrefabsIndex >=5) {
                 playerPrefabsIndex = 0;
