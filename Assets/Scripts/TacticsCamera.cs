@@ -10,6 +10,8 @@ public class TacticsCamera : MonoBehaviour
     public GameObject[] playerPrefabs;
     public GameObject[] npcPrefabs;
 
+    int playerPrefabsIndex = 0;
+
     void Start() {
         playerPrefabs = GameObject.FindGameObjectsWithTag("Player");
         npcPrefabs = GameObject.FindGameObjectsWithTag("NPC");             
@@ -26,7 +28,10 @@ public class TacticsCamera : MonoBehaviour
         }
 
         if (Input.GetKeyDown("space")) {
-            target = playerPrefabs[Random.Range(0,5)].transform;
+            target = playerPrefabs[playerPrefabsIndex++].transform;
+            if (playerPrefabsIndex >=5) {
+                playerPrefabsIndex = 0;
+            }
         }
     }
 
