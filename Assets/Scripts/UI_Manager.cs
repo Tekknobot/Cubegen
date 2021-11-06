@@ -153,6 +153,11 @@ public class UI_Manager : MonoBehaviour
 
         ////
 
-        movesLeft.GetComponent<Text>().text = TurnManager.turnTeam.Count.ToString() + " MOVES LEFT";       
+        if (TurnManager.turnTeam.Count > 1) {
+            movesLeft.GetComponent<Text>().text = TurnManager.turnTeam.Count.ToString() + " moves left";       
+        }
+        else {
+            movesLeft.GetComponent<Text>().text = "last move";
+        }
     }
 }
