@@ -2652,6 +2652,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2602480650004889624, guid: b8ac7ca03578a5c42b70f0835d84aa2f, type: 3}
+      propertyPath: spriteDefault
+      value: 
+      objectReference: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+    - target: {fileID: 2602480650004889624, guid: b8ac7ca03578a5c42b70f0835d84aa2f, type: 3}
+      propertyPath: spriteOutline
+      value: 
+      objectReference: {fileID: 2100000, guid: 79ad4ff4ee84c7e438c3623d2fb01849, type: 2}
     - target: {fileID: 2602480650004889627, guid: b8ac7ca03578a5c42b70f0835d84aa2f, type: 3}
       propertyPath: m_Name
       value: NPC4
@@ -10949,7 +10957,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 467977690}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -0.000033192337}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 956664345}
@@ -10957,7 +10965,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.11, y: 0}
+  m_AnchoredPosition: {x: -0.07002452, y: 1.7100095}
   m_SizeDelta: {x: 399.19, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &467977692
@@ -22031,7 +22039,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -376.54, y: -366.11}
+  m_AnchoredPosition: {x: -376.5, y: -364.4}
   m_SizeDelta: {x: 94.62, y: 36.03}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &906726944
@@ -41640,6 +41648,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2602480650004889624, guid: 0ea54fddb7e102a48a3b24e7ba9b8153, type: 3}
+      propertyPath: spriteDefault
+      value: 
+      objectReference: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+    - target: {fileID: 2602480650004889624, guid: 0ea54fddb7e102a48a3b24e7ba9b8153, type: 3}
+      propertyPath: spriteOutline
+      value: 
+      objectReference: {fileID: 2100000, guid: 79ad4ff4ee84c7e438c3623d2fb01849, type: 2}
     - target: {fileID: 2602480650004889627, guid: 0ea54fddb7e102a48a3b24e7ba9b8153, type: 3}
       propertyPath: m_Name
       value: NPC5
@@ -47279,6 +47295,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: NPC1
       objectReference: {fileID: 0}
+    - target: {fileID: 4157409490841737393, guid: 91678f59fd3efaf4ab246f056dcd7d90, type: 3}
+      propertyPath: spriteDefault
+      value: 
+      objectReference: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+    - target: {fileID: 4157409490841737393, guid: 91678f59fd3efaf4ab246f056dcd7d90, type: 3}
+      propertyPath: spriteOutline
+      value: 
+      objectReference: {fileID: 2100000, guid: 79ad4ff4ee84c7e438c3623d2fb01849, type: 2}
     - target: {fileID: 4157409490841737398, guid: 91678f59fd3efaf4ab246f056dcd7d90, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -47384,6 +47408,14 @@ PrefabInstance:
       propertyPath: move
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 482629778317458303, guid: 505533599ff5b654992286b60b7db5b0, type: 3}
+      propertyPath: spriteDefault
+      value: 
+      objectReference: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+    - target: {fileID: 482629778317458303, guid: 505533599ff5b654992286b60b7db5b0, type: 3}
+      propertyPath: spriteOutline
+      value: 
+      objectReference: {fileID: 2100000, guid: 79ad4ff4ee84c7e438c3623d2fb01849, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 505533599ff5b654992286b60b7db5b0, type: 3}
 --- !u!1001 &588174565145867465
@@ -47571,6 +47603,14 @@ PrefabInstance:
       propertyPath: move
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 2602480650004889624, guid: 8ff731194d43be741976eef1f44cc173, type: 3}
+      propertyPath: spriteDefault
+      value: 
+      objectReference: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+    - target: {fileID: 2602480650004889624, guid: 8ff731194d43be741976eef1f44cc173, type: 3}
+      propertyPath: spriteOutline
+      value: 
+      objectReference: {fileID: 2100000, guid: 79ad4ff4ee84c7e438c3623d2fb01849, type: 2}
     - target: {fileID: 2602480650004889627, guid: 8ff731194d43be741976eef1f44cc173, type: 3}
       propertyPath: m_Name
       value: NPC3

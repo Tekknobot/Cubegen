@@ -102,7 +102,7 @@ public class PlayerMove : TacticsMove
                     hit.transform.gameObject.GetComponent<TacticsMove>().FindSelectableTiles();
                     hit.transform.gameObject.GetComponent<TacticsMove>().turn = true;
                     tempGO = hit.transform.gameObject;
-                    hit.transform.gameObject.GetComponent<SpriteRenderer>().material = spriteOutline;
+                    //hit.transform.gameObject.GetComponent<SpriteRenderer>().material = spriteOutline;
                     tacticsCamera.GetComponent<TacticsCamera>().target = hit.collider.transform;
                 }
             }            

@@ -12,6 +12,9 @@ public class NPCMove : TacticsMove
     public float oldPositionX;
     public float oldPositionZ;
 
+    public Material spriteDefault;
+    public Material spriteOutline;    
+
 	// Use this for initialization
 	void Start () 
 	{
