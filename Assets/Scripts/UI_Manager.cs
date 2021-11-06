@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class UI_Manager : MonoBehaviour
 {
+    public GameObject map;
+    public GameObject movesLeft;
     public GameObject tacticsCamera;
     public GameObject portrait;
 
@@ -125,6 +127,10 @@ public class UI_Manager : MonoBehaviour
         } 
         else {
             NPC5Transform.gameObject.GetComponent<SpriteRenderer>().material = NPC5Transform.gameObject.GetComponent<NPCMove>().spriteDefault;
-        }               
+        } 
+
+        ////
+
+        movesLeft.GetComponent<Text>().text = TurnManager.turnTeam.Count.ToString() + " MOVES LEFT";       
     }
 }
