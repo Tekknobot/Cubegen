@@ -18,6 +18,8 @@ public class TacticsMove : MonoBehaviour
     public float moveSpeed = 2;
     public float jumpVelocity = 4.5f;
 
+    public int healthPoints = 5;
+
     Vector3 velocity = new Vector3();
     Vector3 heading = new Vector3();
 
