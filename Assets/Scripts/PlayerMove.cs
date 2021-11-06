@@ -18,6 +18,7 @@ public class PlayerMove : TacticsMove
     public Material spriteOutline;
 
     public GameObject tacticsCamera;
+    public bool checkTile = false;
 
 	// Use this for initialization
 	void Start () 
@@ -64,7 +65,7 @@ public class PlayerMove : TacticsMove
         }     
         if (transform.position.z < oldPositionZ) {
             GetComponent<SpriteRenderer>().flipX = true;
-        }            
+        }     
 	}
 
     void LateUpdate(){
@@ -74,7 +75,7 @@ public class PlayerMove : TacticsMove
 
     void CheckMouse()
     {
-        if (Input.GetMouseButtonUp(0)) {
+        if (Input.GetMouseButtonDown(0)) {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
             RaycastHit hit;
