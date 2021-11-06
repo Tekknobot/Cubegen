@@ -17,11 +17,15 @@ public class PlayerMove : TacticsMove
     public Material spriteDefault;
     public Material spriteOutline;
 
+    public GameObject tacticsCamera;
+
 	// Use this for initialization
 	void Start () 
 	{
         Init();  
-        spriteDefault = GetComponent<SpriteRenderer>().material;      
+        spriteDefault = GetComponent<SpriteRenderer>().material;   
+
+        tacticsCamera = GameObject.Find("TacticsCamera");   
 	}
 	
 	// Update is called once per frame
@@ -98,6 +102,7 @@ public class PlayerMove : TacticsMove
                     hit.transform.gameObject.GetComponent<TacticsMove>().turn = true;
                     tempGO = hit.transform.gameObject;
                     hit.transform.gameObject.GetComponent<SpriteRenderer>().material = spriteOutline;
+                    tacticsCamera.GetComponent<TacticsCamera>().target = hit.collider.transform;
                 }
             }            
         }
