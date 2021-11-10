@@ -1,102 +1,99 @@
-Shader "Custom/Sprite Outline"
-{
-	Properties
-	{
-		_MainTex ("Sprite Texture", 2D) = "white" {}
-		_Color ("Tint", Color) = (1,1,1,1)
-		
-		_OutlineThickness("Outline Thickness", Range (0.0, 0.1)) = 0.0
-		_OutlineColor ("Outline Color", Color) = (1,1,1,1)
-	}
+Shader "Unlit/Sprite Outline"{
 
-	SubShader
-	{
-		Tags
-		{ 
-			"Queue"="Transparent" 
-			"IgnoreProjector"="True" 
-			"RenderType"="Transparent" 
-			"PreviewType"="Plane"
-			"CanUseSpriteAtlas"="True"
-		}
+  Properties{
+    _Color ("Tint", Color) = (0, 0, 0, 1)
+    _OutlineColor ("OutlineColor", Color) = (1, 1, 1, 1)
+    _OutlineWidth ("OutlineWidth", Range(0, 1)) = 1
+    _MainTex ("Texture", 2D) = "white" {}
+  }
 
-		Cull Off
-		Lighting Off
-		ZWrite Off
-		Blend One OneMinusSrcAlpha
+  SubShader{
+    Tags{
+      "RenderType"="Transparent"
+      "Queue"="Transparent"
+    }
 
-		Pass
-		{
-		CGPROGRAM
-			#pragma vertex vert
-			#pragma fragment frag
-			#pragma multi_compile _ PIXELSNAP_ON
-			#include "UnityCG.cginc"
-			
-			struct appdata_t
-			{
-				float4 vertex   : POSITION;
-				float4 color    : COLOR;
-				float2 texcoord : TEXCOORD0;
-			};
+    Blend SrcAlpha OneMinusSrcAlpha
 
-			struct v2f
-			{
-				float4 vertex   : SV_POSITION;
-				fixed4 color    : COLOR;
-				float2 texcoord  : TEXCOORD0;
-			};
-			
-			fixed4 _Color;
-			sampler2D _MainTex;
-			
-			fixed4 _OutlineColor;
-			fixed _OutlineThickness;
+    ZWrite off
+    Cull off
 
-			v2f vert(appdata_t IN)
-			{
-				v2f OUT;
-				OUT.vertex = UnityObjectToClipPos(IN.vertex);
-				OUT.texcoord = IN.texcoord;
-				OUT.color = IN.color * _Color;
-				return OUT;
-			}
+    Pass{
+      CGPROGRAM
 
-			fixed4 SampleSpriteTexture (float2 uv)
-			{
-				fixed4 color = tex2D (_MainTex, uv);
-				return color;
-			}
+      #include "UnityCG.cginc"
 
-			fixed4 frag(v2f IN) : COLOR
-			{
-				fixed4 c = SampleSpriteTexture (IN.texcoord) * IN.color;
-				c.rgb *= c.a;
-				
-				fixed4 outlineC = _OutlineColor;
-                outlineC.rgb *= outlineC.a;
-                //outlineC.a *= ceil(c.a);
+      #pragma vertex vert
+      #pragma fragment frag
 
-                if (c.a == 0.0)
-				{
-                    fixed upAlpha = SampleSpriteTexture ( IN.texcoord + fixed2(0, _OutlineThickness)).a;
-                    fixed downAlpha = SampleSpriteTexture ( IN.texcoord - fixed2(0, _OutlineThickness)).a;
-                    fixed rightAlpha = SampleSpriteTexture ( IN.texcoord + fixed2(_OutlineThickness, 0)).a;
-                    fixed leftAlpha = SampleSpriteTexture ( IN.texcoord - fixed2(_OutlineThickness, 0)).a;
-                    
-                    fixed upRightAlpha = SampleSpriteTexture ( IN.texcoord - fixed2(_OutlineThickness, _OutlineThickness)).a;
-                    fixed upLeftAlpha = SampleSpriteTexture ( IN.texcoord - fixed2(_OutlineThickness, -_OutlineThickness)).a;
-                    fixed downRightAlpha = SampleSpriteTexture ( IN.texcoord - fixed2(-_OutlineThickness, _OutlineThickness)).a;
-                    fixed downLeftAlpha = SampleSpriteTexture ( IN.texcoord - fixed2(-_OutlineThickness, -_OutlineThickness)).a;
-				
-                
-				    if (upAlpha != 0.0|| downAlpha != 0.0 || rightAlpha != 0.0 || leftAlpha != 0.0 || upRightAlpha != 0.0 || upLeftAlpha != 0.0 || downLeftAlpha != 0.0 || downRightAlpha != 0.0)
-				        return outlineC;    
-				}
-				
-				return c;
-			}
-		ENDCG
-		}
-	}
+      sampler2D _MainTex;
+      float4 _MainTex_ST;
+      float4 _MainTex_TexelSize;
+
+      fixed4 _Color;
+      fixed4 _OutlineColor;
+      float _OutlineWidth;
+
+      struct appdata{
+        float4 vertex : POSITION;
+        float2 uv : TEXCOORD0;
+        fixed4 color : COLOR;
+      };
+
+      struct v2f{
+        float4 position : SV_POSITION;
+        float2 uv : TEXCOORD0;
+        float3 worldPos : TEXCOORD1;
+        fixed4 color : COLOR;
+      };
+
+      v2f vert(appdata v){
+        v2f o;
+        o.position = UnityObjectToClipPos(v.vertex);
+        o.worldPos = mul(unity_ObjectToWorld, v.vertex);
+        o.uv = TRANSFORM_TEX(v.uv, _MainTex);
+        o.color = v.color;
+        return o;
+      }
+
+      float2 uvPerWorldUnit(float2 uv, float2 space){
+        float2 uvPerPixelX = abs(ddx(uv));
+        float2 uvPerPixelY = abs(ddy(uv));
+        float unitsPerPixelX = length(ddx(space));
+        float unitsPerPixelY = length(ddy(space));
+        float2 uvPerUnitX = uvPerPixelX / unitsPerPixelX;
+        float2 uvPerUnitY = uvPerPixelY / unitsPerPixelY;
+        return (uvPerUnitX + uvPerUnitY);
+      }
+
+      fixed4 frag(v2f i) : SV_TARGET{
+      //get regular color
+        fixed4 col = tex2D(_MainTex, i.uv);
+        col *= _Color;
+        col *= i.color;
+
+        float2 sampleDistance = uvPerWorldUnit(i.uv, i.worldPos.xy) * _OutlineWidth;
+
+        //sample directions
+        #define DIV_SQRT_2 0.70710678118
+        float2 directions[8] = {float2(1, 0), float2(0, 1), float2(-1, 0), float2(0, -1),
+          float2(DIV_SQRT_2, DIV_SQRT_2), float2(-DIV_SQRT_2, DIV_SQRT_2),
+          float2(-DIV_SQRT_2, -DIV_SQRT_2), float2(DIV_SQRT_2, -DIV_SQRT_2)};
+
+        //generate border
+        float maxAlpha = 0;
+        for(uint index = 0; index<8; index++){
+          float2 sampleUV = i.uv + directions[index] * sampleDistance;
+          maxAlpha = max(maxAlpha, tex2D(_MainTex, sampleUV).a);
+        }
+
+        //apply border
+        col.rgb = lerp(_OutlineColor.rgb, col.rgb, col.a);
+        col.a = max(col.a, maxAlpha);
+
+        return col;
+      }
+      ENDCG
+    }
+  }
 }
