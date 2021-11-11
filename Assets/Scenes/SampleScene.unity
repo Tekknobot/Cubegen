@@ -47204,11 +47204,11 @@ PrefabInstance:
     - target: {fileID: 588174565074323312, guid: e8b45310358e3164daaf8a30479bf1e3, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 8718595376096529138, guid: 3fb823da9b4f8ed439d234d1d1aa1b87, type: 3}
+      objectReference: {fileID: -9061309989930924294, guid: c4cd641467d9e404cb3a135c1af5b171, type: 3}
     - target: {fileID: 588174565074323313, guid: e8b45310358e3164daaf8a30479bf1e3, type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: e3ecb4eb8676899449c5e4fe4da92456, type: 2}
+      objectReference: {fileID: 9100000, guid: abb0187193f9f3b409f66aadcc32f5b3, type: 2}
     - target: {fileID: 588174565074323315, guid: e8b45310358e3164daaf8a30479bf1e3, type: 3}
       propertyPath: m_RootOrder
       value: 10
@@ -47272,11 +47272,11 @@ PrefabInstance:
     - target: {fileID: 588174565074323327, guid: e8b45310358e3164daaf8a30479bf1e3, type: 3}
       propertyPath: idleAnimation
       value: 
-      objectReference: {fileID: 9100000, guid: e3ecb4eb8676899449c5e4fe4da92456, type: 2}
+      objectReference: {fileID: 9100000, guid: abb0187193f9f3b409f66aadcc32f5b3, type: 2}
     - target: {fileID: 588174565074323327, guid: e8b45310358e3164daaf8a30479bf1e3, type: 3}
       propertyPath: moveAnimation
       value: 
-      objectReference: {fileID: 9100000, guid: e3ecb4eb8676899449c5e4fe4da92456, type: 2}
+      objectReference: {fileID: 9100000, guid: 866ee7e6f965f8d47a296b5cb6cfa51f, type: 2}
     - target: {fileID: 588174565074323327, guid: e8b45310358e3164daaf8a30479bf1e3, type: 3}
       propertyPath: spriteOutline
       value: 
@@ -47309,7 +47309,7 @@ PrefabInstance:
     - target: {fileID: 1210510214427515756, guid: eda202fb903788245b73083dc9e40b9c, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -7360192078385705960, guid: d0b8bb0d97fdf774a83409f743e2ca60, type: 3}
+      objectReference: {fileID: -6172863952020452553, guid: 4ba2e4fd9ecb9b74b89f1bf27fb63819, type: 3}
     - target: {fileID: 1210510214427515757, guid: eda202fb903788245b73083dc9e40b9c, type: 3}
       propertyPath: m_RootOrder
       value: 9
@@ -47365,11 +47365,11 @@ PrefabInstance:
     - target: {fileID: 3495607432998826716, guid: eda202fb903788245b73083dc9e40b9c, type: 3}
       propertyPath: idleAnimation
       value: 
-      objectReference: {fileID: 9100000, guid: 84315bc01f21dc046b3c5cd9f6fb6ac1, type: 2}
+      objectReference: {fileID: 9100000, guid: 0b5bafb72ef84b74d8af47a46e577434, type: 2}
     - target: {fileID: 3495607432998826716, guid: eda202fb903788245b73083dc9e40b9c, type: 3}
       propertyPath: moveAnimation
       value: 
-      objectReference: {fileID: 9100000, guid: 84315bc01f21dc046b3c5cd9f6fb6ac1, type: 2}
+      objectReference: {fileID: 9100000, guid: 3c8cc02e459a8be4b85236f5b5113ae9, type: 2}
     - target: {fileID: 3495607432998826716, guid: eda202fb903788245b73083dc9e40b9c, type: 3}
       propertyPath: spriteOutline
       value: 
@@ -47377,7 +47377,7 @@ PrefabInstance:
     - target: {fileID: 7852533822899598584, guid: eda202fb903788245b73083dc9e40b9c, type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: 84315bc01f21dc046b3c5cd9f6fb6ac1, type: 2}
+      objectReference: {fileID: 9100000, guid: 0b5bafb72ef84b74d8af47a46e577434, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eda202fb903788245b73083dc9e40b9c, type: 3}
 --- !u!1001 &2602480648660376222
@@ -47740,7 +47740,7 @@ PrefabInstance:
     - target: {fileID: 5577616169509501898, guid: 1ea7f0f2888daa645994b46e45818446, type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: aa106361f39b0864bad5a5fb1cec74f5, type: 2}
+      objectReference: {fileID: 9100000, guid: 364f54adbaaf9204db1ad2f5905a1f97, type: 2}
     - target: {fileID: 5577616169509501899, guid: 1ea7f0f2888daa645994b46e45818446, type: 3}
       propertyPath: m_Size.x
       value: 0.96875
@@ -47752,7 +47752,7 @@ PrefabInstance:
     - target: {fileID: 5577616169509501899, guid: 1ea7f0f2888daa645994b46e45818446, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 7773113561124604144, guid: fedc2fe1ce12c0a42be6d58818275111, type: 3}
+      objectReference: {fileID: 7311602605388264677, guid: 6ee654ecbe62fab41a122b6acde9e131, type: 3}
     - target: {fileID: 5577616169509501908, guid: 1ea7f0f2888daa645994b46e45818446, type: 3}
       propertyPath: healthPoints
       value: 3
@@ -47760,11 +47760,11 @@ PrefabInstance:
     - target: {fileID: 5577616169509501908, guid: 1ea7f0f2888daa645994b46e45818446, type: 3}
       propertyPath: idleAnimation
       value: 
-      objectReference: {fileID: 9100000, guid: aa106361f39b0864bad5a5fb1cec74f5, type: 2}
+      objectReference: {fileID: 9100000, guid: 364f54adbaaf9204db1ad2f5905a1f97, type: 2}
     - target: {fileID: 5577616169509501908, guid: 1ea7f0f2888daa645994b46e45818446, type: 3}
       propertyPath: moveAnimation
       value: 
-      objectReference: {fileID: 9100000, guid: aa106361f39b0864bad5a5fb1cec74f5, type: 2}
+      objectReference: {fileID: 9100000, guid: 695fcb40ab5ad97478c336e21cfa0161, type: 2}
     - target: {fileID: 5577616169509501908, guid: 1ea7f0f2888daa645994b46e45818446, type: 3}
       propertyPath: spriteOutline
       value: 
