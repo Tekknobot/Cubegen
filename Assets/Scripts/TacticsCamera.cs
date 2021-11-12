@@ -29,7 +29,7 @@ public class TacticsCamera : MonoBehaviour
 
         if (Input.GetKeyDown("space") || Input.GetMouseButtonDown(1)) {
             target = playerPrefabs[playerPrefabsIndex++].transform;
-            if (playerPrefabsIndex >=3) {
+            if (playerPrefabsIndex >=5) {
                 playerPrefabsIndex = 0;
             }
         }
