@@ -43,6 +43,8 @@ public class PlayerMove : TacticsMove
 
         if (!moving)
         {
+            Animator animator = this.gameObject.GetComponent<Animator>();
+            animator.runtimeAnimatorController = idleAnimation;            
             //FindSelectableTiles();
             CheckMouse();
         }

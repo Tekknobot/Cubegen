@@ -34,7 +34,9 @@ public class NPCMove : TacticsMove
         }
 
         if (!moving)
-        {            
+        {    
+            Animator animator = this.gameObject.GetComponent<Animator>();        
+            animator.runtimeAnimatorController = idleAnimation;
             FindNearestTarget();
             CalculatePath();
             FindSelectableTiles();
