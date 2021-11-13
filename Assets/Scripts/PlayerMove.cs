@@ -109,5 +109,26 @@ public class PlayerMove : TacticsMove
                 }
             }            
         }
+
+        if (Input.GetMouseButtonDown(0)) {
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+            RaycastHit hit;
+            if (Physics.Raycast(ray, out hit)) {
+                if (hit.collider.tag == "NPC") {
+                    tacticsCamera.GetComponent<TacticsCamera>().target = hit.collider.transform;
+                    StartCoroutine(PlayerAttack(hit));
+                }
+            }            
+        }         
     }
+
+    public void OnTargetButton() {
+        CheckMouse();
+    }
+
+	IEnumerator PlayerAttack(RaycastHit hit) {
+		hit.transform.gameObject.GetComponent<TacticsMove>().TakeDamage(this.GetComponent<TacticsMove>().damage);
+		yield return new WaitForSeconds(2f);
+	}    
 }

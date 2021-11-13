@@ -49,50 +49,50 @@ public class UI_Manager : MonoBehaviour
     {
         if (tacticsCamera.GetComponent<TacticsCamera>().target == M1Transform) {
             portrait.GetComponent<Image>().sprite = M1; 
-            unit_label.GetComponent<Text>().text = "SOLDIER: MELEE";
+            unit_label.GetComponent<Text>().text = M1Transform.gameObject.GetComponent<TacticsMove>().unitName;
             M1Transform.gameObject.GetComponent<SpriteRenderer>().material = M1Transform.gameObject.GetComponent<PlayerMove>().spriteOutline;
-            healthbar_hp.text = M1Transform.gameObject.GetComponent<PlayerMove>().healthPoints.ToString() + " HP";
-            healthbar_slider.value = M1Transform.gameObject.GetComponent<PlayerMove>().healthPoints;
+            healthbar_hp.text = M1Transform.gameObject.GetComponent<PlayerMove>().currentHP.ToString() + " HP";
+            healthbar_slider.value = M1Transform.gameObject.GetComponent<PlayerMove>().currentHP;
         }   
         else {
             M1Transform.gameObject.GetComponent<SpriteRenderer>().material = M1Transform.gameObject.GetComponent<PlayerMove>().spriteDefault;
         }   
         if (tacticsCamera.GetComponent<TacticsCamera>().target == M2Transform) {
             portrait.GetComponent<Image>().sprite = M2; 
-            unit_label.GetComponent<Text>().text = "PANTHERBOT: MELEE";
+            unit_label.GetComponent<Text>().text = M2Transform.gameObject.GetComponent<TacticsMove>().unitName;
             M2Transform.gameObject.GetComponent<SpriteRenderer>().material = M2Transform.gameObject.GetComponent<PlayerMove>().spriteOutline;
-            healthbar_hp.text = M2Transform.gameObject.GetComponent<PlayerMove>().healthPoints.ToString() + " HP";
-            healthbar_slider.value = M2Transform.gameObject.GetComponent<PlayerMove>().healthPoints;
+            healthbar_hp.text = M2Transform.gameObject.GetComponent<PlayerMove>().currentHP.ToString() + " HP";
+            healthbar_slider.value = M2Transform.gameObject.GetComponent<PlayerMove>().currentHP;
         } 
         else {
             M2Transform.gameObject.GetComponent<SpriteRenderer>().material = M2Transform.gameObject.GetComponent<PlayerMove>().spriteDefault;
         }
         if (tacticsCamera.GetComponent<TacticsCamera>().target == M3Transform) {
             portrait.GetComponent<Image>().sprite = M3; 
-            unit_label.GetComponent<Text>().text = "WARRIOR: MELEE";
+            unit_label.GetComponent<Text>().text = M3Transform.gameObject.GetComponent<TacticsMove>().unitName;
             M3Transform.gameObject.GetComponent<SpriteRenderer>().material = M3Transform.gameObject.GetComponent<PlayerMove>().spriteOutline;
-            healthbar_hp.text = M3Transform.gameObject.GetComponent<PlayerMove>().healthPoints.ToString() + " HP";
-            healthbar_slider.value = M3Transform.gameObject.GetComponent<PlayerMove>().healthPoints;        
+            healthbar_hp.text = M3Transform.gameObject.GetComponent<PlayerMove>().currentHP.ToString() + " HP";
+            healthbar_slider.value = M3Transform.gameObject.GetComponent<PlayerMove>().currentHP;        
         } 
         else {
             M3Transform.gameObject.GetComponent<SpriteRenderer>().material = M3Transform.gameObject.GetComponent<PlayerMove>().spriteDefault;
         }
         if (tacticsCamera.GetComponent<TacticsCamera>().target == M4Transform) {
             portrait.GetComponent<Image>().sprite = M4; 
-            unit_label.GetComponent<Text>().text = "ANGELMECH: RANGED";
+            unit_label.GetComponent<Text>().text = M4Transform.gameObject.GetComponent<TacticsMove>().unitName;
             M3Transform.gameObject.GetComponent<SpriteRenderer>().material = M4Transform.gameObject.GetComponent<PlayerMove>().spriteOutline;
-            healthbar_hp.text = M4Transform.gameObject.GetComponent<PlayerMove>().healthPoints.ToString() + " HP";
-            healthbar_slider.value = M4Transform.gameObject.GetComponent<PlayerMove>().healthPoints;        
+            healthbar_hp.text = M4Transform.gameObject.GetComponent<PlayerMove>().currentHP.ToString() + " HP";
+            healthbar_slider.value = M4Transform.gameObject.GetComponent<PlayerMove>().currentHP;        
         } 
         else {
             M4Transform.gameObject.GetComponent<SpriteRenderer>().material = M4Transform.gameObject.GetComponent<PlayerMove>().spriteDefault;
         }  
         if (tacticsCamera.GetComponent<TacticsCamera>().target == M5Transform) {
             portrait.GetComponent<Image>().sprite = M5; 
-            unit_label.GetComponent<Text>().text = "WARMECH: RANGED";
+            unit_label.GetComponent<Text>().text = M5Transform.gameObject.GetComponent<TacticsMove>().unitName;
             M3Transform.gameObject.GetComponent<SpriteRenderer>().material = M5Transform.gameObject.GetComponent<PlayerMove>().spriteOutline;
-            healthbar_hp.text = M5Transform.gameObject.GetComponent<PlayerMove>().healthPoints.ToString() + " HP";
-            healthbar_slider.value = M5Transform.gameObject.GetComponent<PlayerMove>().healthPoints;        
+            healthbar_hp.text = M5Transform.gameObject.GetComponent<PlayerMove>().currentHP.ToString() + " HP";
+            healthbar_slider.value = M5Transform.gameObject.GetComponent<PlayerMove>().currentHP;        
         } 
         else {
             M5Transform.gameObject.GetComponent<SpriteRenderer>().material = M5Transform.gameObject.GetComponent<PlayerMove>().spriteDefault;
@@ -102,53 +102,53 @@ public class UI_Manager : MonoBehaviour
 
         if (tacticsCamera.GetComponent<TacticsCamera>().target == NPC1Transform) {
             portrait.GetComponent<Image>().sprite = NPC1; 
-            unit_label.GetComponent<Text>().text = "MISSILEMECH: RANGED";
+            unit_label.GetComponent<Text>().text = NPC1Transform.gameObject.GetComponent<TacticsMove>().unitName;
             NPC1Transform.gameObject.GetComponent<SpriteRenderer>().material = NPC1Transform.gameObject.GetComponent<NPCMove>().spriteOutline;
-            healthbar_hp.text = NPC1Transform.gameObject.GetComponent<NPCMove>().healthPoints.ToString() + " HP";
-            healthbar_slider.value = NPC1Transform.gameObject.GetComponent<NPCMove>().healthPoints;        
+            healthbar_hp.text = NPC1Transform.gameObject.GetComponent<NPCMove>().currentHP.ToString() + " HP";
+            healthbar_slider.value = NPC1Transform.gameObject.GetComponent<NPCMove>().currentHP;        
         }    
         else {
             NPC1Transform.gameObject.GetComponent<SpriteRenderer>().material = NPC1Transform.gameObject.GetComponent<NPCMove>().spriteDefault;
         }  
         if (tacticsCamera.GetComponent<TacticsCamera>().target == NPC2Transform) {
             portrait.GetComponent<Image>().sprite = NPC2; 
-            unit_label.GetComponent<Text>().text = "TANKMECH: RANGED";
+            unit_label.GetComponent<Text>().text = NPC2Transform.gameObject.GetComponent<TacticsMove>().unitName;
             NPC2Transform.gameObject.GetComponent<SpriteRenderer>().material = NPC2Transform.gameObject.GetComponent<NPCMove>().spriteOutline;
-            healthbar_hp.text = NPC2Transform.gameObject.GetComponent<NPCMove>().healthPoints.ToString() + " HP";
-            healthbar_slider.value = NPC2Transform.gameObject.GetComponent<NPCMove>().healthPoints;         
+            healthbar_hp.text = NPC2Transform.gameObject.GetComponent<NPCMove>().currentHP.ToString() + " HP";
+            healthbar_slider.value = NPC2Transform.gameObject.GetComponent<NPCMove>().currentHP;         
         } 
         else {
             NPC2Transform.gameObject.GetComponent<SpriteRenderer>().material = NPC2Transform.gameObject.GetComponent<NPCMove>().spriteDefault;
         }
         if (tacticsCamera.GetComponent<TacticsCamera>().target == NPC3Transform) {
             portrait.GetComponent<Image>().sprite = NPC3; 
-            unit_label.GetComponent<Text>().text = "SPIDERBOT: SUPPORT";
+            unit_label.GetComponent<Text>().text = NPC3Transform.gameObject.GetComponent<TacticsMove>().unitName;
             NPC3Transform.gameObject.GetComponent<SpriteRenderer>().material = NPC3Transform.gameObject.GetComponent<NPCMove>().spriteOutline;
-            healthbar_hp.text = NPC3Transform.gameObject.GetComponent<NPCMove>().healthPoints.ToString() + " HP";
-            healthbar_slider.value = NPC3Transform.gameObject.GetComponent<NPCMove>().healthPoints;         
+            healthbar_hp.text = NPC3Transform.gameObject.GetComponent<NPCMove>().currentHP.ToString() + " HP";
+            healthbar_slider.value = NPC3Transform.gameObject.GetComponent<NPCMove>().currentHP;         
         } 
         else {
             NPC3Transform.gameObject.GetComponent<SpriteRenderer>().material = NPC4Transform.gameObject.GetComponent<NPCMove>().spriteDefault;
         } 
         if (tacticsCamera.GetComponent<TacticsCamera>().target == NPC4Transform) {
             portrait.GetComponent<Image>().sprite = NPC4; 
-            unit_label.GetComponent<Text>().text = "CHOPPERMECH: SUPPORT";
+            unit_label.GetComponent<Text>().text = NPC4Transform.gameObject.GetComponent<TacticsMove>().unitName;
             NPC3Transform.gameObject.GetComponent<SpriteRenderer>().material = NPC4Transform.gameObject.GetComponent<NPCMove>().spriteOutline;
-            healthbar_hp.text = NPC4Transform.gameObject.GetComponent<NPCMove>().healthPoints.ToString() + " HP";
-            healthbar_slider.value = NPC4Transform.gameObject.GetComponent<NPCMove>().healthPoints;         
+            healthbar_hp.text = NPC4Transform.gameObject.GetComponent<NPCMove>().currentHP.ToString() + " HP";
+            healthbar_slider.value = NPC4Transform.gameObject.GetComponent<NPCMove>().currentHP;         
         } 
         else {
             NPC4Transform.gameObject.GetComponent<SpriteRenderer>().material = NPC4Transform.gameObject.GetComponent<NPCMove>().spriteDefault;
         }   
         if (tacticsCamera.GetComponent<TacticsCamera>().target == NPC5Transform) {
             portrait.GetComponent<Image>().sprite = NPC5; 
-            unit_label.GetComponent<Text>().text = "LASERBOT: SUPPORT";
-            NPC3Transform.gameObject.GetComponent<SpriteRenderer>().material = NPC5Transform.gameObject.GetComponent<NPCMove>().spriteOutline;
-            healthbar_hp.text = NPC5Transform.gameObject.GetComponent<NPCMove>().healthPoints.ToString() + " HP";
-            healthbar_slider.value = NPC5Transform.gameObject.GetComponent<NPCMove>().healthPoints;         
+            unit_label.GetComponent<Text>().text = NPC5Transform.gameObject.GetComponent<TacticsMove>().unitName;
+            NPC5Transform.gameObject.GetComponent<SpriteRenderer>().material = NPC5Transform.gameObject.GetComponent<NPCMove>().spriteOutline;
+            healthbar_hp.text = NPC5Transform.gameObject.GetComponent<NPCMove>().currentHP.ToString() + " HP";
+            healthbar_slider.value = NPC5Transform.gameObject.GetComponent<NPCMove>().currentHP;         
         } 
         else {
-            NPC4Transform.gameObject.GetComponent<SpriteRenderer>().material = NPC4Transform.gameObject.GetComponent<NPCMove>().spriteDefault;
+            NPC5Transform.gameObject.GetComponent<SpriteRenderer>().material = NPC5Transform.gameObject.GetComponent<NPCMove>().spriteDefault;
         }              
 
         ////

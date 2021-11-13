@@ -18,7 +18,13 @@ public class TacticsMove : MonoBehaviour
     public float moveSpeed = 2;
     public float jumpVelocity = 4.5f;
 
-    public int healthPoints = 5;
+	public string unitName;
+	public int unitLevel;
+
+	public int damage;
+
+	public int maxHP;   
+    public int currentHP = 5;    
 
     Vector3 velocity = new Vector3();
     Vector3 heading = new Vector3();
@@ -403,4 +409,21 @@ public class TacticsMove : MonoBehaviour
     {
         turn = false;
     }
+
+	public bool TakeDamage(int dmg)
+	{
+		currentHP -= dmg;
+
+		if (currentHP <= 0)
+			return true;
+		else
+			return false;
+	}
+
+	public void Heal(int amount)
+	{
+		currentHP += amount;
+		if (currentHP > maxHP)
+			currentHP = maxHP;
+	}    
 }
