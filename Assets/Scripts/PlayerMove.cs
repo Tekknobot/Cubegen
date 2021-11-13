@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerMove : TacticsMove 
 {
@@ -24,6 +25,8 @@ public class PlayerMove : TacticsMove
     public GameObject attackEffect;
     public bool attacking = false;
 
+    public bool unitTurn = false;
+
 	// Use this for initialization
 	void Start () 
 	{
@@ -38,19 +41,17 @@ public class PlayerMove : TacticsMove
 	{
         Debug.DrawRay(transform.position, transform.forward);
 
-        if (!turn)
-        {
+        if (!turn) {
             Animator animator = this.gameObject.GetComponent<Animator>();
             animator.runtimeAnimatorController = idleAnimation;  
             return;
         }
 
-        if (!moving && attacking) {
+        if (!moving && this.gameObject.GetComponent<PlayerMove>().attacking && this.gameObject.GetComponent<PlayerMove>().unitTurn) {
             Animator animator = this.gameObject.GetComponent<Animator>();
-            animator.runtimeAnimatorController = attackAnimation;            
-            CheckMouse();           
+            animator.runtimeAnimatorController = attackAnimation;                      
         }
-        else if (!moving && !attacking) {
+        else if (!moving && !this.gameObject.GetComponent<PlayerMove>().attacking) {
             Animator animator = this.gameObject.GetComponent<Animator>();
             animator.runtimeAnimatorController = idleAnimation;            
             //FindSelectableTiles();
@@ -108,8 +109,10 @@ public class PlayerMove : TacticsMove
             if (Physics.Raycast(ray, out hit)) {
                 if (hit.collider.tag == "Player") {
                     RemoveSelectableTiles();
+                    GetComponent<PlayerMove>().unitTurn = false;
                     hit.transform.gameObject.GetComponent<TacticsMove>().FindSelectableTiles();
                     hit.transform.gameObject.GetComponent<TacticsMove>().turn = true;
+                    hit.transform.gameObject.GetComponent<PlayerMove>().unitTurn = true;
                     tempGO = hit.transform.gameObject;
                     //hit.transform.gameObject.GetComponent<SpriteRenderer>().material = spriteOutline;
                     tacticsCamera.GetComponent<TacticsCamera>().target = hit.collider.transform;
@@ -135,10 +138,10 @@ public class PlayerMove : TacticsMove
     }
 
 	IEnumerator PlayerAttack(RaycastHit hit) {
-        attacking = true;
+        this.gameObject.GetComponent<PlayerMove>().attacking = true;
 		hit.transform.gameObject.GetComponent<TacticsMove>().TakeDamage(this.GetComponent<TacticsMove>().damage);
         Instantiate(attackEffect, hit.transform.position, Quaternion.Euler(45, -45, 0));
-		yield return new WaitForSeconds(2f);
-        attacking = false;
+		yield return new WaitForSeconds(0.5f);
+        this.gameObject.GetComponent<PlayerMove>().attacking = false;
 	}    
 }
