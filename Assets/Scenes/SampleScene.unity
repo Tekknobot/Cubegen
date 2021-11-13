@@ -2892,7 +2892,7 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_SelectedColor: {r: 0.7843138, g: 0.7843138, b: 0.7843138, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -2911,7 +2911,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 137974852}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1158990470}
+        m_TargetAssemblyTypeName: PlayerMove, Assembly-CSharp
+        m_MethodName: OnTargetButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &137974852
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28008,6 +28020,17 @@ Transform:
   m_Father: {fileID: 1018771516}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1158990470 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9023231350332751856, guid: eda202fb903788245b73083dc9e40b9c, type: 3}
+  m_PrefabInstance: {fileID: 5092966626907205583}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b67006c5ae7a49942af12762bcc679d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1165936187
 GameObject:
   m_ObjectHideFlags: 0
@@ -47501,6 +47524,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9023231350332751856, guid: eda202fb903788245b73083dc9e40b9c, type: 3}
+      propertyPath: attackEffect
+      value: 
+      objectReference: {fileID: 1002605618548861685, guid: 29121037f1fb25d40940d875fbfcc030, type: 3}
+    - target: {fileID: 9023231350332751856, guid: eda202fb903788245b73083dc9e40b9c, type: 3}
       propertyPath: spriteDefault
       value: 
       objectReference: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
@@ -47573,6 +47600,10 @@ PrefabInstance:
       propertyPath: unitName
       value: 'Panther Bot: Melee'
       objectReference: {fileID: 0}
+    - target: {fileID: 5322307222777037258, guid: e8b45310358e3164daaf8a30479bf1e3, type: 3}
+      propertyPath: attackEffect
+      value: 
+      objectReference: {fileID: 1002605618548861685, guid: 29121037f1fb25d40940d875fbfcc030, type: 3}
     - target: {fileID: 5322307222777037258, guid: e8b45310358e3164daaf8a30479bf1e3, type: 3}
       propertyPath: spriteDefault
       value: 
@@ -47790,6 +47821,10 @@ PrefabInstance:
       value: 'War Mech: Ranged'
       objectReference: {fileID: 0}
     - target: {fileID: 2967888252612711559, guid: 70a66b7b6355f2a4898dd7c014435152, type: 3}
+      propertyPath: attackEffect
+      value: 
+      objectReference: {fileID: 1002605618548861685, guid: 29121037f1fb25d40940d875fbfcc030, type: 3}
+    - target: {fileID: 2967888252612711559, guid: 70a66b7b6355f2a4898dd7c014435152, type: 3}
       propertyPath: spriteDefault
       value: 
       objectReference: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
@@ -47903,6 +47938,10 @@ PrefabInstance:
       value: 'Angel Mech: Melee'
       objectReference: {fileID: 0}
     - target: {fileID: 2943378356497371804, guid: 982f1bdb352639f429b764413ccfbd84, type: 3}
+      propertyPath: attackEffect
+      value: 
+      objectReference: {fileID: 1002605618548861685, guid: 29121037f1fb25d40940d875fbfcc030, type: 3}
+    - target: {fileID: 2943378356497371804, guid: 982f1bdb352639f429b764413ccfbd84, type: 3}
       propertyPath: spriteDefault
       value: 
       objectReference: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
@@ -47935,6 +47974,10 @@ PrefabInstance:
       propertyPath: unitName
       value: 'Warrior Mech: Melee'
       objectReference: {fileID: 0}
+    - target: {fileID: 8280623420152000231, guid: 1ea7f0f2888daa645994b46e45818446, type: 3}
+      propertyPath: attackEffect
+      value: 
+      objectReference: {fileID: 1002605618548861685, guid: 29121037f1fb25d40940d875fbfcc030, type: 3}
     - target: {fileID: 8280623420152000231, guid: 1ea7f0f2888daa645994b46e45818446, type: 3}
       propertyPath: spriteDefault
       value: 

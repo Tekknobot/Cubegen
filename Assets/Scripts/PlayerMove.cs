@@ -8,6 +8,7 @@ public class PlayerMove : TacticsMove
 
     public RuntimeAnimatorController moveAnimation;
     public RuntimeAnimatorController idleAnimation;
+    public RuntimeAnimatorController attackAnimation;
 
     public float oldPositionX;
     public float oldPositionZ;
@@ -19,6 +20,9 @@ public class PlayerMove : TacticsMove
 
     public GameObject tacticsCamera;
     public bool checkTile = false;
+
+    public GameObject attackEffect;
+    public bool attacking = false;
 
 	// Use this for initialization
 	void Start () 
@@ -41,15 +45,18 @@ public class PlayerMove : TacticsMove
             return;
         }
 
-        if (!moving)
-        {
+        if (!moving && attacking) {
+            Animator animator = this.gameObject.GetComponent<Animator>();
+            animator.runtimeAnimatorController = attackAnimation;            
+            CheckMouse();           
+        }
+        else if (!moving && !attacking) {
             Animator animator = this.gameObject.GetComponent<Animator>();
             animator.runtimeAnimatorController = idleAnimation;            
             //FindSelectableTiles();
-            CheckMouse();
+            CheckMouse();             
         }
-        else
-        {
+        else if (moving) {
             Animator animator = this.gameObject.GetComponent<Animator>();
             animator.runtimeAnimatorController = moveAnimation;            
             Move();             
@@ -128,7 +135,10 @@ public class PlayerMove : TacticsMove
     }
 
 	IEnumerator PlayerAttack(RaycastHit hit) {
+        attacking = true;
 		hit.transform.gameObject.GetComponent<TacticsMove>().TakeDamage(this.GetComponent<TacticsMove>().damage);
+        Instantiate(attackEffect, hit.transform.position, Quaternion.Euler(45, -45, 0));
 		yield return new WaitForSeconds(2f);
+        attacking = false;
 	}    
 }
