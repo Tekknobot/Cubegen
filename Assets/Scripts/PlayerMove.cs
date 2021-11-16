@@ -139,7 +139,7 @@ public class PlayerMove : TacticsMove
 
 	IEnumerator PlayerAttack(RaycastHit hit) {
         this.gameObject.GetComponent<PlayerMove>().attacking = true;
-		hit.transform.gameObject.GetComponent<TacticsMove>().TakeDamage(this.GetComponent<TacticsMove>().damage);
+		hit.transform.gameObject.GetComponent<TacticsAttack>().TakeDamage(this.GetComponent<TacticsAttack>().damage);
         Instantiate(attackEffect, hit.transform.position, Quaternion.Euler(45, -45, 0));
 		yield return new WaitForSeconds(0.5f);
         this.gameObject.GetComponent<PlayerMove>().attacking = false;

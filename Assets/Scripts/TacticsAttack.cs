@@ -1,17 +1,16 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Unit : MonoBehaviour
+public class TacticsAttack : MonoBehaviour 
 {
-
-	public string unitName;
-	public int unitLevel;
-
 	public int damage;
 
-	public int maxHP;
-	public int currentHP;
+	public int maxHP;   
+    public int currentHP = 5;    
+
+	public string unitName;
+	public int unitLevel;     
 
 	public bool TakeDamage(int dmg)
 	{
@@ -28,6 +27,5 @@ public class Unit : MonoBehaviour
 		currentHP += amount;
 		if (currentHP > maxHP)
 			currentHP = maxHP;
-	}
-
+	}    
 }
