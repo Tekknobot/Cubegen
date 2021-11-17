@@ -10,6 +10,5 @@ public class NPCAttack : TacticsAttack
 	
 	// Update is called once per frame
 	void Update () {
-
 	}
 }

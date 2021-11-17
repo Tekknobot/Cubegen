@@ -118,30 +118,6 @@ public class PlayerMove : TacticsMove
                     tacticsCamera.GetComponent<TacticsCamera>().target = hit.collider.transform;
                 }
             }            
-        }
-
-        if (Input.GetMouseButtonDown(0)) {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-
-            RaycastHit hit;
-            if (Physics.Raycast(ray, out hit)) {
-                if (hit.collider.tag == "NPC") {
-                    tacticsCamera.GetComponent<TacticsCamera>().target = hit.collider.transform;
-                    StartCoroutine(PlayerAttack(hit));
-                }
-            }            
-        }         
+        }        
     }
-
-    public void OnTargetButton() {
-        CheckMouse();
-    }
-
-	IEnumerator PlayerAttack(RaycastHit hit) {
-        this.gameObject.GetComponent<PlayerMove>().attacking = true;
-		hit.transform.gameObject.GetComponent<TacticsAttack>().TakeDamage(this.GetComponent<TacticsAttack>().damage);
-        Instantiate(attackEffect, hit.transform.position, Quaternion.Euler(45, -45, 0));
-		yield return new WaitForSeconds(0.5f);
-        this.gameObject.GetComponent<PlayerMove>().attacking = false;
-	}    
 }
