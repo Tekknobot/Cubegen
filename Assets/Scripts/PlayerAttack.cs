@@ -39,19 +39,19 @@ public class PlayerAttack : TacticsAttack
     }
 
 	IEnumerator PlayerAttackCoroutine(RaycastHit hit) {
-        this.gameObject.GetComponent<PlayerMove>().attacking = true;
+        tacticsCamera.GetComponent<TacticsCamera>().target.gameObject.gameObject.GetComponent<PlayerMove>().attacking = true;
+        Animator animator = tacticsCamera.GetComponent<TacticsCamera>().target.gameObject.GetComponent<Animator>();
+        animator.runtimeAnimatorController = tacticsCamera.GetComponent<TacticsCamera>().target.gameObject.GetComponent<PlayerMove>().attackAnimation;        
 		hit.transform.gameObject.GetComponent<TacticsAttack>().TakeDamage(this.GetComponent<TacticsAttack>().damage);
 		yield return new WaitForSeconds(1f);
-        Instantiate(attackEffect, hit.transform.position, Quaternion.Euler(45, -45, 0));
-        Animator animator = this.gameObject.GetComponent<Animator>();
-        animator.runtimeAnimatorController = GetComponent<PlayerMove>().attackAnimation;        
+        Instantiate(attackEffect, hit.transform.position, Quaternion.Euler(45, -45, 0));        
         tacticsCamera.GetComponent<TacticsCamera>().target = hit.collider.transform;
         this.gameObject.GetComponent<PlayerMove>().attacking = false;
 	}  
 
     IEnumerator WaitForCheck() {
         yield return new WaitUntil(()=> Input.GetMouseButtonDown(0));
-        
+
         if (Input.GetMouseButtonDown(0)) {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 

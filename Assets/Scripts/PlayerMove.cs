@@ -81,8 +81,6 @@ public class PlayerMove : TacticsMove
     void LateUpdate(){
         oldPositionX = transform.position.x;
         oldPositionZ = transform.position.z;
-
-        if (tacticsCamera.GetComponent<TacticsCamera>().)
     }
 
     void CheckMouse()
