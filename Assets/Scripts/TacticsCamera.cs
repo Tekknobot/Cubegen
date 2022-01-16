@@ -32,6 +32,7 @@ public class TacticsCamera : MonoBehaviour
             if (playerPrefabsIndex >=5) {
                 playerPrefabsIndex = 0;
             }
+            CameraSelect();
         }
     }
 
@@ -49,5 +50,47 @@ public class TacticsCamera : MonoBehaviour
                 target = npcPrefab.transform;
             }
         }         
+    }
+
+    public void CameraSelect() {
+        if (target == playerPrefabs[0].transform) {    
+            playerPrefabs[0].GetComponent<TacticsMove>().RemoveSelectableTiles();
+            playerPrefabs[0].GetComponent<PlayerMove>().unitTurn = false;
+            playerPrefabs[0].GetComponent<TacticsMove>().FindSelectableTiles();
+            playerPrefabs[0].GetComponent<TacticsMove>().turn = true;
+            playerPrefabs[0].GetComponent<PlayerMove>().unitTurn = true;
+        }     
+
+        if (target == playerPrefabs[1].transform) {    
+            playerPrefabs[1].GetComponent<TacticsMove>().RemoveSelectableTiles();
+            playerPrefabs[1].GetComponent<PlayerMove>().unitTurn = false;
+            playerPrefabs[1].GetComponent<TacticsMove>().FindSelectableTiles();
+            playerPrefabs[1].GetComponent<TacticsMove>().turn = true;
+            playerPrefabs[1].GetComponent<PlayerMove>().unitTurn = true;
+        }  
+
+        if (target == playerPrefabs[2].transform) {    
+            playerPrefabs[2].GetComponent<TacticsMove>().RemoveSelectableTiles();
+            playerPrefabs[2].GetComponent<PlayerMove>().unitTurn = false;
+            playerPrefabs[2].GetComponent<TacticsMove>().FindSelectableTiles();
+            playerPrefabs[2].GetComponent<TacticsMove>().turn = true;
+            playerPrefabs[2].GetComponent<PlayerMove>().unitTurn = true;
+        }                  
+
+        if (target == playerPrefabs[3].transform) {    
+            playerPrefabs[3].GetComponent<TacticsMove>().RemoveSelectableTiles();
+            playerPrefabs[3].GetComponent<PlayerMove>().unitTurn = false;
+            playerPrefabs[3].GetComponent<TacticsMove>().FindSelectableTiles();
+            playerPrefabs[3].GetComponent<TacticsMove>().turn = true;
+            playerPrefabs[3].GetComponent<PlayerMove>().unitTurn = true;
+        }  
+
+        if (target == playerPrefabs[4].transform) {    
+            playerPrefabs[4].GetComponent<TacticsMove>().RemoveSelectableTiles();
+            playerPrefabs[4].GetComponent<PlayerMove>().unitTurn = false;
+            playerPrefabs[4].GetComponent<TacticsMove>().FindSelectableTiles();
+            playerPrefabs[4].GetComponent<TacticsMove>().turn = true;
+            playerPrefabs[4].GetComponent<PlayerMove>().unitTurn = true;
+        }                        
     }
 }

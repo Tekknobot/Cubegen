@@ -118,6 +118,6 @@ public class PlayerMove : TacticsMove
                     tacticsCamera.GetComponent<TacticsCamera>().target = hit.collider.transform;
                 }
             }            
-        }        
+        }    
     }
 }

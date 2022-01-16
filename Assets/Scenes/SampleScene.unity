@@ -2946,6 +2946,54 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 628864482}
+        m_TargetAssemblyTypeName: PlayerAttack, Assembly-CSharp
+        m_MethodName: OnTargetButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1281292009}
+        m_TargetAssemblyTypeName: PlayerAttack, Assembly-CSharp
+        m_MethodName: OnTargetButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1024024592}
+        m_TargetAssemblyTypeName: PlayerAttack, Assembly-CSharp
+        m_MethodName: OnTargetButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 982672373}
+        m_TargetAssemblyTypeName: PlayerAttack, Assembly-CSharp
+        m_MethodName: OnTargetButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &137974852
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15126,6 +15174,8 @@ MonoBehaviour:
   attackEffect: {fileID: 1002605618548861685, guid: 29121037f1fb25d40940d875fbfcc030, type: 3}
   attacking: 0
   unitTurn: 0
+  targetButton: {fileID: 0}
+  healthButton: {fileID: 0}
 --- !u!1 &642430450
 GameObject:
   m_ObjectHideFlags: 0
@@ -18699,6 +18749,8 @@ MonoBehaviour:
   attackEffect: {fileID: 1002605618548861685, guid: 29121037f1fb25d40940d875fbfcc030, type: 3}
   attacking: 0
   unitTurn: 0
+  targetButton: {fileID: 137974849}
+  healthButton: {fileID: 989343203}
 --- !u!1 &786641114
 GameObject:
   m_ObjectHideFlags: 0
@@ -24071,6 +24123,8 @@ MonoBehaviour:
   attackEffect: {fileID: 1002605618548861685, guid: 29121037f1fb25d40940d875fbfcc030, type: 3}
   attacking: 0
   unitTurn: 0
+  targetButton: {fileID: 0}
+  healthButton: {fileID: 0}
 --- !u!1 &982726050
 GameObject:
   m_ObjectHideFlags: 0
@@ -25360,6 +25414,8 @@ MonoBehaviour:
   attackEffect: {fileID: 1002605618548861685, guid: 29121037f1fb25d40940d875fbfcc030, type: 3}
   attacking: 0
   unitTurn: 0
+  targetButton: {fileID: 0}
+  healthButton: {fileID: 0}
 --- !u!1 &1026512005
 GameObject:
   m_ObjectHideFlags: 0
@@ -31109,6 +31165,8 @@ MonoBehaviour:
   attackEffect: {fileID: 1002605618548861685, guid: 29121037f1fb25d40940d875fbfcc030, type: 3}
   attacking: 0
   unitTurn: 0
+  targetButton: {fileID: 0}
+  healthButton: {fileID: 0}
 --- !u!1 &1282380515
 GameObject:
   m_ObjectHideFlags: 0

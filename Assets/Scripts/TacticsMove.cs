@@ -168,7 +168,7 @@ public class TacticsMove : MonoBehaviour
         }
     }
 
-    protected void RemoveSelectableTiles()
+    public void RemoveSelectableTiles()
     {
         if (currentTile != null)
         {
