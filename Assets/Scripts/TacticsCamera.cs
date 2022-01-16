@@ -32,6 +32,13 @@ public class TacticsCamera : MonoBehaviour
             if (playerPrefabsIndex >=5) {
                 playerPrefabsIndex = 0;
             }
+
+            playerPrefabs[0].GetComponent<PlayerMove>().tempGO = null;
+            playerPrefabs[1].GetComponent<PlayerMove>().tempGO = null;
+            playerPrefabs[2].GetComponent<PlayerMove>().tempGO = null;
+            playerPrefabs[3].GetComponent<PlayerMove>().tempGO = null;
+            playerPrefabs[4].GetComponent<PlayerMove>().tempGO = null;
+
             CameraSelect();
         }
     }
