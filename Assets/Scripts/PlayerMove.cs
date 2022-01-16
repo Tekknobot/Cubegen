@@ -94,8 +94,13 @@ public class PlayerMove : TacticsMove
                     Tile t = hit.collider.GetComponent<Tile>();
 
                     if (t.selectable && this.moving == false) {
-                        tempGO.GetComponent<TacticsMove>().MoveToTile(t);
-                        tempGO = this.transform.gameObject;
+                        if (tempGO == null) {
+                            return;
+                        }
+                        else {
+                            tempGO.GetComponent<TacticsMove>().MoveToTile(t);
+                            tempGO = this.transform.gameObject;
+                        }
                     }
                 }
             }

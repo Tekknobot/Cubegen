@@ -59,6 +59,7 @@ public class TacticsCamera : MonoBehaviour
             playerPrefabs[0].GetComponent<TacticsMove>().FindSelectableTiles();
             playerPrefabs[0].GetComponent<TacticsMove>().turn = true;
             playerPrefabs[0].GetComponent<PlayerMove>().unitTurn = true;
+            playerPrefabs[0].GetComponent<PlayerMove>().tempGO = playerPrefabs[0].transform.gameObject;
         }     
 
         if (target == playerPrefabs[1].transform) {    
@@ -67,6 +68,7 @@ public class TacticsCamera : MonoBehaviour
             playerPrefabs[1].GetComponent<TacticsMove>().FindSelectableTiles();
             playerPrefabs[1].GetComponent<TacticsMove>().turn = true;
             playerPrefabs[1].GetComponent<PlayerMove>().unitTurn = true;
+            playerPrefabs[0].GetComponent<PlayerMove>().tempGO = playerPrefabs[1].transform.gameObject;
         }  
 
         if (target == playerPrefabs[2].transform) {    
@@ -75,6 +77,7 @@ public class TacticsCamera : MonoBehaviour
             playerPrefabs[2].GetComponent<TacticsMove>().FindSelectableTiles();
             playerPrefabs[2].GetComponent<TacticsMove>().turn = true;
             playerPrefabs[2].GetComponent<PlayerMove>().unitTurn = true;
+            playerPrefabs[0].GetComponent<PlayerMove>().tempGO = playerPrefabs[2].transform.gameObject;
         }                  
 
         if (target == playerPrefabs[3].transform) {    
@@ -83,6 +86,7 @@ public class TacticsCamera : MonoBehaviour
             playerPrefabs[3].GetComponent<TacticsMove>().FindSelectableTiles();
             playerPrefabs[3].GetComponent<TacticsMove>().turn = true;
             playerPrefabs[3].GetComponent<PlayerMove>().unitTurn = true;
+            playerPrefabs[0].GetComponent<PlayerMove>().tempGO = playerPrefabs[3].transform.gameObject;
         }  
 
         if (target == playerPrefabs[4].transform) {    
@@ -91,6 +95,7 @@ public class TacticsCamera : MonoBehaviour
             playerPrefabs[4].GetComponent<TacticsMove>().FindSelectableTiles();
             playerPrefabs[4].GetComponent<TacticsMove>().turn = true;
             playerPrefabs[4].GetComponent<PlayerMove>().unitTurn = true;
+            playerPrefabs[0].GetComponent<PlayerMove>().tempGO = playerPrefabs[4].transform.gameObject;
         }                        
     }
 }

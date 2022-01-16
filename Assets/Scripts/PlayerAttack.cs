@@ -31,17 +31,7 @@ public class PlayerAttack : TacticsAttack
     }
 
     void CheckMouse() {
-        if (Input.GetMouseButtonDown(0)) {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-
-            RaycastHit hit;
-            if (Physics.Raycast(ray, out hit)) {
-                if (hit.collider.tag == "NPC" && !checkedMouse) {
-                    StartCoroutine(PlayerAttackCoroutine(hit));
-                    checkedMouse = true;
-                }
-            }            
-        }         
+        StartCoroutine(WaitForCheck());       
     }
 
     public void OnTargetButton() {
@@ -53,7 +43,25 @@ public class PlayerAttack : TacticsAttack
 		hit.transform.gameObject.GetComponent<TacticsAttack>().TakeDamage(this.GetComponent<TacticsAttack>().damage);
 		yield return new WaitForSeconds(1f);
         Instantiate(attackEffect, hit.transform.position, Quaternion.Euler(45, -45, 0));
+        Animator animator = this.gameObject.GetComponent<Animator>();
+        animator.runtimeAnimatorController = GetComponent<PlayerMove>().attackAnimation;        
         tacticsCamera.GetComponent<TacticsCamera>().target = hit.collider.transform;
         this.gameObject.GetComponent<PlayerMove>().attacking = false;
-	}    
+	}  
+
+    IEnumerator WaitForCheck() {
+        yield return new WaitUntil(()=> Input.GetMouseButtonDown(0));
+        
+        if (Input.GetMouseButtonDown(0)) {
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+            RaycastHit hit;
+            if (Physics.Raycast(ray, out hit)) {
+                if (hit.collider.tag == "NPC") {
+                    StartCoroutine(PlayerAttackCoroutine(hit));
+                }
+                checkedMouse = true; 
+            }            
+        }
+    }  
 }

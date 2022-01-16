@@ -15174,8 +15174,9 @@ MonoBehaviour:
   attackEffect: {fileID: 1002605618548861685, guid: 29121037f1fb25d40940d875fbfcc030, type: 3}
   attacking: 0
   unitTurn: 0
-  targetButton: {fileID: 0}
-  healthButton: {fileID: 0}
+  targetButton: {fileID: 137974849}
+  healthButton: {fileID: 989343203}
+  checkedMouse: 0
 --- !u!1 &642430450
 GameObject:
   m_ObjectHideFlags: 0
@@ -18751,6 +18752,7 @@ MonoBehaviour:
   unitTurn: 0
   targetButton: {fileID: 137974849}
   healthButton: {fileID: 989343203}
+  checkedMouse: 0
 --- !u!1 &786641114
 GameObject:
   m_ObjectHideFlags: 0
@@ -24123,8 +24125,9 @@ MonoBehaviour:
   attackEffect: {fileID: 1002605618548861685, guid: 29121037f1fb25d40940d875fbfcc030, type: 3}
   attacking: 0
   unitTurn: 0
-  targetButton: {fileID: 0}
-  healthButton: {fileID: 0}
+  targetButton: {fileID: 137974849}
+  healthButton: {fileID: 989343203}
+  checkedMouse: 0
 --- !u!1 &982726050
 GameObject:
   m_ObjectHideFlags: 0
@@ -25414,8 +25417,9 @@ MonoBehaviour:
   attackEffect: {fileID: 1002605618548861685, guid: 29121037f1fb25d40940d875fbfcc030, type: 3}
   attacking: 0
   unitTurn: 0
-  targetButton: {fileID: 0}
-  healthButton: {fileID: 0}
+  targetButton: {fileID: 137974849}
+  healthButton: {fileID: 989343203}
+  checkedMouse: 0
 --- !u!1 &1026512005
 GameObject:
   m_ObjectHideFlags: 0
@@ -31165,8 +31169,9 @@ MonoBehaviour:
   attackEffect: {fileID: 1002605618548861685, guid: 29121037f1fb25d40940d875fbfcc030, type: 3}
   attacking: 0
   unitTurn: 0
-  targetButton: {fileID: 0}
-  healthButton: {fileID: 0}
+  targetButton: {fileID: 137974849}
+  healthButton: {fileID: 989343203}
+  checkedMouse: 0
 --- !u!1 &1282380515
 GameObject:
   m_ObjectHideFlags: 0
