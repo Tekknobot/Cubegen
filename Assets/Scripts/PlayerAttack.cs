@@ -39,7 +39,7 @@ public class PlayerAttack : TacticsAttack
     }
 
 	IEnumerator PlayerAttackCoroutine(RaycastHit hit) {
-        tacticsCamera.GetComponent<TacticsCamera>().target.gameObject.gameObject.GetComponent<PlayerMove>().attacking = true;
+        tacticsCamera.GetComponent<TacticsCamera>().target.gameObject.GetComponent<PlayerMove>().attacking = true;
         Animator animator = tacticsCamera.GetComponent<TacticsCamera>().target.gameObject.GetComponent<Animator>();
         animator.runtimeAnimatorController = tacticsCamera.GetComponent<TacticsCamera>().target.gameObject.GetComponent<PlayerMove>().attackAnimation;        
 		hit.transform.gameObject.GetComponent<TacticsAttack>().TakeDamage(this.GetComponent<TacticsAttack>().damage);
