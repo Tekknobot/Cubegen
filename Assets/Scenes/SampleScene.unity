@@ -7908,7 +7908,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 2557b00842018604da96cfbd88febb3f, type: 3}
-    m_FontSize: 26
+    m_FontSize: 20
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 2
@@ -19708,6 +19708,7 @@ MonoBehaviour:
   unitTurn: 0
   targetButton: {fileID: 1924009276}
   healthButton: {fileID: 1215797822}
+  checkedMouse: 0
 --- !u!1 &641606269
 GameObject:
   m_ObjectHideFlags: 0
@@ -23471,6 +23472,7 @@ MonoBehaviour:
   unitTurn: 0
   targetButton: {fileID: 1924009276}
   healthButton: {fileID: 1215797822}
+  checkedMouse: 0
 --- !u!1 &786641114
 GameObject:
   m_ObjectHideFlags: 0
@@ -28615,6 +28617,7 @@ MonoBehaviour:
   unitTurn: 0
   targetButton: {fileID: 1924009276}
   healthButton: {fileID: 1215797822}
+  checkedMouse: 0
 --- !u!1 &982726050
 GameObject:
   m_ObjectHideFlags: 0
@@ -29213,7 +29216,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_IgnoreReversedGraphics: 1
-  m_BlockingObjects: 2
+  m_BlockingObjects: 3
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -29789,6 +29792,7 @@ MonoBehaviour:
   unitTurn: 0
   targetButton: {fileID: 1924009276}
   healthButton: {fileID: 1215797822}
+  checkedMouse: 0
 --- !u!1 &1026512005
 GameObject:
   m_ObjectHideFlags: 0
@@ -40279,6 +40283,7 @@ MonoBehaviour:
   unitTurn: 0
   targetButton: {fileID: 1924009276}
   healthButton: {fileID: 1215797822}
+  checkedMouse: 0
 --- !u!1 &1282380515
 GameObject:
   m_ObjectHideFlags: 0
@@ -41814,7 +41819,7 @@ GameObject:
   - component: {fileID: 1355912211}
   - component: {fileID: 1355912210}
   m_Layer: 5
-  m_Name: Moves Left
+  m_Name: Turns Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
