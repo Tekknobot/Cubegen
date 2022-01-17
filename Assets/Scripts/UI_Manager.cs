@@ -56,40 +56,35 @@ public class UI_Manager : MonoBehaviour
             unit_label.GetComponent<Text>().text = M1Transform.gameObject.GetComponent<TacticsAttack>().unitName;
             healthbar_hp.text = M1Transform.gameObject.GetComponent<PlayerAttack>().currentHP.ToString() + " HP";
             healthbar_slider.value = M1Transform.gameObject.GetComponent<PlayerAttack>().currentHP;
-            targetButton.SetActive(true);    
-            healthButton.SetActive(true);            
+            StartCoroutine(CheckMouse());                       
         }   
         if (tacticsCamera.GetComponent<TacticsCamera>().target == M2Transform) {
             portrait.GetComponent<Image>().sprite = M2; 
             unit_label.GetComponent<Text>().text = M2Transform.gameObject.GetComponent<TacticsAttack>().unitName;
             healthbar_hp.text = M2Transform.gameObject.GetComponent<PlayerAttack>().currentHP.ToString() + " HP";
             healthbar_slider.value = M2Transform.gameObject.GetComponent<PlayerAttack>().currentHP;
-            targetButton.SetActive(true);    
-            healthButton.SetActive(true);            
+            StartCoroutine(CheckMouse());            
         } 
         if (tacticsCamera.GetComponent<TacticsCamera>().target == M3Transform) {
             portrait.GetComponent<Image>().sprite = M3; 
             unit_label.GetComponent<Text>().text = M3Transform.gameObject.GetComponent<TacticsAttack>().unitName;
             healthbar_hp.text = M3Transform.gameObject.GetComponent<PlayerAttack>().currentHP.ToString() + " HP";
             healthbar_slider.value = M3Transform.gameObject.GetComponent<PlayerAttack>().currentHP; 
-            targetButton.SetActive(true);    
-            healthButton.SetActive(true);                   
+            StartCoroutine(CheckMouse());                  
         } 
         if (tacticsCamera.GetComponent<TacticsCamera>().target == M4Transform) {
             portrait.GetComponent<Image>().sprite = M4; 
             unit_label.GetComponent<Text>().text = M4Transform.gameObject.GetComponent<TacticsAttack>().unitName;
             healthbar_hp.text = M4Transform.gameObject.GetComponent<PlayerAttack>().currentHP.ToString() + " HP";
             healthbar_slider.value = M4Transform.gameObject.GetComponent<PlayerAttack>().currentHP;   
-            targetButton.SetActive(true);    
-            healthButton.SetActive(true);                 
+            StartCoroutine(CheckMouse());                 
         }  
         if (tacticsCamera.GetComponent<TacticsCamera>().target == M5Transform) {
             portrait.GetComponent<Image>().sprite = M5; 
             unit_label.GetComponent<Text>().text = M5Transform.gameObject.GetComponent<TacticsAttack>().unitName;
             healthbar_hp.text = M5Transform.gameObject.GetComponent<PlayerAttack>().currentHP.ToString() + " HP";
             healthbar_slider.value = M5Transform.gameObject.GetComponent<PlayerAttack>().currentHP;  
-            targetButton.SetActive(true);    
-            healthButton.SetActive(true);                  
+            StartCoroutine(CheckMouse());                 
         }          
 
         ////
@@ -145,5 +140,20 @@ public class UI_Manager : MonoBehaviour
             movesLeft.GetComponent<Text>().color = Color.red;
             movesLeft.GetComponent<Text>().text = "last move";
         }
+    }
+
+    IEnumerator CheckMouse() {
+        if (Input.GetMouseButtonDown(0)) {
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+            RaycastHit hit;
+            if (Physics.Raycast(ray, out hit)) {
+                if (hit.collider.tag == "Player") {
+                    targetButton.SetActive(true);    
+                    healthButton.SetActive(true); 
+                }
+            }            
+        }  
+        yield return null;       
     }
 }

@@ -60,6 +60,8 @@ public class TacticsCamera : MonoBehaviour
     }
 
     public void CameraSelect() {
+        StartCoroutine(DeactivateUI());
+        
         if (target == playerPrefabs[0].transform) {    
             playerPrefabs[0].GetComponent<TacticsMove>().RemoveSelectableTiles();
             playerPrefabs[0].GetComponent<PlayerMove>().unitTurn = false;
@@ -104,5 +106,11 @@ public class TacticsCamera : MonoBehaviour
             playerPrefabs[4].GetComponent<PlayerMove>().unitTurn = true;
             playerPrefabs[4].GetComponent<PlayerMove>().tempGO = playerPrefabs[4].transform.gameObject;
         }                        
+    }
+
+    IEnumerator DeactivateUI() {
+        GameObject.Find("UI_Manager").GetComponent<UI_Manager>().targetButton.SetActive(false);    
+        GameObject.Find("UI_Manager").GetComponent<UI_Manager>().healthButton.SetActive(false);
+        yield return null; 
     }
 }
