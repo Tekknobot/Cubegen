@@ -62,6 +62,8 @@ public class PlayerMove : TacticsMove
             animator.runtimeAnimatorController = moveAnimation;            
             Move();             
             GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().TargetCameraOnPlayer();
+            GameObject.Find("UI_Manager").GetComponent<UI_Manager>().targetButton.SetActive(false);    
+            GameObject.Find("UI_Manager").GetComponent<UI_Manager>().healthButton.SetActive(false);            
         }
 
         if (transform.position.x > oldPositionX) {
