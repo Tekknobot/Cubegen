@@ -2319,8 +2319,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 1
-  maxHP: 100
-  currentHP: 100
+  maxHP: 25
+  currentHP: 25
   unitName: Scanner Mech
   unitLevel: 0
 --- !u!1 &86418170
@@ -18487,8 +18487,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 1
-  maxHP: 100
-  currentHP: 100
+  maxHP: 25
+  currentHP: 25
   unitName: Chopper Mech
   unitLevel: 0
 --- !u!1 &597754571
@@ -19697,8 +19697,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 1
-  maxHP: 100
-  currentHP: 100
+  maxHP: 25
+  currentHP: 25
   unitName: Panther Mech
   unitLevel: 0
   tacticsCamera: {fileID: 14125121}
@@ -23461,8 +23461,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 1
-  maxHP: 100
-  currentHP: 100
+  maxHP: 25
+  currentHP: 25
   unitName: Soldier Mech
   unitLevel: 0
   tacticsCamera: {fileID: 14125121}
@@ -28606,8 +28606,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 1
-  maxHP: 100
-  currentHP: 100
+  maxHP: 25
+  currentHP: 25
   unitName: Cannon Mech
   unitLevel: 0
   tacticsCamera: {fileID: 14125121}
@@ -29781,8 +29781,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 1
-  maxHP: 100
-  currentHP: 100
+  maxHP: 25
+  currentHP: 25
   unitName: Angel Mech
   unitLevel: 0
   tacticsCamera: {fileID: 14125121}
@@ -35995,8 +35995,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 1
-  maxHP: 100
-  currentHP: 100
+  maxHP: 25
+  currentHP: 25
   unitName: Beast Mech
   unitLevel: 0
 --- !u!1 &1077857646
@@ -39854,8 +39854,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 1
-  maxHP: 100
-  currentHP: 100
+  maxHP: 25
+  currentHP: 25
   unitName: Missile Mech
   unitLevel: 0
 --- !u!1 &1268906245
@@ -40272,8 +40272,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 1
-  maxHP: 100
-  currentHP: 100
+  maxHP: 25
+  currentHP: 25
   unitName: War Mech
   unitLevel: 0
   tacticsCamera: {fileID: 14125121}
@@ -45931,8 +45931,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   map: {fileID: 1383385104}
-  movesLeft: {fileID: 373612302}
   tacticsCamera: {fileID: 14125121}
+  movesLeft: {fileID: 373612302}
   portrait: {fileID: 1050684757}
   M1Transform: {fileID: 2007290289899338126}
   M2Transform: {fileID: 73184186}
@@ -45957,6 +45957,8 @@ MonoBehaviour:
   unit_label: {fileID: 641606272}
   healthbar_hp: {fileID: 2003235090}
   healthbar_slider: {fileID: 2070939474}
+  targetButton: {fileID: 1924009276}
+  healthButton: {fileID: 1215797822}
 --- !u!4 &1595355709
 Transform:
   m_ObjectHideFlags: 0
@@ -63328,8 +63330,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 1
-  maxHP: 100
-  currentHP: 100
+  maxHP: 25
+  currentHP: 25
   unitName: Spider Mech
   unitLevel: 0
 --- !u!1 &2005118232
@@ -64860,9 +64862,9 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1724316489}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 100
+  m_MaxValue: 25
   m_WholeNumbers: 1
-  m_Value: 100
+  m_Value: 25
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
