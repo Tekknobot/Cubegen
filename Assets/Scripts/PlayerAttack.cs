@@ -40,28 +40,25 @@ public class PlayerAttack : TacticsAttack
 
 	IEnumerator PlayerAttackCoroutine(RaycastHit hit) {
         tacticsCamera.GetComponent<TacticsCamera>().target.gameObject.GetComponent<PlayerMove>().attacking = true;
-        Animator animator = tacticsCamera.GetComponent<TacticsCamera>().target.gameObject.GetComponent<Animator>();
-        animator.runtimeAnimatorController = tacticsCamera.GetComponent<TacticsCamera>().target.gameObject.GetComponent<PlayerMove>().attackAnimation;        
-		hit.transform.gameObject.GetComponent<TacticsAttack>().TakeDamage(this.GetComponent<TacticsAttack>().damage);
+        hit.transform.gameObject.GetComponent<TacticsAttack>().TakeDamage(this.GetComponent<TacticsAttack>().damage);
 		yield return new WaitForSeconds(1f);
+        this.gameObject.GetComponent<PlayerMove>().attacking = false;
         Instantiate(attackEffect, hit.transform.position, Quaternion.Euler(45, -45, 0));        
         tacticsCamera.GetComponent<TacticsCamera>().target = hit.collider.transform;
-        this.gameObject.GetComponent<PlayerMove>().attacking = false;
 	}  
 
     IEnumerator WaitForCheck() {
         yield return new WaitUntil(()=> Input.GetMouseButtonDown(0));
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-        if (Input.GetMouseButtonDown(0)) {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-
-            RaycastHit hit;
-            if (Physics.Raycast(ray, out hit)) {
-                if (hit.collider.tag == "NPC") {
-                    StartCoroutine(PlayerAttackCoroutine(hit));
-                }
-                checkedMouse = true; 
-            }            
-        }
+        RaycastHit hit;
+        if (Physics.Raycast(ray, out hit)) {
+            if (hit.collider.tag == "NPC") {
+                Animator animator = tacticsCamera.GetComponent<TacticsCamera>().target.gameObject.GetComponent<Animator>();
+                animator.runtimeAnimatorController = tacticsCamera.GetComponent<TacticsCamera>().target.gameObject.GetComponent<PlayerMove>().attackAnimation;                
+                StartCoroutine(PlayerAttackCoroutine(hit));
+            }
+            checkedMouse = true; 
+        }            
     }  
 }
