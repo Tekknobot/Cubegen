@@ -45,6 +45,8 @@ public class PlayerAttack : TacticsAttack
         this.gameObject.GetComponent<PlayerMove>().attacking = false;
         Instantiate(attackEffect, hit.transform.position, Quaternion.Euler(45, -45, 0));        
         tacticsCamera.GetComponent<TacticsCamera>().target = hit.collider.transform;
+
+        TurnManager.EndTurn();
 	}  
 
     IEnumerator WaitForCheck() {

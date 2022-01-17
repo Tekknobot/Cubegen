@@ -2323,6 +2323,18 @@ MonoBehaviour:
   currentHP: 25
   unitName: Scanner Mech
   unitLevel: 0
+--- !u!114 &86160433
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 86160427}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ebb5dbcd436c8c42ae6578772f1dff4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &86418170
 GameObject:
   m_ObjectHideFlags: 0
@@ -18491,6 +18503,18 @@ MonoBehaviour:
   currentHP: 25
   unitName: Chopper Mech
   unitLevel: 0
+--- !u!114 &587198694
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 587198688}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ebb5dbcd436c8c42ae6578772f1dff4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &597754571
 GameObject:
   m_ObjectHideFlags: 0
@@ -29284,7 +29308,7 @@ RectTransform:
   - {fileID: 1924009277}
   - {fileID: 1215797826}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -35999,6 +36023,18 @@ MonoBehaviour:
   currentHP: 25
   unitName: Beast Mech
   unitLevel: 0
+--- !u!114 &1075482191
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1075482185}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ebb5dbcd436c8c42ae6578772f1dff4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1077857646
 GameObject:
   m_ObjectHideFlags: 0
@@ -38903,7 +38939,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1215797823
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -39858,6 +39894,18 @@ MonoBehaviour:
   currentHP: 25
   unitName: Missile Mech
   unitLevel: 0
+--- !u!114 &1268462804
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1268462798}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ebb5dbcd436c8c42ae6578772f1dff4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1268906245
 GameObject:
   m_ObjectHideFlags: 0
@@ -45635,7 +45683,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1578762208
 GameObject:
@@ -56206,7 +56254,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1924009277
 RectTransform:
   m_ObjectHideFlags: 0
@@ -63334,6 +63382,18 @@ MonoBehaviour:
   currentHP: 25
   unitName: Spider Mech
   unitLevel: 0
+--- !u!114 &2004615988
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2004615982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ebb5dbcd436c8c42ae6578772f1dff4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2005118232
 GameObject:
   m_ObjectHideFlags: 0
