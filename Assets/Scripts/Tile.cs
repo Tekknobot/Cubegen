@@ -21,6 +21,10 @@ public class Tile : MonoBehaviour
     public float g = 0;
     public float h = 0;
 
+    public Material redTile;
+    public Material yellowTile;
+    public Material greenTile;
+
 	// Use this for initialization
 	void Start () 
 	{
