@@ -39,11 +39,7 @@ public class TileMaterial : MonoBehaviour
             if (calc_dropChance >= 0 && calc_dropChance <= 11) {
                 Material materialToUse = newMats[4];
                 t.GetComponent<Renderer>().material.CopyPropertiesFromMaterial(materialToUse);
-            }    
-            if (calc_dropChance == 0 || calc_dropChance == 101 ) {
-                Material materialToUse = newMats[4];
-                t.GetComponent<Renderer>().material.CopyPropertiesFromMaterial(materialToUse);
-            }                                                                                                   
+            }                                                                                               
         }
     }
 }
