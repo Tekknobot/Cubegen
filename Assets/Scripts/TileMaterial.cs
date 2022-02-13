@@ -15,11 +15,35 @@ public class TileMaterial : MonoBehaviour
 
         foreach (GameObject t in tiles)
         {   
-            //Find the material in the array
-            Material materialToUse = newMats[Random.Range(0, newMats.Length)];
-
-            //Copy the properties to the live material
-            t.GetComponent<Renderer>().material.CopyPropertiesFromMaterial(materialToUse);                    
+            int calc_dropChance = Random.Range (0, 101);
+            if (calc_dropChance >= 88 && calc_dropChance <= 101) {
+                Material materialToUse = newMats[0];
+                t.GetComponent<Renderer>().material.CopyPropertiesFromMaterial(materialToUse);
+            } 
+            if (calc_dropChance >= 55 && calc_dropChance <= 88) {
+                Material materialToUse = newMats[1];
+                t.GetComponent<Renderer>().material.CopyPropertiesFromMaterial(materialToUse);
+            }
+            if (calc_dropChance >= 33 && calc_dropChance <= 55) {
+                Material materialToUse = newMats[2];
+                t.GetComponent<Renderer>().material.CopyPropertiesFromMaterial(materialToUse);
+            }
+            if (calc_dropChance >= 22 && calc_dropChance <= 33) {
+                Material materialToUse = newMats[3];
+                t.GetComponent<Renderer>().material.CopyPropertiesFromMaterial(materialToUse);
+            }
+            if (calc_dropChance >= 11 && calc_dropChance <= 22) {
+                Material materialToUse = newMats[4];
+                t.GetComponent<Renderer>().material.CopyPropertiesFromMaterial(materialToUse);
+            }  
+            if (calc_dropChance >= 0 && calc_dropChance <= 11) {
+                Material materialToUse = newMats[4];
+                t.GetComponent<Renderer>().material.CopyPropertiesFromMaterial(materialToUse);
+            }    
+            if (calc_dropChance == 0 || calc_dropChance == 101 ) {
+                Material materialToUse = newMats[4];
+                t.GetComponent<Renderer>().material.CopyPropertiesFromMaterial(materialToUse);
+            }                                                                                                   
         }
     }
 }
