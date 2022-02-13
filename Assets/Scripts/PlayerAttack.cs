@@ -5,11 +5,13 @@ using UnityEngine.UI;
 
 public class PlayerAttack : TacticsAttack 
 {
+    public GameObject map;
+
     public GameObject tacticsCamera;
     public bool checkTile = false;
 
     public GameObject attackEffect;
-    public bool attacking = false;
+    public bool attacked = false;
 
     public bool unitTurn = false;
 
@@ -22,6 +24,7 @@ public class PlayerAttack : TacticsAttack
 	void Start () 
 	{
         tacticsCamera = GameObject.Find("TacticsCamera");   
+        map = GameObject.Find("Map");
 	}
 	
 	// Update is called once per frame
@@ -45,7 +48,6 @@ public class PlayerAttack : TacticsAttack
         this.gameObject.GetComponent<PlayerMove>().attacking = false;
         Instantiate(attackEffect, hit.transform.position, Quaternion.Euler(45, -45, 0));        
         tacticsCamera.GetComponent<TacticsCamera>().target = hit.collider.transform;
-
         TurnManager.EndTurn();
 	}  
 

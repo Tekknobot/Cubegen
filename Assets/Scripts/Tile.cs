@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Tile : MonoBehaviour 
-{
+{    
     public bool walkable = true;
     public bool current = false;
     public bool target = false;

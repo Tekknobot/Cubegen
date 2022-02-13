@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -397,7 +397,7 @@ public class TacticsMove : MonoBehaviour
         turn = true;
     }
 
-    public void EndTurn()
+    public void FinishTurn()
     {
         turn = false;
     }   
