@@ -9,6 +9,7 @@ TagManager:
   - Particles
   - GreenTile
   - Building
+  - TileTarget
   layers:
   - Default
   - TransparentFX
