@@ -38,7 +38,7 @@ public class TileMaterial : MonoBehaviour
                 t.GetComponent<Renderer>().material.CopyPropertiesFromMaterial(materialToUse);
                 t.transform.position = new Vector3(t.transform.position.x, -0.125f, t.transform.position.z);
                 t.transform.localScale = new Vector3(t.transform.localScale.x, 0.75f, t.transform.localScale.z);
-                Instantiate(waterTile, new Vector3(t.transform.position.x, 0.25f, t.transform.position.z), Quaternion.Euler(90, 0, 0));
+                Instantiate(waterTile, new Vector3(t.transform.position.x, 0.26f, t.transform.position.z), Quaternion.Euler(90, 0, 0));
             }                                                                                              
         }
     }

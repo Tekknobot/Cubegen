@@ -15,7 +15,7 @@ MonoBehaviour:
   _animationNamesThatDoNotLoop:
   - death
   _automaticImporting: 0
-  _spritePixelsPerUnit: 128
+  _spritePixelsPerUnit: 64
   _pivotAlignmentType: 0
   _targetObjectType: 0
   _pathToSpriteRendererComponent: 

@@ -42,7 +42,11 @@ public class TacticsMove : MonoBehaviour
 
         if (this.transform.gameObject.tag == "Player") {
             TurnManager.AddUnit(this);
-        }        
+        } 
+
+        FindSelectableTiles();
+        MoveToTile(GetTargetTile(gameObject));
+        RemoveSelectableTiles();
     }
 
     public void GetCurrentTile()

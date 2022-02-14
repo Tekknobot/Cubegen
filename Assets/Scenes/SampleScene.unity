@@ -7485,7 +7485,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1357729103}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 7, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -7645,6 +7645,7 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 5a87fa9910506834784e631d60339fde, type: 2}
   - {fileID: 2100000, guid: 89691a59a3eca894099804bad1ee0d43, type: 2}
   defaultMat: {fileID: 2100000, guid: b68c6b3d09a49d44795210032555f630, type: 2}
+  waterTile: {fileID: 8111368690324680476, guid: afa24be163448d241ac2054a1d6413db, type: 3}
 --- !u!1 &1412127972
 GameObject:
   m_ObjectHideFlags: 0
