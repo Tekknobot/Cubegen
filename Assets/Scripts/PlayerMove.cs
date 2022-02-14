@@ -114,6 +114,7 @@ public class PlayerMove : TacticsMove
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit)) {
                 if (hit.collider.tag == "Player") {
+                    tacticsCamera.GetComponent<TacticsCamera>().enabled = true;
                     RemoveSelectableTiles();
                     GetComponent<PlayerMove>().unitTurn = false;
                     hit.transform.gameObject.GetComponent<TacticsMove>().FindSelectableTiles();
@@ -121,9 +122,9 @@ public class PlayerMove : TacticsMove
                     hit.transform.gameObject.GetComponent<PlayerMove>().unitTurn = true;
                     tempGO = hit.transform.gameObject;
                     //hit.transform.gameObject.GetComponent<SpriteRenderer>().material = spriteOutline;
-                    //tacticsCamera.GetComponent<TacticsCamera>().target = hit.collider.transform;
+                    tacticsCamera.GetComponent<TacticsCamera>().target = hit.collider.transform;
                 }
             }            
         }    
-    }  
+    }    
 }
