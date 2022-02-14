@@ -32,7 +32,6 @@ public class PlayerMove : TacticsMove
 	{
         Init();  
         spriteDefault = GetComponent<SpriteRenderer>().material;   
-
         tacticsCamera = GameObject.Find("TacticsCamera");   
 	}
 	
@@ -126,5 +125,5 @@ public class PlayerMove : TacticsMove
                 }
             }            
         }    
-    }
+    }  
 }
