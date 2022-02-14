@@ -114,7 +114,7 @@ public class PlayerMove : TacticsMove
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit)) {
                 if (hit.collider.tag == "Player") {
-                    tacticsCamera.GetComponent<TacticsCamera>().enabled = true;
+                    //tacticsCamera.GetComponent<TacticsCamera>().enabled = true;
                     RemoveSelectableTiles();
                     GetComponent<PlayerMove>().unitTurn = false;
                     hit.transform.gameObject.GetComponent<TacticsMove>().FindSelectableTiles();
