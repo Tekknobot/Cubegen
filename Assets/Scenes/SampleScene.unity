@@ -11212,6 +11212,10 @@ PrefabInstance:
       propertyPath: unitName
       value: 'Scanner Bot: Support'
       objectReference: {fileID: 0}
+    - target: {fileID: 620757532040087422, guid: f67af288a2f3c6c4cb735278f1549e5c, type: 3}
+      propertyPath: jumpHeight
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5042610967768522081, guid: f67af288a2f3c6c4cb735278f1549e5c, type: 3}
       propertyPath: m_Name
       value: M10
@@ -11305,6 +11309,10 @@ PrefabInstance:
     - target: {fileID: 1602910927863695885, guid: fdfd55c8853d4ed4f8f8eb653293bd50, type: 3}
       propertyPath: unitName
       value: 'Chopper: Support'
+      objectReference: {fileID: 0}
+    - target: {fileID: 1602910927863695885, guid: fdfd55c8853d4ed4f8f8eb653293bd50, type: 3}
+      propertyPath: jumpHeight
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6582295241908973741, guid: fdfd55c8853d4ed4f8f8eb653293bd50, type: 3}
       propertyPath: m_Color.b
@@ -11463,6 +11471,10 @@ PrefabInstance:
     - target: {fileID: 3365027382410795869, guid: 0fadb70ed73b23748b648a60531c005c, type: 3}
       propertyPath: unitName
       value: 'Spider Bot: Support'
+      objectReference: {fileID: 0}
+    - target: {fileID: 3365027382410795869, guid: 0fadb70ed73b23748b648a60531c005c, type: 3}
+      propertyPath: jumpHeight
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0fadb70ed73b23748b648a60531c005c, type: 3}
@@ -11747,6 +11759,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9023231350332751856, guid: eda202fb903788245b73083dc9e40b9c, type: 3}
+      propertyPath: jumpHeight
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9023231350332751856, guid: eda202fb903788245b73083dc9e40b9c, type: 3}
       propertyPath: attackEffect
       value: 
       objectReference: {fileID: 1002605618548861685, guid: 29121037f1fb25d40940d875fbfcc030, type: 3}
@@ -11838,6 +11854,10 @@ PrefabInstance:
     - target: {fileID: 5322307222777037258, guid: e8b45310358e3164daaf8a30479bf1e3, type: 3}
       propertyPath: unitName
       value: 'Panther Bot: Melee'
+      objectReference: {fileID: 0}
+    - target: {fileID: 5322307222777037258, guid: e8b45310358e3164daaf8a30479bf1e3, type: 3}
+      propertyPath: jumpHeight
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5322307222777037258, guid: e8b45310358e3164daaf8a30479bf1e3, type: 3}
       propertyPath: attackEffect
@@ -11969,6 +11989,10 @@ PrefabInstance:
       propertyPath: unitName
       value: 'Missile Mech: Ranged'
       objectReference: {fileID: 0}
+    - target: {fileID: 6434269416866044967, guid: f1106a07dcdef5b4d90489367519ad1d, type: 3}
+      propertyPath: jumpHeight
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f1106a07dcdef5b4d90489367519ad1d, type: 3}
 --- !u!1001 &6807097559397479823
@@ -12058,6 +12082,10 @@ PrefabInstance:
       propertyPath: unitName
       value: 'Battle Mech: Ranged'
       objectReference: {fileID: 0}
+    - target: {fileID: 6807097558798222023, guid: decebbac17beded4a82858183ea1fadb, type: 3}
+      propertyPath: jumpHeight
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: decebbac17beded4a82858183ea1fadb, type: 3}
 --- !u!1001 &7230426942575475435
@@ -12090,6 +12118,10 @@ PrefabInstance:
     - target: {fileID: 2967888252612711559, guid: 70a66b7b6355f2a4898dd7c014435152, type: 3}
       propertyPath: unitName
       value: 'War Mech: Ranged'
+      objectReference: {fileID: 0}
+    - target: {fileID: 2967888252612711559, guid: 70a66b7b6355f2a4898dd7c014435152, type: 3}
+      propertyPath: jumpHeight
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2967888252612711559, guid: 70a66b7b6355f2a4898dd7c014435152, type: 3}
       propertyPath: attackEffect
@@ -12221,6 +12253,10 @@ PrefabInstance:
       value: 'Angel Mech: Ranged'
       objectReference: {fileID: 0}
     - target: {fileID: 2943378356497371804, guid: 982f1bdb352639f429b764413ccfbd84, type: 3}
+      propertyPath: jumpHeight
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2943378356497371804, guid: 982f1bdb352639f429b764413ccfbd84, type: 3}
       propertyPath: attackEffect
       value: 
       objectReference: {fileID: 1002605618548861685, guid: 29121037f1fb25d40940d875fbfcc030, type: 3}
@@ -12276,6 +12312,10 @@ PrefabInstance:
     - target: {fileID: 8280623420152000231, guid: 1ea7f0f2888daa645994b46e45818446, type: 3}
       propertyPath: unitName
       value: 'Warrior Mech: Melee'
+      objectReference: {fileID: 0}
+    - target: {fileID: 8280623420152000231, guid: 1ea7f0f2888daa645994b46e45818446, type: 3}
+      propertyPath: jumpHeight
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8280623420152000231, guid: 1ea7f0f2888daa645994b46e45818446, type: 3}
       propertyPath: attackEffect
