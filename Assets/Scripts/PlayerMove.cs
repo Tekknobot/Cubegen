@@ -114,7 +114,7 @@ public class PlayerMove : TacticsMove
 
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit)) {
-                if (hit.collider.tag == "Player") {
+                if (hit.collider.tag == "Player" && !EventSystem.current.IsPointerOverGameObject()) {
                     RemoveSelectableTiles();
                     GetComponent<PlayerMove>().unitTurn = false;
                     hit.transform.gameObject.GetComponent<TacticsMove>().FindSelectableTiles();
@@ -132,9 +132,10 @@ public class PlayerMove : TacticsMove
 
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit)) {
-                if (hit.collider.tag == "NPC") {
+                if (hit.collider.tag == "NPC" && !EventSystem.current.IsPointerOverGameObject()) {
                     tacticsCamera.GetComponent<TacticsCamera>().TargetCameraOnNPC();
                     hit.transform.gameObject.GetComponent<cakeslice.Outline>().enabled = true;
+                    tacticsCamera.GetComponent<TacticsCamera>().TargetCameraOnNPC();
                     tacticsCamera.GetComponent<TacticsCamera>().target = hit.collider.transform;
                 }
             }            
