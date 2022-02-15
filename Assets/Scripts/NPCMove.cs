@@ -58,7 +58,7 @@ public class NPCMove : TacticsMove
             Animator animator = this.gameObject.GetComponent<Animator>();
             animator.runtimeAnimatorController = moveAnimation;             
             Move();
-            //this.GetComponent<cakeslice.Outline>().enabled = true;
+            this.GetComponent<cakeslice.Outline>().enabled = true;
             GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().TargetCameraOnNPC();
         }     
 
@@ -125,13 +125,13 @@ public class NPCMove : TacticsMove
 
 	IEnumerator NPCAttackCoroutine(GameObject hit) {
         attacking = true;
-        yield return new WaitForSeconds(1f);
         hit.transform.gameObject.GetComponent<TacticsAttack>().TakeDamage(this.GetComponent<TacticsAttack>().damage);
         Animator animator = this.gameObject.GetComponent<Animator>();
         animator.runtimeAnimatorController = this.gameObject.GetComponent<NPCMove>().attackAnimation;        
 		yield return new WaitForSeconds(1f);
         attacking = false;
-        Instantiate(attackEffect, hit.transform.position, Quaternion.Euler(45, -45, 0));        
+        Instantiate(attackEffect, hit.transform.position, Quaternion.Euler(45, -45, 0));
+        yield return new WaitForSeconds(1f);        
         tacticsCamera.GetComponent<TacticsCamera>().target = hit.transform;
         TurnManager.EndTurn();
 	}

@@ -167,15 +167,14 @@ public class TacticsMove : MonoBehaviour
         {
             RemoveSelectableTiles();
             moving = false;
-
-            TurnManager.EndTurn();
             
-            if (this.transform.tag == "NPC") {
-                this.GetComponent<NPCMove>().PlayerWithinRadius(this.gameObject, 1f);
-                GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().TurnOffAllOutlines();
-                GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().target = GameObject.Find("Map").gameObject.transform; 
-            } 
-            GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().TurnOffAllOutlines();         
+            if (this.transform.tag == "NPC" && turn) {
+                this.GetComponent<NPCMove>().PlayerWithinRadius(this.gameObject, 0.5f);
+                GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().target = GameObject.Find("Map").gameObject.transform;
+                StartCoroutine(TurnOffLastOutline()); 
+            }    
+
+            TurnManager.EndTurn();     
         }
     }
 
@@ -413,4 +412,9 @@ public class TacticsMove : MonoBehaviour
     {
         turn = false;
     }   
+
+    IEnumerator TurnOffLastOutline() {
+        yield return new WaitForSeconds(0);
+        GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().TurnOffNPCOutlines();
+    }
 }

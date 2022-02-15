@@ -115,7 +115,7 @@ public class PlayerMove : TacticsMove
                 if (hit.collider.tag == "NPC" && !EventSystem.current.IsPointerOverGameObject()) {
                     hit.transform.gameObject.GetComponent<cakeslice.Outline>().enabled = true;
                     tacticsCamera.GetComponent<TacticsCamera>().target = hit.collider.transform;
-                    GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().TurnOffPlayerOutlines(); 
+                    //GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().TurnOffPlayerOutlines(); 
                 }
             }            
         }
