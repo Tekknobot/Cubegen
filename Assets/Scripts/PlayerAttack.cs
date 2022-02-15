@@ -33,7 +33,7 @@ public class PlayerAttack : TacticsAttack
 
     }
 
-    void CheckMouse() {
+    public void CheckMouse() {
         StartCoroutine(WaitForCheck());       
     }
 
@@ -49,6 +49,7 @@ public class PlayerAttack : TacticsAttack
         Instantiate(attackEffect, hit.transform.position, Quaternion.Euler(45, -45, 0));        
         tacticsCamera.GetComponent<TacticsCamera>().target = hit.collider.transform;
         TurnManager.EndTurn();
+        GameObject.Find("Target_btn").GetComponent<GetPlayerClones>().flag = false;
 	}  
 
     IEnumerator WaitForCheck() {
