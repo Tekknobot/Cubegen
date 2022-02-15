@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using cakeslice;
 
 public class PlayerMove : TacticsMove 
 {
@@ -108,20 +109,19 @@ public class PlayerMove : TacticsMove
         }
     
         if (Input.GetMouseButtonDown(0)) {
-            this.transform.gameObject.GetComponent<SpriteRenderer>().material = spriteDefault;
+            this.GetComponent<cakeslice.Outline>().enabled = false;
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit)) {
                 if (hit.collider.tag == "Player") {
-                    //tacticsCamera.GetComponent<TacticsCamera>().enabled = true;
                     RemoveSelectableTiles();
                     GetComponent<PlayerMove>().unitTurn = false;
                     hit.transform.gameObject.GetComponent<TacticsMove>().FindSelectableTiles();
                     hit.transform.gameObject.GetComponent<TacticsMove>().turn = true;
                     hit.transform.gameObject.GetComponent<PlayerMove>().unitTurn = true;
                     tempGO = hit.transform.gameObject;
-                    //hit.transform.gameObject.GetComponent<SpriteRenderer>().material = spriteOutline;
+                    hit.transform.gameObject.GetComponent<cakeslice.Outline>().enabled = true;
                     tacticsCamera.GetComponent<TacticsCamera>().target = hit.collider.transform;
                 }
             }            
