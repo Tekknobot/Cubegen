@@ -22,7 +22,6 @@ public class PlayerMove : TacticsMove
     public Material spriteOutline;
 
     public GameObject tacticsCamera;
-    public bool checkTile = false;
 
     public GameObject attackEffect;
     public bool attacking = false;
