@@ -169,9 +169,9 @@ public class TacticsMove : MonoBehaviour
             moving = false;
 
             TurnManager.EndTurn();
-            
+
             if (this.transform.tag == "NPC") {
-                this.GetComponent<NPCMove>().PlayerWithinRadius(this.gameObject, 1);
+                this.GetComponent<NPCMove>().PlayerWithinRadius(this.gameObject, 0.75f);
             }            
         }
     }

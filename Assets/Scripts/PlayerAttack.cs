@@ -42,7 +42,7 @@ public class PlayerAttack : TacticsAttack
     }
 
 	IEnumerator PlayerAttackCoroutine(RaycastHit hit) {
-        tacticsCamera.GetComponent<TacticsCamera>().target.gameObject.GetComponent<PlayerMove>().attacking = true;
+        this.gameObject.GetComponent<PlayerMove>().attacking = true;
         hit.transform.gameObject.GetComponent<TacticsAttack>().TakeDamage(this.GetComponent<TacticsAttack>().damage);
 		yield return new WaitForSeconds(1f);
         this.gameObject.GetComponent<PlayerMove>().attacking = false;
@@ -58,9 +58,9 @@ public class PlayerAttack : TacticsAttack
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit)) {
             float distance = Vector3.Distance(this.transform.position, hit.transform.position);
-            if (hit.collider.tag == "NPC" && distance <= 2) {
+            if (hit.collider.tag == "NPC" && distance <= 1.5f) {
                 Animator animator = tacticsCamera.GetComponent<TacticsCamera>().target.gameObject.GetComponent<Animator>();
-                animator.runtimeAnimatorController = tacticsCamera.GetComponent<TacticsCamera>().target.gameObject.GetComponent<PlayerMove>().attackAnimation;                
+                animator.runtimeAnimatorController = this.gameObject.GetComponent<PlayerMove>().attackAnimation;                
                 StartCoroutine(PlayerAttackCoroutine(hit));
             }
             checkedMouse = true; 

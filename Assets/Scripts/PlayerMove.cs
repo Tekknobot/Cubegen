@@ -126,5 +126,18 @@ public class PlayerMove : TacticsMove
                 }
             }            
         }    
+
+        if (Input.GetMouseButtonDown(0)) {
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+            RaycastHit hit;
+            if (Physics.Raycast(ray, out hit)) {
+                if (hit.collider.tag == "NPC") {
+                    tacticsCamera.GetComponent<TacticsCamera>().TargetCameraOnNPC();
+                    hit.transform.gameObject.GetComponent<cakeslice.Outline>().enabled = true;
+                    tacticsCamera.GetComponent<TacticsCamera>().target = hit.collider.transform;
+                }
+            }            
+        }
     }    
 }
