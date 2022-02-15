@@ -35,7 +35,7 @@ public class NPCMove : TacticsMove
         if (!turn && !this.GetComponent<NPCMove>().attacking) {
             Animator animator = this.gameObject.GetComponent<Animator>();
             animator.runtimeAnimatorController = idleAnimation;
-            this.GetComponent<cakeslice.Outline>().enabled = false;            
+            //this.GetComponent<cakeslice.Outline>().enabled = false;            
             return;
         }
 
@@ -46,7 +46,7 @@ public class NPCMove : TacticsMove
             CalculatePath();
             FindSelectableTiles();
             actualTargetTile.target = true;
-            this.GetComponent<cakeslice.Outline>().enabled = false;
+            //this.GetComponent<cakeslice.Outline>().enabled = false;
         }
 
         if (this.GetComponent<NPCMove>().attacking) {    
@@ -58,8 +58,8 @@ public class NPCMove : TacticsMove
             Animator animator = this.gameObject.GetComponent<Animator>();
             animator.runtimeAnimatorController = moveAnimation;             
             Move();
-            this.GetComponent<cakeslice.Outline>().enabled = true;
-            //GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().TargetCameraOnNPC();
+            //this.GetComponent<cakeslice.Outline>().enabled = true;
+            GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().TargetCameraOnNPC();
         }     
 
         if (transform.position.x > oldPositionX) {
@@ -125,7 +125,7 @@ public class NPCMove : TacticsMove
 
 	IEnumerator NPCAttackCoroutine(GameObject hit) {
         attacking = true;
-        tacticsCamera.GetComponent<TacticsCamera>().target.gameObject.GetComponent<NPCMove>().attacking = true;
+        yield return new WaitForSeconds(1f);
         hit.transform.gameObject.GetComponent<TacticsAttack>().TakeDamage(this.GetComponent<TacticsAttack>().damage);
         Animator animator = this.gameObject.GetComponent<Animator>();
         animator.runtimeAnimatorController = this.gameObject.GetComponent<NPCMove>().attackAnimation;        
