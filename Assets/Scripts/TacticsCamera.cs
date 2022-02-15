@@ -15,15 +15,11 @@ public class TacticsCamera : MonoBehaviour
     int playerOutlineIndex = 0;    
 
     void Start() {
-        if (GameObject.Find("Map").GetComponent<SpawnUnits>().spawned == true) {
-            playerPrefabs = GameObject.FindGameObjectsWithTag("Player");
-            npcPrefabs = GameObject.FindGameObjectsWithTag("NPC");
-        }            
+           
     }
      
     void Update()
     {
-        if (GameObject.Find("Map").GetComponent<SpawnUnits>().spawned == true) {
         // Define a target position above and behind the target transform
         if (target != null) {
             Vector3 targetPosition = target.TransformPoint(new Vector3(0, 0, 0));
@@ -33,7 +29,7 @@ public class TacticsCamera : MonoBehaviour
         }
 
         if (Input.GetKeyDown("space") || Input.GetMouseButtonDown(1)) {
-            target = playerPrefabs[playerPrefabsIndex+1].transform;            
+            target = playerPrefabs[playerPrefabsIndex++].transform;            
             if (playerPrefabsIndex >= 5) {
                 playerPrefabsIndex = 0;
             }
@@ -46,7 +42,6 @@ public class TacticsCamera : MonoBehaviour
 
             GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().TurnOffAllOutlines();
             CameraSelect();
-        }
         }
     }
 

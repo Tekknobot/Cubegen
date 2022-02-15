@@ -30,7 +30,7 @@ public class TacticsMove : MonoBehaviour
 
     public Tile actualTargetTile;
 
-    protected void Init()
+    public void Init()
     {
         tiles = GameObject.FindGameObjectsWithTag("Tile");
 
