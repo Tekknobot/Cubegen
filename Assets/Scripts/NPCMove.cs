@@ -32,15 +32,13 @@ public class NPCMove : TacticsMove
 	{
         Debug.DrawRay(transform.position, transform.forward);
 
-        if (!turn)
-        {
+        if (!turn && !this.GetComponent<NPCMove>().attacking) {
             Animator animator = this.gameObject.GetComponent<Animator>();
             animator.runtimeAnimatorController = idleAnimation;            
             return;
         }
 
-        if (!moving)
-        {    
+        if (!moving && !this.GetComponent<NPCMove>().attacking) {    
             Animator animator = this.gameObject.GetComponent<Animator>();        
             animator.runtimeAnimatorController = idleAnimation;
             FindNearestTarget();
@@ -49,14 +47,19 @@ public class NPCMove : TacticsMove
             actualTargetTile.target = true;
             this.GetComponent<cakeslice.Outline>().enabled = false;
         }
-        else
-        {
+
+        if (this.GetComponent<NPCMove>().attacking) {    
+            Animator animator = this.gameObject.GetComponent<Animator>();        
+            animator.runtimeAnimatorController = attackAnimation;
+        }
+
+        if (moving) {
             Animator animator = this.gameObject.GetComponent<Animator>();
             animator.runtimeAnimatorController = moveAnimation;             
             Move();
             this.GetComponent<cakeslice.Outline>().enabled = true;
             GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().TargetCameraOnNPC();
-        }
+        }     
 
         if (transform.position.x > oldPositionX) {
             GetComponent<SpriteRenderer>().flipX = false;
@@ -120,11 +123,13 @@ public class NPCMove : TacticsMove
     }  
 
 	IEnumerator NPCAttackCoroutine(GameObject hit) {
+        attacking = true;
         tacticsCamera.GetComponent<TacticsCamera>().target.gameObject.GetComponent<NPCMove>().attacking = true;
-        hit.transform.gameObject.GetComponent<TacticsAttack>().TakeDamage(this.GetComponent<TacticsAttack>().damage);
+        this.transform.gameObject.GetComponent<TacticsAttack>().TakeDamage(this.GetComponent<TacticsAttack>().damage);
         Animator animator = this.gameObject.GetComponent<Animator>();
         animator.runtimeAnimatorController = this.gameObject.GetComponent<NPCMove>().attackAnimation;        
 		yield return new WaitForSeconds(1f);
+        attacking = false;
         Instantiate(attackEffect, hit.transform.position, Quaternion.Euler(45, -45, 0));        
         tacticsCamera.GetComponent<TacticsCamera>().target = hit.transform;
         TurnManager.EndTurn();
