@@ -123,6 +123,7 @@ public class PlayerMove : TacticsMove
                     tempGO = hit.transform.gameObject;
                     hit.transform.gameObject.GetComponent<cakeslice.Outline>().enabled = true;
                     tacticsCamera.GetComponent<TacticsCamera>().target = hit.collider.transform;
+                    tacticsCamera.GetComponent<TacticsCamera>().TargetCameraOnNPC();
                 }
             }            
         }    
@@ -135,7 +136,6 @@ public class PlayerMove : TacticsMove
                 if (hit.collider.tag == "NPC" && !EventSystem.current.IsPointerOverGameObject()) {
                     tacticsCamera.GetComponent<TacticsCamera>().TargetCameraOnNPC();
                     hit.transform.gameObject.GetComponent<cakeslice.Outline>().enabled = true;
-                    tacticsCamera.GetComponent<TacticsCamera>().TargetCameraOnNPC();
                     tacticsCamera.GetComponent<TacticsCamera>().target = hit.collider.transform;
                 }
             }            
