@@ -125,7 +125,7 @@ public class NPCMove : TacticsMove
 	IEnumerator NPCAttackCoroutine(GameObject hit) {
         attacking = true;
         tacticsCamera.GetComponent<TacticsCamera>().target.gameObject.GetComponent<NPCMove>().attacking = true;
-        this.transform.gameObject.GetComponent<TacticsAttack>().TakeDamage(this.GetComponent<TacticsAttack>().damage);
+        hit.transform.gameObject.GetComponent<TacticsAttack>().TakeDamage(this.GetComponent<TacticsAttack>().damage);
         Animator animator = this.gameObject.GetComponent<Animator>();
         animator.runtimeAnimatorController = this.gameObject.GetComponent<NPCMove>().attackAnimation;        
 		yield return new WaitForSeconds(1f);

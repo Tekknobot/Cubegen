@@ -1305,8 +1305,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 1
-  maxHP: 25
-  currentHP: 25
+  maxHP: 5
+  currentHP: 5
   unitName: Scanner Mech
   unitLevel: 0
 --- !u!114 &86160433
@@ -8085,8 +8085,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 1
-  maxHP: 25
-  currentHP: 25
+  maxHP: 5
+  currentHP: 5
   unitName: Chopper Mech
   unitLevel: 0
 --- !u!114 &587198694
@@ -8585,8 +8585,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 1
-  maxHP: 25
-  currentHP: 25
+  maxHP: 5
+  currentHP: 5
   unitName: Panther Mech
   unitLevel: 0
   map: {fileID: 0}
@@ -12096,8 +12096,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 1
-  maxHP: 25
-  currentHP: 25
+  maxHP: 5
+  currentHP: 5
   unitName: Soldier Mech
   unitLevel: 0
   map: {fileID: 0}
@@ -14266,8 +14266,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 1
-  maxHP: 25
-  currentHP: 25
+  maxHP: 5
+  currentHP: 5
   unitName: Cannon Mech
   unitLevel: 0
   map: {fileID: 0}
@@ -15008,8 +15008,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 1
-  maxHP: 25
-  currentHP: 25
+  maxHP: 5
+  currentHP: 5
   unitName: Angel Mech
   unitLevel: 0
   map: {fileID: 0}
@@ -16525,8 +16525,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 1
-  maxHP: 25
-  currentHP: 25
+  maxHP: 5
+  currentHP: 5
   unitName: Beast Mech
   unitLevel: 0
 --- !u!114 &1075482191
@@ -18602,8 +18602,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 1
-  maxHP: 25
-  currentHP: 25
+  maxHP: 5
+  currentHP: 5
   unitName: Missile Mech
   unitLevel: 0
 --- !u!114 &1268462804
@@ -18788,8 +18788,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 1
-  maxHP: 25
-  currentHP: 25
+  maxHP: 5
+  currentHP: 5
   unitName: War Mech
   unitLevel: 0
   map: {fileID: 0}
@@ -27931,8 +27931,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 1
-  maxHP: 25
-  currentHP: 25
+  maxHP: 5
+  currentHP: 5
   unitName: Spider Mech
   unitLevel: 0
 --- !u!114 &2004615988
