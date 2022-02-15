@@ -88,7 +88,7 @@ public class PlayerMove : TacticsMove
     void CheckMouse()
     {
         if (Input.GetMouseButtonDown(0)) {
-            this.GetComponent<cakeslice.Outline>().enabled = false;
+            //this.GetComponent<cakeslice.Outline>().enabled = false;
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
             RaycastHit hit;
