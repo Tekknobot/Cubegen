@@ -30,8 +30,6 @@ public class NPCMove : TacticsMove
 	// Update is called once per frame
 	void Update () 
 	{
-        Debug.DrawRay(transform.position, transform.forward);
-
         if (!turn && !this.GetComponent<NPCMove>().attacking) {
             Animator animator = this.gameObject.GetComponent<Animator>();
             animator.runtimeAnimatorController = idleAnimation;
@@ -117,7 +115,18 @@ public class NPCMove : TacticsMove
                 NPCAttackFunction(hitCollider.gameObject);
             }
         }
-    }    
+    } 
+
+    public void PlayerDrawRayForward() {
+        RaycastHit objectHit;        
+        // Shoot raycast
+        if (Physics.Raycast(transform.position, transform.up, out objectHit, 1)) {
+            Debug.DrawRay(transform.position, transform.up);
+            if (objectHit.transform.tag == "Player") {
+                NPCAttackFunction(objectHit.collider.gameObject);
+            }
+        }        
+    }   
 
     public void NPCAttackFunction(GameObject target) {
         StartCoroutine(NPCAttackCoroutine(target));
@@ -135,4 +144,11 @@ public class NPCMove : TacticsMove
         tacticsCamera.GetComponent<TacticsCamera>().target = hit.transform;
         TurnManager.EndTurn();
 	}
+
+    void OnDrawGizmosSelected()
+    {
+        // Draw a yellow sphere at the transform's position
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, 0.6f);
+    }    
 }

@@ -168,8 +168,9 @@ public class TacticsMove : MonoBehaviour
             RemoveSelectableTiles();
             moving = false;
             
-            if (this.transform.tag == "NPC" && turn) {
-                this.GetComponent<NPCMove>().PlayerWithinRadius(this.gameObject, 0.5f);
+            if (this.transform.tag == "NPC") {
+                this.GetComponent<NPCMove>().PlayerWithinRadius(this.gameObject, 0.6f);
+                //this.GetComponent<NPCMove>().PlayerDrawRayForward();
                 GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().target = GameObject.Find("Map").gameObject.transform;
                 StartCoroutine(TurnOffLastOutline()); 
             }    
