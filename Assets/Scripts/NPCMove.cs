@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class NPCMove : TacticsMove 
 {
-    GameObject target;
+    public GameObject target;
 
     public RuntimeAnimatorController moveAnimation;
     public RuntimeAnimatorController idleAnimation;
+    public RuntimeAnimatorController attackAnimation;
 
     public float oldPositionX;
     public float oldPositionZ;
@@ -15,10 +16,15 @@ public class NPCMove : TacticsMove
     public Material spriteDefault;
     public Material spriteOutline;    
 
+    public GameObject tacticsCamera;
+    public GameObject attackEffect;
+    public bool attacking = false;
+
 	// Use this for initialization
 	void Start () 
 	{
         Init();
+        tacticsCamera = GameObject.Find("TacticsCamera"); 
 	}
 	
 	// Update is called once per frame
@@ -97,4 +103,30 @@ public class NPCMove : TacticsMove
 
         target = nearest;
     }
+
+    public void PlayerWithinRadius(GameObject center, float radius)
+    {
+        Collider[] hitColliders = Physics.OverlapSphere(center.transform.position, radius);
+        foreach (var hitCollider in hitColliders)
+        {
+            if (hitCollider.tag == "Player") {
+                NPCAttackFunction(hitCollider.gameObject);
+            }
+        }
+    }    
+
+    public void NPCAttackFunction(GameObject target) {
+        StartCoroutine(NPCAttackCoroutine(target));
+    }  
+
+	IEnumerator NPCAttackCoroutine(GameObject hit) {
+        tacticsCamera.GetComponent<TacticsCamera>().target.gameObject.GetComponent<NPCMove>().attacking = true;
+        hit.transform.gameObject.GetComponent<TacticsAttack>().TakeDamage(this.GetComponent<TacticsAttack>().damage);
+        Animator animator = this.gameObject.GetComponent<Animator>();
+        animator.runtimeAnimatorController = this.gameObject.GetComponent<NPCMove>().attackAnimation;        
+		yield return new WaitForSeconds(1f);
+        Instantiate(attackEffect, hit.transform.position, Quaternion.Euler(45, -45, 0));        
+        tacticsCamera.GetComponent<TacticsCamera>().target = hit.transform;
+        TurnManager.EndTurn();
+	}
 }

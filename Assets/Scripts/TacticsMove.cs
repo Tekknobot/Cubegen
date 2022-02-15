@@ -168,6 +168,10 @@ public class TacticsMove : MonoBehaviour
             RemoveSelectableTiles();
             moving = false;
 
+            if (this.transform.tag == "NPC") {
+                this.GetComponent<NPCMove>().PlayerWithinRadius(this.gameObject, 1);
+            }
+
             TurnManager.EndTurn();
         }
     }
