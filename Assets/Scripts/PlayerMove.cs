@@ -31,7 +31,7 @@ public class PlayerMove : TacticsMove
 	// Use this for initialization
 	void Start () 
 	{
-        Init();  
+        //Init();  
         spriteDefault = GetComponent<SpriteRenderer>().material;   
         tacticsCamera = GameObject.Find("TacticsCamera");   
 	}

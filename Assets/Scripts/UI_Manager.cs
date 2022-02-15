@@ -50,7 +50,19 @@ public class UI_Manager : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
+    {   
+        M1Transform = GameObject.Find("M1(Clone)").transform;
+        M2Transform = GameObject.Find("M2(Clone)").transform;
+        M3Transform = GameObject.Find("M3(Clone)").transform;
+        M4Transform = GameObject.Find("M4(Clone)").transform;
+        M5Transform = GameObject.Find("M5(Clone)").transform;
+
+        NPC1Transform = GameObject.Find("M6(Clone)").transform;
+        NPC2Transform = GameObject.Find("M7(Clone)").transform;
+        NPC3Transform = GameObject.Find("M8(Clone)").transform;
+        NPC4Transform = GameObject.Find("M9(Clone)").transform;
+        NPC5Transform = GameObject.Find("M10(Clone)").transform;
+
         if (tacticsCamera.GetComponent<TacticsCamera>().target == M1Transform) {
             portrait.GetComponent<Image>().sprite = M1; 
             unit_label.GetComponent<Text>().text = M1Transform.gameObject.GetComponent<TacticsAttack>().unitName;

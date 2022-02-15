@@ -8039,6 +8039,8 @@ MonoBehaviour:
   - {fileID: 1362236037087830658, guid: 0fadb70ed73b23748b648a60531c005c, type: 3}
   - {fileID: 6298491596799051899, guid: fdfd55c8853d4ed4f8f8eb653293bd50, type: 3}
   - {fileID: 1726214198697984584, guid: f67af288a2f3c6c4cb735278f1549e5c, type: 3}
+  player_clones: []
+  npc_clones: []
   spawned: 0
 --- !u!1 &1410209549
 GameObject:
@@ -8865,21 +8867,21 @@ MonoBehaviour:
   tacticsCamera: {fileID: 14125121}
   movesLeft: {fileID: 373612302}
   portrait: {fileID: 1050684757}
-  M1Transform: {fileID: 0}
-  M2Transform: {fileID: 0}
-  M3Transform: {fileID: 0}
-  M4Transform: {fileID: 0}
-  M5Transform: {fileID: 0}
+  M1Transform: {fileID: 682396660077665209, guid: eda202fb903788245b73083dc9e40b9c, type: 3}
+  M2Transform: {fileID: 1955649426808709196, guid: e8b45310358e3164daaf8a30479bf1e3, type: 3}
+  M3Transform: {fileID: 2168714103371907337, guid: 1ea7f0f2888daa645994b46e45818446, type: 3}
+  M4Transform: {fileID: 433229189802929243, guid: 982f1bdb352639f429b764413ccfbd84, type: 3}
+  M5Transform: {fileID: 59864316342562058, guid: 70a66b7b6355f2a4898dd7c014435152, type: 3}
   M1: {fileID: 21300000, guid: 93f47c7db727a0446a6a0aa2bed7bf58, type: 3}
   M2: {fileID: 21300000, guid: d9ec44d8fdadf8f48a93a5f5690d59df, type: 3}
   M3: {fileID: 21300000, guid: 9226970103bf3c84193f48f3cfe0d5df, type: 3}
   M4: {fileID: 21300000, guid: 9c88dd65e4e7be14a879efac1f294a9e, type: 3}
   M5: {fileID: 21300000, guid: 253815fe4f1c4ad4f9fbd9230c5b10e8, type: 3}
-  NPC1Transform: {fileID: 0}
-  NPC2Transform: {fileID: 0}
-  NPC3Transform: {fileID: 0}
-  NPC4Transform: {fileID: 0}
-  NPC5Transform: {fileID: 0}
+  NPC1Transform: {fileID: 5600875751062173514, guid: f1106a07dcdef5b4d90489367519ad1d, type: 3}
+  NPC2Transform: {fileID: 5533613025112814721, guid: decebbac17beded4a82858183ea1fadb, type: 3}
+  NPC3Transform: {fileID: 1362236037087830669, guid: 0fadb70ed73b23748b648a60531c005c, type: 3}
+  NPC4Transform: {fileID: 6298491596799051876, guid: fdfd55c8853d4ed4f8f8eb653293bd50, type: 3}
+  NPC5Transform: {fileID: 1726214198697984599, guid: f67af288a2f3c6c4cb735278f1549e5c, type: 3}
   NPC1: {fileID: 21300000, guid: f021aa684853c324cabdcef297f6615d, type: 3}
   NPC2: {fileID: 21300000, guid: 2957c80c07c8c734e8d859a8147ecdd5, type: 3}
   NPC3: {fileID: 21300000, guid: 67993f1e6cc06264984fdf536a5102ba, type: 3}

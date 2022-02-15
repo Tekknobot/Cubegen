@@ -13,6 +13,7 @@ public class SpawnUnits : MonoBehaviour
 
     int spawn_points_index = 0;
     int spawn_points_index2 = 0;
+    int j = 0;
     int k = 0;
 
     // Start is called before the first frame update
@@ -34,24 +35,26 @@ public class SpawnUnits : MonoBehaviour
             spawn_points_index = Random.Range(0, unit_spawn_points.Length);
             if (spawn_points_index == spawn_points_index2) {
                 Debug.Log(spawn_points_index +" "+" "+ spawn_points_index2);
-                Instantiate(prefab, unit_spawn_points[spawn_points_index+2].transform);
+                Instantiate(prefab, unit_spawn_points[spawn_points_index+1].transform);
             }
             else {
                 Instantiate(prefab, unit_spawn_points[spawn_points_index].transform);
                 prefab.transform.position = new Vector3(prefab.transform.position.x, prefab.transform.position.y, prefab.transform.position.z);
-                GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().target = prefab.transform;
+                
             }
             spawn_points_index2 = spawn_points_index;
+            GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().target = prefab.transform;
         }
-        GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().playerPrefabs = GameObject.FindGameObjectsWithTag("Player");
-        GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().npcPrefabs = GameObject.FindGameObjectsWithTag("NPC"); 
+        GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().playerPrefabs = GameObject.FindGameObjectsWithTag("Player"); 
         foreach (GameObject prefab in GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().playerPrefabs) {
-            GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().playerPrefabs[k].GetComponent<PlayerMove>().Init(); 
+            GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().playerPrefabs[k].GetComponent<PlayerMove>().Init();  
             k += 1;  
         }   
+        GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().npcPrefabs = GameObject.FindGameObjectsWithTag("NPC");
         foreach (GameObject prefab in GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().npcPrefabs) {
-            GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().npcPrefabs[k].GetComponent<NPCMove>().Init();
-            k += 1;  
-        }          
+            GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().npcPrefabs[j].GetComponent<NPCMove>().Init();
+            prefab.GetComponent<TacticsMove>().FinishTurn();
+            j += 1;  
+        }         
     }
 }

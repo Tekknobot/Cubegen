@@ -23,7 +23,7 @@ public class NPCMove : TacticsMove
 	// Use this for initialization
 	void Start () 
 	{
-        Init();
+        //Init();
         tacticsCamera = GameObject.Find("TacticsCamera"); 
 	}
 	
