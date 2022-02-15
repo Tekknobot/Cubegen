@@ -153,4 +153,9 @@ public class TacticsCamera : MonoBehaviour
         GameObject.Find("UI_Manager").GetComponent<UI_Manager>().healthButton.SetActive(false);
         yield return null; 
     }
+
+    IEnumerator GetReadyStart() {
+        yield return new WaitForSeconds(3);
+        CameraSelect();
+    }
 }

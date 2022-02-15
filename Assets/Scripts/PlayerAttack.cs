@@ -59,7 +59,7 @@ public class PlayerAttack : TacticsAttack
         if (Physics.Raycast(ray, out hit)) {
             float distance = Vector3.Distance(this.transform.position, hit.transform.position);
             if (hit.collider.tag == "NPC" && distance <= 1f) {
-                Animator animator = tacticsCamera.GetComponent<TacticsCamera>().target.gameObject.GetComponent<Animator>();
+                Animator animator = this.gameObject.GetComponent<Animator>();
                 animator.runtimeAnimatorController = this.gameObject.GetComponent<PlayerMove>().attackAnimation;                
                 StartCoroutine(PlayerAttackCoroutine(hit));
             }

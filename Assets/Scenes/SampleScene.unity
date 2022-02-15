@@ -30809,7 +30809,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 620757532040087422, guid: f67af288a2f3c6c4cb735278f1549e5c, type: 3}
       propertyPath: move
-      value: 1
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 620757532040087422, guid: f67af288a2f3c6c4cb735278f1549e5c, type: 3}
       propertyPath: maxHP
@@ -30927,7 +30927,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1602910927863695885, guid: fdfd55c8853d4ed4f8f8eb653293bd50, type: 3}
       propertyPath: move
-      value: 1
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1602910927863695885, guid: fdfd55c8853d4ed4f8f8eb653293bd50, type: 3}
       propertyPath: maxHP
@@ -31702,7 +31702,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6434269416866044967, guid: f1106a07dcdef5b4d90489367519ad1d, type: 3}
       propertyPath: move
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6434269416866044967, guid: f1106a07dcdef5b4d90489367519ad1d, type: 3}
       propertyPath: maxHP
@@ -31876,7 +31876,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2967888252612711559, guid: 70a66b7b6355f2a4898dd7c014435152, type: 3}
       propertyPath: move
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2967888252612711559, guid: 70a66b7b6355f2a4898dd7c014435152, type: 3}
       propertyPath: maxHP
@@ -32009,7 +32009,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2943378356497371804, guid: 982f1bdb352639f429b764413ccfbd84, type: 3}
       propertyPath: move
-      value: 1
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2943378356497371804, guid: 982f1bdb352639f429b764413ccfbd84, type: 3}
       propertyPath: maxHP
@@ -32102,7 +32102,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8280623420152000231, guid: 1ea7f0f2888daa645994b46e45818446, type: 3}
       propertyPath: move
-      value: 1
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8280623420152000231, guid: 1ea7f0f2888daa645994b46e45818446, type: 3}
       propertyPath: maxHP
