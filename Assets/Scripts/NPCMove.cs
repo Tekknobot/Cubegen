@@ -41,12 +41,14 @@ public class NPCMove : TacticsMove
             CalculatePath();
             FindSelectableTiles();
             actualTargetTile.target = true;
+            this.GetComponent<cakeslice.Outline>().enabled = false;
         }
         else
         {
             Animator animator = this.gameObject.GetComponent<Animator>();
             animator.runtimeAnimatorController = moveAnimation;             
             Move();
+            this.GetComponent<cakeslice.Outline>().enabled = true;
             GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().TargetCameraOnNPC();
         }
 
