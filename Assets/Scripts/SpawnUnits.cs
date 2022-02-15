@@ -30,7 +30,8 @@ public class SpawnUnits : MonoBehaviour
         foreach (GameObject prefab in unit_prefabs) {
             spawn_points_index = Random.Range(0, unit_spawn_points.Length);
             if (spawn_points_index == spawn_points_index2) {
-                Instantiate(prefab, unit_spawn_points[spawn_points_index++].transform);
+                Debug.Log(spawn_points_index +" "+" "+ spawn_points_index2);
+                Instantiate(prefab, unit_spawn_points[spawn_points_index+2].transform);
             }
             else {
                 Instantiate(prefab, unit_spawn_points[spawn_points_index].transform);
@@ -39,5 +40,6 @@ public class SpawnUnits : MonoBehaviour
                 spawn_points_index2 = spawn_points_index;
             }
         }
+        spawned = true;
     }
 }
