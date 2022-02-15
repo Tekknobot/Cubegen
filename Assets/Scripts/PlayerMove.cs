@@ -62,8 +62,8 @@ public class PlayerMove : TacticsMove
             animator.runtimeAnimatorController = moveAnimation;            
             Move();             
             GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().TargetCameraOnPlayer();
-            GameObject.Find("UI_Manager").GetComponent<UI_Manager>().targetButton.SetActive(false);    
-            GameObject.Find("UI_Manager").GetComponent<UI_Manager>().healthButton.SetActive(false);            
+            // GameObject.Find("UI_Manager").GetComponent<UI_Manager>().targetButton.SetActive(false);    
+            // GameObject.Find("UI_Manager").GetComponent<UI_Manager>().healthButton.SetActive(false);            
         }
 
         if (transform.position.x > oldPositionX) {
@@ -88,6 +88,39 @@ public class PlayerMove : TacticsMove
     void CheckMouse()
     {
         if (Input.GetMouseButtonDown(0)) {
+            this.GetComponent<cakeslice.Outline>().enabled = false;
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+            RaycastHit hit;
+            if (Physics.Raycast(ray, out hit)) {
+                if (hit.collider.tag == "Player" && !EventSystem.current.IsPointerOverGameObject()) {
+                    RemoveSelectableTiles();
+                    GetComponent<PlayerMove>().unitTurn = false;
+                    hit.transform.gameObject.GetComponent<TacticsMove>().FindSelectableTiles();
+                    hit.transform.gameObject.GetComponent<TacticsMove>().turn = true;
+                    hit.transform.gameObject.GetComponent<PlayerMove>().unitTurn = true;
+                    tempGO = hit.transform.gameObject;
+                    hit.transform.gameObject.GetComponent<cakeslice.Outline>().enabled = true;
+                    tacticsCamera.GetComponent<TacticsCamera>().target = hit.collider.transform;
+                    GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().TurnOffNPCOutlines();  
+                }
+            }            
+        }    
+
+        if (Input.GetMouseButtonDown(0)) {
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+            RaycastHit hit;
+            if (Physics.Raycast(ray, out hit)) {
+                if (hit.collider.tag == "NPC" && !EventSystem.current.IsPointerOverGameObject()) {
+                    hit.transform.gameObject.GetComponent<cakeslice.Outline>().enabled = true;
+                    tacticsCamera.GetComponent<TacticsCamera>().target = hit.collider.transform;
+                    GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().TurnOffPlayerOutlines(); 
+                }
+            }            
+        }
+
+        if (Input.GetMouseButtonDown(0) && GetComponent<PlayerMove>().turn) {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
             RaycastHit hit;
@@ -106,39 +139,6 @@ public class PlayerMove : TacticsMove
                     }
                 }
             }
-        }
-    
-        if (Input.GetMouseButtonDown(0)) {
-            this.GetComponent<cakeslice.Outline>().enabled = false;
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-
-            RaycastHit hit;
-            if (Physics.Raycast(ray, out hit)) {
-                if (hit.collider.tag == "Player" && !EventSystem.current.IsPointerOverGameObject()) {
-                    RemoveSelectableTiles();
-                    GetComponent<PlayerMove>().unitTurn = false;
-                    hit.transform.gameObject.GetComponent<TacticsMove>().FindSelectableTiles();
-                    hit.transform.gameObject.GetComponent<TacticsMove>().turn = true;
-                    hit.transform.gameObject.GetComponent<PlayerMove>().unitTurn = true;
-                    tempGO = hit.transform.gameObject;
-                    hit.transform.gameObject.GetComponent<cakeslice.Outline>().enabled = true;
-                    tacticsCamera.GetComponent<TacticsCamera>().target = hit.collider.transform;
-                    tacticsCamera.GetComponent<TacticsCamera>().TargetCameraOnNPC();
-                }
-            }            
-        }    
-
-        if (Input.GetMouseButtonDown(0)) {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-
-            RaycastHit hit;
-            if (Physics.Raycast(ray, out hit)) {
-                if (hit.collider.tag == "NPC" && !EventSystem.current.IsPointerOverGameObject()) {
-                    tacticsCamera.GetComponent<TacticsCamera>().TargetCameraOnNPC();
-                    hit.transform.gameObject.GetComponent<cakeslice.Outline>().enabled = true;
-                    tacticsCamera.GetComponent<TacticsCamera>().target = hit.collider.transform;
-                }
-            }            
         }
     }    
 }

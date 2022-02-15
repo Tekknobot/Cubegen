@@ -169,10 +169,11 @@ public class TacticsMove : MonoBehaviour
             moving = false;
 
             TurnManager.EndTurn();
-
             if (this.transform.tag == "NPC") {
                 this.GetComponent<NPCMove>().PlayerWithinRadius(this.gameObject, 1f);
-            }            
+                GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().TurnOffAllOutlines(); 
+            }  
+            GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().TurnOffAllOutlines();          
         }
     }
 
@@ -397,6 +398,7 @@ public class TacticsMove : MonoBehaviour
         }
 
         //todo - what do you do if there is no path to the target tile?
+        TurnManager.EndTurn();
         Debug.Log("Path not found");
     }
 

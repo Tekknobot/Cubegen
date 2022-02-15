@@ -41,14 +41,12 @@ public class TacticsCamera : MonoBehaviour
             playerPrefabs[3].GetComponent<PlayerMove>().tempGO = null;
             playerPrefabs[4].GetComponent<PlayerMove>().tempGO = null;
 
+            GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().TurnOffAllOutlines();
             CameraSelect();
         }
     }
 
     public void TargetCameraOnPlayer() {
-        foreach (GameObject playerPrefab in playerPrefabs) {
-            playerPrefab.GetComponent<cakeslice.Outline>().enabled = false;
-        }
         foreach (GameObject playerPrefab in playerPrefabs) {
             if (playerPrefab.GetComponent<PlayerMove>().moving == true) {
                 target = playerPrefab.transform;
@@ -57,10 +55,7 @@ public class TacticsCamera : MonoBehaviour
         }
     }
 
-    public void TargetCameraOnNPC() {
-        foreach (GameObject npcPrefab in npcPrefabs) {
-            npcPrefab.GetComponent<cakeslice.Outline>().enabled = false;
-        }        
+    public void TargetCameraOnNPC() {      
         foreach (GameObject npcPrefab in npcPrefabs) {
             if (npcPrefab.GetComponent<NPCMove>().moving == true) {
                 target = npcPrefab.transform;
@@ -69,8 +64,29 @@ public class TacticsCamera : MonoBehaviour
         }         
     }
 
+    public void TurnOffAllOutlines() {
+        foreach (GameObject playerPrefab in playerPrefabs) {
+            playerPrefab.GetComponent<cakeslice.Outline>().enabled = false;
+        }        
+        foreach (GameObject npcPrefab in npcPrefabs) {
+            npcPrefab.GetComponent<cakeslice.Outline>().enabled = false;
+        }         
+    }
+
+    public void TurnOffPlayerOutlines() {
+        foreach (GameObject playerPrefab in playerPrefabs) {
+            playerPrefab.GetComponent<cakeslice.Outline>().enabled = false;
+        }        
+    }    
+
+    public void TurnOffNPCOutlines() {      
+        foreach (GameObject npcPrefab in npcPrefabs) {
+            npcPrefab.GetComponent<cakeslice.Outline>().enabled = false;
+        }         
+    }        
+
     public void CameraSelect() {
-        StartCoroutine(DeactivateUI());
+        //StartCoroutine(DeactivateUI());
 
         foreach (GameObject playerPrefab in playerPrefabs) {
             playerPrefab.GetComponent<cakeslice.Outline>().enabled = false;
@@ -84,6 +100,7 @@ public class TacticsCamera : MonoBehaviour
             playerPrefabs[0].GetComponent<PlayerMove>().unitTurn = true;
             playerPrefabs[0].GetComponent<PlayerMove>().tempGO = playerPrefabs[0].transform.gameObject;
             playerPrefabs[0].GetComponent<cakeslice.Outline>().enabled = true;
+            GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().TurnOffNPCOutlines();
         }     
 
         if (target == playerPrefabs[1].transform) {    
@@ -94,6 +111,7 @@ public class TacticsCamera : MonoBehaviour
             playerPrefabs[1].GetComponent<PlayerMove>().unitTurn = true;
             playerPrefabs[1].GetComponent<PlayerMove>().tempGO = playerPrefabs[1].transform.gameObject;
             playerPrefabs[1].GetComponent<cakeslice.Outline>().enabled = true;
+            GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().TurnOffNPCOutlines();
         }  
 
         if (target == playerPrefabs[2].transform) {    
@@ -104,6 +122,7 @@ public class TacticsCamera : MonoBehaviour
             playerPrefabs[2].GetComponent<PlayerMove>().unitTurn = true;
             playerPrefabs[2].GetComponent<PlayerMove>().tempGO = playerPrefabs[2].transform.gameObject;
             playerPrefabs[2].GetComponent<cakeslice.Outline>().enabled = true;
+            GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().TurnOffNPCOutlines();
         }                  
 
         if (target == playerPrefabs[3].transform) {    
@@ -114,6 +133,7 @@ public class TacticsCamera : MonoBehaviour
             playerPrefabs[3].GetComponent<PlayerMove>().unitTurn = true;
             playerPrefabs[3].GetComponent<PlayerMove>().tempGO = playerPrefabs[3].transform.gameObject;
             playerPrefabs[3].GetComponent<cakeslice.Outline>().enabled = true;
+            GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().TurnOffNPCOutlines();
         }  
 
         if (target == playerPrefabs[4].transform) {    
@@ -124,6 +144,7 @@ public class TacticsCamera : MonoBehaviour
             playerPrefabs[4].GetComponent<PlayerMove>().unitTurn = true;
             playerPrefabs[4].GetComponent<PlayerMove>().tempGO = playerPrefabs[4].transform.gameObject;
             playerPrefabs[4].GetComponent<cakeslice.Outline>().enabled = true;
+            GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().TurnOffNPCOutlines();
         }                        
     }
 

@@ -13,6 +13,13 @@ public class PlayerDeath : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (GetComponent<PlayerAttack>().currentHP <= 0) {
+            StartCoroutine(DestroyObject());
+        }
+    }
+
+    IEnumerator DestroyObject() {
+        yield return new WaitForSeconds(1);
+        Destroy(this.gameObject);
     }
 }
