@@ -31,6 +31,7 @@ public class TurnManager : MonoBehaviour
         }
 
         StartTurn();
+        GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().TurnOffAllOutlines();
     }
 
     public static void StartTurn()

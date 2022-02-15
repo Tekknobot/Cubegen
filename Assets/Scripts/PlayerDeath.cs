@@ -20,6 +20,6 @@ public class PlayerDeath : MonoBehaviour
 
     IEnumerator DestroyObject() {
         yield return new WaitForSeconds(1);
-        Destroy(this.gameObject);
+        this.gameObject.SetActive(false);
     }
 }
