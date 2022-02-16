@@ -32,7 +32,10 @@ public class NPCMove : TacticsMove
 	{
         PlayerDrawRayForward();
 
-        if (!turn && !this.GetComponent<NPCMove>().attacking) {
+        if (pushed) {
+            
+        }
+        else if (!turn && !this.GetComponent<NPCMove>().attacking) {
             Animator animator = this.gameObject.GetComponent<Animator>();
             animator.runtimeAnimatorController = idleAnimation;
             //this.GetComponent<cakeslice.Outline>().enabled = false;            

@@ -49,10 +49,14 @@ public class PlayerAttack : TacticsAttack
         tempPlayerUnit.GetComponent<PlayerMove>().attacking = true;
 		yield return new WaitForSeconds(1f);
         hit.GetComponent<TacticsAttack>().TakeDamage(tempPlayerUnit.GetComponent<TacticsAttack>().damage);
-        Instantiate(attackEffect, hit.transform.position, Quaternion.Euler(45, -45, 0));        
+        Instantiate(attackEffect, hit.transform.position, Quaternion.Euler(45, -45, 0)); 
+        hit.GetComponent<NPCMove>().pushed = true;
+        Tile t = hit.GetComponent<NPCMove>().GetTargetTile(hit.transform.gameObject);
+        Tile t2 = t.adjacencyList[Random.Range(0,t.adjacencyList.Count)];
+        hit.GetComponent<NPCMove>().MoveToTile(t2); 
+        yield return new WaitUntil(()=> hit.GetComponent<NPCMove>().pushed == false);      
         tempPlayerUnit.GetComponent<PlayerMove>().attacking = false;
         TurnManager.EndTurn();
-        GameObject.Find("Target_btn").GetComponent<GetPlayerClones>().flag = false;
 	}  
 
     IEnumerator WaitForCheck(GameObject tempPlayerUnit) {

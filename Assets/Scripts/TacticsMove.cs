@@ -13,6 +13,7 @@ public class TacticsMove : MonoBehaviour
     Tile currentTile;
 
     public bool moving = false;
+    public bool pushed = false;
     public int move = 5;
     public float jumpHeight = 2;
     public float moveSpeed = 2;
@@ -168,6 +169,7 @@ public class TacticsMove : MonoBehaviour
         {
             RemoveSelectableTiles();
             moving = false;
+            pushed = false;
             
             if (this.transform.tag == "NPC") {
                 this.GetComponent<NPCMove>().PlayerWithinRadius(this.gameObject, 0.625f);
