@@ -9,6 +9,7 @@ public class SpawnUnits : MonoBehaviour
     public GameObject[] unit_prefabs;
     public GameObject[] player_clones;
     public GameObject[] npc_clones;
+    public List<GameObject> list_unit_spawn_points;     
 
     public int[] spawn_points_array;
 
@@ -23,6 +24,9 @@ public class SpawnUnits : MonoBehaviour
     void Start()
     {
         unit_spawn_points = GameObject.FindGameObjectsWithTag("Tile"); 
+        foreach (GameObject unit_spawn_point in unit_spawn_points) {
+            list_unit_spawn_points.Add(unit_spawn_point);
+        }
         StartCoroutine(Spawn());               
     }
 
@@ -35,20 +39,11 @@ public class SpawnUnits : MonoBehaviour
     }
 
     IEnumerator Spawn() {
-        yield return new WaitForSeconds(0);
+        yield return new WaitForSeconds(0f);
         foreach (GameObject prefab in unit_prefabs) {
-            spawn_points_index = Random.Range(0, unit_spawn_points.Length);
-            if (spawn_points_index == spawn_points_index2) {
-                Debug.Log(spawn_points_index +" "+" "+ spawn_points_index2);
-                Instantiate(prefab, unit_spawn_points[spawn_points_index+1].transform);
-                prefab.transform.parent = null;
-            }
-            else {
-                Instantiate(prefab, unit_spawn_points[spawn_points_index].transform);
-                prefab.transform.position = new Vector3(prefab.transform.position.x, prefab.transform.position.y, prefab.transform.position.z);
-                prefab.transform.parent = null;
-            }
-            spawn_points_index2 = spawn_points_index;
+            spawn_points_index = Random.Range(0, list_unit_spawn_points.Count);
+            Instantiate(prefab, list_unit_spawn_points[spawn_points_index].transform);
+            list_unit_spawn_points.RemoveAt(spawn_points_index);
         }
         GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().playerPrefabs = GameObject.FindGameObjectsWithTag("Player"); 
         foreach (GameObject prefab in GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().playerPrefabs) {

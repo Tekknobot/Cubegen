@@ -30,7 +30,7 @@ public class PlayerAttack : TacticsAttack
 	// Update is called once per frame
 	void Update () 
 	{
-
+        Debug.DrawRay(transform.position, new Vector3(1, 0, 0));   
     }
 
     public void CheckMouse() {
@@ -41,30 +41,28 @@ public class PlayerAttack : TacticsAttack
         CheckMouse();
     }
 
-	IEnumerator PlayerAttackCoroutine(RaycastHit hit) {
+	IEnumerator PlayerAttackCoroutine(GameObject hit) {
         this.gameObject.GetComponent<PlayerMove>().attacking = true;
 		yield return new WaitForSeconds(1f);
-        hit.transform.gameObject.GetComponent<TacticsAttack>().TakeDamage(this.GetComponent<TacticsAttack>().damage);
+        hit.GetComponent<TacticsAttack>().TakeDamage(this.GetComponent<TacticsAttack>().damage);
         this.gameObject.GetComponent<PlayerMove>().attacking = false;
         Instantiate(attackEffect, hit.transform.position, Quaternion.Euler(45, -45, 0));        
-        tacticsCamera.GetComponent<TacticsCamera>().target = hit.collider.transform;
+        tacticsCamera.GetComponent<TacticsCamera>().target = hit.transform;
         TurnManager.EndTurn();
         GameObject.Find("Target_btn").GetComponent<GetPlayerClones>().flag = false;
 	}  
 
     IEnumerator WaitForCheck() {
         yield return new WaitUntil(()=> Input.GetMouseButtonDown(0));
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-
-        RaycastHit hit;
-        if (Physics.Raycast(ray, out hit)) {
-            float distance = Vector3.Distance(this.transform.position, hit.transform.position);
-            if (hit.collider.tag == "NPC" && distance <= 1f) {
+        Collider[] hitColliders = Physics.OverlapSphere(this.transform.position, 0.625f);
+        foreach (var hitCollider in hitColliders)
+        {
+            if (hitCollider.tag == "NPC") {
                 Animator animator = this.gameObject.GetComponent<Animator>();
                 animator.runtimeAnimatorController = this.gameObject.GetComponent<PlayerMove>().attackAnimation;                
-                StartCoroutine(PlayerAttackCoroutine(hit));
+                StartCoroutine(PlayerAttackCoroutine(hitCollider.transform.gameObject));
             }
-            checkedMouse = true; 
-        }            
+        }
+        checkedMouse = true;                
     }  
 }
