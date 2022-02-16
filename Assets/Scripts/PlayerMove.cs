@@ -47,7 +47,7 @@ public class PlayerMove : TacticsMove
             return;
         }
 
-        if (!moving && this.gameObject.GetComponent<PlayerMove>().attacking && this.gameObject.GetComponent<PlayerMove>().unitTurn) {
+        if (!moving && this.gameObject.GetComponent<PlayerMove>().attacking) {
             Animator animator = this.gameObject.GetComponent<Animator>();
             animator.runtimeAnimatorController = attackAnimation;                      
         }

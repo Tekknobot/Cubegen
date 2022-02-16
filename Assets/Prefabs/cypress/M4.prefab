@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 3376530537603178187}
   - component: {fileID: 3376530537603178186}
   - component: {fileID: 3376530537603178190}
+  - component: {fileID: 8924477393308511710}
   m_Layer: 3
   m_Name: M4
   m_TagString: Player
@@ -204,3 +205,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   color: 0
   eraseRenderer: 0
+--- !u!114 &8924477393308511710
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 433229189802929220}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ba1ed9c1edbd1d46919440da3aac4a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flag: 0

@@ -18,6 +18,8 @@ public class PlayerAttack : TacticsAttack
     public GameObject targetButton;
     public GameObject healthButton;
 
+    public GameObject tempPlayerUnit;
+
     public bool checkedMouse = false;
 
 	// Use this for initialization
@@ -33,34 +35,34 @@ public class PlayerAttack : TacticsAttack
         Debug.DrawRay(transform.position, new Vector3(1, 0, 0));   
     }
 
-    public void CheckMouse() {
-        StartCoroutine(WaitForCheck());       
+    public void CheckMouse(GameObject tempPlayerUnit) {
+        StartCoroutine(WaitForCheck(tempPlayerUnit));       
     }
 
     public void OnTargetButton() {
-        CheckMouse();
+        tempPlayerUnit = tacticsCamera.GetComponent<TacticsCamera>().target.gameObject;
+        CheckMouse(tempPlayerUnit);
     }
 
-	IEnumerator PlayerAttackCoroutine(GameObject hit) {
-        this.gameObject.GetComponent<PlayerMove>().attacking = true;
+	IEnumerator PlayerAttackCoroutine(GameObject hit, GameObject tempPlayerUnit) {
+        tempPlayerUnit.GetComponent<PlayerMove>().attacking = true;
 		yield return new WaitForSeconds(1f);
-        hit.GetComponent<TacticsAttack>().TakeDamage(this.GetComponent<TacticsAttack>().damage);
-        this.gameObject.GetComponent<PlayerMove>().attacking = false;
+        hit.GetComponent<TacticsAttack>().TakeDamage(tempPlayerUnit.GetComponent<TacticsAttack>().damage);
         Instantiate(attackEffect, hit.transform.position, Quaternion.Euler(45, -45, 0));        
-        tacticsCamera.GetComponent<TacticsCamera>().target = hit.transform;
+        tempPlayerUnit.GetComponent<PlayerMove>().attacking = false;
         TurnManager.EndTurn();
         GameObject.Find("Target_btn").GetComponent<GetPlayerClones>().flag = false;
 	}  
 
-    IEnumerator WaitForCheck() {
+    IEnumerator WaitForCheck(GameObject tempPlayerUnit) {
         yield return new WaitUntil(()=> Input.GetMouseButtonDown(0));
-        Collider[] hitColliders = Physics.OverlapSphere(this.transform.position, 0.625f);
+        Collider[] hitColliders = Physics.OverlapSphere(transform.position, 0.625f);
         foreach (var hitCollider in hitColliders)
         {
             if (hitCollider.tag == "NPC") {
-                Animator animator = this.gameObject.GetComponent<Animator>();
-                animator.runtimeAnimatorController = this.gameObject.GetComponent<PlayerMove>().attackAnimation;                
-                StartCoroutine(PlayerAttackCoroutine(hitCollider.transform.gameObject));
+                Animator animator = tempPlayerUnit.GetComponent<Animator>();
+                animator.runtimeAnimatorController = tempPlayerUnit.GetComponent<PlayerMove>().attackAnimation;                
+                StartCoroutine(PlayerAttackCoroutine(hitCollider.transform.gameObject, tempPlayerUnit));
             }
         }
         checkedMouse = true;                
