@@ -39,7 +39,7 @@ public class PlayerMove : TacticsMove
 	// Update is called once per frame
 	void Update () 
 	{
-        Debug.DrawRay(transform.position, transform.forward);
+        //PlayerDrawRayForward();
 
         if (!turn) {
             Animator animator = this.gameObject.GetComponent<Animator>();
@@ -141,4 +141,12 @@ public class PlayerMove : TacticsMove
             }
         }
     }    
+
+    public void PlayerDrawRayForward() {
+        RaycastHit objectHit;        
+        // Shoot raycast
+        if (Physics.Raycast(transform.position, new Vector3(0, -1, 0), out objectHit, 50)) {
+            Debug.DrawRay(transform.position, new Vector3(0, -1, 0));
+        }        
+    }       
 }

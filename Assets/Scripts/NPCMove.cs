@@ -30,6 +30,8 @@ public class NPCMove : TacticsMove
 	// Update is called once per frame
 	void Update () 
 	{
+        //PlayerDrawRayForward();
+
         if (!turn && !this.GetComponent<NPCMove>().attacking) {
             Animator animator = this.gameObject.GetComponent<Animator>();
             animator.runtimeAnimatorController = idleAnimation;
@@ -120,11 +122,8 @@ public class NPCMove : TacticsMove
     public void PlayerDrawRayForward() {
         RaycastHit objectHit;        
         // Shoot raycast
-        if (Physics.Raycast(transform.position, transform.up, out objectHit, 1)) {
-            Debug.DrawRay(transform.position, transform.up);
-            if (objectHit.transform.tag == "Player") {
-                NPCAttackFunction(objectHit.collider.gameObject);
-            }
+        if (Physics.Raycast(transform.position, new Vector3(0, -1, 0), out objectHit, 50)) {
+            Debug.DrawRay(transform.position, new Vector3(0, -1, 0));
         }        
     }   
 
