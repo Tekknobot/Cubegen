@@ -41,10 +41,12 @@ public class SpawnUnits : MonoBehaviour
             if (spawn_points_index == spawn_points_index2) {
                 Debug.Log(spawn_points_index +" "+" "+ spawn_points_index2);
                 Instantiate(prefab, unit_spawn_points[spawn_points_index+1].transform);
+                prefab.transform.parent = null;
             }
             else {
                 Instantiate(prefab, unit_spawn_points[spawn_points_index].transform);
                 prefab.transform.position = new Vector3(prefab.transform.position.x, prefab.transform.position.y, prefab.transform.position.z);
+                prefab.transform.parent = null;
             }
             spawn_points_index2 = spawn_points_index;
         }
@@ -60,6 +62,15 @@ public class SpawnUnits : MonoBehaviour
             j += 1;  
         }    
 
+        GameObject[] playerUnits = GameObject.FindGameObjectsWithTag("Player");
+        foreach (GameObject playerUnit in playerUnits) {
+            playerUnit.transform.parent = null;
+        }
+        GameObject[] npcUnits = GameObject.FindGameObjectsWithTag("NPC");
+        foreach (GameObject npcUnit in npcUnits) {
+            npcUnit.transform.parent = null;
+        }  
+              
         StartCoroutine(EnableCameraScript());    
     }
 

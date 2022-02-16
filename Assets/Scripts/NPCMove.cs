@@ -30,7 +30,7 @@ public class NPCMove : TacticsMove
 	// Update is called once per frame
 	void Update () 
 	{
-        //PlayerDrawRayForward();
+        PlayerDrawRayForward();
 
         if (!turn && !this.GetComponent<NPCMove>().attacking) {
             Animator animator = this.gameObject.GetComponent<Animator>();

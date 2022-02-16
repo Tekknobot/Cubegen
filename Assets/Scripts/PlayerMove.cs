@@ -39,7 +39,7 @@ public class PlayerMove : TacticsMove
 	// Update is called once per frame
 	void Update () 
 	{
-        //PlayerDrawRayForward();
+        PlayerDrawRayForward();
 
         if (!turn) {
             Animator animator = this.gameObject.GetComponent<Animator>();
