@@ -29,17 +29,12 @@ public class TacticsCamera : MonoBehaviour
         }
 
         if (Input.GetKeyDown("space") || Input.GetMouseButtonDown(1)) {
+            playerPrefabs[playerPrefabsIndex].GetComponent<PlayerMove>().tempGO = null;
             playerPrefabs = GameObject.FindGameObjectsWithTag("Player");            
             target = playerPrefabs[playerPrefabsIndex++].transform;            
             if (playerPrefabsIndex >= playerPrefabs.Length) {
                 playerPrefabsIndex = 0;
             }
-
-            playerPrefabs[0].GetComponent<PlayerMove>().tempGO = null;
-            playerPrefabs[1].GetComponent<PlayerMove>().tempGO = null;
-            playerPrefabs[2].GetComponent<PlayerMove>().tempGO = null;
-            playerPrefabs[3].GetComponent<PlayerMove>().tempGO = null;
-            playerPrefabs[4].GetComponent<PlayerMove>().tempGO = null;
 
             GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().TurnOffAllOutlines();
             CameraSelect();
@@ -90,60 +85,12 @@ public class TacticsCamera : MonoBehaviour
 
         TurnOffAllOutlines();
         
-        if (target == playerPrefabs[0].transform) {    
-            playerPrefabs[0].GetComponent<TacticsMove>().RemoveSelectableTiles();
-            playerPrefabs[0].GetComponent<PlayerMove>().unitTurn = false;
-            playerPrefabs[0].GetComponent<TacticsMove>().FindSelectableTiles();
-            playerPrefabs[0].GetComponent<TacticsMove>().turn = true;
-            playerPrefabs[0].GetComponent<PlayerMove>().unitTurn = true;
-            playerPrefabs[0].GetComponent<PlayerMove>().tempGO = playerPrefabs[0].transform.gameObject;
-            playerPrefabs[0].GetComponent<cakeslice.Outline>().enabled = true;
-            GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().TurnOffNPCOutlines();
-        }     
-
-        if (target == playerPrefabs[1].transform) {    
-            playerPrefabs[1].GetComponent<TacticsMove>().RemoveSelectableTiles();
-            playerPrefabs[1].GetComponent<PlayerMove>().unitTurn = false;
-            playerPrefabs[1].GetComponent<TacticsMove>().FindSelectableTiles();
-            playerPrefabs[1].GetComponent<TacticsMove>().turn = true;
-            playerPrefabs[1].GetComponent<PlayerMove>().unitTurn = true;
-            playerPrefabs[1].GetComponent<PlayerMove>().tempGO = playerPrefabs[1].transform.gameObject;
-            playerPrefabs[1].GetComponent<cakeslice.Outline>().enabled = true;
-            GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().TurnOffNPCOutlines();
-        }  
-
-        if (target == playerPrefabs[2].transform) {    
-            playerPrefabs[2].GetComponent<TacticsMove>().RemoveSelectableTiles();
-            playerPrefabs[2].GetComponent<PlayerMove>().unitTurn = false;
-            playerPrefabs[2].GetComponent<TacticsMove>().FindSelectableTiles();
-            playerPrefabs[2].GetComponent<TacticsMove>().turn = true;
-            playerPrefabs[2].GetComponent<PlayerMove>().unitTurn = true;
-            playerPrefabs[2].GetComponent<PlayerMove>().tempGO = playerPrefabs[2].transform.gameObject;
-            playerPrefabs[2].GetComponent<cakeslice.Outline>().enabled = true;
-            GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().TurnOffNPCOutlines();
-        }                  
-
-        if (target == playerPrefabs[3].transform) {    
-            playerPrefabs[3].GetComponent<TacticsMove>().RemoveSelectableTiles();
-            playerPrefabs[3].GetComponent<PlayerMove>().unitTurn = false;
-            playerPrefabs[3].GetComponent<TacticsMove>().FindSelectableTiles();
-            playerPrefabs[3].GetComponent<TacticsMove>().turn = true;
-            playerPrefabs[3].GetComponent<PlayerMove>().unitTurn = true;
-            playerPrefabs[3].GetComponent<PlayerMove>().tempGO = playerPrefabs[3].transform.gameObject;
-            playerPrefabs[3].GetComponent<cakeslice.Outline>().enabled = true;
-            GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().TurnOffNPCOutlines();
-        }  
-
-        if (target == playerPrefabs[4].transform) {    
-            playerPrefabs[4].GetComponent<TacticsMove>().RemoveSelectableTiles();
-            playerPrefabs[4].GetComponent<PlayerMove>().unitTurn = false;
-            playerPrefabs[4].GetComponent<TacticsMove>().FindSelectableTiles();
-            playerPrefabs[4].GetComponent<TacticsMove>().turn = true;
-            playerPrefabs[4].GetComponent<PlayerMove>().unitTurn = true;
-            playerPrefabs[4].GetComponent<PlayerMove>().tempGO = playerPrefabs[4].transform.gameObject;
-            playerPrefabs[4].GetComponent<cakeslice.Outline>().enabled = true;
-            GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().TurnOffNPCOutlines();
-        }                        
+        target = playerPrefabs[playerPrefabsIndex].transform;
+        playerPrefabs[playerPrefabsIndex].GetComponent<TacticsMove>().RemoveSelectableTiles();
+        playerPrefabs[playerPrefabsIndex].GetComponent<TacticsMove>().FindSelectableTiles();
+        playerPrefabs[playerPrefabsIndex].GetComponent<PlayerMove>().tempGO = target.transform.gameObject;
+        playerPrefabs[playerPrefabsIndex].GetComponent<cakeslice.Outline>().enabled = true;
+        GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().TurnOffNPCOutlines();                      
     }
 
     IEnumerator DeactivateUI() {
