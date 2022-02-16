@@ -60,10 +60,12 @@ public class SpawnUnits : MonoBehaviour
         GameObject[] playerUnits = GameObject.FindGameObjectsWithTag("Player");
         foreach (GameObject playerUnit in playerUnits) {
             playerUnit.transform.parent = null;
+            playerUnit.transform.localScale = new Vector3(1, 1, 1);
         }
         GameObject[] npcUnits = GameObject.FindGameObjectsWithTag("NPC");
         foreach (GameObject npcUnit in npcUnits) {
             npcUnit.transform.parent = null;
+            npcUnit.transform.localScale = new Vector3(1, 1, 1);
         }  
               
         StartCoroutine(EnableCameraScript());    
