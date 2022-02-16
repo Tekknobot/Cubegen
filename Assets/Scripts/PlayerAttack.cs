@@ -19,6 +19,7 @@ public class PlayerAttack : TacticsAttack
     public GameObject healthButton;
 
     public GameObject tempPlayerUnit;
+    public GameObject tempNPCUnit;
 
     public bool checkedMouse = false;
 
@@ -60,9 +61,10 @@ public class PlayerAttack : TacticsAttack
         foreach (var hitCollider in hitColliders)
         {
             if (hitCollider.tag == "NPC") {
+                tempNPCUnit = tacticsCamera.GetComponent<TacticsCamera>().target.gameObject;
                 Animator animator = tempPlayerUnit.GetComponent<Animator>();
                 animator.runtimeAnimatorController = tempPlayerUnit.GetComponent<PlayerMove>().attackAnimation;                
-                StartCoroutine(PlayerAttackCoroutine(hitCollider.transform.gameObject, tempPlayerUnit));
+                StartCoroutine(PlayerAttackCoroutine(tempNPCUnit.transform.gameObject, tempPlayerUnit));
             }
         }
         checkedMouse = true;                

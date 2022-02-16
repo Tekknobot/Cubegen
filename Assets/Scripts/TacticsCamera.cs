@@ -29,8 +29,9 @@ public class TacticsCamera : MonoBehaviour
         }
 
         if (Input.GetKeyDown("space") || Input.GetMouseButtonDown(1)) {
+            playerPrefabs = GameObject.FindGameObjectsWithTag("Player");            
             target = playerPrefabs[playerPrefabsIndex++].transform;            
-            if (playerPrefabsIndex >= 5) {
+            if (playerPrefabsIndex >= playerPrefabs.Length) {
                 playerPrefabsIndex = 0;
             }
 
@@ -87,9 +88,7 @@ public class TacticsCamera : MonoBehaviour
     public void CameraSelect() {
         //StartCoroutine(DeactivateUI());
 
-        foreach (GameObject playerPrefab in playerPrefabs) {
-            playerPrefab.GetComponent<cakeslice.Outline>().enabled = false;
-        }
+        TurnOffAllOutlines();
         
         if (target == playerPrefabs[0].transform) {    
             playerPrefabs[0].GetComponent<TacticsMove>().RemoveSelectableTiles();
