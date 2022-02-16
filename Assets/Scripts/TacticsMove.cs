@@ -169,7 +169,7 @@ public class TacticsMove : MonoBehaviour
             moving = false;
             
             if (this.transform.tag == "NPC") {
-                this.GetComponent<NPCMove>().PlayerWithinRadius(this.gameObject, 0.6f);
+                this.GetComponent<NPCMove>().PlayerWithinRadius(this.gameObject, 0.625f);
                 //this.GetComponent<NPCMove>().PlayerDrawRayForward();
                 GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().target = GameObject.Find("Map").gameObject.transform;
                 StartCoroutine(TurnOffLastOutline()); 

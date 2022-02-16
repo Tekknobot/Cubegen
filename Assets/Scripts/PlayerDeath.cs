@@ -22,6 +22,7 @@ public class PlayerDeath : MonoBehaviour
         yield return new WaitForSeconds(1);
         this.gameObject.SetActive(false);
         this.gameObject.GetComponent<PlayerMove>().enabled = false;
+        this.gameObject.GetComponent<PlayerAttack>().enabled = false;
         this.gameObject.tag = "Dead";
     }
 }
