@@ -57,9 +57,11 @@ public class PlayerAttack : TacticsAttack
         hit.GetComponent<NPCMove>().pushed = true;
         Tile t = hit.GetComponent<NPCMove>().GetTargetTile(hit.transform.gameObject);
         Tile t2 = t.adjacencyList[Random.Range(0,t.adjacencyList.Count)];
-        hit.GetComponent<NPCMove>().MoveToTile(t2); 
+        hit.GetComponent<NPCMove>().MoveToTile(t2);
+        hit.GetComponent<NPCMove>().moveSpeed = 4; 
         //hit.transform.position = Vector3.MoveTowards(hit.transform.position, t2.transform.position, step);
-        yield return new WaitUntil(()=> hit.GetComponent<NPCMove>().pushed == false);      
+        yield return new WaitUntil(()=> hit.GetComponent<NPCMove>().pushed == false);
+        hit.GetComponent<NPCMove>().moveSpeed = 2;      
         tempPlayerUnit.GetComponent<PlayerMove>().attacking = false;
         TurnManager.EndTurn();
 	}  
