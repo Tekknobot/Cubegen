@@ -87,10 +87,13 @@ public class TacticsCamera : MonoBehaviour
         
         target = playerPrefabs[playerPrefabsIndex].transform;
         playerPrefabs[playerPrefabsIndex].GetComponent<TacticsMove>().RemoveSelectableTiles();
+        playerPrefabs[playerPrefabsIndex].GetComponent<PlayerMove>().unitTurn = false;
         playerPrefabs[playerPrefabsIndex].GetComponent<TacticsMove>().FindSelectableTiles();
+        playerPrefabs[playerPrefabsIndex].GetComponent<TacticsMove>().turn = true;
+        playerPrefabs[playerPrefabsIndex].GetComponent<PlayerMove>().unitTurn = true;
         playerPrefabs[playerPrefabsIndex].GetComponent<PlayerMove>().tempGO = target.transform.gameObject;
         playerPrefabs[playerPrefabsIndex].GetComponent<cakeslice.Outline>().enabled = true;
-        GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().TurnOffNPCOutlines();                      
+        GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().TurnOffNPCOutlines();                               
     }
 
     IEnumerator DeactivateUI() {
