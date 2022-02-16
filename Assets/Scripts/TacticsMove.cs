@@ -258,7 +258,7 @@ public class TacticsMove : MonoBehaviour
 
     void FallDownward(Vector3 target)
     {
-        velocity += (Physics.gravity * Time.deltaTime) * 8;
+        velocity += (Physics.gravity * Time.deltaTime) * 10;
 
         if (transform.position.y <= target.y)
         {
