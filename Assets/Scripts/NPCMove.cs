@@ -84,13 +84,13 @@ public class NPCMove : TacticsMove
         oldPositionZ = transform.position.z;
     }       
 
-    void CalculatePath()
+    public void CalculatePath()
     {
         Tile targetTile = GetTargetTile(target);
         FindPath(targetTile);
     }
 
-    void FindNearestTarget()
+    public void FindNearestTarget()
     {
         GameObject[] targets = GameObject.FindGameObjectsWithTag("Player");
 

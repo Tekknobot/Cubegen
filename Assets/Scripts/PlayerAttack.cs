@@ -23,6 +23,9 @@ public class PlayerAttack : TacticsAttack
 
     public bool checkedMouse = false;
 
+    public float speed = 0.2f;
+    public float step;
+
 	// Use this for initialization
 	void Start () 
 	{
@@ -34,6 +37,7 @@ public class PlayerAttack : TacticsAttack
 	void Update () 
 	{
         Debug.DrawRay(transform.position, new Vector3(1, 0, 0));   
+        step = speed * Time.deltaTime;
     }
 
     public void CheckMouse(GameObject tempPlayerUnit) {
@@ -54,6 +58,7 @@ public class PlayerAttack : TacticsAttack
         Tile t = hit.GetComponent<NPCMove>().GetTargetTile(hit.transform.gameObject);
         Tile t2 = t.adjacencyList[Random.Range(0,t.adjacencyList.Count)];
         hit.GetComponent<NPCMove>().MoveToTile(t2); 
+        //hit.transform.position = Vector3.MoveTowards(hit.transform.position, t2.transform.position, step);
         yield return new WaitUntil(()=> hit.GetComponent<NPCMove>().pushed == false);      
         tempPlayerUnit.GetComponent<PlayerMove>().attacking = false;
         TurnManager.EndTurn();
@@ -72,5 +77,5 @@ public class PlayerAttack : TacticsAttack
             }
         }
         checkedMouse = true;                
-    }  
+    }
 }
