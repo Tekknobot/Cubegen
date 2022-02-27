@@ -129,7 +129,7 @@ public class PlayerMove : TacticsMove
                 if (hit.collider.tag == "Tile" && !EventSystem.current.IsPointerOverGameObject()) {
                     Tile t = hit.collider.GetComponent<Tile>();
 
-                    if (t.selectable && this.moving == false) {
+                    if (t.selectable && this.moving == false && this.unitTurn == true) {
                         if (tempGO == null) {
                             return;
                         }

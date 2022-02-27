@@ -30,6 +30,8 @@ public class TacticsCamera : MonoBehaviour
 
         if (Input.GetMouseButtonDown(1)) {
             playerPrefabs[playerPrefabsIndex].GetComponent<PlayerMove>().tempGO = null;
+            SetUnitTurnFalse();
+            playerPrefabs[playerPrefabsIndex].GetComponent<PlayerMove>().unitTurn = true;
             playerPrefabs = GameObject.FindGameObjectsWithTag("Player");            
             target = playerPrefabs[playerPrefabsIndex++].transform;            
             if (playerPrefabsIndex >= playerPrefabs.Length) {
@@ -78,7 +80,13 @@ public class TacticsCamera : MonoBehaviour
         foreach (GameObject npcPrefab in npcPrefabs) {
             npcPrefab.GetComponent<cakeslice.Outline>().enabled = false;
         }         
-    }        
+    }    
+
+    public void SetUnitTurnFalse() {
+        foreach (GameObject playerPrefab in playerPrefabs) {
+            playerPrefab.GetComponent<PlayerMove>().unitTurn = false;
+        }        
+    }          
 
     public void CameraSelect() {
         //StartCoroutine(DeactivateUI());
