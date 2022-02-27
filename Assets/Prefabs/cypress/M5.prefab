@@ -141,6 +141,7 @@ MonoBehaviour:
   moveSpeed: 2
   jumpVelocity: 4.5
   actualTargetTile: {fileID: 0}
+  render: {fileID: 59864316342562057}
   selected: 0
   moveAnimation: {fileID: 9100000, guid: 494121fc8ab30eb4f9f7af6b9363ba78, type: 2}
   idleAnimation: {fileID: 9100000, guid: 3cdf51b0300d12f4cb66dbf43d32b14b, type: 2}

@@ -141,6 +141,15 @@ public class NPCMove : TacticsMove
 		yield return new WaitForSeconds(1f);
         attacking = false;
         Instantiate(attackEffect, hit.transform.position, Quaternion.Euler(45, -45, 0));
+
+        hit.GetComponent<PlayerMove>().pushed = true;
+        Tile t = hit.GetComponent<PlayerMove>().GetTargetTile(hit.transform.gameObject);
+        Tile t2 = t.adjacencyList[Random.Range(0,t.adjacencyList.Count)];
+        hit.GetComponent<PlayerMove>().MoveToTile(t2);
+        hit.GetComponent<PlayerMove>().moveSpeed = 4; 
+        yield return new WaitUntil(()=> hit.GetComponent<PlayerMove>().pushed == false);
+        hit.GetComponent<PlayerMove>().moveSpeed = 2; 
+
         yield return new WaitForSeconds(1f);        
         tacticsCamera.GetComponent<TacticsCamera>().target = hit.transform;
         //TurnManager.EndTurn();

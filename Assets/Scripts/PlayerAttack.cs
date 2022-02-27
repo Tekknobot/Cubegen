@@ -59,7 +59,6 @@ public class PlayerAttack : TacticsAttack
         Tile t2 = t.adjacencyList[Random.Range(0,t.adjacencyList.Count)];
         hit.GetComponent<NPCMove>().MoveToTile(t2);
         hit.GetComponent<NPCMove>().moveSpeed = 4; 
-        //hit.transform.position = Vector3.MoveTowards(hit.transform.position, t2.transform.position, step);
         yield return new WaitUntil(()=> hit.GetComponent<NPCMove>().pushed == false);
         hit.GetComponent<NPCMove>().moveSpeed = 2;      
         tempPlayerUnit.GetComponent<PlayerMove>().attacking = false;
@@ -76,10 +75,6 @@ public class PlayerAttack : TacticsAttack
                 Animator animator = tempPlayerUnit.GetComponent<Animator>();
                 animator.runtimeAnimatorController = tempPlayerUnit.GetComponent<PlayerMove>().attackAnimation;                
                 StartCoroutine(PlayerAttackCoroutine(tempNPCUnit.transform.gameObject, tempPlayerUnit));
-            }
-
-            if (hitCollider.tag == "Player") {
-                break;
             }
         }
         checkedMouse = true;                

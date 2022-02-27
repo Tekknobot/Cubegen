@@ -27,6 +27,7 @@ public class PlayerMove : TacticsMove
     public bool attacking = false;
 
     public bool unitTurn = false;
+    public Vector3 enemyTransform;
 
 	// Use this for initialization
 	void Start () 
@@ -39,7 +40,15 @@ public class PlayerMove : TacticsMove
 	// Update is called once per frame
 	void Update () 
 	{
-        PlayerDrawRayForward();
+        if (pushed) {
+            
+        }
+        else if (!turn && !this.GetComponent<PlayerMove>().attacking) {
+            Animator animator = this.gameObject.GetComponent<Animator>();
+            animator.runtimeAnimatorController = idleAnimation;
+            //this.GetComponent<cakeslice.Outline>().enabled = false;            
+            return;
+        }
 
         if (!turn) {
             Animator animator = this.gameObject.GetComponent<Animator>();
@@ -78,6 +87,16 @@ public class PlayerMove : TacticsMove
         if (transform.position.z < oldPositionZ) {
             GetComponent<SpriteRenderer>().flipX = true;
         }     
+
+        var directionToEnemy = enemyTransform - this.transform.position;
+        var projectionOnRight = Vector3.Dot(directionToEnemy, this.transform.right);
+
+        if (projectionOnRight < 0) {
+            GetComponent<SpriteRenderer>().flipX = false;
+        }
+        else if (projectionOnRight > 0) {
+            GetComponent<SpriteRenderer>().flipX = true;
+        }        
 	}
 
     void LateUpdate(){
@@ -141,13 +160,17 @@ public class PlayerMove : TacticsMove
                 }
             }
         }
-    }    
+    }
 
-    public void PlayerDrawRayForward() {
-        RaycastHit objectHit;        
-        // Shoot raycast
-        if (Physics.Raycast(transform.position, new Vector3(0, -1, 0), out objectHit, 50)) {
-            Debug.DrawRay(transform.position, new Vector3(0, -1, 0));
-        }        
-    }          
+    public void StartSphere() {
+        StartCoroutine(Sphere());
+    }
+
+    IEnumerator Sphere() {
+        Collider[] hitColliders = Physics.OverlapSphere(transform.position, 0.65f);
+        foreach (var hitCollider in hitColliders) {
+           enemyTransform = hitCollider.transform.position;
+           yield return null;
+        }              
+    }                
 }
