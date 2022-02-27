@@ -144,7 +144,7 @@ public class NPCMove : TacticsMove
         Instantiate(attackEffect, hit.transform.position, Quaternion.Euler(45, -45, 0));
         yield return new WaitForSeconds(1f);        
         tacticsCamera.GetComponent<TacticsCamera>().target = hit.transform;
-        TurnManager.EndTurn();
+        //TurnManager.EndTurn();
 	}
 
     void OnDrawGizmosSelected()

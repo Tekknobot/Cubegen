@@ -23,7 +23,11 @@ public class SpawnUnits : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        unit_spawn_points = GameObject.FindGameObjectsWithTag("Tile"); 
+        foreach (GameObject unit_spawn_point in unit_spawn_points) {
+            list_unit_spawn_points.Add(unit_spawn_point);
+        }
+        StartCoroutine(Spawn());         
     }
 
     // Update is called once per frame
@@ -31,15 +35,6 @@ public class SpawnUnits : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.R)) {              
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        }
-
-        if (Input.GetKeyDown(KeyCode.Space) && spawned == false) {
-            unit_spawn_points = GameObject.FindGameObjectsWithTag("Tile"); 
-            foreach (GameObject unit_spawn_point in unit_spawn_points) {
-                list_unit_spawn_points.Add(unit_spawn_point);
-            }
-            StartCoroutine(Spawn()); 
-            spawned = true;           
         }
     }
 
@@ -79,7 +74,7 @@ public class SpawnUnits : MonoBehaviour
         }  
               
         StartCoroutine(EnableCameraScript());
-
+        spawned = true;
         yield return null;    
     }
 

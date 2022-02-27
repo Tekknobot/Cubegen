@@ -414,7 +414,7 @@ public class TacticsMove : MonoBehaviour
     }   
 
     IEnumerator TurnOffLastOutline() {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0);
         GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().TurnOffNPCOutlines();
     }
 }
