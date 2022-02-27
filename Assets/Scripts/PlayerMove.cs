@@ -169,8 +169,10 @@ public class PlayerMove : TacticsMove
     IEnumerator Sphere() {
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, 0.65f);
         foreach (var hitCollider in hitColliders) {
-           enemyTransform = hitCollider.transform.position;
-           yield return null;
+            if (hitCollider.tag != "Player") {
+                enemyTransform = hitCollider.transform.position;
+            }
+            yield return null;
         }              
     }                
 }
