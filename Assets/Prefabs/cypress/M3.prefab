@@ -135,6 +135,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   turn: 0
   moving: 1
+  pushed: 0
   move: 4
   jumpHeight: 1
   moveSpeed: 2
@@ -178,7 +179,11 @@ MonoBehaviour:
   unitTurn: 0
   targetButton: {fileID: 0}
   healthButton: {fileID: 0}
+  tempPlayerUnit: {fileID: 0}
+  tempNPCUnit: {fileID: 0}
   checkedMouse: 0
+  speed: 0.2
+  step: 0
 --- !u!114 &7850476584328927512
 MonoBehaviour:
   m_ObjectHideFlags: 0

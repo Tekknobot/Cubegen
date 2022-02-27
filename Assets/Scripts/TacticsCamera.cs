@@ -36,7 +36,7 @@ public class TacticsCamera : MonoBehaviour
                 playerPrefabsIndex = 0;
             }
 
-            GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().TurnOffAllOutlines();
+            GetComponent<TacticsCamera>().TurnOffAllOutlines();
             CameraSelect();
         }
     }
@@ -92,18 +92,13 @@ public class TacticsCamera : MonoBehaviour
         playerPrefabs[playerPrefabsIndex].GetComponent<TacticsMove>().turn = true;
         playerPrefabs[playerPrefabsIndex].GetComponent<PlayerMove>().unitTurn = true;
         playerPrefabs[playerPrefabsIndex].GetComponent<PlayerMove>().tempGO = target.transform.gameObject;
-        playerPrefabs[playerPrefabsIndex].GetComponent<cakeslice.Outline>().enabled = true;
-        GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().TurnOffNPCOutlines();                               
+        TurnOffAllOutlines();
+        playerPrefabs[playerPrefabsIndex].GetComponent<cakeslice.Outline>().enabled = true;                               
     }
 
     IEnumerator DeactivateUI() {
         GameObject.Find("UI_Manager").GetComponent<UI_Manager>().targetButton.SetActive(false);    
         GameObject.Find("UI_Manager").GetComponent<UI_Manager>().healthButton.SetActive(false);
         yield return null; 
-    }
-
-    IEnumerator GetReadyStart() {
-        yield return new WaitForSeconds(3);
-        CameraSelect();
     }
 }

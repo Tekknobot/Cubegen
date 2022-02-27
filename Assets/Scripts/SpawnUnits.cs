@@ -9,7 +9,10 @@ public class SpawnUnits : MonoBehaviour
     public GameObject[] unit_prefabs;
     public GameObject[] player_clones;
     public GameObject[] npc_clones;
-    public List<GameObject> list_unit_spawn_points;     
+    public List<GameObject> list_unit_spawn_points;
+
+    public GameObject[] playerPrefabs;
+    public GameObject[] npcPrefabs;     
 
     public int[] spawn_points_array;
 

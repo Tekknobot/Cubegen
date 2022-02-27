@@ -134,6 +134,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   turn: 0
   moving: 1
+  pushed: 0
   move: 3
   jumpHeight: 1
   moveSpeed: 2
