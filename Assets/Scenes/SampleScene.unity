@@ -3368,7 +3368,7 @@ Camera:
   m_AllowMSAA: 0
   m_AllowDynamicResolution: 0
   m_ForceIntoRT: 0
-  m_OcclusionCulling: 0
+  m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
 --- !u!4 &519420032
@@ -3404,7 +3404,7 @@ MonoBehaviour:
   lineColor1: {r: 0, g: 1, b: 0, a: 1}
   lineColor2: {r: 0, g: 0, b: 1, a: 1}
   additiveRendering: 1
-  backfaceCulling: 1
+  backfaceCulling: 0
   fillTexture: {fileID: 0}
   fillTextureScale: {x: 1, y: 1}
   useFillColor: 0
@@ -8042,6 +8042,8 @@ MonoBehaviour:
   player_clones: []
   npc_clones: []
   list_unit_spawn_points: []
+  playerPrefabs: []
+  npcPrefabs: []
   spawn_points_array: 
   spawned: 0
 --- !u!1 &1410209549

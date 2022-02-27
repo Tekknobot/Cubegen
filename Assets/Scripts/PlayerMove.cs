@@ -58,10 +58,10 @@ public class PlayerMove : TacticsMove
             CheckMouse();             
         }
         else if (moving) {
+            GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().TargetCameraOnPlayer();
             Animator animator = this.gameObject.GetComponent<Animator>();
             animator.runtimeAnimatorController = moveAnimation;            
             Move();             
-            GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().target = this.gameObject.transform;
             // GameObject.Find("UI_Manager").GetComponent<UI_Manager>().targetButton.SetActive(false);    
             // GameObject.Find("UI_Manager").GetComponent<UI_Manager>().healthButton.SetActive(false);            
         }

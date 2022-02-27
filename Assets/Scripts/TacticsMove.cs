@@ -169,9 +169,7 @@ public class TacticsMove : MonoBehaviour
             
             if (this.transform.tag == "NPC") {
                 this.GetComponent<NPCMove>().PlayerWithinRadius(this.gameObject, 0.625f);
-                //this.GetComponent<NPCMove>().PlayerDrawRayForward();
-                GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().target = GameObject.Find("Map").gameObject.transform;
-                StartCoroutine(TurnOffLastOutline()); 
+                GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().target = GameObject.Find("Map").gameObject.transform; 
             }    
 
             TurnManager.EndTurn();     
@@ -412,9 +410,4 @@ public class TacticsMove : MonoBehaviour
     {
         turn = false;
     }   
-
-    IEnumerator TurnOffLastOutline() {
-        yield return new WaitForSeconds(0);
-        GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().TurnOffNPCOutlines();
-    }
 }

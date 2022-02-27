@@ -58,11 +58,10 @@ public class NPCMove : TacticsMove
         }
 
         if (moving) {
+            GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().TargetCameraOnNPC();
             Animator animator = this.gameObject.GetComponent<Animator>();
             animator.runtimeAnimatorController = moveAnimation;             
             Move();
-            this.GetComponent<cakeslice.Outline>().enabled = true;
-            GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().TargetCameraOnNPC();
         }     
 
         if (transform.position.x > oldPositionX) {
