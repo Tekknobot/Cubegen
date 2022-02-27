@@ -115,7 +115,7 @@ public class PlayerMove : TacticsMove
                 if (hit.collider.tag == "NPC" && !EventSystem.current.IsPointerOverGameObject()) {
                     hit.transform.gameObject.GetComponent<cakeslice.Outline>().enabled = true;
                     tacticsCamera.GetComponent<TacticsCamera>().target = hit.collider.transform;
-                    //GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().TurnOffPlayerOutlines(); 
+                    GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().TurnOffPlayerOutlines(); 
                 }
             }            
         }
@@ -148,5 +148,5 @@ public class PlayerMove : TacticsMove
         if (Physics.Raycast(transform.position, new Vector3(0, -1, 0), out objectHit, 50)) {
             Debug.DrawRay(transform.position, new Vector3(0, -1, 0));
         }        
-    }       
+    }          
 }

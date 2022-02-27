@@ -23,23 +23,27 @@ public class SpawnUnits : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        unit_spawn_points = GameObject.FindGameObjectsWithTag("Tile"); 
-        foreach (GameObject unit_spawn_point in unit_spawn_points) {
-            list_unit_spawn_points.Add(unit_spawn_point);
-        }
-        StartCoroutine(Spawn());               
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.R)) {
+        if (Input.GetKeyDown(KeyCode.R)) {              
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Space) && spawned == false) {
+            unit_spawn_points = GameObject.FindGameObjectsWithTag("Tile"); 
+            foreach (GameObject unit_spawn_point in unit_spawn_points) {
+                list_unit_spawn_points.Add(unit_spawn_point);
+            }
+            StartCoroutine(Spawn()); 
+            spawned = true;           
         }
     }
 
     IEnumerator Spawn() {
-        yield return new WaitForSeconds(0f);
         foreach (GameObject prefab in unit_prefabs) {
             spawn_points_index = Random.Range(0, list_unit_spawn_points.Count);
             Instantiate(prefab, list_unit_spawn_points[spawn_points_index].transform);
@@ -61,14 +65,22 @@ public class SpawnUnits : MonoBehaviour
         foreach (GameObject playerUnit in playerUnits) {
             playerUnit.transform.parent = null;
             playerUnit.transform.localScale = new Vector3(1, 1, 1);
+            playerUnit.GetComponent<PlayerMove>().FindSelectableTiles();
+            playerUnit.GetComponent<PlayerMove>().MoveToTile(playerUnit.GetComponent<PlayerMove>().GetTargetTile(playerUnit));
+            playerUnit.GetComponent<PlayerMove>().RemoveSelectableTiles();            
         }
         GameObject[] npcUnits = GameObject.FindGameObjectsWithTag("NPC");
         foreach (GameObject npcUnit in npcUnits) {
             npcUnit.transform.parent = null;
             npcUnit.transform.localScale = new Vector3(1, 1, 1);
+            npcUnit.GetComponent<NPCMove>().FindSelectableTiles();
+            npcUnit.GetComponent<NPCMove>().MoveToTile(npcUnit.GetComponent<NPCMove>().GetTargetTile(npcUnit));
+            npcUnit.GetComponent<NPCMove>().RemoveSelectableTiles();            
         }  
               
-        StartCoroutine(EnableCameraScript());    
+        StartCoroutine(EnableCameraScript());
+
+        yield return null;    
     }
 
     IEnumerator EnableCameraScript() {

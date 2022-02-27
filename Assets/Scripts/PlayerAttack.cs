@@ -63,7 +63,7 @@ public class PlayerAttack : TacticsAttack
         yield return new WaitUntil(()=> hit.GetComponent<NPCMove>().pushed == false);
         hit.GetComponent<NPCMove>().moveSpeed = 2;      
         tempPlayerUnit.GetComponent<PlayerMove>().attacking = false;
-        TurnManager.EndTurn();
+        //TurnManager.EndTurn();
 	}  
 
     IEnumerator WaitForCheck(GameObject tempPlayerUnit) {
