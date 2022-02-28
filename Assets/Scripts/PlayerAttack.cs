@@ -52,7 +52,7 @@ public class PlayerAttack : TacticsAttack
         tempPlayerUnit.GetComponent<PlayerMove>().attacking = true;
 		yield return new WaitForSeconds(1f);
         hit.GetComponent<TacticsAttack>().TakeDamage(tempPlayerUnit.GetComponent<TacticsAttack>().damage);
-        hit.GetComponentInChildren<HealthBarHandler>().SetHealthBarValue((float)hit.GetComponent<NPCAttack>().currentHP/hit.GetComponent<NPCAttack>().maxHP);
+        hit.GetComponentInChildren<HealthBarHandler>().SetHealthBarValue((float)hit.GetComponent<NPCAttack>().currentHP/(float)hit.GetComponent<NPCAttack>().maxHP);
         Instantiate(attackEffect, hit.transform.position, Quaternion.Euler(45, -45, 0)); 
         hit.GetComponent<NPCMove>().pushed = true;
         Tile t = hit.GetComponent<NPCMove>().GetTargetTile(hit.transform.gameObject);

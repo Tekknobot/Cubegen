@@ -38,7 +38,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0.00000017881393, y: 0.5999994}
-  m_SizeDelta: {x: 0.6, y: 0.05}
+  m_SizeDelta: {x: 0.6, y: 0.1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &6121977284508749328
 Canvas:
@@ -344,7 +344,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0.6, y: 0.05}
+  m_SizeDelta: {x: 0.6, y: 0.1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5067632064977320791
 CanvasRenderer:
@@ -396,3 +396,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4536a778c257894cb980c3266f62a61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  HealthBarImage: {fileID: 0}
