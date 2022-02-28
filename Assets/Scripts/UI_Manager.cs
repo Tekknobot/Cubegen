@@ -51,21 +51,23 @@ public class UI_Manager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {   
-        if (tacticsCamera.GetComponent<TacticsCamera>().target.transform.tag == "Player") {
-            portrait.GetComponent<Image>().sprite = tacticsCamera.GetComponent<TacticsCamera>().target.GetComponent<SpriteRenderer>().sprite; 
-            unit_label.GetComponent<Text>().text = tacticsCamera.GetComponent<TacticsCamera>().target.GetComponent<PlayerAttack>().unitName;
-            healthbar_hp.text = tacticsCamera.GetComponent<TacticsCamera>().target.GetComponent<PlayerAttack>().currentHP.ToString() + " HP";
-            healthbar_slider.value = tacticsCamera.GetComponent<TacticsCamera>().target.GetComponent<PlayerAttack>().currentHP;
-            StartCoroutine(DeactivateUI());
-        }  
-        if (tacticsCamera.GetComponent<TacticsCamera>().target.transform.tag == "NPC") {
-            portrait.GetComponent<Image>().sprite = tacticsCamera.GetComponent<TacticsCamera>().target.GetComponent<SpriteRenderer>().sprite; 
-            unit_label.GetComponent<Text>().text = tacticsCamera.GetComponent<TacticsCamera>().target.GetComponent<NPCAttack>().unitName;
-            healthbar_hp.text = tacticsCamera.GetComponent<TacticsCamera>().target.GetComponent<NPCAttack>().currentHP.ToString() + " HP";
-            healthbar_slider.value = tacticsCamera.GetComponent<TacticsCamera>().target.GetComponent<NPCAttack>().currentHP;
-            targetButton.SetActive(false);    
-            healthButton.SetActive(false);
-        }                                      
+        if (tacticsCamera.GetComponent<TacticsCamera>().target) {
+            if (tacticsCamera.GetComponent<TacticsCamera>().target.transform.tag == "Player") {
+                portrait.GetComponent<Image>().sprite = tacticsCamera.GetComponent<TacticsCamera>().target.GetComponent<SpriteRenderer>().sprite; 
+                unit_label.GetComponent<Text>().text = tacticsCamera.GetComponent<TacticsCamera>().target.GetComponent<PlayerAttack>().unitName;
+                healthbar_hp.text = tacticsCamera.GetComponent<TacticsCamera>().target.GetComponent<PlayerAttack>().currentHP.ToString() + " HP";
+                healthbar_slider.value = tacticsCamera.GetComponent<TacticsCamera>().target.GetComponent<PlayerAttack>().currentHP;
+                StartCoroutine(DeactivateUI());
+            }  
+            if (tacticsCamera.GetComponent<TacticsCamera>().target.transform.tag == "NPC") {
+                portrait.GetComponent<Image>().sprite = tacticsCamera.GetComponent<TacticsCamera>().target.GetComponent<SpriteRenderer>().sprite; 
+                unit_label.GetComponent<Text>().text = tacticsCamera.GetComponent<TacticsCamera>().target.GetComponent<NPCAttack>().unitName;
+                healthbar_hp.text = tacticsCamera.GetComponent<TacticsCamera>().target.GetComponent<NPCAttack>().currentHP.ToString() + " HP";
+                healthbar_slider.value = tacticsCamera.GetComponent<TacticsCamera>().target.GetComponent<NPCAttack>().currentHP;
+                targetButton.SetActive(false);    
+                healthButton.SetActive(false);
+            }                                   
+        }   
 
         if (TurnManager.turnTeam.Count > 1) {
             movesLeft.GetComponent<Text>().color = Color.white;

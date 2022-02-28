@@ -141,6 +141,7 @@ public class NPCMove : TacticsMove
         animator.runtimeAnimatorController = this.gameObject.GetComponent<NPCMove>().attackAnimation;        
 		yield return new WaitForSeconds(1f);
         attacking = false;
+        hit.GetComponentInChildren<HealthBarHandler>().SetHealthBarValue((float)hit.GetComponent<PlayerAttack>().currentHP/hit.GetComponent<PlayerAttack>().maxHP);
         Instantiate(attackEffect, hit.transform.position, Quaternion.Euler(45, -45, 0));
         hit.GetComponent<PlayerMove>().pushed = true;
         Tile t = hit.GetComponent<PlayerMove>().GetTargetTile(hit.transform.gameObject);
