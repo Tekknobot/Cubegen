@@ -43,7 +43,7 @@ public class TacticsMove : MonoBehaviour
 
         if (this.transform.gameObject.tag == "Player") {
             TurnManager.AddUnit(this);
-        } 
+        }
     }
 
     public void GetCurrentTile()
@@ -68,7 +68,7 @@ public class TacticsMove : MonoBehaviour
 
     public void ComputeAdjacencyLists(float jumpHeight, Tile target)
     {
-        //tiles = GameObject.FindGameObjectsWithTag("Tile");
+        tiles = GameObject.FindGameObjectsWithTag("Tile");
 
         foreach (GameObject tile in tiles)
         {
@@ -167,7 +167,7 @@ public class TacticsMove : MonoBehaviour
             moving = false;
             pushed = false;
             
-            if (this.transform.tag == "NPC") {
+            if (this.transform.tag == "NPC" && GameObject.Find("Map").GetComponent<SpawnUnits>().spawned == true) {
                 this.GetComponent<NPCMove>().PlayerWithinRadius(this.gameObject, 0.625f);
                 GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().target = GameObject.Find("Map").gameObject.transform; 
             }    

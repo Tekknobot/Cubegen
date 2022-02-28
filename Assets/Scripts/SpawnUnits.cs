@@ -73,7 +73,7 @@ public class SpawnUnits : MonoBehaviour
             npcUnit.transform.localScale = new Vector3(1, 1, 1);
             npcUnit.GetComponent<NPCMove>().FindSelectableTiles();
             npcUnit.GetComponent<NPCMove>().MoveToTile(npcUnit.GetComponent<NPCMove>().GetTargetTile(npcUnit));
-            npcUnit.GetComponent<NPCMove>().RemoveSelectableTiles();            
+            npcUnit.GetComponent<NPCMove>().RemoveSelectableTiles(); 
         }  
               
         StartCoroutine(EnableCameraScript());

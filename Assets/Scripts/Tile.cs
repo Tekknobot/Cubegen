@@ -54,6 +54,8 @@ public class Tile : MonoBehaviour
 
     public void Reset()
     {
+        walkable = true;
+
         adjacencyList.Clear();
 
         current = false;
@@ -89,9 +91,11 @@ public class Tile : MonoBehaviour
             {
                 RaycastHit hit;
 
-                if (!Physics.Raycast(tile.transform.position, Vector3.up, out hit, 1) || (tile == target))
-                {
+                if (!Physics.Raycast(tile.transform.position, Vector3.up, out hit, 1) || (tile == target)) {
                     adjacencyList.Add(tile);
+                }
+                else if (Physics.Raycast(tile.transform.position, Vector3.up, out hit, 1)) {
+                    tile.walkable = false;
                 }
             }
         }
