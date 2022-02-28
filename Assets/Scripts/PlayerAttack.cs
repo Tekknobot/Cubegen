@@ -73,11 +73,15 @@ public class PlayerAttack : TacticsAttack
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, 0.625f);
         foreach (var hitCollider in hitColliders)
         {
-            if (hitCollider.tag == "NPC") {
-                tempNPCUnit = tacticsCamera.GetComponent<TacticsCamera>().target.gameObject;
-                Animator animator = tempPlayerUnit.GetComponent<Animator>();
-                animator.runtimeAnimatorController = tempPlayerUnit.GetComponent<PlayerMove>().attackAnimation;                
-                StartCoroutine(PlayerAttackCoroutine(tempNPCUnit.transform.gameObject, tempPlayerUnit));
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;  
+            if (Physics.Raycast(ray, out hit)) {          
+                if (hitCollider.tag == "NPC" && hit.transform.tag == "NPC") {
+                    tempNPCUnit = tacticsCamera.GetComponent<TacticsCamera>().target.gameObject;
+                    Animator animator = tempPlayerUnit.GetComponent<Animator>();
+                    animator.runtimeAnimatorController = tempPlayerUnit.GetComponent<PlayerMove>().attackAnimation;                
+                    StartCoroutine(PlayerAttackCoroutine(tempNPCUnit.transform.gameObject, tempPlayerUnit));
+                }
             }
         }
         checkedMouse = true;                
