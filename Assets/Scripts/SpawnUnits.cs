@@ -77,12 +77,12 @@ public class SpawnUnits : MonoBehaviour
         }  
               
         StartCoroutine(EnableCameraScript());
-        spawned = true;
         yield return null;    
     }
 
     IEnumerator EnableCameraScript() {
         yield return new WaitForSeconds(6);
         GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().enabled = true;
+        spawned = true;
     }
 }
