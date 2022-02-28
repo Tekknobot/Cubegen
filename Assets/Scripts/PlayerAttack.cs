@@ -35,8 +35,7 @@ public class PlayerAttack : TacticsAttack
 	
 	// Update is called once per frame
 	void Update () 
-	{
-        Debug.DrawRay(transform.position, new Vector3(1, 0, 0));   
+	{  
         step = speed * Time.deltaTime;
     }
 
@@ -62,6 +61,7 @@ public class PlayerAttack : TacticsAttack
         yield return new WaitUntil(()=> hit.GetComponent<NPCMove>().pushed == false);
         hit.GetComponent<NPCMove>().moveSpeed = 2;      
         tempPlayerUnit.GetComponent<PlayerMove>().attacking = false;
+        hit.GetComponent<NPCMove>().RemoveSelectableTiles();
         //TurnManager.EndTurn();
 	}  
 

@@ -20,6 +20,8 @@ public class NPCMove : TacticsMove
     public GameObject attackEffect;
     public bool attacking = false;
 
+    public Tile t2;
+
 	// Use this for initialization
 	void Start () 
 	{
@@ -127,7 +129,7 @@ public class NPCMove : TacticsMove
         if (Physics.Raycast(transform.position, new Vector3(0, -1, 0), out objectHit, 50)) {
             Debug.DrawRay(transform.position, new Vector3(0, -1, 0));
         }        
-    }   
+    }     
 
     public void NPCAttackFunction(GameObject target) {
         StartCoroutine(NPCAttackCoroutine(target));
@@ -144,9 +146,18 @@ public class NPCMove : TacticsMove
 
         hit.GetComponent<PlayerMove>().pushed = true;
         Tile t = hit.GetComponent<PlayerMove>().GetTargetTile(hit.transform.gameObject);
-        Tile t2 = t.adjacencyList[Random.Range(0,t.adjacencyList.Count)];
-        hit.GetComponent<PlayerMove>().MoveToTile(t2);
-        hit.GetComponent<PlayerMove>().moveSpeed = 4; 
+        t2 = t.adjacencyList[Random.Range(0,t.adjacencyList.Count)];
+
+        RaycastHit objectHit;        
+        // Shoot raycast
+        if (Physics.Raycast(t2.transform.position, new Vector3(1, 0, 0), out objectHit, 50)) {
+            Debug.DrawRay(t2.transform.position, new Vector3(1, 0, 0));
+            if (objectHit.transform.tag != "Player" || objectHit.transform.tag != "NPC" ) {
+                hit.GetComponent<PlayerMove>().MoveToTile(t2);
+                hit.GetComponent<PlayerMove>().moveSpeed = 4;                
+            }
+        }
+
         yield return new WaitUntil(()=> hit.GetComponent<PlayerMove>().pushed == false);
         hit.GetComponent<PlayerMove>().moveSpeed = 2; 
 
