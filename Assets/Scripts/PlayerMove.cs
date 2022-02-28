@@ -124,8 +124,6 @@ public class PlayerMove : TacticsMove
                     GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().target = this.gameObject.transform;
                     hit.transform.gameObject.GetComponent<cakeslice.Outline>().enabled = true;
                     tacticsCamera.GetComponent<TacticsCamera>().target = hit.collider.transform;  
-                    GameObject.Find("Target_btn").SetActive(true);    
-                    GameObject.Find("Health_btn").SetActive(true);
                 }
             }            
         }    
@@ -156,7 +154,7 @@ public class PlayerMove : TacticsMove
                     Tile t = hit.collider.GetComponent<Tile>();
 
                     if (t.selectable && this.moving == false && this.unitTurn == true) {
-                        if (tempGO == null) {
+                        if (tempGO == null || t.current) {
                             return;
                         }
                         else {

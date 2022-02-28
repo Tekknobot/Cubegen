@@ -57,7 +57,7 @@ public class UI_Manager : MonoBehaviour
                 unit_label.GetComponent<Text>().text = tacticsCamera.GetComponent<TacticsCamera>().target.GetComponent<PlayerAttack>().unitName;
                 healthbar_hp.text = tacticsCamera.GetComponent<TacticsCamera>().target.GetComponent<PlayerAttack>().currentHP.ToString() + " HP";
                 healthbar_slider.value = tacticsCamera.GetComponent<TacticsCamera>().target.GetComponent<PlayerAttack>().currentHP;
-                StartCoroutine(DeactivateUI());
+                StartCoroutine(ActivateUI());
             }  
             if (tacticsCamera.GetComponent<TacticsCamera>().target.transform.tag == "NPC") {
                 portrait.GetComponent<Image>().sprite = tacticsCamera.GetComponent<TacticsCamera>().target.GetComponent<SpriteRenderer>().sprite; 
@@ -79,7 +79,7 @@ public class UI_Manager : MonoBehaviour
         }
     }
 
-    IEnumerator DeactivateUI() {
+    IEnumerator ActivateUI() {
         if (Input.GetMouseButtonDown(0)) {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
