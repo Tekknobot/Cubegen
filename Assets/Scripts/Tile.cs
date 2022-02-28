@@ -91,10 +91,10 @@ public class Tile : MonoBehaviour
             {
                 RaycastHit hit;
 
-                if (!Physics.Raycast(tile.transform.position, Vector3.up, out hit, 1) || (tile == target)) {
+                if (!Physics.Raycast(tile.transform.position, Vector3.up, out hit, 100) || (tile == target)) {
                     adjacencyList.Add(tile);
                 }
-                else if (Physics.Raycast(tile.transform.position, Vector3.up, out hit, 1)) {
+                else if (Physics.Raycast(tile.transform.position, Vector3.up, out hit, 100)) {
                     tile.walkable = false;
                 }
             }

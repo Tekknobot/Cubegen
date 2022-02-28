@@ -173,12 +173,11 @@ public class TacticsMove : MonoBehaviour
             }    
 
             if (this.moving == false) {
+                TurnManager.EndTurn();
                 if (this.transform.tag == "Player") {
                     this.GetComponent<PlayerMove>().StartSphere();
                 }
-            }  
-
-            TurnManager.EndTurn();   
+            }     
         }
     }
 

@@ -92,10 +92,10 @@ public class PlayerMove : TacticsMove
         var projectionOnRight = Vector3.Dot(directionToEnemy, this.transform.right);
 
         if (projectionOnRight < 0) {
-            GetComponent<SpriteRenderer>().flipX = false;
+            GetComponent<SpriteRenderer>().flipX = true;
         }
         else if (projectionOnRight > 0) {
-            GetComponent<SpriteRenderer>().flipX = true;
+            GetComponent<SpriteRenderer>().flipX = false;
         }        
 	}
 
@@ -113,8 +113,9 @@ public class PlayerMove : TacticsMove
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit)) {
                 if (hit.collider.tag == "Player" && !EventSystem.current.IsPointerOverGameObject()) {
+                    tempGO = null;
+                    GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().SetUnitTurnFalse();
                     RemoveSelectableTiles();
-                    GetComponent<PlayerMove>().unitTurn = false;
                     hit.transform.gameObject.GetComponent<TacticsMove>().FindSelectableTiles();
                     hit.transform.gameObject.GetComponent<TacticsMove>().turn = true;
                     hit.transform.gameObject.GetComponent<PlayerMove>().unitTurn = true;
@@ -133,6 +134,10 @@ public class PlayerMove : TacticsMove
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit)) {
                 if (hit.collider.tag == "NPC" && !EventSystem.current.IsPointerOverGameObject()) {
+                    tempGO = null;
+                    GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().SetUnitTurnFalse();
+                    RemoveSelectableTiles();
+                    hit.transform.gameObject.GetComponent<TacticsMove>().FindSelectableTiles();
                     GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().TurnOffAllOutlines();
                     hit.transform.gameObject.GetComponent<cakeslice.Outline>().enabled = true;
                     tacticsCamera.GetComponent<TacticsCamera>().target = hit.collider.transform; 
@@ -171,6 +176,8 @@ public class PlayerMove : TacticsMove
         foreach (var hitCollider in hitColliders) {
             if (hitCollider.tag != "Player") {
                 enemyTransform = hitCollider.transform.position;
+                GameObject.Find("Target_btn").SetActive(false);    
+                GameObject.Find("Health_btn").SetActive(false);
             }
             yield return null;
         }              

@@ -134,6 +134,7 @@ public class NPCMove : TacticsMove
     }  
 
 	IEnumerator NPCAttackCoroutine(GameObject hit) {
+        ComputeAdjacencyLists(this.GetComponent<NPCMove>().jumpHeight, this.GetComponent<NPCMove>().GetTargetTile(this.gameObject));
         attacking = true;
         hit.transform.gameObject.GetComponent<TacticsAttack>().TakeDamage(this.GetComponent<TacticsAttack>().damage);
         Animator animator = this.gameObject.GetComponent<Animator>();
