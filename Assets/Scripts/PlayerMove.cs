@@ -106,7 +106,6 @@ public class PlayerMove : TacticsMove
             if (Physics.Raycast(ray, out hit)) {
                 if (hit.collider.tag == "Player" && !EventSystem.current.IsPointerOverGameObject()) {
                     tempGO = null;
-                    hit.transform.gameObject.GetComponent<PlayerMove>().unitTurn = false;
                     GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().SetUnitTurnFalse();
                     RemoveSelectableTiles();
                     hit.transform.gameObject.GetComponent<TacticsMove>().FindSelectableTiles();
