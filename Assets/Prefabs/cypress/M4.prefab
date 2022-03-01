@@ -121,7 +121,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 0.5}
+  m_Size: {x: 0.5, y: 0.5, z: 0.5}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &433229189802929223
 MonoBehaviour:
@@ -172,6 +172,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 1
+  healthUp: 1
   maxHP: 5
   currentHP: 5
   unitName: Angel Mech
@@ -180,6 +181,7 @@ MonoBehaviour:
   tacticsCamera: {fileID: 0}
   checkTile: 0
   attackEffect: {fileID: 1002605618548861685, guid: 29121037f1fb25d40940d875fbfcc030, type: 3}
+  healthEffect: {fileID: 7847509287896485424, guid: cd40745c91b744249a7326393ea33f57, type: 3}
   attacked: 0
   unitTurn: 0
   targetButton: {fileID: 0}

@@ -96,6 +96,7 @@ public class TacticsCamera : MonoBehaviour
         playerPrefabs = GameObject.FindGameObjectsWithTag("Player");
 
         foreach (GameObject playerPrefab in playerPrefabs) {
+            playerPrefabsIndex++;
             playerPrefab.GetComponent<PlayerMove>().tempGO = null;
             SetUnitTurnFalse();
             playerPrefab.GetComponent<PlayerMove>().unitTurn = true;            
@@ -103,10 +104,7 @@ public class TacticsCamera : MonoBehaviour
             GetComponent<TacticsCamera>().TurnOffAllOutlines();
             CameraSelect();
             StartCoroutine(DelayCamera());         
-        }          
-        if (playerPrefabsIndex >= playerPrefabs.Length) {
-            playerPrefabsIndex = 0;
-        }                  
+        }                           
     }       
 
     public void CameraSelect() {

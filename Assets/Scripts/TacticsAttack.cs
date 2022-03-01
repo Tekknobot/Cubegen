@@ -5,9 +5,10 @@ using UnityEngine;
 public class TacticsAttack : MonoBehaviour 
 {
 	public int damage;
+	public float healthUp;
 
 	public int maxHP;   
-    public int currentHP = 5;    
+    public float currentHP = 5;    
 
 	public string unitName;
 	public int unitLevel;     
@@ -22,7 +23,7 @@ public class TacticsAttack : MonoBehaviour
 			return false;
 	}
 
-	public void Heal(int amount)
+	public void Heal(float amount)
 	{
 		currentHP += amount;
 		if (currentHP > maxHP)

@@ -393,9 +393,7 @@ public class TacticsMove : MonoBehaviour
 
         //todo - what do you do if there is no path to the target tile?
         Debug.Log("Path not found");
-        if (moving == false) {
-            TurnManager.EndTurn();   
-        }
+        TurnManager.EndTurn();
     }
 
     public void BeginTurn()

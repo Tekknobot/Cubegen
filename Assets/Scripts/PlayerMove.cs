@@ -129,12 +129,12 @@ public class PlayerMove : TacticsMove
             if (Physics.Raycast(ray, out hit)) {
                 if (hit.collider.tag == "NPC" && !EventSystem.current.IsPointerOverGameObject()) {
                     tempGO = null;
-                    GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().SetUnitTurnFalse();
                     RemoveSelectableTiles();
                     hit.transform.gameObject.GetComponent<TacticsMove>().FindSelectableTiles();
-                    GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().TurnOffAllOutlines();
                     hit.transform.gameObject.GetComponent<cakeslice.Outline>().enabled = true;
                     tacticsCamera.GetComponent<TacticsCamera>().target = hit.collider.transform; 
+                    GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().TurnOffAllOutlines();
+                    GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().SetUnitTurnFalse();
                 }
             }            
         }

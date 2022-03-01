@@ -11,6 +11,7 @@ public class PlayerAttack : TacticsAttack
     public bool checkTile = false;
 
     public GameObject attackEffect;
+    public GameObject healthEffect;
     public bool attacked = false;
 
     public bool unitTurn = false;
@@ -51,13 +52,21 @@ public class PlayerAttack : TacticsAttack
         CheckMouse(tempPlayerUnit);
     }
 
+    public void OnHealthButton() {
+        tempPlayerUnit = tacticsCamera.GetComponent<TacticsCamera>().target.gameObject;
+        Instantiate(healthEffect, new Vector3(tempPlayerUnit.transform.position.x, tempPlayerUnit.transform.position.y-0.5f, tempPlayerUnit.transform.position.z), Quaternion.Euler(270, 0, 0)); 
+        tempPlayerUnit.GetComponent<PlayerAttack>().Heal(tempPlayerUnit.GetComponent<PlayerAttack>().healthUp);
+        tempPlayerUnit.GetComponentInChildren<HealthBarHandler>().SetHealthBarValue(((float)tempPlayerUnit.GetComponent<PlayerAttack>().currentHP/tempPlayerUnit.GetComponent<PlayerAttack>().maxHP));     
+        TurnManager.EndTurn();
+    }    
+
 	IEnumerator PlayerAttackCoroutine(GameObject hit, GameObject tempPlayerUnit) {
         tempPlayerUnit.GetComponent<PlayerMove>().attacking = true;
         audioData = GetComponent<AudioSource>();
         audioData.PlayOneShot(clip[0], 1);       
 		yield return new WaitForSeconds(1f);
         hit.GetComponent<TacticsAttack>().TakeDamage(tempPlayerUnit.GetComponent<TacticsAttack>().damage);
-        hit.GetComponentInChildren<HealthBarHandler>().SetHealthBarValue((float)hit.GetComponent<NPCAttack>().currentHP/(float)hit.GetComponent<NPCAttack>().maxHP);
+        hit.GetComponentInChildren<HealthBarHandler>().SetHealthBarValue((float)hit.GetComponent<NPCAttack>().currentHP/hit.GetComponent<NPCAttack>().maxHP);
         Instantiate(attackEffect, hit.transform.position, Quaternion.Euler(45, -45, 0)); 
         hit.GetComponent<NPCMove>().pushed = true;
         Tile t = hit.GetComponent<NPCMove>().GetTargetTile(hit.transform.gameObject);
@@ -75,7 +84,7 @@ public class PlayerAttack : TacticsAttack
 
     IEnumerator WaitForCheck(GameObject tempPlayerUnit) {
         yield return new WaitUntil(()=> Input.GetMouseButtonDown(0));
-        Collider[] hitColliders = Physics.OverlapSphere(transform.position, 0.55f);
+        Collider[] hitColliders = Physics.OverlapSphere(transform.position, 1f);
         foreach (var hitCollider in hitColliders)
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);

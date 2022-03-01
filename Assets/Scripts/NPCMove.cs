@@ -50,7 +50,7 @@ public class NPCMove : TacticsMove
             FindNearestTarget();
             CalculatePath();
             FindSelectableTiles();
-            //actualTargetTile.target = true;            
+            actualTargetTile.target = true;            
             pushed = false;
         }
 
@@ -146,7 +146,7 @@ public class NPCMove : TacticsMove
         animator.runtimeAnimatorController = this.gameObject.GetComponent<NPCMove>().attackAnimation;        
 		yield return new WaitForSeconds(1f);
         attacking = false;
-        hit.GetComponentInChildren<HealthBarHandler>().SetHealthBarValue((float)hit.GetComponent<PlayerAttack>().currentHP/(float)hit.GetComponent<PlayerAttack>().maxHP);
+        hit.GetComponentInChildren<HealthBarHandler>().SetHealthBarValue((float)hit.GetComponent<PlayerAttack>().currentHP/hit.GetComponent<PlayerAttack>().maxHP);
         Instantiate(attackEffect, hit.transform.position, Quaternion.Euler(45, -45, 0));
         hit.GetComponent<PlayerMove>().pushed = true;
         Tile t = hit.GetComponent<PlayerMove>().GetTargetTile(hit.transform.gameObject);
@@ -164,7 +164,7 @@ public class NPCMove : TacticsMove
     IEnumerator AttackNow() {
         yield return new WaitUntil(()=> moving == false);
         if (GameObject.Find("Map").GetComponent<SpawnUnits>().spawned == true) {
-            this.GetComponent<NPCMove>().PlayerWithinRadius(this.gameObject, 0.55f);
+            this.GetComponent<NPCMove>().PlayerWithinRadius(this.gameObject, 1f);
             GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().target = GameObject.Find("Map").gameObject.transform; 
         }        
     }
