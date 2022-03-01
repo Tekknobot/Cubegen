@@ -6247,7 +6247,7 @@ RectTransform:
   - {fileID: 1924009277}
   - {fileID: 1215797826}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -7885,6 +7885,7 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 89691a59a3eca894099804bad1ee0d43, type: 2}
   defaultMat: {fileID: 2100000, guid: b68c6b3d09a49d44795210032555f630, type: 2}
   waterTile: {fileID: 8111368690324680476, guid: afa24be163448d241ac2054a1d6413db, type: 3}
+  buildingsTile: {fileID: 8111368690324680476, guid: 981d404fb0d1f3149bb4b939d845572c, type: 3}
 --- !u!114 &1383385108
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11858,7 +11859,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7761005719701772244, guid: 804961b1be04d4b40a026ff9166e93bf, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7761005719701772244, guid: 804961b1be04d4b40a026ff9166e93bf, type: 3}
       propertyPath: m_LocalPosition.x

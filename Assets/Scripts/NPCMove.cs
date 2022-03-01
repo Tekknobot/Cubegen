@@ -40,8 +40,7 @@ public class NPCMove : TacticsMove
         }
         else if (!turn && !this.GetComponent<NPCMove>().attacking) {
             Animator animator = this.gameObject.GetComponent<Animator>();
-            animator.runtimeAnimatorController = idleAnimation;
-            //this.GetComponent<cakeslice.Outline>().enabled = false;            
+            animator.runtimeAnimatorController = idleAnimation;           
             return;
         }
 
@@ -51,9 +50,8 @@ public class NPCMove : TacticsMove
             FindNearestTarget();
             CalculatePath();
             FindSelectableTiles();
-            actualTargetTile.target = true;
+            actualTargetTile.target = true;            
             pushed = false;
-            //this.GetComponent<cakeslice.Outline>().enabled = false;
         }
 
         if (this.GetComponent<NPCMove>().attacking) {    
@@ -159,6 +157,7 @@ public class NPCMove : TacticsMove
         }        
         yield return new WaitUntil(()=> hit.GetComponent<PlayerMove>().pushed == false);
         hit.GetComponent<PlayerMove>().moveSpeed = 2; 
+        GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().CycleUnits();
         //TurnManager.EndTurn();
 	}
 

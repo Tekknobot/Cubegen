@@ -166,7 +166,7 @@ public class TacticsMove : MonoBehaviour
             RemoveSelectableTiles();
             moving = false;
             pushed = false; 
-            
+
             TurnManager.EndTurn();     
         }
     }
@@ -392,8 +392,10 @@ public class TacticsMove : MonoBehaviour
         }
 
         //todo - what do you do if there is no path to the target tile?
-        TurnManager.EndTurn();
         Debug.Log("Path not found");
+        if (moving == false) {
+            TurnManager.EndTurn();   
+        }
     }
 
     public void BeginTurn()
