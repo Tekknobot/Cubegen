@@ -172,9 +172,7 @@ public class TacticsMove : MonoBehaviour
                 GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().target = GameObject.Find("Map").gameObject.transform; 
             }    
 
-            if (this.moving == false) {
-                TurnManager.EndTurn();
-            }      
+            TurnManager.EndTurn();      
         }
     }
 

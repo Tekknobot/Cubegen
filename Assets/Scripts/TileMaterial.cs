@@ -9,6 +9,7 @@ public class TileMaterial : MonoBehaviour
     public Material[] newMats;    
     public Material defaultMat;
     public GameObject waterTile;
+    public GameObject buildingsTile;
 
     void Start()
     {
@@ -35,13 +36,19 @@ public class TileMaterial : MonoBehaviour
                 t.transform.position = new Vector3(t.transform.position.x, 0.125f, t.transform.position.z);
                 t.transform.localScale = new Vector3(t.transform.localScale.x, 1.25f, t.transform.localScale.z);                
             }
-            if (calc_dropChance >= 0 && calc_dropChance <= 11) {
+            if (calc_dropChance >= 6 && calc_dropChance <= 11) {
                 Material materialToUse = newMats[4];
                 t.GetComponent<Renderer>().material.CopyPropertiesFromMaterial(materialToUse);
                 t.transform.position = new Vector3(t.transform.position.x, -0.125f, t.transform.position.z);
                 t.transform.localScale = new Vector3(t.transform.localScale.x, 0.75f, t.transform.localScale.z);
                 Instantiate(waterTile, new Vector3(t.transform.position.x, 0.26f, t.transform.position.z), Quaternion.Euler(90, 0, 0));
-            }                                                                                              
+            }  
+
+            if (calc_dropChance >= 0 && calc_dropChance <= 6) {
+                Material materialToUse = newMats[4];
+                t.GetComponent<Renderer>().material.CopyPropertiesFromMaterial(materialToUse);
+                //Instantiate(buildingsTile, new Vector3(t.transform.position.x, 0.85f, t.transform.position.z), Quaternion.Euler(45, -45, 0));
+            }                                                                                                         
         }
     }
 }
