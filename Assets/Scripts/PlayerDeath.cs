@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerDeath : MonoBehaviour
 {
+    public GameObject explosion;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,6 +22,7 @@ public class PlayerDeath : MonoBehaviour
 
     IEnumerator DestroyObject() {
         yield return new WaitForSeconds(1);
+        Instantiate(explosion, this.transform.position, Quaternion.Euler(45, -45, 0));
         this.gameObject.SetActive(false);
         this.gameObject.GetComponent<PlayerMove>().enabled = false;
         this.gameObject.GetComponent<PlayerAttack>().enabled = false;

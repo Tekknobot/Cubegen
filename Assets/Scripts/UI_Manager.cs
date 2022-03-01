@@ -60,7 +60,7 @@ public class UI_Manager : MonoBehaviour
                 unit_label.GetComponent<Text>().text = tacticsCamera.GetComponent<TacticsCamera>().target.GetComponent<PlayerAttack>().unitName;
                 healthbar_hp.text = tacticsCamera.GetComponent<TacticsCamera>().target.GetComponent<PlayerAttack>().currentHP.ToString() + " HP";
                 healthbar_slider.value = tacticsCamera.GetComponent<TacticsCamera>().target.GetComponent<PlayerAttack>().currentHP;
-                StartCoroutine(ActivateUI());
+                ActivateUI();
             }  
             if (tacticsCamera.GetComponent<TacticsCamera>().target.transform.tag == "NPC") {
                 portrait.GetComponent<Image>().sprite = tacticsCamera.GetComponent<TacticsCamera>().target.GetComponent<SpriteRenderer>().sprite; 
@@ -82,7 +82,7 @@ public class UI_Manager : MonoBehaviour
         }
     }
 
-    IEnumerator ActivateUI() {
+    public void ActivateUI() {
         if (Input.GetMouseButtonDown(0)) {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
@@ -95,7 +95,6 @@ public class UI_Manager : MonoBehaviour
                     audioData.PlayOneShot(hit.transform.GetComponent<PlayerMove>().clip[0], 1);
                 }
             }            
-        }  
-        yield return null;       
+        }       
     }
 }
