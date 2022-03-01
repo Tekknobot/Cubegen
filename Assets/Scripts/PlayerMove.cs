@@ -106,6 +106,7 @@ public class PlayerMove : TacticsMove
             if (Physics.Raycast(ray, out hit)) {
                 if (hit.collider.tag == "Player" && !EventSystem.current.IsPointerOverGameObject()) {
                     tempGO = null;
+                    hit.transform.gameObject.GetComponent<PlayerMove>().unitTurn = false;
                     GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().SetUnitTurnFalse();
                     RemoveSelectableTiles();
                     hit.transform.gameObject.GetComponent<TacticsMove>().FindSelectableTiles();
@@ -158,5 +159,19 @@ public class PlayerMove : TacticsMove
                 }
             }
         }
-    }              
+    }
+
+    public void StartSphere() {
+        StartCoroutine(Sphere());
+    }
+
+    IEnumerator Sphere() {
+        Collider[] hitColliders = Physics.OverlapSphere(transform.position, 0.65f);
+        foreach (var hitCollider in hitColliders) {
+            if (hitCollider.tag != "Player") {
+                enemyTransform = hitCollider.transform.position;
+            }
+            yield return null;
+        }              
+    }                
 }

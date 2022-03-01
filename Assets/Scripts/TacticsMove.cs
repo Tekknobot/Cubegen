@@ -165,14 +165,9 @@ public class TacticsMove : MonoBehaviour
         {
             RemoveSelectableTiles();
             moving = false;
-            pushed = false;
+            pushed = false; 
             
-            if (this.transform.tag == "NPC" && GameObject.Find("Map").GetComponent<SpawnUnits>().spawned == true) {
-                this.GetComponent<NPCMove>().PlayerWithinRadius(this.gameObject, 0.5f);
-                GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().target = GameObject.Find("Map").gameObject.transform; 
-            }    
-
-            TurnManager.EndTurn();      
+            TurnManager.EndTurn();     
         }
     }
 

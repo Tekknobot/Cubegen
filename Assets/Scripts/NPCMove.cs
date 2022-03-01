@@ -52,6 +52,7 @@ public class NPCMove : TacticsMove
             CalculatePath();
             FindSelectableTiles();
             actualTargetTile.target = true;
+            pushed = false;
             //this.GetComponent<cakeslice.Outline>().enabled = false;
         }
 
@@ -90,6 +91,7 @@ public class NPCMove : TacticsMove
     {
         Tile targetTile = GetTargetTile(target);
         FindPath(targetTile);
+        StartCoroutine(AttackNow());
     }
 
     public void FindNearestTarget()
@@ -152,11 +154,19 @@ public class NPCMove : TacticsMove
         Tile t = hit.GetComponent<PlayerMove>().GetTargetTile(hit.transform.gameObject);
         Tile t2 = t.adjacencyList[Random.Range(0,t.adjacencyList.Count)];
         if (t2.walkable == true) {
-            hit.GetComponent<PlayerMove>().MoveToTile(t2);
+            hit.GetComponent<PlayerMove>().MoveToTile(t2);           
             hit.GetComponent<PlayerMove>().moveSpeed = 4;      
         }        
         yield return new WaitUntil(()=> hit.GetComponent<PlayerMove>().pushed == false);
         hit.GetComponent<PlayerMove>().moveSpeed = 2; 
         //TurnManager.EndTurn();
 	}
+
+    IEnumerator AttackNow() {
+        yield return new WaitUntil(()=> moving == false);
+        if (GameObject.Find("Map").GetComponent<SpawnUnits>().spawned == true) {
+            this.GetComponent<NPCMove>().PlayerWithinRadius(this.gameObject, 0.5f);
+            GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().target = GameObject.Find("Map").gameObject.transform; 
+        }        
+    }
 }

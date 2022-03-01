@@ -29,8 +29,6 @@ public class PlayerAttack : TacticsAttack
     AudioSource audioData;
     public AudioClip[] clip;
 
-    GameObject[] tiles;
-
 	// Use this for initialization
 	void Start () 
 	{
@@ -72,11 +70,6 @@ public class PlayerAttack : TacticsAttack
         hit.GetComponent<NPCMove>().moveSpeed = 2;      
         tempPlayerUnit.GetComponent<PlayerMove>().attacking = false;
         hit.GetComponent<NPCMove>().RemoveSelectableTiles();
-
-        tiles = GameObject.FindGameObjectsWithTag("Tile");
-        foreach (GameObject tile in tiles) {
-            tile.GetComponent<Tile>().walkable = true;
-        }
         //TurnManager.EndTurn();
 	}  
 
