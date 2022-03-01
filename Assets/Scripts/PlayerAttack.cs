@@ -26,6 +26,9 @@ public class PlayerAttack : TacticsAttack
     public float speed = 0.2f;
     public float step;
 
+    AudioSource audioData;
+    public AudioClip[] clip;
+
 	// Use this for initialization
 	void Start () 
 	{
@@ -50,6 +53,8 @@ public class PlayerAttack : TacticsAttack
 
 	IEnumerator PlayerAttackCoroutine(GameObject hit, GameObject tempPlayerUnit) {
         tempPlayerUnit.GetComponent<PlayerMove>().attacking = true;
+        audioData = GetComponent<AudioSource>();
+        audioData.PlayOneShot(clip[0], 1);       
 		yield return new WaitForSeconds(1f);
         hit.GetComponent<TacticsAttack>().TakeDamage(tempPlayerUnit.GetComponent<TacticsAttack>().damage);
         hit.GetComponentInChildren<HealthBarHandler>().SetHealthBarValue((float)hit.GetComponent<NPCAttack>().currentHP/(float)hit.GetComponent<NPCAttack>().maxHP);

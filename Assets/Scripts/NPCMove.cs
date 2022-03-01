@@ -20,6 +20,9 @@ public class NPCMove : TacticsMove
     public GameObject attackEffect;
     public bool attacking = false;
 
+    AudioSource audioData;
+    public AudioClip[] clip;    
+
 	// Use this for initialization
 	void Start () 
 	{
@@ -134,6 +137,8 @@ public class NPCMove : TacticsMove
     }  
 
 	IEnumerator NPCAttackCoroutine(GameObject hit) {
+        audioData = GetComponent<AudioSource>();
+        audioData.PlayOneShot(clip[1], 1);        
         ComputeAdjacencyLists(this.GetComponent<NPCMove>().jumpHeight, this.GetComponent<NPCMove>().GetTargetTile(this.gameObject));
         attacking = true;
         hit.transform.gameObject.GetComponent<TacticsAttack>().TakeDamage(this.GetComponent<TacticsAttack>().damage);

@@ -42,6 +42,9 @@ public class UI_Manager : MonoBehaviour
     public GameObject targetButton;
     public GameObject healthButton;
 
+    AudioSource audioData;
+    public AudioClip[] clip;       
+
     // Start is called before the first frame update
     void Start()
     {
@@ -88,6 +91,8 @@ public class UI_Manager : MonoBehaviour
                 if (hit.collider.tag == "Player") {
                     targetButton.SetActive(true);    
                     healthButton.SetActive(true); 
+                    audioData = hit.transform.GetComponent<AudioSource>();
+                    audioData.PlayOneShot(hit.transform.GetComponent<PlayerMove>().clip[0], 1);
                 }
             }            
         }  

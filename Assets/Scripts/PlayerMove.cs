@@ -29,6 +29,9 @@ public class PlayerMove : TacticsMove
     public bool unitTurn = false;
     public Vector3 enemyTransform;
 
+    AudioSource audioData;
+    public AudioClip[] clip;    
+
 	// Use this for initialization
 	void Start () 
 	{
@@ -92,10 +95,10 @@ public class PlayerMove : TacticsMove
         var projectionOnRight = Vector3.Dot(directionToEnemy, this.transform.right);
 
         if (projectionOnRight < 0) {
-            GetComponent<SpriteRenderer>().flipX = true;
+            GetComponent<SpriteRenderer>().flipX = false;
         }
         else if (projectionOnRight > 0) {
-            GetComponent<SpriteRenderer>().flipX = false;
+            GetComponent<SpriteRenderer>().flipX = true;
         }        
 	}
 
@@ -109,7 +112,6 @@ public class PlayerMove : TacticsMove
         if (Input.GetMouseButtonDown(0)) {
             //this.GetComponent<cakeslice.Outline>().enabled = false;
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit)) {
                 if (hit.collider.tag == "Player" && !EventSystem.current.IsPointerOverGameObject()) {
@@ -124,13 +126,14 @@ public class PlayerMove : TacticsMove
                     GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().target = this.gameObject.transform;
                     hit.transform.gameObject.GetComponent<cakeslice.Outline>().enabled = true;
                     tacticsCamera.GetComponent<TacticsCamera>().target = hit.collider.transform;  
+                    //audioData = GetComponent<AudioSource>();
+                    //audioData.PlayOneShot(clip[0], 1);                    
                 }
             }            
         }    
 
         if (Input.GetMouseButtonDown(0)) {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit)) {
                 if (hit.collider.tag == "NPC" && !EventSystem.current.IsPointerOverGameObject()) {
