@@ -168,16 +168,13 @@ public class TacticsMove : MonoBehaviour
             pushed = false;
             
             if (this.transform.tag == "NPC" && GameObject.Find("Map").GetComponent<SpawnUnits>().spawned == true) {
-                this.GetComponent<NPCMove>().PlayerWithinRadius(this.gameObject, 0.625f);
+                this.GetComponent<NPCMove>().PlayerWithinRadius(this.gameObject, 0.5f);
                 GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().target = GameObject.Find("Map").gameObject.transform; 
             }    
 
             if (this.moving == false) {
                 TurnManager.EndTurn();
-                if (this.transform.tag == "Player") {
-                    this.GetComponent<PlayerMove>().StartSphere();
-                }
-            }     
+            }      
         }
     }
 

@@ -11,11 +11,11 @@ public class TacticsCamera : MonoBehaviour
     public GameObject[] playerPrefabs;
     public GameObject[] npcPrefabs;
 
-    int playerPrefabsIndex = 0;
-    int playerOutlineIndex = 0;    
+    int playerPrefabsIndex = 0;   
 
     void Start() {
-           
+        playerPrefabs = GameObject.FindGameObjectsWithTag("Player");
+        npcPrefabs = GameObject.FindGameObjectsWithTag("NPC");
     }
      
     void Update()
@@ -29,9 +29,9 @@ public class TacticsCamera : MonoBehaviour
         }
 
         if (Input.GetMouseButtonDown(1)) {
+            playerPrefabs[playerPrefabsIndex].GetComponent<PlayerMove>().tempGO = null;
             SetUnitTurnFalse();
-            playerPrefabs[playerPrefabsIndex].GetComponent<PlayerMove>().unitTurn = true;
-            playerPrefabs = GameObject.FindGameObjectsWithTag("Player");            
+            playerPrefabs[playerPrefabsIndex].GetComponent<PlayerMove>().unitTurn = true;            
             target = playerPrefabs[playerPrefabsIndex++].transform;            
             if (playerPrefabsIndex >= playerPrefabs.Length) {
                 playerPrefabsIndex = 0;

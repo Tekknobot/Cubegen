@@ -19,7 +19,6 @@ public class SpawnUnits : MonoBehaviour
     public bool spawned = false;
 
     int spawn_points_index = 0;
-    int spawn_points_index2 = 0;
     int j = 0;
     int k = 0;
 
