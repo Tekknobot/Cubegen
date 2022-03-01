@@ -87,6 +87,9 @@ public class PlayerAttack : TacticsAttack
                     animator.runtimeAnimatorController = tempPlayerUnit.GetComponent<PlayerMove>().attackAnimation;                
                     StartCoroutine(PlayerAttackCoroutine(tempNPCUnit.transform.gameObject, tempPlayerUnit));
                 }
+                if (hitCollider.tag == "Player") {
+                    break;
+                }
             }
         }
         checkedMouse = true;                
