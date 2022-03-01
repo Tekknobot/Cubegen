@@ -75,7 +75,7 @@ public class PlayerAttack : TacticsAttack
 
     IEnumerator WaitForCheck(GameObject tempPlayerUnit) {
         yield return new WaitUntil(()=> Input.GetMouseButtonDown(0));
-        Collider[] hitColliders = Physics.OverlapSphere(transform.position, 0.625f);
+        Collider[] hitColliders = Physics.OverlapSphere(transform.position, 0.55f);
         foreach (var hitCollider in hitColliders)
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);

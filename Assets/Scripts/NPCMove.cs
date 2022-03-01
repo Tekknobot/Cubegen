@@ -164,7 +164,7 @@ public class NPCMove : TacticsMove
     IEnumerator AttackNow() {
         yield return new WaitUntil(()=> moving == false);
         if (GameObject.Find("Map").GetComponent<SpawnUnits>().spawned == true) {
-            this.GetComponent<NPCMove>().PlayerWithinRadius(this.gameObject, 0.5f);
+            this.GetComponent<NPCMove>().PlayerWithinRadius(this.gameObject, 0.55f);
             GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().target = GameObject.Find("Map").gameObject.transform; 
         }        
     }
