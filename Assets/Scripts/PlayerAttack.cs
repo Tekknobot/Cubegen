@@ -43,6 +43,11 @@ public class PlayerAttack : TacticsAttack
 	void Update () 
 	{  
         step = speed * Time.deltaTime;
+
+        Debug.DrawRay(transform.position, new Vector3(0, 0, 1)); 
+        Debug.DrawRay(transform.position, new Vector3(0, 0, -1));
+        Debug.DrawRay(transform.position, new Vector3(1, 0, 0));
+        Debug.DrawRay(transform.position, new Vector3(-1, 0, 0));
     }
 
     public void CheckMouse(GameObject tempPlayerUnit) {
@@ -87,21 +92,26 @@ public class PlayerAttack : TacticsAttack
 
     IEnumerator WaitForCheck(GameObject tempPlayerUnit) {
         yield return new WaitUntil(()=> Input.GetMouseButtonDown(0));
+
         Collider[] hitColliders = Physics.OverlapSphere(this.transform.position, 1f);
-        foreach (var hitCollider in hitColliders)
-        {         
+        foreach (var hitCollider in hitColliders) {         
             if (hitCollider.tag == "NPC") {
-                Animator animator = tempPlayerUnit.GetComponent<Animator>();
-                animator.runtimeAnimatorController = tempPlayerUnit.GetComponent<PlayerMove>().attackAnimation; 
-                if (flag == false) {
-                    StartCoroutine(PlayerAttackCoroutine(hitCollider.transform.gameObject, tempPlayerUnit));
-                    flag = true;
-                }               
-            }
-            if (hitCollider.tag == "Player") {
-                break;
-            }
-        }
+                RaycastHit hit;
+                if (Physics.Raycast(transform.position, new Vector3(0, 0, 1), out hit, 1) ||
+                    Physics.Raycast(transform.position, new Vector3(0, 0, -1), out hit, 1) ||
+                    Physics.Raycast(transform.position, new Vector3(1, 0, 0), out hit, 1) ||
+                    Physics.Raycast(transform.position, new Vector3(-1, 0, 0), out hit, 1)) {
+                    if (hit.transform.tag == "NPC") {
+                        Animator animator = tempPlayerUnit.GetComponent<Animator>();
+                        animator.runtimeAnimatorController = tempPlayerUnit.GetComponent<PlayerMove>().attackAnimation; 
+                        if (flag == false) {
+                            StartCoroutine(PlayerAttackCoroutine(hitCollider.transform.gameObject, tempPlayerUnit));
+                            flag = true;
+                        }                 
+                    }              
+                } 
+            }  
+        }                     
         checkedMouse = true;                
     }
 }
