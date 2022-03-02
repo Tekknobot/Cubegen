@@ -59,7 +59,7 @@ public class PlayerAttack : TacticsAttack
         Instantiate(healthEffect, new Vector3(tempPlayerUnit.transform.position.x, tempPlayerUnit.transform.position.y-0.5f, tempPlayerUnit.transform.position.z), Quaternion.Euler(270, 0, 0)); 
         tempPlayerUnit.GetComponent<PlayerAttack>().Heal(tempPlayerUnit.GetComponent<PlayerAttack>().healthUp);
         tempPlayerUnit.GetComponentInChildren<HealthBarHandler>().SetHealthBarValue(((float)tempPlayerUnit.GetComponent<PlayerAttack>().currentHP/tempPlayerUnit.GetComponent<PlayerAttack>().maxHP));     
-        TurnManager.EndTurn();
+        //TurnManager.EndTurn();
     }    
 
 	IEnumerator PlayerAttackCoroutine(GameObject hit, GameObject tempPlayerUnit) {
@@ -89,22 +89,17 @@ public class PlayerAttack : TacticsAttack
         yield return new WaitUntil(()=> Input.GetMouseButtonDown(0));
         Collider[] hitColliders = Physics.OverlapSphere(this.transform.position, 1f);
         foreach (var hitCollider in hitColliders)
-        {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;  
-            if (Physics.Raycast(ray, out hit)) {          
-                if (hitCollider.tag == "NPC") {
-                    tempNPCUnit = tacticsCamera.GetComponent<TacticsCamera>().target.gameObject;
-                    Animator animator = tempPlayerUnit.GetComponent<Animator>();
-                    animator.runtimeAnimatorController = tempPlayerUnit.GetComponent<PlayerMove>().attackAnimation; 
-                    if (flag == false) {
-                        StartCoroutine(PlayerAttackCoroutine(tempNPCUnit.transform.gameObject, tempPlayerUnit));
-                        flag = true;
-                    }               
-                }
-                if (hitCollider.tag == "Player") {
-                    break;
-                }
+        {         
+            if (hitCollider.tag == "NPC") {
+                Animator animator = tempPlayerUnit.GetComponent<Animator>();
+                animator.runtimeAnimatorController = tempPlayerUnit.GetComponent<PlayerMove>().attackAnimation; 
+                if (flag == false) {
+                    StartCoroutine(PlayerAttackCoroutine(hitCollider.transform.gameObject, tempPlayerUnit));
+                    flag = true;
+                }               
+            }
+            if (hitCollider.tag == "Player") {
+                break;
             }
         }
         checkedMouse = true;                

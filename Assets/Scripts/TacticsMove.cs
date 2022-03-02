@@ -167,9 +167,7 @@ public class TacticsMove : MonoBehaviour
             moving = false;
             pushed = false; 
 
-            if (moving == false) {
-                TurnManager.EndTurn();
-            }     
+            TurnManager.EndTurn();     
         }
     }
 
