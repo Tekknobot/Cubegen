@@ -64,6 +64,7 @@ public class PlayerAttack : TacticsAttack
         Instantiate(healthEffect, new Vector3(tempPlayerUnit.transform.position.x, tempPlayerUnit.transform.position.y-0.5f, tempPlayerUnit.transform.position.z), Quaternion.Euler(270, 0, 0)); 
         tempPlayerUnit.GetComponent<PlayerAttack>().Heal(tempPlayerUnit.GetComponent<PlayerAttack>().healthUp);
         tempPlayerUnit.GetComponentInChildren<HealthBarHandler>().SetHealthBarValue(((float)tempPlayerUnit.GetComponent<PlayerAttack>().currentHP/(float)tempPlayerUnit.GetComponent<PlayerAttack>().maxHP));     
+        StartCoroutine(PlayerDodge());
         //TurnManager.EndTurn();
     }    
 
@@ -89,6 +90,16 @@ public class PlayerAttack : TacticsAttack
         flag = false;
         //TurnManager.EndTurn();
 	}  
+
+    IEnumerator PlayerDodge() {
+        Tile t = GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().target.transform.GetComponent<PlayerMove>().GetTargetTile(GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().target.transform.gameObject);
+        Tile t2 = t.adjacencyList[Random.Range(0,t.adjacencyList.Count)];
+        if (t2.walkable == true) {
+            GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().target.transform.GetComponent<PlayerMove>().MoveToTile(t2);           
+            GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().target.transform.GetComponent<PlayerMove>().moveSpeed = 4;      
+        }          
+        yield return null;
+    }
 
     IEnumerator WaitForCheck(GameObject tempPlayerUnit) {
         yield return new WaitUntil(()=> Input.GetMouseButtonDown(0));
