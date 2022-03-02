@@ -30,6 +30,8 @@ public class PlayerAttack : TacticsAttack
     AudioSource audioData;
     public AudioClip[] clip;
 
+    public bool flag = false;
+
 	// Use this for initialization
 	void Start () 
 	{
@@ -79,22 +81,26 @@ public class PlayerAttack : TacticsAttack
         hit.GetComponent<NPCMove>().moveSpeed = 2;      
         tempPlayerUnit.GetComponent<PlayerMove>().attacking = false;
         hit.GetComponent<NPCMove>().RemoveSelectableTiles();
+        flag = false;
         //TurnManager.EndTurn();
 	}  
 
     IEnumerator WaitForCheck(GameObject tempPlayerUnit) {
         yield return new WaitUntil(()=> Input.GetMouseButtonDown(0));
-        Collider[] hitColliders = Physics.OverlapSphere(transform.position, 1f);
+        Collider[] hitColliders = Physics.OverlapSphere(this.transform.position, 1f);
         foreach (var hitCollider in hitColliders)
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;  
             if (Physics.Raycast(ray, out hit)) {          
-                if (hitCollider.tag == "NPC" && hit.transform.tag == "NPC") {
+                if (hitCollider.tag == "NPC") {
                     tempNPCUnit = tacticsCamera.GetComponent<TacticsCamera>().target.gameObject;
                     Animator animator = tempPlayerUnit.GetComponent<Animator>();
-                    animator.runtimeAnimatorController = tempPlayerUnit.GetComponent<PlayerMove>().attackAnimation;                
-                    StartCoroutine(PlayerAttackCoroutine(tempNPCUnit.transform.gameObject, tempPlayerUnit));
+                    animator.runtimeAnimatorController = tempPlayerUnit.GetComponent<PlayerMove>().attackAnimation; 
+                    if (flag == false) {
+                        StartCoroutine(PlayerAttackCoroutine(tempNPCUnit.transform.gameObject, tempPlayerUnit));
+                        flag = true;
+                    }               
                 }
                 if (hitCollider.tag == "Player") {
                     break;

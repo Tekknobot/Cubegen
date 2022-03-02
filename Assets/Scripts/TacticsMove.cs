@@ -122,7 +122,7 @@ public class TacticsMove : MonoBehaviour
         {
             path.Push(next);
             next = next.parent;
-        }      
+        } 
     }
 
     public void Move()
@@ -167,7 +167,9 @@ public class TacticsMove : MonoBehaviour
             moving = false;
             pushed = false; 
 
-            TurnManager.EndTurn();     
+            if (moving == false) {
+                TurnManager.EndTurn();
+            }     
         }
     }
 
@@ -357,6 +359,7 @@ public class TacticsMove : MonoBehaviour
             {
                 actualTargetTile = FindEndTile(t);
                 MoveToTile(actualTargetTile);
+                pushed = false;
                 return;
             }
 

@@ -14,13 +14,15 @@ public class GetPlayerClones : MonoBehaviour
     {
         target_button = GameObject.Find("Target_btn");
         health_button = GameObject.Find("Health_btn");
-        target_button.GetComponent<Button>().onClick.AddListener(() => this.GetComponent<PlayerAttack>().OnTargetButton());
-        health_button.GetComponent<Button>().onClick.AddListener(() => this.GetComponent<PlayerAttack>().OnHealthButton());        
     }
 
     // Update is called once per frame
-    public void Update()
+    void Update()
     {                
-
+        if (flag == false) {
+            target_button.GetComponent<Button>().onClick.AddListener(() => this.GetComponent<PlayerAttack>().OnTargetButton());
+            health_button.GetComponent<Button>().onClick.AddListener(() => this.GetComponent<PlayerAttack>().OnHealthButton());
+            flag = true;
+        }
     }
 }
