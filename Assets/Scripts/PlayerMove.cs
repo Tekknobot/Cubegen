@@ -92,27 +92,26 @@ public class PlayerMove : TacticsMove
         }       
 	}
 
-    void LateUpdate(){
+    void LateUpdate() {
         oldPositionX = transform.position.x;
         oldPositionZ = transform.position.z;
     }
 
-    void Select()
-    {
+    void Select() {
         if (Input.GetMouseButtonDown(0)) {
             //this.GetComponent<cakeslice.Outline>().enabled = false;
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit)) {
                 if (hit.collider.tag == "Player" && !EventSystem.current.IsPointerOverGameObject()) {
-                    this.tempGO = null;
+                    tempGO = null;
                     hit.transform.gameObject.GetComponent<PlayerMove>().unitTurn = false;
                     GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().SetUnitTurnFalse();
                     RemoveSelectableTiles();
                     hit.transform.gameObject.GetComponent<TacticsMove>().FindSelectableTiles();
                     hit.transform.gameObject.GetComponent<TacticsMove>().turn = true;
                     hit.transform.gameObject.GetComponent<PlayerMove>().unitTurn = true;
-                    this.tempGO = hit.transform.gameObject;
+                    tempGO = hit.transform.gameObject;
                     GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().TurnOffAllOutlines();
                     GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().target = this.gameObject.transform;
                     hit.transform.gameObject.GetComponent<cakeslice.Outline>().enabled = true;
@@ -128,7 +127,7 @@ public class PlayerMove : TacticsMove
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit)) {
                 if (hit.collider.tag == "NPC" && !EventSystem.current.IsPointerOverGameObject()) {
-                    this.tempGO = null;
+                    tempGO = null;
                     RemoveSelectableTiles();
                     hit.transform.gameObject.GetComponent<TacticsMove>().FindSelectableTiles();
                     hit.transform.gameObject.GetComponent<cakeslice.Outline>().enabled = true;
@@ -153,7 +152,6 @@ public class PlayerMove : TacticsMove
                         }
                         else {
                             tempGO.GetComponent<PlayerMove>().MoveToTile(t);
-                            tempGO = this.transform.gameObject;
                         }
                     }
                 }
