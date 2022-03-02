@@ -20,7 +20,7 @@ public class SpawnUnits : MonoBehaviour
 
     int spawn_points_index = 0;
     int j = 0;
-    int k = 0;
+    int k = 0;      
 
     // Start is called before the first frame update
     void Start()
@@ -64,7 +64,7 @@ public class SpawnUnits : MonoBehaviour
             playerUnit.transform.localScale = new Vector3(1, 1, 1);
             playerUnit.GetComponent<PlayerMove>().FindSelectableTiles();
             playerUnit.GetComponent<PlayerMove>().MoveToTile(playerUnit.GetComponent<PlayerMove>().GetTargetTile(playerUnit));
-            playerUnit.GetComponent<PlayerMove>().RemoveSelectableTiles();            
+            playerUnit.GetComponent<PlayerMove>().RemoveSelectableTiles();                       
         }
         GameObject[] npcUnits = GameObject.FindGameObjectsWithTag("NPC");
         foreach (GameObject npcUnit in npcUnits) {

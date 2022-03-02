@@ -101,7 +101,7 @@ public class Tile : MonoBehaviour
                 
                 if (Physics.Raycast(tile.transform.position, Vector3.up, out hit, 100)) {
                     tile.walkable = false;
-                }
+                }               
             }
         }
     }
