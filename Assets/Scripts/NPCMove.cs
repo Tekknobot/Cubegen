@@ -33,7 +33,10 @@ public class NPCMove : TacticsMove
 	// Update is called once per frame
 	void Update () 
 	{
-        PlayerDrawRayForward();
+        Debug.DrawRay(transform.position, new Vector3(0, 0, 1)); 
+        Debug.DrawRay(transform.position, new Vector3(0, 0, -1));
+        Debug.DrawRay(transform.position, new Vector3(1, 0, 0));
+        Debug.DrawRay(transform.position, new Vector3(-1, 0, 0));
 
         if (pushed) {
             
@@ -77,7 +80,7 @@ public class NPCMove : TacticsMove
         }     
         if (transform.position.z < oldPositionZ) {
             GetComponent<SpriteRenderer>().flipX = true;
-        }  
+        }        
 	}
 
     void LateUpdate(){
@@ -113,23 +116,17 @@ public class NPCMove : TacticsMove
         target = nearest;
     }
 
-    public void PlayerWithinRadius(GameObject center, float radius)
+    public void PlayerWithinRadius()
     {
-        Collider[] hitColliders = Physics.OverlapSphere(center.transform.position, radius);
-        foreach (var hitCollider in hitColliders)
-        {
-            if (hitCollider.tag == "Player") {
-                NPCAttackFunction(hitCollider.gameObject);
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position, new Vector3(0, 0, 1), out hit, 1) ||
+            Physics.Raycast(transform.position, new Vector3(0, 0, -1), out hit, 1) ||
+            Physics.Raycast(transform.position, new Vector3(1, 0, 0), out hit, 1) ||
+            Physics.Raycast(transform.position, new Vector3(-1, 0, 0), out hit, 1)) {
+            if (hit.transform.tag == "Player") {
+                NPCAttackFunction(hit.transform.gameObject);
             }
         }
-    } 
-
-    public void PlayerDrawRayForward() {
-        RaycastHit objectHit;        
-        // Shoot raycast
-        if (Physics.Raycast(transform.position, new Vector3(0, -1, 0), out objectHit, 50)) {
-            Debug.DrawRay(transform.position, new Vector3(0, -1, 0));
-        }        
     }     
 
     public void NPCAttackFunction(GameObject target) {
@@ -164,7 +161,7 @@ public class NPCMove : TacticsMove
     IEnumerator AttackNow() {
         yield return new WaitUntil(()=> moving == false);
         if (GameObject.Find("Map").GetComponent<SpawnUnits>().spawned == true) {
-            this.GetComponent<NPCMove>().PlayerWithinRadius(this.gameObject, 1f);
+            this.GetComponent<NPCMove>().PlayerWithinRadius();
             GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().target = GameObject.Find("Map").gameObject.transform; 
         }        
     }
