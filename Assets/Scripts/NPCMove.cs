@@ -92,6 +92,9 @@ public class NPCMove : TacticsMove
     {
         if (turn == false) {
             target = this.transform.gameObject;
+            Tile targetNearestTile = GetTargetTile(target);
+            FindPath(targetNearestTile);
+            return;            
         }        
         Tile targetTile = GetTargetTile(target);
         FindPath(targetTile);
