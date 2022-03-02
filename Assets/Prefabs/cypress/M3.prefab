@@ -299,7 +299,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 1
-  healthUp: 1
+  healthUp: 0.2
   maxHP: 5
   currentHP: 5
   unitName: War Mech

@@ -63,7 +63,7 @@ public class PlayerAttack : TacticsAttack
         tempPlayerUnit = tacticsCamera.GetComponent<TacticsCamera>().target.gameObject;
         Instantiate(healthEffect, new Vector3(tempPlayerUnit.transform.position.x, tempPlayerUnit.transform.position.y-0.5f, tempPlayerUnit.transform.position.z), Quaternion.Euler(270, 0, 0)); 
         tempPlayerUnit.GetComponent<PlayerAttack>().Heal(tempPlayerUnit.GetComponent<PlayerAttack>().healthUp);
-        tempPlayerUnit.GetComponentInChildren<HealthBarHandler>().SetHealthBarValue(((float)tempPlayerUnit.GetComponent<PlayerAttack>().currentHP/tempPlayerUnit.GetComponent<PlayerAttack>().maxHP));     
+        tempPlayerUnit.GetComponentInChildren<HealthBarHandler>().SetHealthBarValue(((float)tempPlayerUnit.GetComponent<PlayerAttack>().currentHP/(float)tempPlayerUnit.GetComponent<PlayerAttack>().maxHP));     
         //TurnManager.EndTurn();
     }    
 
@@ -73,7 +73,7 @@ public class PlayerAttack : TacticsAttack
         audioData.PlayOneShot(clip[0], 1);       
 		yield return new WaitForSeconds(1f);
         hit.GetComponent<TacticsAttack>().TakeDamage(tempPlayerUnit.GetComponent<TacticsAttack>().damage);
-        hit.GetComponentInChildren<HealthBarHandler>().SetHealthBarValue((float)hit.GetComponent<NPCAttack>().currentHP/hit.GetComponent<NPCAttack>().maxHP);
+        hit.GetComponentInChildren<HealthBarHandler>().SetHealthBarValue((float)hit.GetComponent<NPCAttack>().currentHP/(float)hit.GetComponent<NPCAttack>().maxHP);
         Instantiate(attackEffect, hit.transform.position, Quaternion.Euler(45, -45, 0)); 
         hit.GetComponent<NPCMove>().pushed = true;
         Tile t = hit.GetComponent<NPCMove>().GetTargetTile(hit.transform.gameObject);
@@ -93,22 +93,17 @@ public class PlayerAttack : TacticsAttack
     IEnumerator WaitForCheck(GameObject tempPlayerUnit) {
         yield return new WaitUntil(()=> Input.GetMouseButtonDown(0));
 
-        Collider[] hitColliders = Physics.OverlapSphere(this.transform.position, 1f);
-        foreach (var hitCollider in hitColliders) {         
-            if (hitCollider.tag == "NPC") {
-                RaycastHit hit;
-                if (Physics.Raycast(transform.position, new Vector3(0, 0, 1), out hit, 1) ||
-                    Physics.Raycast(transform.position, new Vector3(0, 0, -1), out hit, 1) ||
-                    Physics.Raycast(transform.position, new Vector3(1, 0, 0), out hit, 1) ||
-                    Physics.Raycast(transform.position, new Vector3(-1, 0, 0), out hit, 1)) {
-                    if (hit.transform.tag == "NPC") {
-                        Animator animator = tempPlayerUnit.GetComponent<Animator>();
-                        animator.runtimeAnimatorController = tempPlayerUnit.GetComponent<PlayerMove>().attackAnimation; 
-                        if (flag == false) {
-                            StartCoroutine(PlayerAttackCoroutine(hitCollider.transform.gameObject, tempPlayerUnit));
-                            flag = true;
-                        }                 
-                    }              
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position, new Vector3(0, 0, 1), out hit, 1) ||
+            Physics.Raycast(transform.position, new Vector3(0, 0, -1), out hit, 1) ||
+            Physics.Raycast(transform.position, new Vector3(1, 0, 0), out hit, 1) ||
+            Physics.Raycast(transform.position, new Vector3(-1, 0, 0), out hit, 1)) {
+            if (hit.transform.tag == "NPC") {
+                Animator animator = tempPlayerUnit.GetComponent<Animator>();
+                animator.runtimeAnimatorController = tempPlayerUnit.GetComponent<PlayerMove>().attackAnimation; 
+                if (flag == false) {
+                    StartCoroutine(PlayerAttackCoroutine(GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().target.transform.gameObject, tempPlayerUnit));
+                    flag = true;             
                 } 
             }  
         }                     
