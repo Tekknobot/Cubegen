@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class TurnManager : MonoBehaviour 
 {
-    public static Dictionary<string, List<TacticsMove>> units = new Dictionary<string, List<TacticsMove>>();
-    public static Queue<string> turnKey = new Queue<string>();
-    public static Queue<TacticsMove> turnTeam = new Queue<TacticsMove>();
+    public Dictionary<string, List<TacticsMove>> units = new Dictionary<string, List<TacticsMove>>();
+    public Queue<string> turnKey = new Queue<string>();
+    public Queue<TacticsMove> turnTeam = new Queue<TacticsMove>();
 
 	// Use this for initialization
 	void Start () 
@@ -26,9 +26,9 @@ public class TurnManager : MonoBehaviour
         }
     }
 
-    public static void InitTeamTurnQueue()
+    public void InitTeamTurnQueue()
     {
-        List<TacticsMove> teamList = units[turnKey.Peek()];
+        List<TacticsMove> teamList = this.units[turnKey.Peek()];
 
         foreach (TacticsMove unit in teamList) {
             turnTeam.Enqueue(unit);
@@ -38,14 +38,14 @@ public class TurnManager : MonoBehaviour
         GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().TurnOffAllOutlines();
     }
 
-    public static void StartTurn()
+    public void StartTurn()
     {
         if (turnTeam.Count > 0) {
             turnTeam.Peek().BeginTurn();
         }
     }
 
-    public static void EndTurn()
+    public void EndTurn()
     {
         TacticsMove unit = turnTeam.Dequeue();
         unit.FinishTurn();
@@ -61,11 +61,11 @@ public class TurnManager : MonoBehaviour
         }  
     }    
 
-    public static void AddUnit(TacticsMove unit)
+    public void AddUnit(TacticsMove unit)
     {
         List<TacticsMove> list;
 
-        if (!units.ContainsKey(unit.tag))
+        if (!this.units.ContainsKey(unit.tag))
         {
             list = new List<TacticsMove>();
             units[unit.tag] = list;

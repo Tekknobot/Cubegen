@@ -89,8 +89,6 @@ public class PlayerMove : TacticsMove
         if (transform.position.z < oldPositionZ) {
             GetComponent<SpriteRenderer>().flipX = true;
         }       
-
-        Debug.Log(tempGO);
 	}
 
     void LateUpdate() {

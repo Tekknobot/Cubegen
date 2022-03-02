@@ -209,8 +209,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec85058cd6b32ec4baf71f6ac5d14c9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  turn: 0
-  moving: 1
+  turn: 1
+  moving: 0
   pushed: 0
   move: 4
   jumpHeight: 1

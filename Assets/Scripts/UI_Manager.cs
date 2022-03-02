@@ -72,9 +72,9 @@ public class UI_Manager : MonoBehaviour
             }                                   
         }   
 
-        if (TurnManager.turnTeam.Count > 1) {
+        if (GameObject.Find("Map").GetComponent<TurnManager>().turnTeam.Count > 1) {
             movesLeft.GetComponent<Text>().color = Color.white;
-            movesLeft.GetComponent<Text>().text = TurnManager.turnTeam.Count.ToString() + " moves left";       
+            movesLeft.GetComponent<Text>().text = GameObject.Find("Map").GetComponent<TurnManager>().turnTeam.Count.ToString() + " moves left";       
         }
         else {
             movesLeft.GetComponent<Text>().color = Color.red;

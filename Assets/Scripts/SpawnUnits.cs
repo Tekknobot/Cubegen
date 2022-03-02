@@ -35,8 +35,8 @@ public class SpawnUnits : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.R)) {              
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        if (Input.GetKeyDown(KeyCode.R)) { 
+            SceneManager.LoadScene(0);                                    
         }
     }
 
@@ -54,7 +54,7 @@ public class SpawnUnits : MonoBehaviour
         GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().npcPrefabs = GameObject.FindGameObjectsWithTag("NPC");
         foreach (GameObject prefab in GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().npcPrefabs) {
             GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().npcPrefabs[j].GetComponent<NPCMove>().Init();
-            prefab.GetComponent<TacticsMove>().FinishTurn();
+            prefab.GetComponent<NPCMove>().FinishTurn();
             j += 1;  
         }    
 
@@ -64,7 +64,7 @@ public class SpawnUnits : MonoBehaviour
             playerUnit.transform.localScale = new Vector3(1, 1, 1);
             playerUnit.GetComponent<PlayerMove>().FindSelectableTiles();
             playerUnit.GetComponent<PlayerMove>().MoveToTile(playerUnit.GetComponent<PlayerMove>().GetTargetTile(playerUnit));
-            playerUnit.GetComponent<PlayerMove>().RemoveSelectableTiles();                       
+            playerUnit.GetComponent<PlayerMove>().RemoveSelectableTiles();                      
         }
         GameObject[] npcUnits = GameObject.FindGameObjectsWithTag("NPC");
         foreach (GameObject npcUnit in npcUnits) {

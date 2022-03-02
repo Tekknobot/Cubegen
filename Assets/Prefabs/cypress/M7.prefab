@@ -299,7 +299,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   turn: 1
-  moving: 1
+  moving: 0
   pushed: 0
   move: 2
   jumpHeight: 1

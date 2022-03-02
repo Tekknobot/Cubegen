@@ -263,7 +263,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   turn: 0
-  moving: 1
+  moving: 0
   pushed: 0
   move: 4
   jumpHeight: 1
@@ -282,7 +282,6 @@ MonoBehaviour:
   tacticsCamera: {fileID: 0}
   attackEffect: {fileID: 1002605618548861685, guid: 29121037f1fb25d40940d875fbfcc030, type: 3}
   attacking: 0
-  unitTurn: 0
   enemyTransform: {x: 0, y: 0, z: 0}
   clip:
   - {fileID: 8300000, guid: c554aee1ab3003b47bf6037e690fa46f, type: 3}

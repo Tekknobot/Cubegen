@@ -38,11 +38,11 @@ public class TacticsMove : MonoBehaviour
         halfHeight = GetComponent<Collider>().bounds.extents.y;
 
         if (this.transform.gameObject.tag == "NPC") {
-            TurnManager.AddUnit(this);
+            GameObject.Find("Map").GetComponent<TurnManager>().AddUnit(this);
         }
 
         if (this.transform.gameObject.tag == "Player") {
-            TurnManager.AddUnit(this);
+            GameObject.Find("Map").GetComponent<TurnManager>().AddUnit(this);
         }
     }
 
@@ -167,7 +167,7 @@ public class TacticsMove : MonoBehaviour
             moving = false;
             pushed = false; 
             
-            TurnManager.EndTurn();     
+            GameObject.Find("Map").GetComponent<TurnManager>().EndTurn();     
         }
     }
 
@@ -394,7 +394,7 @@ public class TacticsMove : MonoBehaviour
 
         //todo - what do you do if there is no path to the target tile?
         Debug.Log("Path not found");
-        TurnManager.EndTurn();
+        GameObject.Find("Map").GetComponent<TurnManager>().EndTurn();
     }
 
     public void BeginTurn()

@@ -53,7 +53,9 @@ public class Tile : MonoBehaviour
 
         RaycastHit hit;
         if (Physics.Raycast(this.transform.position, Vector3.up, out hit, 100)) {
-            this.walkable = false;
+            if (hit.transform.tag == "Player" || hit.transform.tag == "NPC") {
+                this.walkable = false;
+            }
         }        
 	}
 
