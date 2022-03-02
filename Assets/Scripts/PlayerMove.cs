@@ -89,6 +89,8 @@ public class PlayerMove : TacticsMove
         if (transform.position.z < oldPositionZ) {
             GetComponent<SpriteRenderer>().flipX = true;
         }       
+
+        Debug.Log(tempGO);
 	}
 
     void LateUpdate() {
@@ -98,7 +100,6 @@ public class PlayerMove : TacticsMove
 
     void Select() {
         if (Input.GetMouseButtonDown(0)) {
-            //this.GetComponent<cakeslice.Outline>().enabled = false;
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit)) {
@@ -111,9 +112,7 @@ public class PlayerMove : TacticsMove
                     GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().TurnOffAllOutlines();
                     GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().target = this.gameObject.transform;
                     hit.transform.gameObject.GetComponent<cakeslice.Outline>().enabled = true;
-                    tacticsCamera.GetComponent<TacticsCamera>().target = hit.collider.transform;  
-                    //audioData = GetComponent<AudioSource>();
-                    //audioData.PlayOneShot(clip[0], 1);                    
+                    tacticsCamera.GetComponent<TacticsCamera>().target = hit.collider.transform;                      
                 }
             }            
         }    
@@ -141,7 +140,7 @@ public class PlayerMove : TacticsMove
                 if (hit.collider.tag == "Tile" && !EventSystem.current.IsPointerOverGameObject()) {
                     Tile t = hit.collider.GetComponent<Tile>();
 
-                    if (t.selectable && this.moving == false) {
+                    if (t.selectable && this.moving == false && turn == true) {
                         if (tempGO == null || t.current) {
                             return;
                         }

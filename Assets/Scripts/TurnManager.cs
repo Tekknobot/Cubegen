@@ -20,6 +20,10 @@ public class TurnManager : MonoBehaviour
         if (turnTeam.Count == 0) {
             InitTeamTurnQueue();
         }
+
+        if (Input.GetKeyDown(KeyCode.Escape)) {
+            Application.Quit();
+        }
     }
 
     public static void InitTeamTurnQueue()
