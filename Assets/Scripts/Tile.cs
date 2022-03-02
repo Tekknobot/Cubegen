@@ -50,6 +50,11 @@ public class Tile : MonoBehaviour
         {
             GetComponent<Renderer>().material.color = Color.white;
         }
+
+        RaycastHit hit;
+        if (Physics.Raycast(this.transform.position, Vector3.up, out hit, 100)) {
+            this.walkable = false;
+        }        
 	}
 
     public void Reset()
