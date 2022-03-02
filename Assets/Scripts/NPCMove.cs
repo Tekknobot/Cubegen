@@ -90,10 +90,13 @@ public class NPCMove : TacticsMove
 
     public void CalculatePath()
     {
+        if (turn == false) {
+            target = this.transform.gameObject;
+        }        
         Tile targetTile = GetTargetTile(target);
         FindPath(targetTile);
         StartCoroutine(AttackNow());
-    }
+    } 
 
     public void FindNearestTarget()
     {
