@@ -105,14 +105,14 @@ public class PlayerMove : TacticsMove
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit)) {
                 if (hit.collider.tag == "Player" && !EventSystem.current.IsPointerOverGameObject()) {
-                    tempGO = null;
+                    this.tempGO = null;
                     hit.transform.gameObject.GetComponent<PlayerMove>().unitTurn = false;
                     GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().SetUnitTurnFalse();
                     RemoveSelectableTiles();
                     hit.transform.gameObject.GetComponent<TacticsMove>().FindSelectableTiles();
                     hit.transform.gameObject.GetComponent<TacticsMove>().turn = true;
                     hit.transform.gameObject.GetComponent<PlayerMove>().unitTurn = true;
-                    tempGO = hit.transform.gameObject;
+                    this.tempGO = hit.transform.gameObject;
                     GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().TurnOffAllOutlines();
                     GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().target = this.gameObject.transform;
                     hit.transform.gameObject.GetComponent<cakeslice.Outline>().enabled = true;
@@ -128,7 +128,7 @@ public class PlayerMove : TacticsMove
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit)) {
                 if (hit.collider.tag == "NPC" && !EventSystem.current.IsPointerOverGameObject()) {
-                    tempGO = null;
+                    this.tempGO = null;
                     RemoveSelectableTiles();
                     hit.transform.gameObject.GetComponent<TacticsMove>().FindSelectableTiles();
                     hit.transform.gameObject.GetComponent<cakeslice.Outline>().enabled = true;

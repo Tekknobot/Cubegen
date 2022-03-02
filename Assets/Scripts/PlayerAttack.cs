@@ -95,8 +95,7 @@ public class PlayerAttack : TacticsAttack
         Tile t = GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().target.transform.GetComponent<PlayerMove>().GetTargetTile(GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().target.transform.gameObject);
         Tile t2 = t.adjacencyList[Random.Range(0,t.adjacencyList.Count)];
         if (t2.walkable == true) {
-            GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().target.transform.GetComponent<PlayerMove>().MoveToTile(t2);           
-            GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().target.transform.GetComponent<PlayerMove>().moveSpeed = 4;      
+            GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().target.transform.GetComponent<PlayerMove>().MoveToTile(t2);                 
         }          
         yield return null;
     }
