@@ -84,22 +84,14 @@ public class TacticsCamera : MonoBehaviour
         foreach (GameObject npcPrefab in npcPrefabs) {
             npcPrefab.GetComponent<cakeslice.Outline>().enabled = false;
         }         
-    }    
-
-    public void SetUnitTurnFalse() {
-        foreach (GameObject playerPrefab in playerPrefabs) {
-            playerPrefab.GetComponent<PlayerMove>().unitTurn = false;
-        }        
-    }   
+    }
 
     public void CycleUnits() {
         playerPrefabs = GameObject.FindGameObjectsWithTag("Player");
 
         foreach (GameObject playerPrefab in playerPrefabs) {
             playerPrefabsIndex++;
-            playerPrefab.GetComponent<PlayerMove>().tempGO = null;
-            SetUnitTurnFalse();
-            playerPrefab.GetComponent<PlayerMove>().unitTurn = true;            
+            playerPrefab.GetComponent<PlayerMove>().tempGO = null;            
             target = playerPrefab.transform; 
             GetComponent<TacticsCamera>().TurnOffAllOutlines();
             CameraSelect();
@@ -114,10 +106,8 @@ public class TacticsCamera : MonoBehaviour
         
         target = playerPrefabs[playerPrefabsIndex].transform;
         playerPrefabs[playerPrefabsIndex].GetComponent<TacticsMove>().RemoveSelectableTiles();
-        playerPrefabs[playerPrefabsIndex].GetComponent<PlayerMove>().unitTurn = false;
         playerPrefabs[playerPrefabsIndex].GetComponent<TacticsMove>().FindSelectableTiles();
         playerPrefabs[playerPrefabsIndex].GetComponent<TacticsMove>().turn = true;
-        playerPrefabs[playerPrefabsIndex].GetComponent<PlayerMove>().unitTurn = true;
         playerPrefabs[playerPrefabsIndex].GetComponent<PlayerMove>().tempGO = target.transform.gameObject;
         TurnOffAllOutlines();
         playerPrefabs[playerPrefabsIndex].GetComponent<cakeslice.Outline>().enabled = true;                               

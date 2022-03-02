@@ -26,7 +26,6 @@ public class PlayerMove : TacticsMove
     public GameObject attackEffect;
     public bool attacking = false;
 
-    public bool unitTurn = false;
     public Vector3 enemyTransform;
 
     AudioSource audioData;
@@ -105,12 +104,9 @@ public class PlayerMove : TacticsMove
             if (Physics.Raycast(ray, out hit)) {
                 if (hit.collider.tag == "Player" && !EventSystem.current.IsPointerOverGameObject()) {
                     tempGO = null;
-                    hit.transform.gameObject.GetComponent<PlayerMove>().unitTurn = false;
-                    GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().SetUnitTurnFalse();
                     RemoveSelectableTiles();
                     hit.transform.gameObject.GetComponent<TacticsMove>().FindSelectableTiles();
                     hit.transform.gameObject.GetComponent<TacticsMove>().turn = true;
-                    hit.transform.gameObject.GetComponent<PlayerMove>().unitTurn = true;
                     tempGO = hit.transform.gameObject;
                     GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().TurnOffAllOutlines();
                     GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().target = this.gameObject.transform;
@@ -133,7 +129,6 @@ public class PlayerMove : TacticsMove
                     hit.transform.gameObject.GetComponent<cakeslice.Outline>().enabled = true;
                     tacticsCamera.GetComponent<TacticsCamera>().target = hit.collider.transform; 
                     GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().TurnOffAllOutlines();
-                    GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().SetUnitTurnFalse();
                 }
             }            
         }
@@ -146,7 +141,7 @@ public class PlayerMove : TacticsMove
                 if (hit.collider.tag == "Tile" && !EventSystem.current.IsPointerOverGameObject()) {
                     Tile t = hit.collider.GetComponent<Tile>();
 
-                    if (t.selectable && this.moving == false && this.unitTurn == true) {
+                    if (t.selectable && this.moving == false) {
                         if (tempGO == null || t.current) {
                             return;
                         }

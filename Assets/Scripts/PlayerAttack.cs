@@ -83,9 +83,6 @@ public class PlayerAttack : TacticsAttack
             hit.GetComponent<NPCMove>().MoveToTile(t2);
             hit.GetComponent<NPCMove>().moveSpeed = 4;               
         }
-        else {
-            hit.GetComponent<NPCMove>().pushed = false;
-        }
         yield return new WaitUntil(()=> hit.GetComponent<NPCMove>().pushed == false);
         hit.GetComponent<NPCMove>().moveSpeed = 2;      
         tempPlayerUnit.GetComponent<PlayerMove>().attacking = false;
