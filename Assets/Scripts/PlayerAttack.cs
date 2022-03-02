@@ -109,7 +109,7 @@ public class PlayerAttack : TacticsAttack
             Physics.Raycast(transform.position, new Vector3(0, 0, -1), out hit, 1) ||
             Physics.Raycast(transform.position, new Vector3(1, 0, 0), out hit, 1) ||
             Physics.Raycast(transform.position, new Vector3(-1, 0, 0), out hit, 1)) {
-            if (hit.transform.tag == "NPC") {
+            if (GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().target.transform.tag == "NPC") {
                 Animator animator = tempPlayerUnit.GetComponent<Animator>();
                 animator.runtimeAnimatorController = tempPlayerUnit.GetComponent<PlayerMove>().attackAnimation; 
                 if (flag == false) {

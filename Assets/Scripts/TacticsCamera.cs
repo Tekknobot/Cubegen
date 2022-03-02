@@ -41,10 +41,6 @@ public class TacticsCamera : MonoBehaviour
             // GetComponent<TacticsCamera>().TurnOffAllOutlines();
             // CameraSelect();
         }
-
-        if (Input.GetKeyDown(KeyCode.Space)) {
-            CycleUnits();
-        }
     }
 
     public void TargetCameraOnPlayer() {
@@ -94,8 +90,7 @@ public class TacticsCamera : MonoBehaviour
             playerPrefab.GetComponent<PlayerMove>().tempGO = null;            
             target = playerPrefab.transform; 
             GetComponent<TacticsCamera>().TurnOffAllOutlines();
-            CameraSelect();
-            StartCoroutine(DelayCamera());         
+            CameraSelect();         
         }                           
     }       
 
@@ -117,9 +112,5 @@ public class TacticsCamera : MonoBehaviour
         GameObject.Find("UI_Manager").GetComponent<UI_Manager>().targetButton.SetActive(false);    
         GameObject.Find("UI_Manager").GetComponent<UI_Manager>().healthButton.SetActive(false);
         yield return null; 
-    }
-
-    IEnumerator DelayCamera() {
-        yield return new WaitForSeconds(1);
     }
 }
