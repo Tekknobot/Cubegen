@@ -15,7 +15,7 @@ public class PlayerDeath : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (GetComponent<PlayerAttack>().currentHP <= 0) {
+        if (this.GetComponentInChildren<HealthBarHandler>().GetHealthBarValue() <= 0) {
             StartCoroutine(DestroyObject());
         }
     }
