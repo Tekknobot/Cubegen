@@ -21,7 +21,9 @@ public class NPCMove : TacticsMove
     public bool attacking = false;
 
     AudioSource audioData;
-    public AudioClip[] clip;    
+    public AudioClip[] clip; 
+
+    float speed;   
 
 	// Use this for initialization
 	void Start () 
@@ -43,17 +45,16 @@ public class NPCMove : TacticsMove
         }
         else if (!turn && !this.GetComponent<NPCMove>().attacking) {
             Animator animator = this.gameObject.GetComponent<Animator>();
-            animator.runtimeAnimatorController = idleAnimation;           
+            animator.runtimeAnimatorController = idleAnimation;                       
             return;
         }
 
         if (!moving && !this.GetComponent<NPCMove>().attacking) {    
             Animator animator = this.gameObject.GetComponent<Animator>();        
             animator.runtimeAnimatorController = idleAnimation;
-            MoveToTile(GetTargetTile(this.gameObject));
             FindNearestTarget();
             CalculatePath();
-            FindSelectableTiles();
+            FindSelectableTiles();           
             //actualTargetTile.target = true;            
             pushed = false;
         }
