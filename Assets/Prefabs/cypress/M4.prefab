@@ -175,6 +175,8 @@ MonoBehaviour:
   healthUp: 0.2
   maxHP: 5
   currentHP: 5
+  maxXP: 5
+  currentXP: 0
   unitName: Angel Mech
   unitLevel: 0
   map: {fileID: 0}

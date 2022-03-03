@@ -38,6 +38,7 @@ public class UI_Manager : MonoBehaviour
     public Text unit_label;
     public Text healthbar_hp;
     public Slider healthbar_slider;
+    public Slider xp_slider;
 
     public GameObject targetButton;
     public GameObject healthButton;
@@ -60,6 +61,7 @@ public class UI_Manager : MonoBehaviour
                 unit_label.GetComponent<Text>().text = tacticsCamera.GetComponent<TacticsCamera>().target.GetComponent<PlayerAttack>().unitName;
                 healthbar_hp.text = tacticsCamera.GetComponent<TacticsCamera>().target.GetComponentInChildren<HealthBarHandler>().GetHealthBarValue() * tacticsCamera.GetComponent<TacticsCamera>().target.GetComponent<PlayerAttack>().maxHP + " HP";
                 healthbar_slider.value = tacticsCamera.GetComponent<TacticsCamera>().target.GetComponent<PlayerAttack>().currentHP;
+                xp_slider.value = tacticsCamera.GetComponent<TacticsCamera>().target.GetComponent<PlayerAttack>().currentXP;
                 ActivateUI();
             }  
             if (tacticsCamera.GetComponent<TacticsCamera>().target.transform.tag == "NPC") {
@@ -67,6 +69,7 @@ public class UI_Manager : MonoBehaviour
                 unit_label.GetComponent<Text>().text = tacticsCamera.GetComponent<TacticsCamera>().target.GetComponent<NPCAttack>().unitName;
                 healthbar_hp.text = tacticsCamera.GetComponent<TacticsCamera>().target.GetComponent<NPCAttack>().currentHP.ToString() + " HP";
                 healthbar_slider.value = tacticsCamera.GetComponent<TacticsCamera>().target.GetComponent<NPCAttack>().currentHP;
+                xp_slider.value = tacticsCamera.GetComponent<TacticsCamera>().target.GetComponent<NPCAttack>().currentXP;
                 targetButton.SetActive(false);    
                 healthButton.SetActive(false);
             }                                   

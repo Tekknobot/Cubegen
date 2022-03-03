@@ -464,6 +464,8 @@ MonoBehaviour:
   healthUp: 0
   maxHP: 5
   currentHP: 5
+  maxXP: 5
+  currentXP: 0
   unitName: Chopper Mech
   unitLevel: 0
 --- !u!114 &878692417999996972

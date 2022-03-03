@@ -248,6 +248,8 @@ MonoBehaviour:
   healthUp: 0
   maxHP: 5
   currentHP: 5
+  maxXP: 5
+  currentXP: 0
   unitName: Scanner Mech
   unitLevel: 0
 --- !u!114 &5912748433899744024

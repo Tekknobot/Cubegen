@@ -8,7 +8,9 @@ public class TacticsAttack : MonoBehaviour
 	public float healthUp;
 
 	public int maxHP;   
-    public float currentHP = 5;    
+    public float currentHP = 5; 
+	public int maxXP;
+	public int currentXP;
 
 	public string unitName;
 	public int unitLevel;     
@@ -28,5 +30,15 @@ public class TacticsAttack : MonoBehaviour
 		currentHP += amount;
 		if (currentHP > maxHP)
 			currentHP = maxHP;
-	}    
+	}   
+
+	public bool GetXP(int xp)
+	{
+		currentXP += xp;
+
+		if (currentXP >= maxXP)
+			return true;
+		else
+			return false;
+	}	 
 }

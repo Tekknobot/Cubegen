@@ -337,6 +337,8 @@ MonoBehaviour:
   healthUp: 0
   maxHP: 5
   currentHP: 5
+  maxXP: 5
+  currentXP: 0
   unitName: Beast Mech
   unitLevel: 0
 --- !u!114 &175750542876886889
