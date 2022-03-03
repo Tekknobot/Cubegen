@@ -121,7 +121,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 0.1}
+  m_Size: {x: 1, y: 1, z: 0.5}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &433229189802929223
 MonoBehaviour:
@@ -192,7 +192,6 @@ MonoBehaviour:
   step: 0
   clip:
   - {fileID: 8300000, guid: fdb16b06855dc974b90d3c8e2dfdf8ca, type: 3}
-  flag: 0
 --- !u!114 &3376530537603178186
 MonoBehaviour:
   m_ObjectHideFlags: 0

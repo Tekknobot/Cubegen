@@ -100,7 +100,6 @@ public class PlayerAttack : TacticsAttack
 
     IEnumerator WaitForCheck(GameObject tempPlayerUnit) {
         yield return new WaitUntil(()=> Input.GetMouseButtonDown(0));
-
         RaycastHit hit;
         if (Physics.Raycast(tempPlayerUnit.transform.position, new Vector3(0, 0, 1), out hit, 1) ||
             Physics.Raycast(tempPlayerUnit.transform.position, new Vector3(0, 0, -1), out hit, 1) ||
