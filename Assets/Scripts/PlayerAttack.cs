@@ -102,14 +102,17 @@ public class PlayerAttack : TacticsAttack
         yield return new WaitUntil(()=> Input.GetMouseButtonDown(0));
 
         RaycastHit hit;
-        if (Physics.Raycast(this.transform.position, new Vector3(0, 0, 1), out hit, 1) ||
-            Physics.Raycast(this.transform.position, new Vector3(0, 0, -1), out hit, 1) ||
-            Physics.Raycast(this.transform.position, new Vector3(1, 0, 0), out hit, 1) ||
-            Physics.Raycast(this.transform.position, new Vector3(-1, 0, 0), out hit, 1)) {
+        if (Physics.Raycast(tempPlayerUnit.transform.position, new Vector3(0, 0, 1), out hit, 1) ||
+            Physics.Raycast(tempPlayerUnit.transform.position, new Vector3(0, 0, -1), out hit, 1) ||
+            Physics.Raycast(tempPlayerUnit.transform.position, new Vector3(1, 0, 0), out hit, 1) ||
+            Physics.Raycast(tempPlayerUnit.transform.position, new Vector3(-1, 0, 0), out hit, 1)) {
+            Debug.Log(tempPlayerUnit);
             if (hit.transform.tag == "NPC") {
                 Animator animator = tempPlayerUnit.GetComponent<Animator>();
                 animator.runtimeAnimatorController = tempPlayerUnit.GetComponent<PlayerMove>().attackAnimation; 
-                StartCoroutine(PlayerAttackCoroutine(GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().target.transform.gameObject, tempPlayerUnit)); 
+                if (animator.runtimeAnimatorController == this.GetComponent<PlayerMove>().attackAnimation) {
+                    StartCoroutine(PlayerAttackCoroutine(GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().target.transform.gameObject, tempPlayerUnit)); 
+                }
             } 
         }                                   
     }
