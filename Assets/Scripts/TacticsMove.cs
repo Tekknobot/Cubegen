@@ -166,8 +166,8 @@ public class TacticsMove : MonoBehaviour
             RemoveSelectableTiles();
             moving = false;
             pushed = false; 
-            
-            GameObject.Find("Map").GetComponent<TurnManager>().EndTurn();     
+
+            GameObject.Find("Map").GetComponent<TurnManager>().EndTurn();                           
         }
     }
 
