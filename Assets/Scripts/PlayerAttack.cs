@@ -100,12 +100,8 @@ public class PlayerAttack : TacticsAttack
 
     IEnumerator WaitForCheck(GameObject tempPlayerUnit) {
         yield return new WaitUntil(()=> Input.GetMouseButtonDown(0));
-        RaycastHit hit;
-        if (Physics.Raycast(tempPlayerUnit.transform.position, new Vector3(0, 0, 1), out hit, 1) ||
-            Physics.Raycast(tempPlayerUnit.transform.position, new Vector3(0, 0, -1), out hit, 1) ||
-            Physics.Raycast(tempPlayerUnit.transform.position, new Vector3(1, 0, 0), out hit, 1) ||
-            Physics.Raycast(tempPlayerUnit.transform.position, new Vector3(-1, 0, 0), out hit, 1)) {
-            if (hit.transform.tag == "NPC") {
+        if (GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().target.transform.gameObject) {
+            if (GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().target.transform.tag == "NPC") {
                 Animator animator = tempPlayerUnit.GetComponent<Animator>();
                 animator.runtimeAnimatorController = tempPlayerUnit.GetComponent<PlayerMove>().attackAnimation; 
                 if (animator.runtimeAnimatorController == this.GetComponent<PlayerMove>().attackAnimation) {
