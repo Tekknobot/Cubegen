@@ -106,7 +106,6 @@ public class PlayerAttack : TacticsAttack
             Physics.Raycast(tempPlayerUnit.transform.position, new Vector3(0, 0, -1), out hit, 1) ||
             Physics.Raycast(tempPlayerUnit.transform.position, new Vector3(1, 0, 0), out hit, 1) ||
             Physics.Raycast(tempPlayerUnit.transform.position, new Vector3(-1, 0, 0), out hit, 1)) {
-            Debug.Log(tempPlayerUnit);
             if (hit.transform.tag == "NPC") {
                 Animator animator = tempPlayerUnit.GetComponent<Animator>();
                 animator.runtimeAnimatorController = tempPlayerUnit.GetComponent<PlayerMove>().attackAnimation; 
