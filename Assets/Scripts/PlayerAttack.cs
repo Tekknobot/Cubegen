@@ -30,8 +30,6 @@ public class PlayerAttack : TacticsAttack
     AudioSource audioData;
     public AudioClip[] clip;
 
-    public bool flag = false;
-
 	// Use this for initialization
 	void Start () 
 	{
@@ -87,7 +85,6 @@ public class PlayerAttack : TacticsAttack
         hit.GetComponent<NPCMove>().moveSpeed = 2;      
         tempPlayerUnit.GetComponent<PlayerMove>().attacking = false;
         hit.GetComponent<NPCMove>().RemoveSelectableTiles();
-        flag = false;
         this.GetComponent<PlayerMove>().tempGO = null;
         //TurnManager.EndTurn();
 	}  
@@ -105,17 +102,14 @@ public class PlayerAttack : TacticsAttack
         yield return new WaitUntil(()=> Input.GetMouseButtonDown(0));
 
         RaycastHit hit;
-        if (Physics.Raycast(transform.position, new Vector3(0, 0, 1), out hit, 1) ||
-            Physics.Raycast(transform.position, new Vector3(0, 0, -1), out hit, 1) ||
-            Physics.Raycast(transform.position, new Vector3(1, 0, 0), out hit, 1) ||
-            Physics.Raycast(transform.position, new Vector3(-1, 0, 0), out hit, 1)) {
-            if (hit.transform.tag == "NPC" && GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().target.transform.tag == "NPC") {
+        if (Physics.Raycast(this.transform.position, new Vector3(0, 0, 1), out hit, 1) ||
+            Physics.Raycast(this.transform.position, new Vector3(0, 0, -1), out hit, 1) ||
+            Physics.Raycast(this.transform.position, new Vector3(1, 0, 0), out hit, 1) ||
+            Physics.Raycast(this.transform.position, new Vector3(-1, 0, 0), out hit, 1)) {
+            if (hit.transform.tag == "NPC") {
                 Animator animator = tempPlayerUnit.GetComponent<Animator>();
                 animator.runtimeAnimatorController = tempPlayerUnit.GetComponent<PlayerMove>().attackAnimation; 
-                if (flag == false) {
-                    StartCoroutine(PlayerAttackCoroutine(GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().target.transform.gameObject, tempPlayerUnit));
-                    flag = true;             
-                } 
+                StartCoroutine(PlayerAttackCoroutine(GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().target.transform.gameObject, tempPlayerUnit)); 
             } 
         }                                   
     }
