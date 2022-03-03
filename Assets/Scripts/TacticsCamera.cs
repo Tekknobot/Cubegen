@@ -98,7 +98,10 @@ public class TacticsCamera : MonoBehaviour
         //StartCoroutine(DeactivateUI());
 
         TurnOffAllOutlines();
-        
+        playerPrefabs = GameObject.FindGameObjectsWithTag("Player");  
+        if (playerPrefabsIndex >= playerPrefabs.Length) {
+            playerPrefabsIndex = 0;
+        }              
         target = playerPrefabs[playerPrefabsIndex].transform;
         playerPrefabs[playerPrefabsIndex].GetComponent<TacticsMove>().RemoveSelectableTiles();
         playerPrefabs[playerPrefabsIndex].GetComponent<TacticsMove>().FindSelectableTiles();
