@@ -127,13 +127,11 @@ public class NPCMove : TacticsMove
 
     public void PlayerWithinRadius()
     {
-        RaycastHit hit;
-        if (Physics.Raycast(transform.position, new Vector3(0, 0, 1), out hit, 1) ||
-            Physics.Raycast(transform.position, new Vector3(0, 0, -1), out hit, 1) ||
-            Physics.Raycast(transform.position, new Vector3(1, 0, 0), out hit, 1) ||
-            Physics.Raycast(transform.position, new Vector3(-1, 0, 0), out hit, 1)) {
-            if (hit.transform.tag == "Player") {
-                NPCAttackFunction(hit.transform.gameObject);
+        Collider[] hitColliders = Physics.OverlapSphere(this.transform.position, 0.75f);
+        foreach (var hitCollider in hitColliders) {
+            if (hitCollider.transform.tag == "Player") {
+                NPCAttackFunction(hitCollider.transform.gameObject);
+                break;
             }
         }
     }     
