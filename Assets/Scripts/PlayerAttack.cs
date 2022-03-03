@@ -102,10 +102,12 @@ public class PlayerAttack : TacticsAttack
         yield return new WaitUntil(()=> Input.GetMouseButtonDown(0));
         if (GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().target.transform.gameObject) {
             if (GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().target.transform.tag == "NPC") {
-                Animator animator = tempPlayerUnit.GetComponent<Animator>();
-                animator.runtimeAnimatorController = tempPlayerUnit.GetComponent<PlayerMove>().attackAnimation; 
-                if (animator.runtimeAnimatorController == this.GetComponent<PlayerMove>().attackAnimation) {
-                    StartCoroutine(PlayerAttackCoroutine(GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().target.transform.gameObject, tempPlayerUnit)); 
+                if (Vector3.Distance (tempPlayerUnit.transform.position, GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().target.transform.position) < 1.25f) {
+                    Animator animator = tempPlayerUnit.GetComponent<Animator>();
+                    animator.runtimeAnimatorController = tempPlayerUnit.GetComponent<PlayerMove>().attackAnimation; 
+                    if (animator.runtimeAnimatorController == this.GetComponent<PlayerMove>().attackAnimation) {
+                        StartCoroutine(PlayerAttackCoroutine(GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().target.transform.gameObject, tempPlayerUnit));                     
+                    }
                 }
             } 
         }                                   
