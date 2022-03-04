@@ -126,7 +126,7 @@ public class NPCMove : TacticsMove
 
     public void PlayerWithinRadius()
     {
-        Collider[] hitColliders = Physics.OverlapSphere(this.transform.position, 0.75f);
+        Collider[] hitColliders = Physics.OverlapSphere(this.transform.position, 0.85f);
         foreach (var hitCollider in hitColliders) {
             if (hitCollider.transform.tag == "Player") {
                 Animator animator = this.gameObject.GetComponent<Animator>();
