@@ -63,7 +63,6 @@ public class PlayerAttack : TacticsAttack
         tempPlayerUnit.GetComponent<PlayerAttack>().Heal(tempPlayerUnit.GetComponent<PlayerAttack>().healthUp);
         tempPlayerUnit.GetComponentInChildren<HealthBarHandler>().SetHealthBarValue(((float)tempPlayerUnit.GetComponent<PlayerAttack>().currentHP/(float)tempPlayerUnit.GetComponent<PlayerAttack>().maxHP));     
         StartCoroutine(PlayerDodge());
-        //TurnManager.EndTurn();
     }    
 
 	IEnumerator PlayerAttackCoroutine(GameObject hit, GameObject tempPlayerUnit) {
@@ -77,18 +76,16 @@ public class PlayerAttack : TacticsAttack
         Instantiate(attackEffect, hit.transform.position, Quaternion.Euler(45, -45, 0)); 
         hit.GetComponent<NPCMove>().pushed = true;
         Tile t = hit.GetComponent<NPCMove>().GetTargetTile(hit.transform.gameObject);
-        if (t.adjacencyList.Count <= 1) {
+        if (t.adjacencyList.Count == 0) {
             hit.GetComponent<NPCMove>().moveSpeed = 2;      
             tempPlayerUnit.GetComponent<PlayerMove>().attacking = false;
             hit.GetComponent<NPCMove>().RemoveSelectableTiles();
             this.GetComponent<PlayerMove>().tempGO = null;
         }
-        else {        
-            Tile t2 = t.adjacencyList[Random.Range(0,t.adjacencyList.Count)];   
-            if (t2.walkable == true) {
-                hit.GetComponent<NPCMove>().MoveToTile(t2);
-                hit.GetComponent<NPCMove>().moveSpeed = 4;               
-            }  
+        Tile t2 = t.adjacencyList[Random.Range(0,t.adjacencyList.Count)];   
+        if (t2.walkable == true) {
+            hit.GetComponent<NPCMove>().MoveToTile(t2);
+            hit.GetComponent<NPCMove>().moveSpeed = 4;                
         }   
         yield return new WaitUntil(()=> hit.GetComponent<NPCMove>().pushed == false);
         hit.GetComponent<NPCMove>().moveSpeed = 2;      
@@ -100,10 +97,14 @@ public class PlayerAttack : TacticsAttack
 
     IEnumerator PlayerDodge() {
         Tile t = GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().target.transform.GetComponent<PlayerMove>().GetTargetTile(GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().target.transform.gameObject);
+        if (t.adjacencyList.Count == 0) {  
+            GameObject.Find("Map").GetComponent<TurnManager>().EndTurn();
+            GameObject.Find("PlayerTurnStatus_text").GetComponent<Text>().text = "Player is trapped: Player turn over.";
+        }          
         Tile t2 = t.adjacencyList[Random.Range(0,t.adjacencyList.Count)];
         if (t2.walkable == true) {
             GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().target.transform.GetComponent<PlayerMove>().MoveToTile(t2);                 
-        }          
+        }  
         yield return null;
     }
 
