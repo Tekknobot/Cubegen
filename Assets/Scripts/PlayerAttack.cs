@@ -77,17 +77,19 @@ public class PlayerAttack : TacticsAttack
         Instantiate(attackEffect, hit.transform.position, Quaternion.Euler(45, -45, 0)); 
         hit.GetComponent<NPCMove>().pushed = true;
         Tile t = hit.GetComponent<NPCMove>().GetTargetTile(hit.transform.gameObject);
-        Tile t2 = t.adjacencyList[Random.Range(0,t.adjacencyList.Count)];
-        if (t2.walkable == true) {
-            hit.GetComponent<NPCMove>().MoveToTile(t2);
-            hit.GetComponent<NPCMove>().moveSpeed = 4;               
-        }
-        if (t.adjacencyList.Count ==0) {
+        if (t.adjacencyList.Count <= 1) {
             hit.GetComponent<NPCMove>().moveSpeed = 2;      
             tempPlayerUnit.GetComponent<PlayerMove>().attacking = false;
             hit.GetComponent<NPCMove>().RemoveSelectableTiles();
             this.GetComponent<PlayerMove>().tempGO = null;
         }
+        else {        
+            Tile t2 = t.adjacencyList[Random.Range(0,t.adjacencyList.Count)];   
+            if (t2.walkable == true) {
+                hit.GetComponent<NPCMove>().MoveToTile(t2);
+                hit.GetComponent<NPCMove>().moveSpeed = 4;               
+            }  
+        }   
         yield return new WaitUntil(()=> hit.GetComponent<NPCMove>().pushed == false);
         hit.GetComponent<NPCMove>().moveSpeed = 2;      
         tempPlayerUnit.GetComponent<PlayerMove>().attacking = false;
