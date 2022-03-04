@@ -92,6 +92,7 @@ public class NPCMove : TacticsMove
 
     public void CalculatePath()
     {
+        StartCoroutine(this.GetComponent<NPCMove>().AttackNow());
         if (turn == false) {
             target = this.transform.gameObject;
             Tile targetNearestTile = GetTargetTile(target);
@@ -100,7 +101,6 @@ public class NPCMove : TacticsMove
         }        
         Tile targetTile = GetTargetTile(target);
         FindPath(targetTile);
-        StartCoroutine(AttackNow());
     } 
 
     public void FindNearestTarget()
