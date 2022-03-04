@@ -116,7 +116,7 @@ public class TacticsMove : MonoBehaviour
     {
         path.Clear();
         tile.target = true;
-        moving = true;
+        this.moving = true;
 
         Tile next = tile;
         while (next != null)
@@ -163,12 +163,11 @@ public class TacticsMove : MonoBehaviour
             }
         }
         else
-        {
+        {            
             RemoveSelectableTiles();
-            moving = false;
-            pushed = false; 
-
-            GameObject.Find("Map").GetComponent<TurnManager>().EndTurn();                           
+            this.moving = false;
+            this.pushed = false; 
+            GameObject.Find("Map").GetComponent<TurnManager>().EndTurn();                                        
         }
     }
 
@@ -394,8 +393,11 @@ public class TacticsMove : MonoBehaviour
 
         //todo - what do you do if there is no path to the target tile?
         Debug.Log("Path not found");
+        Tile tA = this.transform.GetComponent<NPCMove>().GetTargetTile(this.transform.gameObject);
+        Tile tB = tA.adjacencyList[Random.Range(0,tA.adjacencyList.Count)];
+        this.transform.GetComponent<NPCMove>().MoveToTile(tB);
         StartCoroutine(this.GetComponent<NPCMove>().AttackNow());
-        GameObject.Find("Map").GetComponent<TurnManager>().EndTurn();
+        //GameObject.Find("Map").GetComponent<TurnManager>().EndTurn();
     }
 
     public void BeginTurn()
@@ -406,5 +408,5 @@ public class TacticsMove : MonoBehaviour
     public void FinishTurn()
     {
         turn = false;
-    }   
+    }
 }
