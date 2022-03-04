@@ -44,14 +44,12 @@ public class NPCMove : TacticsMove
             
         }
         else if (!turn && !this.GetComponent<NPCMove>().attacking) {
-            Cursor.lockState = CursorLockMode.None;
             Animator animator = this.gameObject.GetComponent<Animator>();
             animator.runtimeAnimatorController = idleAnimation;                       
             return;
         }
 
-        if (!moving && !this.GetComponent<NPCMove>().attacking) {  
-            Cursor.lockState = CursorLockMode.None;  
+        if (!moving && !this.GetComponent<NPCMove>().attacking) {    
             Animator animator = this.gameObject.GetComponent<Animator>();        
             animator.runtimeAnimatorController = idleAnimation;
             MoveToTile(GetTargetTile(this.transform.gameObject));
@@ -61,13 +59,14 @@ public class NPCMove : TacticsMove
             actualTargetTile.target = true;            
         }
 
-        if (this.GetComponent<NPCMove>().attacking) {    
+        if (this.GetComponent<NPCMove>().attacking) {   
             Animator animator = this.gameObject.GetComponent<Animator>();        
             animator.runtimeAnimatorController = attackAnimation;
         }
 
         if (moving) {
             Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
             GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().TargetCameraOnNPC();
             Animator animator = this.gameObject.GetComponent<Animator>();
             animator.runtimeAnimatorController = moveAnimation;             
@@ -162,9 +161,9 @@ public class NPCMove : TacticsMove
             hit.GetComponent<PlayerMove>().MoveToTile(t2);           
             hit.GetComponent<PlayerMove>().moveSpeed = 4;      
         }        
+        GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().CycleUnits();
         yield return new WaitUntil(()=> hit.GetComponent<PlayerMove>().pushed == false);
         hit.GetComponent<PlayerMove>().moveSpeed = 2; 
-        GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().CycleUnits();
         //TurnManager.EndTurn();
 	}
 

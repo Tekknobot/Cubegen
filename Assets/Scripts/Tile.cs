@@ -52,7 +52,7 @@ public class Tile : MonoBehaviour
         }
 
         RaycastHit hit;
-        if (Physics.Raycast(this.transform.position, Vector3.up, out hit, 100)) {
+        if (Physics.Raycast(this.transform.position, Vector3.up, out hit, 50)) {
             if (hit.transform.tag == "Player" || hit.transform.tag == "NPC") {
                 this.walkable = false;
             }
@@ -97,11 +97,11 @@ public class Tile : MonoBehaviour
             {
                 RaycastHit hit;
 
-                if (!Physics.Raycast(tile.transform.position, Vector3.up, out hit, 100) || (tile == target)) {
+                if (!Physics.Raycast(tile.transform.position, Vector3.up, out hit, 50) || (tile == target)) {
                     adjacencyList.Add(tile);
                 }
                 
-                if (Physics.Raycast(tile.transform.position, Vector3.up, out hit, 100)) {
+                if (Physics.Raycast(tile.transform.position, Vector3.up, out hit, 50)) {
                     tile.walkable = false;
                 }               
             }

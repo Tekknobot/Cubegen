@@ -43,10 +43,9 @@ public class PlayerMove : TacticsMove
 	void Update () 
 	{
         if (pushed) {
-            
+
         }
         else if (!turn && !this.GetComponent<PlayerMove>().attacking) {
-            Cursor.lockState = CursorLockMode.Locked;
             Animator animator = this.gameObject.GetComponent<Animator>();
             animator.runtimeAnimatorController = idleAnimation;
             //this.GetComponent<cakeslice.Outline>().enabled = false;            
@@ -54,19 +53,20 @@ public class PlayerMove : TacticsMove
         }
 
         if (!turn) {
-            Cursor.lockState = CursorLockMode.Locked;
             Animator animator = this.gameObject.GetComponent<Animator>();
             animator.runtimeAnimatorController = idleAnimation;  
             return;
         }
+        else {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
 
         if (!moving && this.gameObject.GetComponent<PlayerMove>().attacking) {
-            Cursor.lockState = CursorLockMode.Locked;
             Animator animator = this.gameObject.GetComponent<Animator>();
             animator.runtimeAnimatorController = attackAnimation;                      
         }
         else if (!moving && !this.gameObject.GetComponent<PlayerMove>().attacking) {
-            Cursor.lockState = CursorLockMode.Locked;
             Animator animator = this.gameObject.GetComponent<Animator>();
             animator.runtimeAnimatorController = idleAnimation;            
             //FindSelectableTiles();
@@ -74,6 +74,7 @@ public class PlayerMove : TacticsMove
         }
         else if (moving) {
             Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
             GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().TargetCameraOnPlayer();
             Animator animator = this.gameObject.GetComponent<Animator>();
             animator.runtimeAnimatorController = moveAnimation;            
@@ -157,19 +158,5 @@ public class PlayerMove : TacticsMove
                 }
             }
         }
-    }
-
-    public void StartSphere() {
-        StartCoroutine(Sphere());
-    }
-
-    IEnumerator Sphere() {
-        Collider[] hitColliders = Physics.OverlapSphere(transform.position, 0.65f);
-        foreach (var hitCollider in hitColliders) {
-            if (hitCollider.tag != "Player") {
-                enemyTransform = hitCollider.transform.position;
-            }
-            yield return null;
-        }              
-    }                
+    }             
 }
