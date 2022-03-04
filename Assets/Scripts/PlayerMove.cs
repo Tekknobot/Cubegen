@@ -46,6 +46,7 @@ public class PlayerMove : TacticsMove
             
         }
         else if (!turn && !this.GetComponent<PlayerMove>().attacking) {
+            Cursor.lockState = CursorLockMode.Locked;
             Animator animator = this.gameObject.GetComponent<Animator>();
             animator.runtimeAnimatorController = idleAnimation;
             //this.GetComponent<cakeslice.Outline>().enabled = false;            
@@ -53,28 +54,30 @@ public class PlayerMove : TacticsMove
         }
 
         if (!turn) {
+            Cursor.lockState = CursorLockMode.Locked;
             Animator animator = this.gameObject.GetComponent<Animator>();
             animator.runtimeAnimatorController = idleAnimation;  
             return;
         }
 
         if (!moving && this.gameObject.GetComponent<PlayerMove>().attacking) {
+            Cursor.lockState = CursorLockMode.Locked;
             Animator animator = this.gameObject.GetComponent<Animator>();
             animator.runtimeAnimatorController = attackAnimation;                      
         }
         else if (!moving && !this.gameObject.GetComponent<PlayerMove>().attacking) {
+            Cursor.lockState = CursorLockMode.Locked;
             Animator animator = this.gameObject.GetComponent<Animator>();
             animator.runtimeAnimatorController = idleAnimation;            
             //FindSelectableTiles();
             Select();             
         }
         else if (moving) {
+            Cursor.lockState = CursorLockMode.Locked;
             GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().TargetCameraOnPlayer();
             Animator animator = this.gameObject.GetComponent<Animator>();
             animator.runtimeAnimatorController = moveAnimation;            
-            Move();             
-            // GameObject.Find("UI_Manager").GetComponent<UI_Manager>().targetButton.SetActive(false);    
-            // GameObject.Find("UI_Manager").GetComponent<UI_Manager>().healthButton.SetActive(false);            
+            Move();                        
         }
 
         if (transform.position.x > oldPositionX) {
@@ -141,9 +144,8 @@ public class PlayerMove : TacticsMove
 
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit)) {
-                if (hit.collider.tag == "Tile" && !EventSystem.current.IsPointerOverGameObject()) {
+                if (hit.collider.tag == "Tile" && !EventSystem.current.IsPointerOverGameObject()) {                    
                     Tile t = hit.collider.GetComponent<Tile>();
-
                     if (t.selectable && this.moving == false && turn == true) {
                         if (tempGO == null || t.current) {
                             return;

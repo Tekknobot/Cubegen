@@ -44,12 +44,14 @@ public class NPCMove : TacticsMove
             
         }
         else if (!turn && !this.GetComponent<NPCMove>().attacking) {
+            Cursor.lockState = CursorLockMode.None;
             Animator animator = this.gameObject.GetComponent<Animator>();
             animator.runtimeAnimatorController = idleAnimation;                       
             return;
         }
 
-        if (!moving && !this.GetComponent<NPCMove>().attacking) {    
+        if (!moving && !this.GetComponent<NPCMove>().attacking) {  
+            Cursor.lockState = CursorLockMode.None;  
             Animator animator = this.gameObject.GetComponent<Animator>();        
             animator.runtimeAnimatorController = idleAnimation;
             MoveToTile(GetTargetTile(this.transform.gameObject));
@@ -57,7 +59,6 @@ public class NPCMove : TacticsMove
             CalculatePath();
             FindSelectableTiles();           
             actualTargetTile.target = true;            
-            pushed = false;
         }
 
         if (this.GetComponent<NPCMove>().attacking) {    
@@ -66,6 +67,7 @@ public class NPCMove : TacticsMove
         }
 
         if (moving) {
+            Cursor.lockState = CursorLockMode.Locked;
             GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().TargetCameraOnNPC();
             Animator animator = this.gameObject.GetComponent<Animator>();
             animator.runtimeAnimatorController = moveAnimation;             
@@ -166,7 +168,7 @@ public class NPCMove : TacticsMove
         //TurnManager.EndTurn();
 	}
 
-    IEnumerator AttackNow() {
+    public IEnumerator AttackNow() {
         yield return new WaitUntil(()=> moving == false);
         if (GameObject.Find("Map").GetComponent<SpawnUnits>().spawned == true) {
             this.GetComponent<NPCMove>().PlayerWithinRadius();

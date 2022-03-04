@@ -59,7 +59,7 @@ public class UI_Manager : MonoBehaviour
             if (tacticsCamera.GetComponent<TacticsCamera>().target.transform.tag == "Player") {
                 portrait.GetComponent<Image>().sprite = tacticsCamera.GetComponent<TacticsCamera>().target.GetComponent<SpriteRenderer>().sprite; 
                 unit_label.GetComponent<Text>().text = tacticsCamera.GetComponent<TacticsCamera>().target.GetComponent<PlayerAttack>().unitName;
-                healthbar_hp.text = tacticsCamera.GetComponent<TacticsCamera>().target.GetComponentInChildren<HealthBarHandler>().GetHealthBarValue() * tacticsCamera.GetComponent<TacticsCamera>().target.GetComponent<PlayerAttack>().maxHP + " HP";
+                healthbar_hp.text = Mathf.Round(tacticsCamera.GetComponent<TacticsCamera>().target.GetComponentInChildren<HealthBarHandler>().GetHealthBarValue() * tacticsCamera.GetComponent<TacticsCamera>().target.GetComponent<PlayerAttack>().maxHP) + " HP";
                 healthbar_slider.value = tacticsCamera.GetComponent<TacticsCamera>().target.GetComponent<PlayerAttack>().currentHP;
                 xp_slider.value = tacticsCamera.GetComponent<TacticsCamera>().target.GetComponent<PlayerAttack>().currentXP;
                 ActivateUI();
@@ -67,7 +67,7 @@ public class UI_Manager : MonoBehaviour
             if (tacticsCamera.GetComponent<TacticsCamera>().target.transform.tag == "NPC") {
                 portrait.GetComponent<Image>().sprite = tacticsCamera.GetComponent<TacticsCamera>().target.GetComponent<SpriteRenderer>().sprite; 
                 unit_label.GetComponent<Text>().text = tacticsCamera.GetComponent<TacticsCamera>().target.GetComponent<NPCAttack>().unitName;
-                healthbar_hp.text = tacticsCamera.GetComponent<TacticsCamera>().target.GetComponent<NPCAttack>().currentHP.ToString() + " HP";
+                healthbar_hp.text = Mathf.Round(tacticsCamera.GetComponent<TacticsCamera>().target.GetComponent<NPCAttack>().currentHP) + " HP";
                 healthbar_slider.value = tacticsCamera.GetComponent<TacticsCamera>().target.GetComponent<NPCAttack>().currentHP;
                 xp_slider.value = tacticsCamera.GetComponent<TacticsCamera>().target.GetComponent<NPCAttack>().currentXP;
                 targetButton.SetActive(false);    

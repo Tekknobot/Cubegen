@@ -357,7 +357,6 @@ public class TacticsMove : MonoBehaviour
             {
                 actualTargetTile = FindEndTile(t);
                 MoveToTile(actualTargetTile);
-                pushed = false;
                 return;
             }
 
@@ -394,6 +393,7 @@ public class TacticsMove : MonoBehaviour
 
         //todo - what do you do if there is no path to the target tile?
         Debug.Log("Path not found");
+        StartCoroutine(this.GetComponent<NPCMove>().AttackNow());
         GameObject.Find("Map").GetComponent<TurnManager>().EndTurn();
     }
 
