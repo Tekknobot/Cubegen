@@ -126,14 +126,10 @@ public class NPCMove : TacticsMove
 
     public void PlayerWithinRadius()
     {
-        Collider[] hitColliders = Physics.OverlapSphere(this.transform.position, 0.85f);
+        Collider[] hitColliders = Physics.OverlapSphere(this.transform.position, 0.75f);
         foreach (var hitCollider in hitColliders) {
             if (hitCollider.transform.tag == "Player") {
-                Animator animator = this.gameObject.GetComponent<Animator>();
-                animator.runtimeAnimatorController = this.gameObject.GetComponent<NPCMove>().attackAnimation;
-                if (animator.runtimeAnimatorController == this.GetComponent<NPCMove>().attackAnimation) {
-                    NPCAttackFunction(hitCollider.transform.gameObject);
-                }
+                NPCAttackFunction(hitCollider.transform.gameObject);
                 break;
             }
         }
@@ -149,7 +145,9 @@ public class NPCMove : TacticsMove
         ComputeAdjacencyLists(this.GetComponent<NPCMove>().jumpHeight, this.GetComponent<NPCMove>().GetTargetTile(this.gameObject));
         attacking = true;
         hit.transform.gameObject.GetComponent<TacticsAttack>().TakeDamage(this.GetComponent<TacticsAttack>().damage);
-        this.GetComponent<TacticsAttack>().GetXP(1);        
+        this.GetComponent<TacticsAttack>().GetXP(1);
+        Animator animator = this.gameObject.GetComponent<Animator>();
+        animator.runtimeAnimatorController = this.gameObject.GetComponent<NPCMove>().attackAnimation;        
 		yield return new WaitForSeconds(1f);
         attacking = false;
         hit.GetComponentInChildren<HealthBarHandler>().SetHealthBarValue((float)hit.GetComponent<PlayerAttack>().currentHP/hit.GetComponent<PlayerAttack>().maxHP);
