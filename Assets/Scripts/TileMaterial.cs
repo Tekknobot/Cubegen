@@ -34,7 +34,8 @@ public class TileMaterial : MonoBehaviour
                 Material materialToUse = newMats[3];
                 t.GetComponent<Renderer>().material.CopyPropertiesFromMaterial(materialToUse);
                 t.transform.position = new Vector3(t.transform.position.x, 0.125f, t.transform.position.z);
-                t.transform.localScale = new Vector3(t.transform.localScale.x, 1.25f, t.transform.localScale.z);                
+                t.transform.localScale = new Vector3(t.transform.localScale.x, 1.25f, t.transform.localScale.z); 
+                //t.GetComponent<Tile>().walkable = false;               
             }
             if (calc_dropChance >= 6 && calc_dropChance <= 11) {
                 Material materialToUse = newMats[4];

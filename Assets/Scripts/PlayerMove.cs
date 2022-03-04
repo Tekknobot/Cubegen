@@ -57,24 +57,20 @@ public class PlayerMove : TacticsMove
             animator.runtimeAnimatorController = idleAnimation;  
             return;
         }
-        else {
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
-        }
 
         if (!moving && this.gameObject.GetComponent<PlayerMove>().attacking) {
             Animator animator = this.gameObject.GetComponent<Animator>();
             animator.runtimeAnimatorController = attackAnimation;                      
         }
-        else if (!moving && !this.gameObject.GetComponent<PlayerMove>().attacking) {
+        
+        if (!moving && !this.gameObject.GetComponent<PlayerMove>().attacking) {
             Animator animator = this.gameObject.GetComponent<Animator>();
             animator.runtimeAnimatorController = idleAnimation;            
             //FindSelectableTiles();
             Select();             
         }
-        else if (moving) {
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
+        
+        if (moving) {
             GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().TargetCameraOnPlayer();
             Animator animator = this.gameObject.GetComponent<Animator>();
             animator.runtimeAnimatorController = moveAnimation;            

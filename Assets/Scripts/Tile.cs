@@ -56,14 +56,23 @@ public class Tile : MonoBehaviour
             if (hit.transform.tag == "Player" || hit.transform.tag == "NPC") {
                 this.walkable = false;
             }
-        }        
+        }    
+
+        if (this.transform.localScale.y > 1 || this.transform.localScale.y < 1) {
+            this.walkable = false;
+        }    
 	}
 
     public void Reset()
     {
         adjacencyList.Clear();
 
-        walkable = true;
+        if (this.transform.localScale.y > 1 || this.transform.localScale.y < 1) {
+            this.walkable = false;
+        }
+        else {
+            this.walkable = true;
+        }
         current = false;
         target = false;
         selectable = false;

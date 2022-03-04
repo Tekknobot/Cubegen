@@ -95,8 +95,6 @@ public class TacticsCamera : MonoBehaviour
     }       
 
     public void CameraSelect() {
-        //StartCoroutine(DeactivateUI());
-
         TurnOffAllOutlines();
         playerPrefabs = GameObject.FindGameObjectsWithTag("Player");  
         if (playerPrefabsIndex >= playerPrefabs.Length) {
