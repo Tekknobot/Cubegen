@@ -57,7 +57,7 @@ public class TacticsMove : MonoBehaviour
         RaycastHit hit;
         Tile tile = null;
 
-        if (Physics.Raycast(target.transform.position, new Vector3(0, -1, 0), out hit, 100))
+        if (Physics.Raycast(target.transform.position, new Vector3(0, -1, 0), out hit, 50))
         {
             tile = hit.collider.GetComponent<Tile>();
             Debug.DrawRay(transform.position, new Vector3(0, -1, 0));

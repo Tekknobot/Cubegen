@@ -8000,7 +8000,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 87787a187e0c74e46aaa85337eae67bb, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 765f7659a58fb8741a7e9655dc99f8a3, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -8973,7 +8973,7 @@ MonoBehaviour:
   unit_label: {fileID: 641606272}
   healthbar_hp: {fileID: 2003235090}
   healthbar_slider: {fileID: 2070939474}
-  xp_slider: {fileID: 0}
+  xp_slider: {fileID: 1991261007}
   targetButton: {fileID: 1924009276}
   healthButton: {fileID: 1215797822}
   clip: []
