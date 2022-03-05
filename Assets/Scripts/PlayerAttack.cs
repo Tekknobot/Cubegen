@@ -30,6 +30,8 @@ public class PlayerAttack : TacticsAttack
     AudioSource audioData;
     public AudioClip[] clip;
 
+    public GameObject bullet;
+
 	// Use this for initialization
 	void Start () 
 	{
@@ -131,7 +133,8 @@ public class PlayerAttack : TacticsAttack
                     animator.runtimeAnimatorController = tempPlayerUnit.GetComponent<PlayerMove>().attackAnimation; 
                     if (animator.runtimeAnimatorController == this.GetComponent<PlayerMove>().attackAnimation) {
                         GetComponent<LaunchProjectile>().DrawPath(tempPlayerUnit.transform, GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().target.transform);
-                        GetComponent<LaunchProjectile>().Launch(tempPlayerUnit.transform, GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().target.transform);
+                        Instantiate(bullet, this.transform.position, Quaternion.identity);
+                        //GetComponent<LaunchProjectile>().Launch(tempPlayerUnit.transform, GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().target.transform);
                     }
                 }
             } 
