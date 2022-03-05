@@ -133,12 +133,14 @@ public class PlayerAttack : TacticsAttack
                     Physics.Raycast(tempPlayerUnit.transform.position, new Vector3(0, 0, -1), out hit, 100) ||
                     Physics.Raycast(tempPlayerUnit.transform.position, new Vector3(1, 0, 0), out hit, 100) ||
                     Physics.Raycast(tempPlayerUnit.transform.position, new Vector3(-1, 0, 0), out hit, 100)) {
+                    Debug.Log("Enemy in range.");
                     if (GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().target.transform.tag == "NPC") {
                         var heading = GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().target.transform.position - tempPlayerUnit.transform.position;
                         var distance = heading.magnitude;
                         var direction = heading / distance;
-                        //Debug.Log(direction);                        
-                        if (hit.transform.tag == "NPC" && direction == new Vector3(0,0,1) || direction == new Vector3(0,0,-1) || direction == new Vector3(1,0,0) || direction == new Vector3(-1,0,0)) {
+                        Debug.Log(direction);                        
+                        if (hit.transform.tag == "NPC" && (direction == new Vector3(0,0,1) || direction == new Vector3(0,0,-1) || direction == new Vector3(1,0,0) || direction == new Vector3(-1,0,0))) {
+                            Debug.Log("Direction check");
                             if (Vector3.Distance (tempPlayerUnit.transform.position, GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().target.transform.position) > 1.25f) {
                                 Animator animator = tempPlayerUnit.GetComponent<Animator>();
                                 animator.runtimeAnimatorController = tempPlayerUnit.GetComponent<PlayerMove>().attackAnimation; 
