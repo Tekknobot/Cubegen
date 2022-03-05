@@ -58,7 +58,7 @@ public class NPCMove : TacticsMove
             FindSelectableTiles();           
             actualTargetTile.target = true; 
             moveSpeed = 2; 
-            transform.position = new Vector3(transform.position.x, 0.8889084f, transform.position.z);           
+            this.transform.position = new Vector3(this.transform.position.x, 0.8889084f, this.transform.position.z);           
         }
 
         if (this.GetComponent<NPCMove>().attacking) {   
