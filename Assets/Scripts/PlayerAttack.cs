@@ -128,31 +128,23 @@ public class PlayerAttack : TacticsAttack
                     }
                 }
 
-                RaycastHit hit;
-                if (Physics.Raycast(tempPlayerUnit.transform.position, new Vector3(0, 0, 1), out hit, 100) ||
-                    Physics.Raycast(tempPlayerUnit.transform.position, new Vector3(0, 0, -1), out hit, 100) ||
-                    Physics.Raycast(tempPlayerUnit.transform.position, new Vector3(1, 0, 0), out hit, 100) ||
-                    Physics.Raycast(tempPlayerUnit.transform.position, new Vector3(-1, 0, 0), out hit, 100)) {
-                    Debug.Log("Enemy in range.");
-                    if (GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().target.transform.tag == "NPC") {
-                        var heading = GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().target.transform.position - tempPlayerUnit.transform.position;
-                        var distance = heading.magnitude;
-                        var direction = heading / distance;
-                        Debug.Log(direction);                        
-                        if (direction == new Vector3(0,0,1) || direction == new Vector3(0,0,-1) || direction == new Vector3(1,0,0) || direction == new Vector3(-1,0,0)) {
-                            Debug.Log("Direction check");
-                            if (Vector3.Distance (tempPlayerUnit.transform.position, GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().target.transform.position) > 1.25f) {
-                                Animator animator = tempPlayerUnit.GetComponent<Animator>();
-                                animator.runtimeAnimatorController = tempPlayerUnit.GetComponent<PlayerMove>().attackAnimation; 
-                                if (animator.runtimeAnimatorController == this.GetComponent<PlayerMove>().attackAnimation) {
-                                    GetComponent<LaunchProjectile>().DrawPath(tempPlayerUnit.transform, GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().target.transform);
-                                    Instantiate(bullet, this.transform.position, Quaternion.identity);
-                                    //GetComponent<LaunchProjectile>().Launch(tempPlayerUnit.transform, GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().target.transform);
-                                }
-                            }
-                        } 
-                    }
-                } 
+            if (GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().target.transform.tag == "NPC") {
+                Vector3 heading = GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().target.transform.position - tempPlayerUnit.transform.position;
+                float distance = heading.magnitude;
+                Vector3 direction = heading / distance;
+                Debug.Log(direction);                        
+                if (direction == new Vector3(0,0,1) || direction == new Vector3(0,0,-1) || direction == new Vector3(1,0,0) || direction == new Vector3(-1,0,0)) {
+                    Debug.Log("Direction check");
+                    if (Vector3.Distance (tempPlayerUnit.transform.position, GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().target.transform.position) > 1.25f) {
+                        Animator animator = tempPlayerUnit.GetComponent<Animator>();
+                        animator.runtimeAnimatorController = tempPlayerUnit.GetComponent<PlayerMove>().attackAnimation; 
+                        if (animator.runtimeAnimatorController == this.GetComponent<PlayerMove>().attackAnimation) {
+                            GetComponent<LaunchProjectile>().DrawPath(tempPlayerUnit.transform, GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().target.transform);
+                            Instantiate(bullet, this.transform.position, Quaternion.identity);
+                            //GetComponent<LaunchProjectile>().Launch(tempPlayerUnit.transform, GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().target.transform);
+                        }                            }
+                    }                   
+                }
             }
         }                                  
     }    

@@ -82,7 +82,7 @@ public class NPCMove : TacticsMove
         }     
         if (transform.position.z < oldPositionZ) {
             GetComponent<SpriteRenderer>().flipX = true;
-        }        
+        }
 	}
 
     void LateUpdate(){
