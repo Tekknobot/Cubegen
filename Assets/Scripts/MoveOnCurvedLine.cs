@@ -16,6 +16,7 @@ public class MoveOnCurvedLine : MonoBehaviour
     void Start()
     {
         lineRenderer = GameObject.Find("LineRenderer").GetComponent<LineRenderer>();
+        lineRenderer.material.SetColor("_Color", new Color(1f, 1f, 1f, 0.3f));
         pos = GetLinePointsInWorldSpace();
         objectToMove = this.gameObject;
         objectToMove.transform.position = pos[index];
