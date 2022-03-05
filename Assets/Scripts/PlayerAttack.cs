@@ -129,11 +129,14 @@ public class PlayerAttack : TacticsAttack
                 }
 
                 RaycastHit hit;
-                if (Physics.Raycast(tempPlayerUnit.transform.position, new Vector3(0, 0, 1), out hit, 50) ||
-                    Physics.Raycast(tempPlayerUnit.transform.position, new Vector3(0, 0, -1), out hit, 50) ||
-                    Physics.Raycast(tempPlayerUnit.transform.position, new Vector3(1, 0, 0), out hit, 50) ||
-                    Physics.Raycast(tempPlayerUnit.transform.position, new Vector3(-1, 0, 0), out hit, 50)) {
+                if (Physics.Raycast(tempPlayerUnit.transform.position, new Vector3(0, 0, 1), out hit, 100) ||
+                    Physics.Raycast(tempPlayerUnit.transform.position, new Vector3(0, 0, -1), out hit, 100) ||
+                    Physics.Raycast(tempPlayerUnit.transform.position, new Vector3(1, 0, 0), out hit, 100) ||
+                    Physics.Raycast(tempPlayerUnit.transform.position, new Vector3(-1, 0, 0), out hit, 100)) {
                     if (GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().target.transform.tag == "NPC") {
+                        if (hit.transform.tag == "Player") {
+                            yield return null;
+                        }
                         if (hit.transform.tag == "NPC") {
                             if (Vector3.Distance (tempPlayerUnit.transform.position, GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().target.transform.position) > 1.25f) {
                                 Animator animator = tempPlayerUnit.GetComponent<Animator>();
