@@ -127,6 +127,7 @@ public class PlayerAttack : TacticsAttack
                         StartCoroutine(PlayerAttackCoroutine(GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().target.transform.gameObject, tempPlayerUnit));                     
                     }
                 }
+            }
 
             if (GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().target.transform.tag == "NPC") {
                 Vector3 heading = GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().target.transform.position - tempPlayerUnit.transform.position;
@@ -142,7 +143,7 @@ public class PlayerAttack : TacticsAttack
                             GetComponent<LaunchProjectile>().DrawPath(tempPlayerUnit.transform, GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().target.transform);
                             Instantiate(bullet, this.transform.position, Quaternion.identity);
                             //GetComponent<LaunchProjectile>().Launch(tempPlayerUnit.transform, GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().target.transform);
-                        }                            }
+                        }                            
                     }                   
                 }
             }

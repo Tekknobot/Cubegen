@@ -56,7 +56,9 @@ public class NPCMove : TacticsMove
             FindNearestTarget();
             CalculatePath();
             FindSelectableTiles();           
-            actualTargetTile.target = true;            
+            actualTargetTile.target = true; 
+            moveSpeed = 2; 
+            transform.position = new Vector3(transform.position.x, 0.8889084f, transform.position.z);           
         }
 
         if (this.GetComponent<NPCMove>().attacking) {   
@@ -67,7 +69,7 @@ public class NPCMove : TacticsMove
         if (moving) {
             GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().TargetCameraOnNPC();
             Animator animator = this.gameObject.GetComponent<Animator>();
-            animator.runtimeAnimatorController = moveAnimation;             
+            animator.runtimeAnimatorController = moveAnimation;            
             Move();            
         }     
 
