@@ -12,6 +12,8 @@ public class MoveOnCurvedLine : MonoBehaviour
     private Vector3[] pos;
     private int index = 0;
 
+    public GameObject explosion;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -35,6 +37,7 @@ public class MoveOnCurvedLine : MonoBehaviour
     void Update()
     {
         Move();
+        lineRenderer.material.SetColor("_Color", new Color(1f, 1f, 1f, 0.3f));
     }
 
     void Move()
@@ -49,4 +52,13 @@ public class MoveOnCurvedLine : MonoBehaviour
         if (index == pos.Length)
             index = 0;
     }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "NPC")
+        {
+            Instantiate(explosion, transform.position, Quaternion.Euler(45, -45, 0));
+            Destroy(this.gameObject);
+        }
+    }    
 }
