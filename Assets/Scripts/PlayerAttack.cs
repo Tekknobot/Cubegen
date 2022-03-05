@@ -139,7 +139,7 @@ public class PlayerAttack : TacticsAttack
                         var distance = heading.magnitude;
                         var direction = heading / distance;
                         Debug.Log(direction);                        
-                        if (hit.transform.tag == "NPC" && (direction == new Vector3(0,0,1) || direction == new Vector3(0,0,-1) || direction == new Vector3(1,0,0) || direction == new Vector3(-1,0,0))) {
+                        if (direction == new Vector3(0,0,1) || direction == new Vector3(0,0,-1) || direction == new Vector3(1,0,0) || direction == new Vector3(-1,0,0)) {
                             Debug.Log("Direction check");
                             if (Vector3.Distance (tempPlayerUnit.transform.position, GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().target.transform.position) > 1.25f) {
                                 Animator animator = tempPlayerUnit.GetComponent<Animator>();
