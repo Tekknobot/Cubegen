@@ -141,5 +141,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lineRenderer: {fileID: 0}
   objectToMove: {fileID: 0}
-  speed: 3
+  speed: 5
   explosion: {fileID: 1002605618548861685, guid: 29121037f1fb25d40940d875fbfcc030, type: 3}

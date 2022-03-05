@@ -128,16 +128,26 @@ public class PlayerAttack : TacticsAttack
                     }
                 }
 
-                if (Vector3.Distance (tempPlayerUnit.transform.position, GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().target.transform.position) > 1.25f) {
-                    Animator animator = tempPlayerUnit.GetComponent<Animator>();
-                    animator.runtimeAnimatorController = tempPlayerUnit.GetComponent<PlayerMove>().attackAnimation; 
-                    if (animator.runtimeAnimatorController == this.GetComponent<PlayerMove>().attackAnimation) {
-                        GetComponent<LaunchProjectile>().DrawPath(tempPlayerUnit.transform, GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().target.transform);
-                        Instantiate(bullet, this.transform.position, Quaternion.identity);
-                        //GetComponent<LaunchProjectile>().Launch(tempPlayerUnit.transform, GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().target.transform);
+                RaycastHit hit;
+                if (Physics.Raycast(tempPlayerUnit.transform.position, new Vector3(0, 0, 1), out hit, 50) ||
+                    Physics.Raycast(tempPlayerUnit.transform.position, new Vector3(0, 0, -1), out hit, 50) ||
+                    Physics.Raycast(tempPlayerUnit.transform.position, new Vector3(1, 0, 0), out hit, 50) ||
+                    Physics.Raycast(tempPlayerUnit.transform.position, new Vector3(-1, 0, 0), out hit, 50)) {
+                    if (GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().target.transform.tag == "NPC") {
+                        if (hit.transform.tag == "NPC") {
+                            if (Vector3.Distance (tempPlayerUnit.transform.position, GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().target.transform.position) > 1.25f) {
+                                Animator animator = tempPlayerUnit.GetComponent<Animator>();
+                                animator.runtimeAnimatorController = tempPlayerUnit.GetComponent<PlayerMove>().attackAnimation; 
+                                if (animator.runtimeAnimatorController == this.GetComponent<PlayerMove>().attackAnimation) {
+                                    GetComponent<LaunchProjectile>().DrawPath(tempPlayerUnit.transform, GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().target.transform);
+                                    Instantiate(bullet, this.transform.position, Quaternion.identity);
+                                    //GetComponent<LaunchProjectile>().Launch(tempPlayerUnit.transform, GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().target.transform);
+                                }
+                            }
+                        } 
                     }
-                }
-            } 
-        }                                   
+                } 
+            }
+        }                                  
     }    
 }
