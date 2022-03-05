@@ -58,6 +58,13 @@ public class MoveOnCurvedLine : MonoBehaviour
         if (collision.gameObject.tag == "NPC")
         {
             Instantiate(explosion, transform.position, Quaternion.Euler(45, -45, 0));
+            collision.transform.GetComponent<NPCMove>().pushed = true;
+            Tile t = collision.transform.GetComponent<NPCMove>().GetTargetTile(collision.transform.gameObject);
+            Tile t2 = t.adjacencyList[Random.Range(0,t.adjacencyList.Count)];
+            if (t2.walkable == true) {
+                collision.transform.GetComponent<NPCMove>().MoveToTile(t2);           
+                collision.transform.GetComponent<NPCMove>().moveSpeed = 4;      
+            }              
             Destroy(this.gameObject);
         }
     }    
