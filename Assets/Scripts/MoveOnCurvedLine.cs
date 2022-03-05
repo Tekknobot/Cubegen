@@ -58,6 +58,7 @@ public class MoveOnCurvedLine : MonoBehaviour
         if (collision.gameObject.tag == "NPC")
         {
             Instantiate(explosion, transform.position, Quaternion.Euler(45, -45, 0));
+            collision.transform.GetComponentInChildren<HealthBarHandler>().SetHealthBarValue((float)collision.transform.GetComponent<NPCAttack>().currentHP/(float)collision.transform.GetComponent<NPCAttack>().maxHP);
             collision.transform.GetComponent<NPCMove>().pushed = true;
             Tile t = collision.transform.GetComponent<NPCMove>().GetTargetTile(collision.transform.gameObject);
             Tile t2 = t.adjacencyList[Random.Range(0,t.adjacencyList.Count)];
