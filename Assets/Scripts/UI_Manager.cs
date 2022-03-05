@@ -42,6 +42,7 @@ public class UI_Manager : MonoBehaviour
 
     public GameObject targetButton;
     public GameObject healthButton;
+    public GameObject launchButton;
 
     AudioSource audioData;
     public AudioClip[] clip;       
@@ -72,6 +73,7 @@ public class UI_Manager : MonoBehaviour
                 xp_slider.value = tacticsCamera.GetComponent<TacticsCamera>().target.GetComponent<NPCAttack>().currentXP;
                 targetButton.SetActive(false);    
                 healthButton.SetActive(false);
+                launchButton.SetActive(false);
             }                                   
         }   
 
@@ -94,6 +96,7 @@ public class UI_Manager : MonoBehaviour
                 if (hit.collider.tag == "Player") {
                     targetButton.SetActive(true);    
                     healthButton.SetActive(true); 
+                    launchButton.SetActive(true);
                     audioData = hit.transform.GetComponent<AudioSource>();
                     audioData.PlayOneShot(hit.transform.GetComponent<PlayerMove>().clip[0], 1);
                 }

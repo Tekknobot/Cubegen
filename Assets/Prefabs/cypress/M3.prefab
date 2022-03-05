@@ -146,6 +146,7 @@ GameObject:
   - component: {fileID: -3795372938460932875}
   - component: {fileID: -4218860480260097475}
   - component: {fileID: 6279579695972173410}
+  - component: {fileID: 4181918536221755099}
   m_Layer: 3
   m_Name: M3
   m_TagString: Player
@@ -474,6 +475,25 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
+--- !u!114 &4181918536221755099
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2168714103371907350}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bedf0d43824ceb049b2209bfe5eb78ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startPoint: {fileID: 0}
+  target: {fileID: 0}
+  resolution: 30
+  curveHight: 3
+  gravity: -18
+  bullet: {fileID: -1651955232465175977, guid: 934d5a5ab4b9dcb4f908341d8dee5911, type: 3}
+  lineRenderer: {fileID: 0}
 --- !u!1 &3654852347160429952
 GameObject:
   m_ObjectHideFlags: 0

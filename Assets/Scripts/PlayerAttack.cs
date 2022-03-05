@@ -65,6 +65,11 @@ public class PlayerAttack : TacticsAttack
         StartCoroutine(PlayerDodge());
     }    
 
+    public void OnLaunchButton() {
+        tempPlayerUnit = tacticsCamera.GetComponent<TacticsCamera>().target.gameObject;
+        CheckMouse(tempPlayerUnit);        
+    }
+
 	IEnumerator PlayerAttackCoroutine(GameObject hit, GameObject tempPlayerUnit) {
         tempPlayerUnit.GetComponent<PlayerMove>().attacking = true;
         audioData = GetComponent<AudioSource>();
@@ -120,7 +125,16 @@ public class PlayerAttack : TacticsAttack
                         StartCoroutine(PlayerAttackCoroutine(GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().target.transform.gameObject, tempPlayerUnit));                     
                     }
                 }
+
+                if (Vector3.Distance (tempPlayerUnit.transform.position, GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().target.transform.position) > 1.25f) {
+                    Animator animator = tempPlayerUnit.GetComponent<Animator>();
+                    animator.runtimeAnimatorController = tempPlayerUnit.GetComponent<PlayerMove>().attackAnimation; 
+                    if (animator.runtimeAnimatorController == this.GetComponent<PlayerMove>().attackAnimation) {
+                        GetComponent<LaunchProjectile>().DrawPath(tempPlayerUnit.transform, GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().target.transform);
+                        GetComponent<LaunchProjectile>().Launch(tempPlayerUnit.transform, GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().target.transform);
+                    }
+                }
             } 
         }                                   
-    }
+    }    
 }
