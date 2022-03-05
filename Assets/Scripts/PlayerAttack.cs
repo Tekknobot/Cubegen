@@ -140,8 +140,6 @@ public class PlayerAttack : TacticsAttack
                         animator.runtimeAnimatorController = tempPlayerUnit.GetComponent<PlayerMove>().attackAnimation; 
                         if (animator.runtimeAnimatorController == this.GetComponent<PlayerMove>().attackAnimation) {
                             GetComponent<LaunchProjectile>().DrawPath(tempPlayerUnit.transform, GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().target.transform);
-                            GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().target.transform.GetComponent<TacticsAttack>().TakeDamage(tempPlayerUnit.GetComponent<TacticsAttack>().damage);
-                            tempPlayerUnit.GetComponent<TacticsAttack>().GetXP(1);
                             Instantiate(bullet, this.transform.position, Quaternion.identity);
                             //GetComponent<LaunchProjectile>().Launch(tempPlayerUnit.transform, GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().target.transform);
                         }                            }
