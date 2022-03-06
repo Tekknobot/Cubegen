@@ -20,7 +20,7 @@ public class TileAudio : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.transform.tag == "Player" || other.transform.tag == "NPC") {
+        if ((other.transform.tag == "Player" || other.transform.tag == "NPC") && GameObject.Find("Map").GetComponent<SpawnUnits>().spawned == false) {
             audioData = GetComponent<AudioSource>();
             audioData.PlayOneShot(clip[0], 1);
         }
