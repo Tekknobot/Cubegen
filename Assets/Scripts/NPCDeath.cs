@@ -22,18 +22,18 @@ public class NPCDeath : MonoBehaviour
 
     IEnumerator DestroyObject() {
         this.transform.GetComponent<Rigidbody>().useGravity = true;
-        this.transform.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None; 
-        Tile t = this.transform.GetComponent<TacticsMove>().GetTargetTile(this.gameObject); 
-        this.transform.position = new Vector3(t.transform.position.x, 1, t.transform.position.z);     
+        this.transform.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;  
+        Tile t = this.gameObject.transform.GetComponent<TacticsMove>().GetTargetTile(this.transform.gameObject); 
+        this.transform.position = new Vector3(t.transform.position.x, 1, t.transform.position.z);              
         yield return new WaitForSeconds(1);
         GameObject[] playerUnits = GameObject.FindGameObjectsWithTag("Player");
         foreach (GameObject playerUnit in playerUnits) {
-            playerUnit.transform.GetComponent<TacticsMove>().moving = false;
+            playerUnit.transform.GetComponent<PlayerMove>().attacking = false;
         }        
         Instantiate(explosion, this.transform.position, Quaternion.Euler(45, -45, 0));
-        this.gameObject.GetComponent<NPCMove>().enabled = false;
-        this.gameObject.GetComponent<NPCAttack>().enabled = false;
-        this.gameObject.SetActive(false);
-        this.gameObject.tag = "Dead";        
+        this.transform.GetComponent<NPCMove>().enabled = false;
+        this.transform.GetComponent<NPCAttack>().enabled = false;
+        this.transform.gameObject.SetActive(false);
+        this.transform.tag = "Dead";        
     }
 }

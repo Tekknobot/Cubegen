@@ -21,15 +21,15 @@ public class PlayerDeath : MonoBehaviour
     }
 
     IEnumerator DestroyObject() {
-        this.gameObject.GetComponent<Rigidbody>().useGravity = true;
-        this.gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
-        Tile t = this.gameObject.transform.GetComponent<TacticsMove>().GetTargetTile(this.gameObject); 
-        this.gameObject.transform.position = new Vector3(t.transform.position.x, 1, t.transform.position.z);        
+        this.transform.GetComponent<Rigidbody>().useGravity = true;
+        this.transform.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+        Tile t = this.transform.GetComponent<TacticsMove>().GetTargetTile(this.transform.gameObject); 
+        this.transform.position = new Vector3(t.transform.position.x, 1, t.transform.position.z);        
         yield return new WaitForSeconds(2);
         Instantiate(explosion, this.transform.position, Quaternion.Euler(45, -45, 0));
-        this.gameObject.GetComponent<PlayerMove>().enabled = false;
-        this.gameObject.GetComponent<PlayerAttack>().enabled = false;
-        this.gameObject.SetActive(false);
-        this.gameObject.tag = "Dead";
+        this.transform.GetComponent<PlayerMove>().enabled = false;
+        this.transform.GetComponent<PlayerAttack>().enabled = false;
+        this.transform.gameObject.SetActive(false);
+        this.transform.tag = "Dead";
     }
 }
