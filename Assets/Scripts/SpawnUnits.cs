@@ -22,6 +22,9 @@ public class SpawnUnits : MonoBehaviour
     int j = 0;
     int k = 0;      
 
+    public AudioSource audioData;
+    public AudioClip[] clip;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -61,7 +64,7 @@ public class SpawnUnits : MonoBehaviour
 
         GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().npcPrefabs = GameObject.FindGameObjectsWithTag("NPC");
         foreach (GameObject prefab in GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().npcPrefabs) {
-            GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().npcPrefabs[j].GetComponent<NPCMove>().Init();
+            GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().npcPrefabs[j].GetComponent<NPCMove>().Init();           
             prefab.GetComponent<NPCMove>().FinishTurn();
             j += 1;  
         }    
