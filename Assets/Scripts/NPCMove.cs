@@ -87,6 +87,8 @@ public class NPCMove : TacticsMove
         if (transform.position.z < oldPositionZ) {
             GetComponent<SpriteRenderer>().flipX = true;
         }
+
+        PlayerWithinRadiusNPC();
 	}
 
     void LateUpdate(){
@@ -175,4 +177,26 @@ public class NPCMove : TacticsMove
             GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().target = GameObject.Find("Map").gameObject.transform; 
         }        
     }
+
+    public void PlayerWithinRadiusNPC()
+    {
+        Collider[] hitColliders = Physics.OverlapSphere(this.transform.position, 1f);
+        foreach (var hitCollider in hitColliders) {
+            if (hitCollider.transform.tag == "Player") {
+                if (this.transform.position.x < hitCollider.transform.position.x) {
+                    GetComponent<SpriteRenderer>().flipX = false;
+                }
+                if (this.transform.position.x > hitCollider.transform.position.x) {
+                    GetComponent<SpriteRenderer>().flipX = true;
+                }     
+                if (this.transform.position.z < hitCollider.transform.position.z) {
+                    GetComponent<SpriteRenderer>().flipX = false;
+                }
+                if (this.transform.position.z > hitCollider.transform.position.z) {
+                    GetComponent<SpriteRenderer>().flipX = true;
+                }                           
+                break;
+            }
+        }
+    }      
 }
