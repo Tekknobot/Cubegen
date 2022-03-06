@@ -321,7 +321,7 @@ MonoBehaviour:
   speed: 0.2
   step: 0
   clip:
-  - {fileID: 8300000, guid: bd7190631faaf3e4e9ee8a1292004060, type: 3}
+  - {fileID: 8300000, guid: 1bab3843953f0614ebb5e1cdc22a3e2d, type: 3}
   bullet: {fileID: 0}
 --- !u!114 &5980638410371863657
 MonoBehaviour:

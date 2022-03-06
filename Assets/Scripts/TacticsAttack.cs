@@ -40,6 +40,7 @@ public class TacticsAttack : MonoBehaviour
 
 		if (currentXP >= maxXP) {
 			Instantiate(levelup, transform.position, Quaternion.Euler(45, -45, 0));
+			currentXP = 0;
 			return true;
 		}
 		else {
