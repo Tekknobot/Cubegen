@@ -45,7 +45,8 @@ public class NPCMove : TacticsMove
         }
         else if (!turn && !this.GetComponent<NPCMove>().attacking) {
             Animator animator = this.gameObject.GetComponent<Animator>();
-            animator.runtimeAnimatorController = idleAnimation;                       
+            animator.runtimeAnimatorController = idleAnimation; 
+            moveSpeed = 2;                      
             return;
         }
 
@@ -57,8 +58,7 @@ public class NPCMove : TacticsMove
             CalculatePath();
             FindSelectableTiles();           
             actualTargetTile.target = true; 
-            moveSpeed = 2; 
-            this.transform.position = new Vector3(this.transform.position.x, 0.8889084f, this.transform.position.z);           
+            moveSpeed = 2;           
         }
 
         if (this.GetComponent<NPCMove>().attacking) {   
@@ -69,7 +69,9 @@ public class NPCMove : TacticsMove
         if (moving) {
             GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().TargetCameraOnNPC();
             Animator animator = this.gameObject.GetComponent<Animator>();
-            animator.runtimeAnimatorController = moveAnimation;            
+            animator.runtimeAnimatorController = moveAnimation;  
+            GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().target = this.gameObject.transform;
+            //this.transform.position = new Vector3(this.transform.position.x, 0.8889084f, this.transform.position.z);          
             Move();            
         }     
 

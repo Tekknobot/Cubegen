@@ -75,7 +75,9 @@ public class PlayerMove : TacticsMove
             GameObject.Find("EnemyTurnStatus_text").GetComponent<Text>().text = " ";            
             GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().TargetCameraOnPlayer();
             Animator animator = this.gameObject.GetComponent<Animator>();
-            animator.runtimeAnimatorController = moveAnimation;            
+            animator.runtimeAnimatorController = moveAnimation;  
+            GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().target = this.gameObject.transform;
+            //this.transform.position = new Vector3(this.transform.position.x, 0.8889084f, this.transform.position.z);          
             Move();                                     
         }
 
