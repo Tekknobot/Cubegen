@@ -48,6 +48,13 @@ public class PlayerAttack : TacticsAttack
         Debug.DrawRay(transform.position, new Vector3(0, 0, -1));
         Debug.DrawRay(transform.position, new Vector3(1, 0, 0));
         Debug.DrawRay(transform.position, new Vector3(-1, 0, 0));
+
+        if (currentLevel == 2) {
+            damage = 2;
+        }
+        if (currentLevel == 3) {
+            damage = 3;
+        }        
     }
 
     public void CheckMouse(GameObject tempPlayerUnit) {

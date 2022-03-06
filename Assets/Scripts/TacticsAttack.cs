@@ -11,6 +11,7 @@ public class TacticsAttack : MonoBehaviour
     public float currentHP = 5; 
 	public int maxXP;
 	public int currentXP;
+	public int currentLevel = 1;
 
 	public string unitName;
 	public int unitLevel; 
@@ -41,6 +42,7 @@ public class TacticsAttack : MonoBehaviour
 		if (currentXP >= maxXP) {
 			Instantiate(levelup, transform.position, Quaternion.Euler(45, -45, 0));
 			currentXP = 0;
+			currentLevel++;
 			return true;
 		}
 		else {

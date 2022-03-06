@@ -89,6 +89,13 @@ public class NPCMove : TacticsMove
         }
 
         PlayerWithinRadiusNPC();
+
+        if (this.GetComponent<TacticsAttack>().currentLevel == 2) {
+            this.GetComponent<TacticsAttack>().damage = 2;
+        }     
+        if (this.GetComponent<TacticsAttack>().currentLevel == 3) {
+            this.GetComponent<TacticsAttack>().damage = 3;
+        }            
 	}
 
     void LateUpdate(){
