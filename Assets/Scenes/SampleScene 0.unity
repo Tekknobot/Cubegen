@@ -8492,6 +8492,27 @@ MonoBehaviour:
   audioData: {fileID: 0}
   clip:
   - {fileID: 8300000, guid: fa71db660da6bd8458993cd9da243af2, type: 3}
+--- !u!1 &786270577 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6955419524323167078, guid: 2cf915b272aab8846acabcdfcdca4c30, type: 3}
+  m_PrefabInstance: {fileID: 6955419523967939354}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &786270578
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 786270577}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c27cd1d887bd3a547a5513276d3a7080, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  camTransform: {fileID: 519420032}
+  shakeDuration: 0.1
+  shakeAmount: 0.3
+  decreaseFactor: 1
 --- !u!1 &809149497
 GameObject:
   m_ObjectHideFlags: 0

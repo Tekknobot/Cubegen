@@ -102,6 +102,7 @@ public class PlayerMove : TacticsMove
 
     void Select() {
         if (Input.GetMouseButtonDown(0)) {
+            GameObject.Find("Main Camera").GetComponent<CameraShake>().enabled = false;
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit)) {
