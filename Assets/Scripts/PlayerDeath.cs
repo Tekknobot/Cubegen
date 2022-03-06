@@ -21,6 +21,10 @@ public class PlayerDeath : MonoBehaviour
     }
 
     IEnumerator DestroyObject() {
+        this.gameObject.GetComponent<Rigidbody>().useGravity = true;
+        this.gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+        Tile t = this.gameObject.transform.GetComponent<TacticsMove>().GetTargetTile(this.gameObject); 
+        this.gameObject.transform.position = new Vector3(t.transform.position.x, 1, t.transform.position.z);        
         yield return new WaitForSeconds(2);
         Instantiate(explosion, this.transform.position, Quaternion.Euler(45, -45, 0));
         this.gameObject.GetComponent<PlayerMove>().enabled = false;
