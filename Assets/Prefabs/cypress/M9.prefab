@@ -467,6 +467,7 @@ MonoBehaviour:
   currentXP: 0
   unitName: Chopper Mech
   unitLevel: 0
+  levelup: {fileID: 1002605618548861685, guid: 4e1b04e0478bfb143b9913f3765a23e3, type: 3}
 --- !u!114 &878692417999996972
 MonoBehaviour:
   m_ObjectHideFlags: 0

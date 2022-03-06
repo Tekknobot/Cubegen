@@ -179,6 +179,7 @@ MonoBehaviour:
   currentXP: 0
   unitName: Cannon Mech
   unitLevel: 0
+  levelup: {fileID: 1002605618548861685, guid: 4e1b04e0478bfb143b9913f3765a23e3, type: 3}
   map: {fileID: 0}
   tacticsCamera: {fileID: 0}
   checkTile: 0

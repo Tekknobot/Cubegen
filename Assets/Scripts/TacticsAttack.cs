@@ -13,7 +13,9 @@ public class TacticsAttack : MonoBehaviour
 	public int currentXP;
 
 	public string unitName;
-	public int unitLevel;     
+	public int unitLevel; 
+
+	public GameObject levelup;    
 
 	public bool TakeDamage(int dmg)
 	{
@@ -36,9 +38,12 @@ public class TacticsAttack : MonoBehaviour
 	{
 		currentXP += xp;
 
-		if (currentXP >= maxXP)
+		if (currentXP >= maxXP) {
+			Instantiate(levelup, transform.position, Quaternion.Euler(45, -45, 0));
 			return true;
-		else
+		}
+		else {
 			return false;
+		}
 	}	 
 }

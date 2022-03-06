@@ -378,6 +378,7 @@ MonoBehaviour:
   currentXP: 0
   unitName: Missile Mech
   unitLevel: 0
+  levelup: {fileID: 1002605618548861685, guid: 4e1b04e0478bfb143b9913f3765a23e3, type: 3}
 --- !u!114 &6455628011061137799
 MonoBehaviour:
   m_ObjectHideFlags: 0

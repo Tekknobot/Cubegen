@@ -62,7 +62,6 @@ public class MoveOnCurvedLine : MonoBehaviour
             playerUnits = GameObject.FindGameObjectsWithTag("Player");
             foreach (GameObject playerUnit in playerUnits) {
                 collision.transform.GetComponent<TacticsAttack>().TakeDamage(playerUnit.GetComponent<TacticsAttack>().damage);
-                playerUnit.GetComponent<TacticsAttack>().GetXP(1);
                 break;
             }            
             collision.transform.GetComponentInChildren<HealthBarHandler>().SetHealthBarValue((float)collision.transform.GetComponent<NPCAttack>().currentHP/(float)collision.transform.GetComponent<NPCAttack>().maxHP);

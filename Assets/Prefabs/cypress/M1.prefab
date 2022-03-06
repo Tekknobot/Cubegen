@@ -253,6 +253,7 @@ MonoBehaviour:
   currentXP: 0
   unitName: Soldier Mech
   unitLevel: 0
+  levelup: {fileID: 1002605618548861685, guid: 4e1b04e0478bfb143b9913f3765a23e3, type: 3}
   map: {fileID: 0}
   tacticsCamera: {fileID: 0}
   checkTile: 0
@@ -269,6 +270,7 @@ MonoBehaviour:
   step: 0
   clip:
   - {fileID: 8300000, guid: fdb16b06855dc974b90d3c8e2dfdf8ca, type: 3}
+  bullet: {fileID: 0}
 --- !u!114 &6057013768425331728
 MonoBehaviour:
   m_ObjectHideFlags: 0
