@@ -24,7 +24,8 @@ public class NPCDeath : MonoBehaviour
         this.transform.GetComponent<Rigidbody>().useGravity = true;
         this.transform.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;  
         Tile t = this.gameObject.transform.GetComponent<TacticsMove>().GetTargetTile(this.transform.gameObject); 
-        this.transform.position = new Vector3(t.transform.position.x, 1, t.transform.position.z);              
+        this.transform.position = new Vector3(t.transform.position.x, 1, t.transform.position.z);  
+        this.transform.GetComponent<NPCMove>().RemoveSelectableTiles();            
         yield return new WaitForSeconds(1);
         GameObject[] playerUnits = GameObject.FindGameObjectsWithTag("Player");
         foreach (GameObject playerUnit in playerUnits) {
