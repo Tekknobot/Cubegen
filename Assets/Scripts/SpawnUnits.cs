@@ -41,16 +41,24 @@ public class SpawnUnits : MonoBehaviour
     }
 
     IEnumerator Spawn() {
+        foreach (GameObject tile in unit_spawn_points) {
+            if (tile.transform.localScale.y != 1) {
+                list_unit_spawn_points.Remove(tile);
+            }
+        }
+
         foreach (GameObject prefab in unit_prefabs) {
             spawn_points_index = Random.Range(0, list_unit_spawn_points.Count);
             Instantiate(prefab, list_unit_spawn_points[spawn_points_index].transform);
             list_unit_spawn_points.RemoveAt(spawn_points_index);
         }
+
         GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().playerPrefabs = GameObject.FindGameObjectsWithTag("Player"); 
         foreach (GameObject prefab in GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().playerPrefabs) {
             GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().playerPrefabs[k].GetComponent<PlayerMove>().Init();  
             k += 1;  
         }   
+
         GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().npcPrefabs = GameObject.FindGameObjectsWithTag("NPC");
         foreach (GameObject prefab in GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().npcPrefabs) {
             GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().npcPrefabs[j].GetComponent<NPCMove>().Init();
