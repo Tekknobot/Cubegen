@@ -28,6 +28,6 @@ public class PlayerDeath : MonoBehaviour
         Instantiate(explosion, this.transform.position, Quaternion.Euler(45, -45, 0)); 
         this.transform.gameObject.SetActive(false);
         this.transform.tag = "Dead";
-        this.transform.GetComponent<ObjectShake>().enabled = false;
+        //this.transform.GetComponent<ObjectShake>().enabled = false;
     }
 }

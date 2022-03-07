@@ -88,7 +88,9 @@ public class NPCMove : TacticsMove
             GetComponent<SpriteRenderer>().flipX = true;
         }
 
-        NPCRadius();
+        if (!this.GetComponent<NPCMove>().attacking) {
+            NPCRadius();
+        }
 
         if (this.GetComponent<NPCAttack>().currentLevel == 2) {
             this.GetComponent<NPCAttack>().damage = 2;
