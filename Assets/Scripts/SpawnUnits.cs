@@ -44,6 +44,8 @@ public class SpawnUnits : MonoBehaviour
     }
 
     IEnumerator Spawn() {
+        StartCoroutine(FadeAudioSource.StartFade(audioData, 16, 1f));
+
         foreach (GameObject tile in unit_spawn_points) {
             if (tile.transform.localScale.y != 1) {
                 list_unit_spawn_points.Remove(tile);
