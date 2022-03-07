@@ -77,7 +77,7 @@ public class PlayerAttack : TacticsAttack
 
     public void OnLaunchButton() {
         tempPlayerUnit = tacticsCamera.GetComponent<TacticsCamera>().target.gameObject;
-        CheckMouse(tempPlayerUnit);        
+        StartCoroutine(WaitForLaunch(tempPlayerUnit));        
     }
 
 	IEnumerator PlayerAttackCoroutine(GameObject hit, GameObject tempPlayerUnit) {
@@ -135,9 +135,14 @@ public class PlayerAttack : TacticsAttack
                         StartCoroutine(PlayerAttackCoroutine(GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().target.transform.gameObject, tempPlayerUnit));                     
                     }
                 }
-            }
+            }           
+        }                                  
+    }  
 
-            if (GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().target.transform.tag == "NPC" && GetComponent<LaunchProjectile>()) {
+    IEnumerator WaitForLaunch(GameObject tempPlayerUnit) {
+        yield return new WaitUntil(()=> Input.GetMouseButtonDown(0));
+        if (GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().target.transform.gameObject) {
+            if (GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().target.transform.tag == "NPC" && tempPlayerUnit.GetComponent<LaunchProjectile>()) {
                 Vector3 heading = GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().target.transform.position - tempPlayerUnit.transform.position;
                 float distance = heading.magnitude;
                 Vector3 direction = heading / distance;
@@ -157,14 +162,14 @@ public class PlayerAttack : TacticsAttack
                 }
             }
 
-            if (GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().target.transform.tag == "NPC" && GetComponent<RushMelee>() && !GetComponent<LaunchProjectile>()) {
-                if (Vector3.Distance(tempPlayerUnit.transform.position, GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().target.transform.position) > 1.25f) {
-                    Vector3 heading = GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().target.transform.position - tempPlayerUnit.transform.position;
-                    float distance = heading.magnitude;
-                    Vector3 direction = heading / distance;
-                    Debug.Log(direction);
-                    if (direction == new Vector3(0,0,1) || direction == new Vector3(0,0,-1) || direction == new Vector3(1,0,0) || direction == new Vector3(-1,0,0)) {
-                        Debug.Log("Direction check");                    
+            if (GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().target.transform.tag == "NPC" && tempPlayerUnit.GetComponent<RushMelee>() && meleeUnit == true) {
+                Vector3 heading = GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().target.transform.position - tempPlayerUnit.transform.position;
+                float distance = heading.magnitude;
+                Vector3 direction = heading / distance;
+                Debug.Log(direction);
+                if (direction == new Vector3(0,0,1) || direction == new Vector3(0,0,-1) || direction == new Vector3(1,0,0) || direction == new Vector3(-1,0,0)) {
+                    Debug.Log("Direction check");  
+                    if (Vector3.Distance(tempPlayerUnit.transform.position, GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().target.transform.position) > 1.25f) {                  
                         Animator animator = tempPlayerUnit.GetComponent<Animator>();
                         animator.runtimeAnimatorController = tempPlayerUnit.GetComponent<PlayerMove>().attackAnimation;
                         audioData = GetComponent<AudioSource>();
@@ -182,7 +187,7 @@ public class PlayerAttack : TacticsAttack
                 }
             }            
         }                                  
-    }  
+    }      
 
     void OnCollisionEnter(Collision collision)
     {

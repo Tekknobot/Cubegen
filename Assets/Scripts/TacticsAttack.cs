@@ -15,6 +15,7 @@ public class TacticsAttack : MonoBehaviour
 
 	public string unitName;
 	public int unitLevel; 
+	public bool meleeUnit;
 
 	public GameObject levelup;    
 
