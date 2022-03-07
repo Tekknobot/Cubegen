@@ -220,6 +220,7 @@ GameObject:
   - component: {fileID: 6455628011061137798}
   - component: {fileID: 524499630569081293}
   - component: {fileID: 6293196832705137642}
+  - component: {fileID: -5993600532390695472}
   m_Layer: 0
   m_Name: M6
   m_TagString: NPC
@@ -520,6 +521,22 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
+--- !u!114 &-5993600532390695472
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5600875751062173525}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa48f872eca1c1d4883c8e6dc1063092, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objTransform: {fileID: 0}
+  shakeDuration: 1
+  shakeAmount: 0.1
+  decreaseFactor: 1
 --- !u!1 &8926680817182903725
 GameObject:
   m_ObjectHideFlags: 0

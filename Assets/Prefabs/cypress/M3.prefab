@@ -147,6 +147,7 @@ GameObject:
   - component: {fileID: -4218860480260097475}
   - component: {fileID: 4181918536221755099}
   - component: {fileID: 7167880043877391985}
+  - component: {fileID: 3058046842443707126}
   m_Layer: 3
   m_Name: M3
   m_TagString: Player
@@ -305,6 +306,7 @@ MonoBehaviour:
   currentHP: 5
   maxXP: 5
   currentXP: 0
+  currentLevel: 1
   unitName: War Mech
   unitLevel: 0
   levelup: {fileID: 1002605618548861685, guid: 4e1b04e0478bfb143b9913f3765a23e3, type: 3}
@@ -496,6 +498,22 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
+--- !u!114 &3058046842443707126
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2168714103371907350}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa48f872eca1c1d4883c8e6dc1063092, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objTransform: {fileID: 0}
+  shakeDuration: 1
+  shakeAmount: 0.1
+  decreaseFactor: 1
 --- !u!1 &3654852347160429952
 GameObject:
   m_ObjectHideFlags: 0

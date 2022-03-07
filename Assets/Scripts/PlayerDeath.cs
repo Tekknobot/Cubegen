@@ -15,21 +15,19 @@ public class PlayerDeath : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (this.GetComponent<PlayerAttack>().currentHP <= 0.1f) {
+        if (this.GetComponent<PlayerAttack>().currentHP <= 0.5f) {
             StartCoroutine(DestroyObject());
         }
     }
 
-    IEnumerator DestroyObject() {
-        this.transform.GetComponent<Rigidbody>().useGravity = true;
-        this.transform.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
-        Tile t = this.transform.GetComponent<TacticsMove>().GetTargetTile(this.transform.gameObject); 
-        this.transform.position = new Vector3(t.transform.position.x, 1, t.transform.position.z);        
-        yield return new WaitForSeconds(2);
-        Instantiate(explosion, this.transform.position, Quaternion.Euler(45, -45, 0));
+    IEnumerator DestroyObject() {   
+        this.transform.GetComponent<ObjectShake>().enabled = true;
         this.transform.GetComponent<PlayerMove>().enabled = false;
-        this.transform.GetComponent<PlayerAttack>().enabled = false;
+        this.transform.GetComponent<PlayerAttack>().enabled = false;          
+        yield return new WaitForSeconds(1);
+        Instantiate(explosion, this.transform.position, Quaternion.Euler(45, -45, 0)); 
         this.transform.gameObject.SetActive(false);
         this.transform.tag = "Dead";
+        this.transform.GetComponent<ObjectShake>().enabled = false;
     }
 }
