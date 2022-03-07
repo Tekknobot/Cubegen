@@ -147,6 +147,8 @@ GameObject:
   - component: {fileID: -5156039273824283471}
   - component: {fileID: -634777058116601547}
   - component: {fileID: -9021311522454375405}
+  - component: {fileID: -7061081987419051414}
+  - component: {fileID: 228853267969589067}
   m_Layer: 3
   m_Name: M2
   m_TagString: Player
@@ -494,6 +496,43 @@ MonoBehaviour:
   shakeDuration: 1
   shakeAmount: 0.1
   decreaseFactor: 1
+--- !u!114 &-7061081987419051414
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1955649426808709187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e773cef4d90e9148a8bc58c2de49a71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startPoint: {fileID: 0}
+  target: {fileID: 0}
+  resolution: 30
+  curveHight: 0.1
+  gravity: -18
+  bullet: {fileID: 0}
+  lineRenderer: {fileID: 0}
+--- !u!114 &228853267969589067
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1955649426808709187}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cafae8e7a91caea4896c3a37383e10fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  color: {r: 1, g: 1, b: 1, a: 0.5}
+  enableOnAwake: 0
+  singleColorShader: 0
+  updateInterval: 0.05
+  ghosts: 10
+  _spriteRenderer: {fileID: 1955649426808709199}
 --- !u!1 &2831120735784811255
 GameObject:
   m_ObjectHideFlags: 0

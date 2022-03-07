@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using cakeslice;
 using UnityEngine.EventSystems;
+using ActionCode2D.Renderers;
 
 public class PlayerMove : TacticsMove 
 {
@@ -67,6 +68,8 @@ public class PlayerMove : TacticsMove
             Animator animator = this.gameObject.GetComponent<Animator>();
             animator.runtimeAnimatorController = idleAnimation;            
             //FindSelectableTiles();
+            moveSpeed = 2;
+            GetComponent<SpriteGhostTrailRenderer>().enabled = false;
             Select();             
         }
         

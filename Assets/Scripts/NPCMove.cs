@@ -53,12 +53,12 @@ public class NPCMove : TacticsMove
         if (!moving && !this.GetComponent<NPCMove>().attacking) {    
             Animator animator = this.gameObject.GetComponent<Animator>();        
             animator.runtimeAnimatorController = idleAnimation;
+            moveSpeed = 2;
             MoveToTile(GetTargetTile(this.transform.gameObject));
             FindNearestTarget();
             CalculatePath();
             FindSelectableTiles();           
-            actualTargetTile.target = true; 
-            moveSpeed = 2;           
+            actualTargetTile.target = true;            
         }
 
         if (this.GetComponent<NPCMove>().attacking) {   

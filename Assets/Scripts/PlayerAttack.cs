@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using ActionCode2D.Renderers;
 
 public class PlayerAttack : TacticsAttack 
 {
@@ -136,7 +137,7 @@ public class PlayerAttack : TacticsAttack
                 }
             }
 
-            if (GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().target.transform.tag == "NPC") {
+            if (GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().target.transform.tag == "NPC" && GetComponent<LaunchProjectile>()) {
                 Vector3 heading = GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().target.transform.position - tempPlayerUnit.transform.position;
                 float distance = heading.magnitude;
                 Vector3 direction = heading / distance;
@@ -155,6 +156,54 @@ public class PlayerAttack : TacticsAttack
                     }                   
                 }
             }
+
+            if (GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().target.transform.tag == "NPC" && GetComponent<RushMelee>()) {
+                if (Vector3.Distance(tempPlayerUnit.transform.position, GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().target.transform.position) > 1.25f) {
+                    Vector3 heading = GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().target.transform.position - tempPlayerUnit.transform.position;
+                    float distance = heading.magnitude;
+                    Vector3 direction = heading / distance;
+                    Debug.Log(direction);
+                    if (direction == new Vector3(0,0,1) || direction == new Vector3(0,0,-1) || direction == new Vector3(1,0,0) || direction == new Vector3(-1,0,0)) {
+                        Debug.Log("Direction check");                    
+                        Animator animator = tempPlayerUnit.GetComponent<Animator>();
+                        animator.runtimeAnimatorController = tempPlayerUnit.GetComponent<PlayerMove>().attackAnimation;
+                        audioData = GetComponent<AudioSource>();
+                        audioData.PlayOneShot(clip[0], 1); 
+                        GetComponent<SpriteGhostTrailRenderer>().enabled = true;
+                        GetComponent<RushMelee>().DrawPath(tempPlayerUnit.transform, GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().target.transform);
+                        tempPlayerUnit.GetComponent<TacticsAttack>().GetXP(1);
+                        tempPlayerUnit.GetComponent<PlayerMove>().moveSpeed = 12;
+                        Tile t = GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().target.GetComponent<NPCMove>().GetTargetTile(GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().target.transform.gameObject);
+                        Tile t2 = t.adjacencyList[Random.Range(0,t.adjacencyList.Count)];
+                        if (t2.walkable == true) {
+                            tempPlayerUnit.GetComponent<PlayerMove>().MoveToTile(t2);   
+                        }                         
+                    }                   
+                }
+            }            
         }                                  
-    }    
+    }  
+
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "NPC" && GameObject.Find("Map").GetComponent<SpawnUnits>().spawned == true)
+        {
+            Instantiate(attackEffect, transform.position, Quaternion.Euler(45, -45, 0));
+            GameObject[] playerUnits;
+            playerUnits = GameObject.FindGameObjectsWithTag("Player");
+            foreach (GameObject playerUnit in playerUnits) {
+                collision.transform.GetComponent<TacticsAttack>().TakeDamage(playerUnit.GetComponent<PlayerAttack>().tempPlayerUnit.GetComponent<PlayerAttack>().damage);
+                break;
+            }            
+            collision.transform.GetComponentInChildren<HealthBarHandler>().SetHealthBarValue((float)collision.transform.GetComponent<NPCAttack>().currentHP/(float)collision.transform.GetComponent<NPCAttack>().maxHP);
+            collision.transform.GetComponent<NPCMove>().pushed = true;
+            Tile t = collision.transform.GetComponent<NPCMove>().GetTargetTile(collision.transform.gameObject);
+            Tile t2 = t.adjacencyList[Random.Range(0,t.adjacencyList.Count)];
+            if (t2.walkable == true) {
+                //collision.transform.GetComponent<NPCMove>().MoveToTile(t2);           
+                //collision.transform.GetComponent<NPCMove>().moveSpeed = 4;      
+            }              
+            //Destroy(this.gameObject);
+        }
+    }      
 }
