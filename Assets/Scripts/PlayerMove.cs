@@ -53,6 +53,7 @@ public class PlayerMove : TacticsMove
             if (GameObject.Find("Map").GetComponent<SpawnUnits>().spawned == true && GetComponent<PlayerAttack>().meleeUnit == true) { 
                 GetComponent<SpriteGhostTrailRenderer>().enabled = false;        
             }
+            moveSpeed = 2;
             return;
         }
 
@@ -71,10 +72,10 @@ public class PlayerMove : TacticsMove
             Animator animator = this.gameObject.GetComponent<Animator>();
             animator.runtimeAnimatorController = idleAnimation;            
             //FindSelectableTiles();
-            moveSpeed = 2;
             if (GameObject.Find("Map").GetComponent<SpawnUnits>().spawned == true && GetComponent<PlayerAttack>().meleeUnit == true) { 
                 GetComponent<SpriteGhostTrailRenderer>().enabled = false;        
             }
+            moveSpeed = 2;
             Select();             
         }
         
