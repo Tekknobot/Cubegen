@@ -88,13 +88,13 @@ public class NPCMove : TacticsMove
             GetComponent<SpriteRenderer>().flipX = true;
         }
 
-        PlayerWithinRadiusNPC();
+        NPCRadius();
 
-        if (this.GetComponent<TacticsAttack>().currentLevel == 2) {
-            this.GetComponent<TacticsAttack>().damage = 2;
+        if (this.GetComponent<NPCAttack>().currentLevel == 2) {
+            this.GetComponent<NPCAttack>().damage = 2;
         }     
-        if (this.GetComponent<TacticsAttack>().currentLevel == 3) {
-            this.GetComponent<TacticsAttack>().damage = 3;
+        if (this.GetComponent<NPCAttack>().currentLevel == 3) {
+            this.GetComponent<NPCAttack>().damage = 3;
         }            
 	}
 
@@ -185,7 +185,7 @@ public class NPCMove : TacticsMove
         }        
     }
 
-    public void PlayerWithinRadiusNPC()
+    public void NPCRadius()
     {
         Collider[] hitColliders = Physics.OverlapSphere(this.transform.position, 1f);
         foreach (var hitCollider in hitColliders) {

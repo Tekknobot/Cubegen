@@ -21,7 +21,7 @@ public class PlayerDeath : MonoBehaviour
     }
 
     IEnumerator DestroyObject() {   
-        this.transform.GetComponent<ObjectShake>().enabled = true;
+        //this.transform.GetComponent<ObjectShake>().enabled = true;
         this.transform.GetComponent<PlayerMove>().enabled = false;
         this.transform.GetComponent<PlayerAttack>().enabled = false;          
         yield return new WaitForSeconds(1);
