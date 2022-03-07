@@ -157,7 +157,7 @@ public class PlayerAttack : TacticsAttack
                 }
             }
 
-            if (GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().target.transform.tag == "NPC" && GetComponent<RushMelee>()) {
+            if (GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().target.transform.tag == "NPC" && GetComponent<RushMelee>() && !GetComponent<LaunchProjectile>()) {
                 if (Vector3.Distance(tempPlayerUnit.transform.position, GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().target.transform.position) > 1.25f) {
                     Vector3 heading = GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().target.transform.position - tempPlayerUnit.transform.position;
                     float distance = heading.magnitude;
@@ -168,7 +168,7 @@ public class PlayerAttack : TacticsAttack
                         Animator animator = tempPlayerUnit.GetComponent<Animator>();
                         animator.runtimeAnimatorController = tempPlayerUnit.GetComponent<PlayerMove>().attackAnimation;
                         audioData = GetComponent<AudioSource>();
-                        audioData.PlayOneShot(clip[0], 1); 
+                        audioData.PlayOneShot(clip[1], 1); 
                         GetComponent<SpriteGhostTrailRenderer>().enabled = true;
                         GetComponent<RushMelee>().DrawPath(tempPlayerUnit.transform, GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().target.transform);
                         tempPlayerUnit.GetComponent<TacticsAttack>().GetXP(1);

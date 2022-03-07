@@ -49,7 +49,8 @@ public class PlayerMove : TacticsMove
         else if (!turn && !this.GetComponent<PlayerMove>().attacking) {
             Animator animator = this.gameObject.GetComponent<Animator>();
             animator.runtimeAnimatorController = idleAnimation;
-            //this.GetComponent<cakeslice.Outline>().enabled = false;            
+            //this.GetComponent<cakeslice.Outline>().enabled = false;    
+            GetComponent<SpriteGhostTrailRenderer>().enabled = false;        
             return;
         }
 

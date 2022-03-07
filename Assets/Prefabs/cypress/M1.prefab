@@ -275,6 +275,7 @@ MonoBehaviour:
   step: 0
   clip:
   - {fileID: 8300000, guid: 539e81c3bb6c1774ba21be9d66b76c64, type: 3}
+  - {fileID: 8300000, guid: afaee4f3b7410b24a865560b84d506b7, type: 3}
   bullet: {fileID: 0}
 --- !u!114 &6057013768425331728
 MonoBehaviour:
@@ -477,7 +478,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   color: {r: 1, g: 1, b: 1, a: 0.5}
   enableOnAwake: 0
-  singleColorShader: 0
+  singleColorShader: 1
   updateInterval: 0.05
   ghosts: 10
   _spriteRenderer: {fileID: 682396660077665208}
