@@ -176,17 +176,17 @@ public class PlayerAttack : TacticsAttack
                 if (direction == new Vector3(0,0,1) || direction == new Vector3(0,0,-1) || direction == new Vector3(1,0,0) || direction == new Vector3(-1,0,0)) {
                     Debug.Log("Direction check");  
                     if (Vector3.Distance(tempPlayerUnit.transform.position, GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().target.transform.position) > 1.25f) {                  
-                        Animator animator = tempPlayerUnit.GetComponent<Animator>();
-                        animator.runtimeAnimatorController = tempPlayerUnit.GetComponent<PlayerMove>().attackAnimation;
-                        audioData = GetComponent<AudioSource>();
-                        audioData.PlayOneShot(clip[1], 1); 
-                        GetComponent<SpriteGhostTrailRenderer>().enabled = true;
-                        GetComponent<RushMelee>().DrawPath(tempPlayerUnit.transform, GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().target.transform);
-                        tempPlayerUnit.GetComponent<TacticsAttack>().GetXP(1);
-                        tempPlayerUnit.GetComponent<PlayerMove>().moveSpeed = 12;
                         Tile t = GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().target.GetComponent<NPCMove>().GetTargetTile(GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().target.transform.gameObject);
                         Tile t2 = t.adjacencyList[Random.Range(0,t.adjacencyList.Count)];
-                        if (t2.walkable == true) {
+                        if (t2.walkable == true && t.adjacencyList.Count >= 1) {
+                            Animator animator = tempPlayerUnit.GetComponent<Animator>();
+                            animator.runtimeAnimatorController = tempPlayerUnit.GetComponent<PlayerMove>().attackAnimation;
+                            audioData = GetComponent<AudioSource>();
+                            audioData.PlayOneShot(clip[1], 1); 
+                            GetComponent<SpriteGhostTrailRenderer>().enabled = true;
+                            GetComponent<RushMelee>().DrawPath(tempPlayerUnit.transform, GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().target.transform);
+                            tempPlayerUnit.GetComponent<TacticsAttack>().GetXP(1);
+                            tempPlayerUnit.GetComponent<PlayerMove>().moveSpeed = 12;                            
                             tempPlayerUnit.GetComponent<PlayerMove>().MoveToTile(t2);   
                         }                         
                     }                   

@@ -148,7 +148,7 @@ public class NPCMove : TacticsMove
     {
         Collider[] hitColliders = Physics.OverlapSphere(this.transform.position, 0.75f);
         foreach (var hitCollider in hitColliders) {
-            if (hitCollider.transform.tag == "Player") {
+            if (hitCollider.transform.tag == "Player" && hitCollider.transform.GetComponent<PlayerMove>().moving == false) {
                 NPCAttackFunction(hitCollider.transform.gameObject);
                 break;
             }
