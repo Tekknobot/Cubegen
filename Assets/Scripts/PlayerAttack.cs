@@ -55,7 +55,13 @@ public class PlayerAttack : TacticsAttack
         }
         if (currentLevel == 3) {
             this.GetComponent<PlayerAttack>().damage = 3;
-        }        
+        } 
+        if (currentLevel == 4) {
+            this.GetComponent<PlayerAttack>().damage = 4;
+        }
+        if (currentLevel == 5) {
+            this.GetComponent<PlayerAttack>().damage = 5;
+        }               
     }
 
     public void CheckMouse(GameObject tempPlayerUnit) {

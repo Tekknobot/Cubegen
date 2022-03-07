@@ -97,7 +97,13 @@ public class NPCMove : TacticsMove
         }     
         if (this.GetComponent<NPCAttack>().currentLevel == 3) {
             this.GetComponent<NPCAttack>().damage = 3;
-        }            
+        }   
+        if (this.GetComponent<NPCAttack>().currentLevel == 4) {
+            this.GetComponent<NPCAttack>().damage = 4;
+        }     
+        if (this.GetComponent<NPCAttack>().currentLevel == 5) {
+            this.GetComponent<NPCAttack>().damage = 5;
+        }                  
 	}
 
     void LateUpdate(){
