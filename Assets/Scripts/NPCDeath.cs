@@ -16,9 +16,8 @@ public class NPCDeath : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (GetComponent<NPCAttack>().currentHP <= 0 && this.GetComponent<NPCDeath>().flag == false) {
+        if (GetComponent<NPCAttack>().currentHP <= 0) {
             StartCoroutine(DestroyObject());
-            this.GetComponent<NPCDeath>().flag = true;
         }
     }
 
@@ -35,13 +34,13 @@ public class NPCDeath : MonoBehaviour
             playerUnit.transform.GetComponent<PlayerMove>().attacking = false;
         }         
         Instantiate(explosion, this.transform.position, Quaternion.Euler(45, -45, 0));
+        this.transform.tag = "NPCDead"; 
+        this.transform.gameObject.SetActive(false);
         this.transform.GetComponent<NPCMove>().enabled = false;
-        this.transform.GetComponent<NPCAttack>().enabled = false;         
-        this.transform.tag = "NPCDead";    
+        this.transform.GetComponent<NPCAttack>().enabled = false;            
         this.transform.GetComponent<ObjectShake>().enabled = false;
         this.transform.GetComponent<SpriteRenderer>().enabled = false; 
-        this.transform.GetComponentInChildren<Canvas>().enabled = false;   
-        this.transform.gameObject.SetActive(false);
+        this.transform.GetComponentInChildren<Canvas>().enabled = false;
         GameObject.Find("Map").GetComponent<SpawnUnits>().npcDead++;   
 
     }
