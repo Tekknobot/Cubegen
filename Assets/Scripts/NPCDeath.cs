@@ -42,6 +42,5 @@ public class NPCDeath : MonoBehaviour
         this.transform.GetComponent<SpriteRenderer>().enabled = false; 
         this.transform.GetComponentInChildren<Canvas>().enabled = false;
         GameObject.Find("Map").GetComponent<SpawnUnits>().npcDead++;   
-
     }
 }
