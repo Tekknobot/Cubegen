@@ -71,7 +71,6 @@ public class NPCMove : TacticsMove
             Animator animator = this.gameObject.GetComponent<Animator>();
             animator.runtimeAnimatorController = moveAnimation;  
             GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().target = this.gameObject.transform;
-            //this.transform.position = new Vector3(this.transform.position.x, 0.8889084f, this.transform.position.z);          
             Move();            
         }
 
@@ -148,7 +147,7 @@ public class NPCMove : TacticsMove
     {
         Collider[] hitColliders = Physics.OverlapSphere(this.transform.position, 0.75f);
         foreach (var hitCollider in hitColliders) {
-            if (hitCollider.transform.tag == "Player" && hitCollider.transform.GetComponent<PlayerMove>().moving == false) {
+            if (hitCollider.transform.tag == "Player") {
                 NPCAttackFunction(hitCollider.transform.gameObject);
                 break;
             }
@@ -175,7 +174,7 @@ public class NPCMove : TacticsMove
         hit.GetComponent<PlayerMove>().pushed = true;
         Tile t = hit.GetComponent<PlayerMove>().GetTargetTile(hit.transform.gameObject);
         Tile t2 = t.adjacencyList[Random.Range(0,t.adjacencyList.Count)];
-        if (t2.walkable == true) {
+        if (t2.walkable == true && t.adjacencyList.Count > 0) {
             hit.GetComponent<PlayerMove>().MoveToTile(t2);           
             hit.GetComponent<PlayerMove>().moveSpeed = 4;      
         }        

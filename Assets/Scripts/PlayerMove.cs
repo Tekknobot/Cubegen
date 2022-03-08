@@ -177,7 +177,7 @@ public class PlayerMove : TacticsMove
     {
         Collider[] hitColliders = Physics.OverlapSphere(this.transform.position, 1f);
         foreach (var hitCollider in hitColliders) {
-            if (hitCollider.transform.tag == "NPC") {
+            if (hitCollider.transform.tag == "NPC" && hitCollider.transform.GetComponent<ObjectShake>().enabled == false) {
                 if (this.transform.position.x < hitCollider.transform.position.x) {
                     GetComponent<SpriteRenderer>().flipX = false;
                 }

@@ -286,7 +286,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 0.1}
+  m_Size: {x: 1, y: 1, z: 0.2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &6631496688022326241
 MonoBehaviour:
@@ -343,6 +343,7 @@ MonoBehaviour:
   currentLevel: 1
   unitName: Beast Mech
   unitLevel: 0
+  meleeUnit: 0
   levelup: {fileID: 1002605618548861685, guid: 4e1b04e0478bfb143b9913f3765a23e3, type: 3}
 --- !u!114 &175750542876886889
 MonoBehaviour:

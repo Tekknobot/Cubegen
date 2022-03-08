@@ -54,13 +54,13 @@ public class Tile : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(this.transform.position, Vector3.up, out hit, 50)) {
             if (hit.transform.tag == "Player" || hit.transform.tag == "NPC") {
-                this.walkable = false;
+                this.walkable = false;                 
             }
         }    
 
         if (this.transform.localScale.y > 1 || this.transform.localScale.y < 1) {
             this.walkable = false;
-        }    
+        }      
 	}
 
     public void Reset()
