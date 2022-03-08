@@ -178,7 +178,7 @@ public class PlayerAttack : TacticsAttack
                     if (Vector3.Distance(tempPlayerUnit.transform.position, GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().target.transform.position) > 1.25f) {                  
                         Tile t = GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().target.GetComponent<NPCMove>().GetTargetTile(GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().target.transform.gameObject);
                         Tile t2 = t.adjacencyList[Random.Range(0,t.adjacencyList.Count)];
-                        if (t2.walkable == true && t.adjacencyList.Count >= 1) {
+                        if (t2.walkable == true && t.adjacencyList.Count > 0) {
                             Animator animator = tempPlayerUnit.GetComponent<Animator>();
                             animator.runtimeAnimatorController = tempPlayerUnit.GetComponent<PlayerMove>().attackAnimation;
                             audioData = GetComponent<AudioSource>();
@@ -207,13 +207,14 @@ public class PlayerAttack : TacticsAttack
                 break;
             }            
             collision.transform.GetComponentInChildren<HealthBarHandler>().SetHealthBarValue((float)collision.transform.GetComponent<NPCAttack>().currentHP/(float)collision.transform.GetComponent<NPCAttack>().maxHP);
-            collision.transform.GetComponent<NPCMove>().pushed = true;
-            Tile t = collision.transform.GetComponent<NPCMove>().GetTargetTile(collision.transform.gameObject);
-            Tile t2 = t.adjacencyList[Random.Range(0,t.adjacencyList.Count)];
-            if (t2.walkable == true) {
-                //collision.transform.GetComponent<NPCMove>().MoveToTile(t2);           
-                //collision.transform.GetComponent<NPCMove>().moveSpeed = 4;      
-            }              
+            // collision.transform.GetComponent<NPCMove>().pushed = true;
+            // Tile t = collision.transform.GetComponent<NPCMove>().GetTargetTile(collision.transform.gameObject);
+            // Tile t2 = t.adjacencyList[Random.Range(0,t.adjacencyList.Count)];
+            // if (t2.walkable == true) {
+            //     collision.transform.GetComponent<NPCMove>().MoveToTile(t2);           
+            //     collision.transform.GetComponent<NPCMove>().moveSpeed = 4;      
+            // }     
+
             //Destroy(this.gameObject);
         }
     }      

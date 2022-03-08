@@ -73,7 +73,7 @@ public class NPCMove : TacticsMove
             GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().target = this.gameObject.transform;
             //this.transform.position = new Vector3(this.transform.position.x, 0.8889084f, this.transform.position.z);          
             Move();            
-        }     
+        }
 
         if (transform.position.x > oldPositionX) {
             GetComponent<SpriteRenderer>().flipX = false;
