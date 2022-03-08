@@ -464,7 +464,7 @@ MonoBehaviour:
   damage: 1
   healthUp: 0
   maxHP: 5
-  currentHP: 5
+  currentHP: 1
   maxXP: 5
   currentXP: 0
   currentLevel: 1

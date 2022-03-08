@@ -11,9 +11,13 @@ public class SpawnUnits : MonoBehaviour
     public GameObject[] npc_clones;
     public List<GameObject> list_unit_spawn_points;
 
-    public GameObject[] playerPrefabs;
-    public GameObject[] npcPrefabs;     
+    public GameObject[] secondunit_prefabs;
 
+    public GameObject[] playerPrefabs;
+    public GameObject[] npcPrefabs;
+
+    public int npcDead;
+    
     public int[] spawn_points_array;
 
     public bool spawned = false;
@@ -24,6 +28,8 @@ public class SpawnUnits : MonoBehaviour
 
     public AudioSource audioData;
     public AudioClip[] clip;
+
+    public bool flag;
 
     // Start is called before the first frame update
     void Start()
@@ -40,6 +46,11 @@ public class SpawnUnits : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.R)) { 
             SceneManager.LoadScene(0);                                    
+        }
+
+        if (npcDead == 5 && flag == false) {
+            //SceneManager.LoadScene(0);
+            flag = true;
         }
     }
 

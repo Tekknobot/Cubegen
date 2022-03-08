@@ -26,8 +26,8 @@ public class PlayerDeath : MonoBehaviour
         this.transform.GetComponent<PlayerAttack>().enabled = false;          
         yield return new WaitForSeconds(1);
         Instantiate(explosion, this.transform.position, Quaternion.Euler(45, -45, 0)); 
-        this.transform.gameObject.SetActive(false);
         this.transform.tag = "Dead";
         //this.transform.GetComponent<ObjectShake>().enabled = false;
+        this.transform.gameObject.SetActive(false);
     }
 }

@@ -5,6 +5,7 @@ using UnityEngine;
 public class NPCDeath : MonoBehaviour
 {
     public GameObject explosion;
+    public bool flag;
 
     // Start is called before the first frame update
     void Start()
@@ -15,12 +16,13 @@ public class NPCDeath : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (GetComponent<NPCAttack>().currentHP <= 0) {
+        if (GetComponent<NPCAttack>().currentHP <= 0 && flag == false) {
             StartCoroutine(DestroyObject());
+            flag = true;
         }
     }
 
-    IEnumerator DestroyObject() {          
+    IEnumerator DestroyObject() {    
         this.transform.GetComponent<NPCMove>().enabled = false;
         this.transform.GetComponent<NPCAttack>().enabled = false;        
         this.transform.GetComponent<ObjectShake>().enabled = true;
@@ -31,8 +33,12 @@ public class NPCDeath : MonoBehaviour
             playerUnit.transform.GetComponent<PlayerMove>().attacking = false;
         }         
         Instantiate(explosion, this.transform.position, Quaternion.Euler(45, -45, 0));
+        this.transform.tag = "NPCDead";    
+        this.transform.GetComponent<ObjectShake>().enabled = false;
+        this.transform.GetComponent<SpriteRenderer>().enabled = false; 
+        this.transform.GetComponentInChildren<Canvas>().enabled = false;   
         this.transform.gameObject.SetActive(false);
-        this.transform.tag = "Dead";    
-        this.transform.GetComponent<ObjectShake>().enabled = false;    
+        GameObject.Find("Map").GetComponent<SpawnUnits>().npcDead++;   
+
     }
 }

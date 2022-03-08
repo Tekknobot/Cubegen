@@ -20,6 +20,9 @@ public class TacticsCamera : MonoBehaviour
      
     void Update()
     {
+        playerPrefabs = GameObject.FindGameObjectsWithTag("Player");
+        npcPrefabs = GameObject.FindGameObjectsWithTag("NPC");
+
         // Define a target position above and behind the target transform
         if (target != null) {
             Vector3 targetPosition = target.TransformPoint(new Vector3(0, 0, 0));
