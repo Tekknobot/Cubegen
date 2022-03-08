@@ -40,6 +40,10 @@ public class NPCMove : TacticsMove
         Debug.DrawRay(transform.position, new Vector3(1, 0, 0));
         Debug.DrawRay(transform.position, new Vector3(-1, 0, 0));
 
+        if (turn) {
+            Cursor.lockState = CursorLockMode.None;
+        }
+
         if (pushed) {
             
         }
@@ -58,7 +62,7 @@ public class NPCMove : TacticsMove
             FindNearestTarget();
             CalculatePath();
             FindSelectableTiles();           
-            actualTargetTile.target = true;            
+            actualTargetTile.target = true; 
         }
 
         if (this.GetComponent<NPCMove>().attacking) {   
@@ -67,6 +71,7 @@ public class NPCMove : TacticsMove
         }
 
         if (moving) {
+            Cursor.lockState = CursorLockMode.Locked;
             GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().TargetCameraOnNPC();
             Animator animator = this.gameObject.GetComponent<Animator>();
             animator.runtimeAnimatorController = moveAnimation;  

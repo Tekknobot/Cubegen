@@ -43,6 +43,10 @@ public class PlayerMove : TacticsMove
 	// Update is called once per frame
 	void Update () 
 	{
+        if (turn) {
+            Cursor.lockState = CursorLockMode.None;
+        }
+
         if (pushed) {
 
         }
@@ -80,6 +84,7 @@ public class PlayerMove : TacticsMove
         }
         
         if (moving) {
+            Cursor.lockState = CursorLockMode.Locked;
             GameObject.Find("PlayerTurnStatus_text").GetComponent<Text>().text = " ";
             GameObject.Find("EnemyTurnStatus_text").GetComponent<Text>().text = " ";            
             GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().TargetCameraOnPlayer();

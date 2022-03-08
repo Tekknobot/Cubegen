@@ -207,15 +207,14 @@ public class PlayerAttack : TacticsAttack
                 break;
             }            
             collision.transform.GetComponentInChildren<HealthBarHandler>().SetHealthBarValue((float)collision.transform.GetComponent<NPCAttack>().currentHP/(float)collision.transform.GetComponent<NPCAttack>().maxHP);
-            // collision.transform.GetComponent<NPCMove>().pushed = true;
-            // Tile t = collision.transform.GetComponent<NPCMove>().GetTargetTile(collision.transform.gameObject);
-            // Tile t2 = t.adjacencyList[Random.Range(0,t.adjacencyList.Count)];
-            // if (t2.walkable == true) {
-            //     collision.transform.GetComponent<NPCMove>().MoveToTile(t2);           
-            //     collision.transform.GetComponent<NPCMove>().moveSpeed = 4;      
-            // }     
-
-            //Destroy(this.gameObject);
         }
+
+        if (collision.gameObject.tag == "Player" && GameObject.Find("Map").GetComponent<SpawnUnits>().spawned == true)
+        {
+            // Instantiate(attackEffect, transform.position, Quaternion.Euler(45, -45, 0));
+            // Destroy(this.gameObject);
+            // Destroy(collision.gameObject);
+            // Debug.Log("Double Kill!");
+        }        
     }      
 }
