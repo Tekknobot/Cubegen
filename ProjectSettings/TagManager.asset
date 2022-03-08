@@ -11,6 +11,7 @@ TagManager:
   - Building
   - TileTarget
   - Dead
+  - NPCDead
   layers:
   - Default
   - TransparentFX

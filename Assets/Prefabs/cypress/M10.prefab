@@ -248,7 +248,7 @@ MonoBehaviour:
   damage: 1
   healthUp: 0
   maxHP: 5
-  currentHP: 1
+  currentHP: 5
   maxXP: 5
   currentXP: 0
   currentLevel: 1
@@ -269,6 +269,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explosion: {fileID: 1002605618548861685, guid: 29121037f1fb25d40940d875fbfcc030, type: 3}
+  flag: 0
 --- !u!114 &5912748433899744027
 MonoBehaviour:
   m_ObjectHideFlags: 0
