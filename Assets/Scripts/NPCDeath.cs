@@ -16,23 +16,27 @@ public class NPCDeath : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (GetComponent<NPCAttack>().currentHP <= 0 && flag == false) {
+        if (GetComponent<NPCAttack>().currentHP <= 0 && this.GetComponent<NPCDeath>().flag == false) {
             StartCoroutine(DestroyObject());
-            flag = true;
+            this.GetComponent<NPCDeath>().flag = true;
         }
     }
 
-    IEnumerator DestroyObject() {    
-        this.transform.GetComponent<NPCMove>().enabled = false;
-        this.transform.GetComponent<NPCAttack>().enabled = false;        
-        this.transform.GetComponent<ObjectShake>().enabled = true;
+    IEnumerator DestroyObject() {           
+        Tile t = this.GetComponent<NPCMove>().GetTargetTile(this.transform.gameObject);
+        Tile t2 = t.adjacencyList[Random.Range(0,t.adjacencyList.Count)];
+        this.GetComponent<NPCMove>().MoveToTile(t2);
         this.transform.GetComponent<NPCMove>().RemoveSelectableTiles(); 
+        yield return new WaitForSeconds(0.5f);
+        this.transform.GetComponent<ObjectShake>().enabled = true;
         yield return new WaitForSeconds(1f);
         GameObject[] playerUnits = GameObject.FindGameObjectsWithTag("Player");
         foreach (GameObject playerUnit in playerUnits) {
             playerUnit.transform.GetComponent<PlayerMove>().attacking = false;
         }         
         Instantiate(explosion, this.transform.position, Quaternion.Euler(45, -45, 0));
+        this.transform.GetComponent<NPCMove>().enabled = false;
+        this.transform.GetComponent<NPCAttack>().enabled = false;         
         this.transform.tag = "NPCDead";    
         this.transform.GetComponent<ObjectShake>().enabled = false;
         this.transform.GetComponent<SpriteRenderer>().enabled = false; 
