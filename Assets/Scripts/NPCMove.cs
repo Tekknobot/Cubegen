@@ -72,10 +72,9 @@ public class NPCMove : TacticsMove
 
         if (moving) {
             Cursor.lockState = CursorLockMode.Locked;
-            GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().TargetCameraOnNPC();
+            //GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().TargetCameraOnNPC();
             Animator animator = this.gameObject.GetComponent<Animator>();
             animator.runtimeAnimatorController = moveAnimation;  
-            GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().target = this.gameObject.transform;
             Move();            
         }
 

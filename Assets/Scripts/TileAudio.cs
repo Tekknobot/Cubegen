@@ -23,6 +23,7 @@ public class TileAudio : MonoBehaviour
         if ((other.transform.tag == "Player" || other.transform.tag == "NPC") && GameObject.Find("Map").GetComponent<SpawnUnits>().spawned == false) {
             audioData = GetComponent<AudioSource>();
             audioData.PlayOneShot(clip[0], 1);
+            GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().target = other.transform;
         }
     }    
 }
