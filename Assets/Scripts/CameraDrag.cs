@@ -8,8 +8,7 @@ public class CameraDrag : MonoBehaviour
  
     void Update()
     {
-        if (Input.GetMouseButtonDown(2))
-        {
+        if (Input.GetMouseButtonDown(2)) {
             dragOrigin = Input.mousePosition;
             GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().target = null;
             return;
