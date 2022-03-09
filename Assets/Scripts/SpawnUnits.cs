@@ -58,6 +58,12 @@ public class SpawnUnits : MonoBehaviour
         StartCoroutine(FadeAudioSource.StartFade(audioData, 16, 1f));
 
         foreach (GameObject tile in unit_spawn_points) {
+            RaycastHit hit;
+            if (Physics.Raycast(tile.transform.position, Vector3.up, out hit, 50)) {
+                if (hit.transform.tag == "Building") {
+                    list_unit_spawn_points.Remove(tile);                 
+                }            
+            }
             if (tile.transform.localScale.y != 1) {
                 list_unit_spawn_points.Remove(tile);
             }

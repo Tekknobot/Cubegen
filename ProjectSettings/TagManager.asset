@@ -8,10 +8,10 @@ TagManager:
   - NPC
   - Particles
   - GreenTile
-  - Building
   - TileTarget
   - Dead
   - NPCDead
+  - Building
   layers:
   - Default
   - TransparentFX
@@ -20,7 +20,7 @@ TagManager:
   - Water
   - UI
   - Projectile
-  - 
+  - Building
   - 
   - 
   - 

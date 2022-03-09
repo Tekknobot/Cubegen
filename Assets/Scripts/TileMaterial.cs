@@ -34,8 +34,7 @@ public class TileMaterial : MonoBehaviour
                 Material materialToUse = newMats[3];
                 t.GetComponent<Renderer>().material.CopyPropertiesFromMaterial(materialToUse);
                 t.transform.position = new Vector3(t.transform.position.x, 0.125f, t.transform.position.z);
-                t.transform.localScale = new Vector3(t.transform.localScale.x, 1.25f, t.transform.localScale.z); 
-                //t.GetComponent<Tile>().walkable = false;               
+                t.transform.localScale = new Vector3(t.transform.localScale.x, 1.25f, t.transform.localScale.z);               
             }
             if (calc_dropChance >= 22 && calc_dropChance <= 27) {
                 Material materialToUse = newMats[4];
@@ -45,12 +44,17 @@ public class TileMaterial : MonoBehaviour
                 var waterTileGO = Instantiate(waterTile, new Vector3(t.transform.position.x, 0.26f, t.transform.position.z), Quaternion.Euler(90, 0, 0));
                 waterTileGO.transform.parent = t.transform;
             }  
-
-            if (calc_dropChance >= 0 && calc_dropChance <= 22) {
+            if (calc_dropChance >= 3 && calc_dropChance <= 22) {
                 Material materialToUse = newMats[4];
                 t.GetComponent<Renderer>().material.CopyPropertiesFromMaterial(materialToUse);
-                //Instantiate(buildingsTile, new Vector3(t.transform.position.x, 0.85f, t.transform.position.z), Quaternion.Euler(45, -45, 0));
-            }                                                                                                         
+            }   
+            if (calc_dropChance >= 0 && calc_dropChance <= 3) {
+                Material materialToUse = newMats[4];
+                t.GetComponent<Renderer>().material.CopyPropertiesFromMaterial(materialToUse);
+                var buildingTileGO = Instantiate(buildingsTile, new Vector3(t.transform.position.x, 0.875f, t.transform.position.z), Quaternion.Euler(45, -45, 0));
+                buildingTileGO.transform.parent = t.transform;
+            } 
+
         }
     }
 }
