@@ -120,7 +120,7 @@ public class PlayerAttack : TacticsAttack
         Tile t = GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().target.transform.GetComponent<PlayerMove>().GetTargetTile(GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().target.transform.gameObject);
         if (t.adjacencyList.Count == 0) {  
             GameObject.Find("Map").GetComponent<TurnManager>().EndTurn();
-            GameObject.Find("PlayerTurnStatus_text").GetComponent<Text>().text = "Player is trapped: Player turn over.";
+            GameObject.Find("PlayerTurnStatus_text").GetComponent<Text>().text = "Player is trapped turn over.";
         }          
         Tile t2 = t.adjacencyList[Random.Range(0,t.adjacencyList.Count)];
         if (t2.walkable == true) {

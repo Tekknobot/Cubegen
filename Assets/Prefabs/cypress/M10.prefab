@@ -94,6 +94,8 @@ GameObject:
   - component: {fileID: 3099485478967489854}
   - component: {fileID: 333159857075853429}
   - component: {fileID: -8474926775573441262}
+  - component: {fileID: -1578674729662617206}
+  - component: {fileID: 8614769805306708770}
   m_Layer: 0
   m_Name: M10
   m_TagString: NPC
@@ -214,7 +216,7 @@ MonoBehaviour:
   turn: 0
   moving: 0
   pushed: 0
-  move: 2
+  move: 3
   jumpHeight: 1
   moveSpeed: 2
   jumpVelocity: 4.5
@@ -233,6 +235,7 @@ MonoBehaviour:
   clip:
   - {fileID: 8300000, guid: c554aee1ab3003b47bf6037e690fa46f, type: 3}
   - {fileID: 8300000, guid: fdb16b06855dc974b90d3c8e2dfdf8ca, type: 3}
+  bullet: {fileID: 0}
 --- !u!114 &5912748433899744005
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -254,7 +257,7 @@ MonoBehaviour:
   currentLevel: 1
   unitName: Scanner Mech
   unitLevel: 0
-  meleeUnit: 0
+  meleeUnit: 1
   levelup: {fileID: 1002605618548861685, guid: 4e1b04e0478bfb143b9913f3765a23e3, type: 3}
 --- !u!114 &5912748433899744024
 MonoBehaviour:
@@ -412,6 +415,43 @@ MonoBehaviour:
   shakeDuration: 1
   shakeAmount: 0.1
   decreaseFactor: 1
+--- !u!114 &-1578674729662617206
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1726214198697984584}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e773cef4d90e9148a8bc58c2de49a71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startPoint: {fileID: 0}
+  target: {fileID: 0}
+  resolution: 30
+  curveHight: 0.1
+  gravity: -18
+  bullet: {fileID: 0}
+  lineRenderer: {fileID: 0}
+--- !u!114 &8614769805306708770
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1726214198697984584}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cafae8e7a91caea4896c3a37383e10fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  color: {r: 1, g: 1, b: 1, a: 0.5}
+  enableOnAwake: 0
+  singleColorShader: 1
+  updateInterval: 0.05
+  ghosts: 10
+  _spriteRenderer: {fileID: 1726214198697984596}
 --- !u!1 &7021813869273900190
 GameObject:
   m_ObjectHideFlags: 0

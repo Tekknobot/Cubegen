@@ -337,6 +337,7 @@ public class TacticsMove : MonoBehaviour
     protected void FindPath(Tile target)
     {
         StartCoroutine(this.GetComponent<NPCMove>().AttackNow());
+        StartCoroutine(this.GetComponent<NPCMove>().LaunchNow());
         ComputeAdjacencyLists(jumpHeight, target);
         GetCurrentTile();
 

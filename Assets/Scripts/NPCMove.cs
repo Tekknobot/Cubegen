@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using ActionCode2D.Renderers;
 
 public class NPCMove : TacticsMove 
 {
@@ -23,7 +24,8 @@ public class NPCMove : TacticsMove
     AudioSource audioData;
     public AudioClip[] clip; 
 
-    float speed;   
+    float speed;  
+    public GameObject bullet; 
 
 	// Use this for initialization
 	void Start () 
@@ -50,13 +52,19 @@ public class NPCMove : TacticsMove
         else if (!turn && !this.GetComponent<NPCMove>().attacking) {
             Animator animator = this.gameObject.GetComponent<Animator>();
             animator.runtimeAnimatorController = idleAnimation; 
-            moveSpeed = 2;                      
+            moveSpeed = 2;  
+            if (GameObject.Find("Map").GetComponent<SpawnUnits>().spawned == true && GetComponent<NPCAttack>().meleeUnit == true) { 
+                GetComponent<SpriteGhostTrailRenderer>().enabled = false;        
+            }                                
             return;
         }
 
         if (!moving && !this.GetComponent<NPCMove>().attacking) {    
             Animator animator = this.gameObject.GetComponent<Animator>();        
             animator.runtimeAnimatorController = idleAnimation;
+            if (GameObject.Find("Map").GetComponent<SpawnUnits>().spawned == true && GetComponent<NPCAttack>().meleeUnit == true) { 
+                GetComponent<SpriteGhostTrailRenderer>().enabled = false;        
+            }            
             moveSpeed = 2;
             MoveToTile(GetTargetTile(this.transform.gameObject));
             FindNearestTarget();
@@ -157,8 +165,46 @@ public class NPCMove : TacticsMove
                 NPCAttackFunction(hitCollider.transform.gameObject);
                 break;
             }
-        }
-    }     
+        }     
+    }   
+
+    public void PlayerWithinLaunchRadius() {
+        RaycastHit hit;
+        if (Physics.Raycast(this.transform.position, new Vector3(0, 0, 1), out hit, 100) ||
+            Physics.Raycast(this.transform.position, new Vector3(0, 0, -1), out hit, 100) ||
+            Physics.Raycast(this.transform.position, new Vector3(1, 0, 0), out hit, 100) ||
+            Physics.Raycast(this.transform.position, new Vector3(-1, 0, 0), out hit, 100)) {
+            if (hit.transform.tag == "Player") {
+                if (Vector3.Distance (hit.transform.position, this.transform.position) > 1.25f) {
+                    Animator animator = this.GetComponent<Animator>();
+                    animator.runtimeAnimatorController = this.GetComponent<NPCMove>().attackAnimation; 
+                    if (animator.runtimeAnimatorController == this.GetComponent<NPCMove>().attackAnimation && this.GetComponent<NPCAttack>().meleeUnit == false) {
+                        GetComponent<LaunchProjectile>().DrawPath(this.transform, hit.transform);
+                        this.GetComponent<TacticsAttack>().GetXP(1);
+                        Instantiate(bullet, this.transform.position, Quaternion.identity);                            
+                    }                   
+                }   
+                if (Vector3.Distance (hit.transform.position, this.transform.position) > 1.25f) {
+                    Animator animator = this.GetComponent<Animator>();
+                    animator.runtimeAnimatorController = this.GetComponent<NPCMove>().attackAnimation; 
+                    if (animator.runtimeAnimatorController == this.GetComponent<NPCMove>().attackAnimation && this.GetComponent<NPCAttack>().meleeUnit == true) {
+                        Tile t = hit.transform.GetComponent<PlayerMove>().GetTargetTile(hit.transform.gameObject);
+                        Tile t2 = t.adjacencyList[Random.Range(0,t.adjacencyList.Count)];
+                        if (t2.walkable == true && t.adjacencyList.Count > 0) {        
+                            audioData = GetComponent<AudioSource>();
+                            audioData.PlayOneShot(clip[1], 1); 
+                            GetComponent<SpriteGhostTrailRenderer>().enabled = true;                                            
+                            GetComponent<RushMelee>().DrawPath(this.transform, hit.transform);
+                            this.GetComponent<TacticsAttack>().GetXP(1);
+                            this.GetComponent<TacticsAttack>().GetXP(1);
+                            this.GetComponent<NPCMove>().moveSpeed = 12;                            
+                            this.GetComponent<NPCMove>().MoveToTile(t2); 
+                        }                           
+                    }                   
+                }                
+            }
+        }         
+    }  
 
     public void NPCAttackFunction(GameObject target) {
         StartCoroutine(NPCAttackCoroutine(target));
@@ -197,6 +243,14 @@ public class NPCMove : TacticsMove
             GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().target = GameObject.Find("Map").gameObject.transform; 
         }        
     }
+
+    public IEnumerator LaunchNow() {
+        yield return new WaitUntil(()=> moving == false);
+        if (GameObject.Find("Map").GetComponent<SpawnUnits>().spawned == true) {
+            this.GetComponent<NPCMove>().PlayerWithinLaunchRadius();
+            GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().target = GameObject.Find("Map").gameObject.transform; 
+        }        
+    }    
 
     public void NPCRadius()
     {

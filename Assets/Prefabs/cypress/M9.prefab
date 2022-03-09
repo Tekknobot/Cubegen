@@ -310,6 +310,7 @@ GameObject:
   - component: {fileID: 659782848773465712}
   - component: {fileID: -6693743895341035404}
   - component: {fileID: 7533422087364420872}
+  - component: {fileID: -1139091420453448292}
   m_Layer: 0
   m_Name: M9
   m_TagString: NPC
@@ -449,6 +450,7 @@ MonoBehaviour:
   clip:
   - {fileID: 8300000, guid: c554aee1ab3003b47bf6037e690fa46f, type: 3}
   - {fileID: 8300000, guid: fdb16b06855dc974b90d3c8e2dfdf8ca, type: 3}
+  bullet: {fileID: 4700639010476381217, guid: 7e05d86366e18df48899bb328eaefc23, type: 3}
 --- !u!114 &878692417999996971
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -628,3 +630,22 @@ MonoBehaviour:
   shakeDuration: 1
   shakeAmount: 0.1
   decreaseFactor: 1
+--- !u!114 &-1139091420453448292
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6298491596799051899}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bedf0d43824ceb049b2209bfe5eb78ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startPoint: {fileID: 0}
+  target: {fileID: 0}
+  resolution: 30
+  curveHight: 3
+  gravity: -1
+  bullet: {fileID: -1651955232465175977, guid: 7e05d86366e18df48899bb328eaefc23, type: 3}
+  lineRenderer: {fileID: 0}
