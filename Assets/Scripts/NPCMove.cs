@@ -185,23 +185,23 @@ public class NPCMove : TacticsMove
                     }                   
                 }   
                 if (Vector3.Distance (hit.transform.position, this.transform.position) > 1.25f) {
-                    Animator animator = this.GetComponent<Animator>();
-                    animator.runtimeAnimatorController = this.GetComponent<NPCMove>().attackAnimation; 
-                    if (animator.runtimeAnimatorController == this.GetComponent<NPCMove>().attackAnimation && this.GetComponent<NPCAttack>().meleeUnit == true) {
-                        Tile t = hit.transform.GetComponent<PlayerMove>().GetTargetTile(hit.transform.gameObject);
-                        Tile t2 = t.adjacencyList[Random.Range(0,t.adjacencyList.Count)];
-                        if (t2.walkable == true && t.adjacencyList.Count > 0) {        
+                    Tile t = hit.transform.GetComponent<PlayerMove>().GetTargetTile(hit.transform.gameObject);
+                    Tile t2 = t.adjacencyList[Random.Range(0,t.adjacencyList.Count)];
+                    if (t2.walkable == true && t.adjacencyList.Count > 0) {                    
+                        Animator animator = this.GetComponent<Animator>();
+                        animator.runtimeAnimatorController = this.GetComponent<NPCMove>().attackAnimation; 
+                        if (animator.runtimeAnimatorController == this.GetComponent<NPCMove>().attackAnimation && this.GetComponent<NPCAttack>().meleeUnit == true) {        
                             audioData = GetComponent<AudioSource>();
-                            audioData.PlayOneShot(clip[1], 1); 
+                            audioData.PlayOneShot(clip[2], 1); 
                             GetComponent<SpriteGhostTrailRenderer>().enabled = true;                                            
                             GetComponent<RushMelee>().DrawPath(this.transform, hit.transform);
                             this.GetComponent<TacticsAttack>().GetXP(1);
-                            this.GetComponent<TacticsAttack>().GetXP(1);
-                            this.GetComponent<NPCMove>().moveSpeed = 12;                            
-                            this.GetComponent<NPCMove>().MoveToTile(t2); 
-                        }                           
-                    }                   
-                }                
+                            // this.GetComponent<NPCMove>().moveSpeed = 12;                            
+                            // this.GetComponent<NPCMove>().MoveToTile(t2);
+                            Instantiate(bullet, this.transform.position, Quaternion.identity); 
+                        }     
+                    }                      
+                }                                   
             }
         }         
     }  

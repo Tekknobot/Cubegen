@@ -235,7 +235,8 @@ MonoBehaviour:
   clip:
   - {fileID: 8300000, guid: c554aee1ab3003b47bf6037e690fa46f, type: 3}
   - {fileID: 8300000, guid: fdb16b06855dc974b90d3c8e2dfdf8ca, type: 3}
-  bullet: {fileID: 0}
+  - {fileID: 8300000, guid: afaee4f3b7410b24a865560b84d506b7, type: 3}
+  bullet: {fileID: 4700639010476381217, guid: 7e05d86366e18df48899bb328eaefc23, type: 3}
 --- !u!114 &5912748433899744005
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -432,7 +433,7 @@ MonoBehaviour:
   resolution: 30
   curveHight: 0.1
   gravity: -18
-  bullet: {fileID: 0}
+  bullet: {fileID: -1651955232465175977, guid: 7e05d86366e18df48899bb328eaefc23, type: 3}
   lineRenderer: {fileID: 0}
 --- !u!114 &8614769805306708770
 MonoBehaviour:

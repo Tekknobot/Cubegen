@@ -154,7 +154,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  smoothTime: 0.3
+  smoothTime: 0.5
   playerPrefabs: []
   npcPrefabs: []
 --- !u!4 &14125123
@@ -21147,7 +21147,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1340065564
 Transform:
   m_ObjectHideFlags: 0
@@ -21586,11 +21586,11 @@ MonoBehaviour:
   - {fileID: 2168714103371907350, guid: 1ea7f0f2888daa645994b46e45818446, type: 3}
   - {fileID: 433229189802929220, guid: 982f1bdb352639f429b764413ccfbd84, type: 3}
   - {fileID: 59864316342562069, guid: 70a66b7b6355f2a4898dd7c014435152, type: 3}
+  - {fileID: 1362236037087830658, guid: 0fadb70ed73b23748b648a60531c005c, type: 3}
+  - {fileID: 1726214198697984584, guid: f67af288a2f3c6c4cb735278f1549e5c, type: 3}
   - {fileID: 5600875751062173525, guid: f1106a07dcdef5b4d90489367519ad1d, type: 3}
   - {fileID: 5533613025112814727, guid: decebbac17beded4a82858183ea1fadb, type: 3}
-  - {fileID: 1362236037087830658, guid: 0fadb70ed73b23748b648a60531c005c, type: 3}
   - {fileID: 6298491596799051899, guid: fdfd55c8853d4ed4f8f8eb653293bd50, type: 3}
-  - {fileID: 1726214198697984584, guid: f67af288a2f3c6c4cb735278f1549e5c, type: 3}
   player_clones: []
   npc_clones: []
   list_unit_spawn_points: []
