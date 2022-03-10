@@ -39,6 +39,8 @@ public class UI_Manager : MonoBehaviour
     public Text unit_label;
     public Text healthbar_hp;
     public Text xp_Level;
+    public Text move_count;
+    public Text atk_count;
     public Slider healthbar_slider;
     public Slider xp_slider;
 
@@ -65,6 +67,8 @@ public class UI_Manager : MonoBehaviour
                 unit_label.GetComponent<Text>().text = tacticsCamera.GetComponent<TacticsCamera>().target.GetComponent<PlayerAttack>().unitName;
                 healthbar_hp.text = Mathf.Round(tacticsCamera.GetComponent<TacticsCamera>().target.GetComponentInChildren<HealthBarHandler>().GetHealthBarValue() * tacticsCamera.GetComponent<TacticsCamera>().target.GetComponent<PlayerAttack>().maxHP) + " HP";
                 xp_Level.text = "LV. " + tacticsCamera.GetComponent<TacticsCamera>().target.GetComponent<PlayerAttack>().currentLevel.ToString();
+                move_count.text = tacticsCamera.GetComponent<TacticsCamera>().target.GetComponent<PlayerMove>().move.ToString() + " MOV";
+                atk_count.text = tacticsCamera.GetComponent<TacticsCamera>().target.GetComponent<PlayerAttack>().damage.ToString() + " ATK";
                 healthbar_slider.value = tacticsCamera.GetComponent<TacticsCamera>().target.GetComponent<PlayerAttack>().currentHP;
                 xp_slider.value = tacticsCamera.GetComponent<TacticsCamera>().target.GetComponent<PlayerAttack>().currentXP;
                 ActivateUI();
@@ -75,6 +79,8 @@ public class UI_Manager : MonoBehaviour
                 unit_label.GetComponent<Text>().text = tacticsCamera.GetComponent<TacticsCamera>().target.GetComponent<NPCAttack>().unitName;
                 healthbar_hp.text = Mathf.Round(tacticsCamera.GetComponent<TacticsCamera>().target.GetComponent<NPCAttack>().currentHP) + " HP";
                 xp_Level.text = "LV. " + tacticsCamera.GetComponent<TacticsCamera>().target.GetComponent<NPCAttack>().currentLevel.ToString();
+                move_count.text = tacticsCamera.GetComponent<TacticsCamera>().target.GetComponent<NPCMove>().move.ToString() + " MOV";
+                atk_count.text = tacticsCamera.GetComponent<TacticsCamera>().target.GetComponent<NPCAttack>().damage.ToString() + " ATK";                
                 healthbar_slider.value = tacticsCamera.GetComponent<TacticsCamera>().target.GetComponent<NPCAttack>().currentHP;
                 xp_slider.value = tacticsCamera.GetComponent<TacticsCamera>().target.GetComponent<NPCAttack>().currentXP;
                 targetButton.SetActive(false);    
