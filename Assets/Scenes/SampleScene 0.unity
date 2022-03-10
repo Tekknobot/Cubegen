@@ -21567,6 +21567,8 @@ MonoBehaviour:
   defaultMat: {fileID: 2100000, guid: b68c6b3d09a49d44795210032555f630, type: 2}
   waterTile: {fileID: 8111368690324680476, guid: afa24be163448d241ac2054a1d6413db, type: 3}
   buildingsTile: {fileID: 8111368690324680476, guid: 981d404fb0d1f3149bb4b939d845572c, type: 3}
+  buildingsTile1: {fileID: 8111368690324680476, guid: 247b556670393d1429d0c8577b716c39, type: 3}
+  buildingsTile2: {fileID: 8111368690324680476, guid: 886ddceba49c61542aa92b1d17abc791, type: 3}
 --- !u!114 &1383385108
 MonoBehaviour:
   m_ObjectHideFlags: 0

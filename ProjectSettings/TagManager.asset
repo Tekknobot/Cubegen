@@ -12,6 +12,7 @@ TagManager:
   - Dead
   - NPCDead
   - Building
+  - Projectile
   layers:
   - Default
   - TransparentFX

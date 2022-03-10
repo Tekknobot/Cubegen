@@ -10,6 +10,8 @@ public class TileMaterial : MonoBehaviour
     public Material defaultMat;
     public GameObject waterTile;
     public GameObject buildingsTile;
+    public GameObject buildingsTile1;
+    public GameObject buildingsTile2;
 
     void Start()
     {
@@ -48,13 +50,25 @@ public class TileMaterial : MonoBehaviour
                 Material materialToUse = newMats[4];
                 t.GetComponent<Renderer>().material.CopyPropertiesFromMaterial(materialToUse);
             }   
-            if (calc_dropChance >= 0 && calc_dropChance <= 3) {
+
+            if (calc_dropChance >= 2 && calc_dropChance <= 3) {
                 Material materialToUse = newMats[4];
                 t.GetComponent<Renderer>().material.CopyPropertiesFromMaterial(materialToUse);
                 var buildingTileGO = Instantiate(buildingsTile, new Vector3(t.transform.position.x, 0.875f, t.transform.position.z), Quaternion.Euler(45, -45, 0));
                 buildingTileGO.transform.parent = t.transform;
             } 
-
+            if (calc_dropChance >= 1 && calc_dropChance <= 2) {
+                Material materialToUse = newMats[4];
+                t.GetComponent<Renderer>().material.CopyPropertiesFromMaterial(materialToUse);
+                var buildingTileGO = Instantiate(buildingsTile1, new Vector3(t.transform.position.x, 0.875f, t.transform.position.z), Quaternion.Euler(45, -45, 0));
+                buildingTileGO.transform.parent = t.transform;
+            }
+            if (calc_dropChance >= 0 && calc_dropChance <= 1) {
+                Material materialToUse = newMats[4];
+                t.GetComponent<Renderer>().material.CopyPropertiesFromMaterial(materialToUse);
+                var buildingTileGO = Instantiate(buildingsTile2, new Vector3(t.transform.position.x, 0.875f, t.transform.position.z), Quaternion.Euler(45, -45, 0));
+                buildingTileGO.transform.parent = t.transform;
+            }            
         }
     }
 }

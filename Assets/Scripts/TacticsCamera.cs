@@ -45,9 +45,11 @@ public class TacticsCamera : MonoBehaviour
             CameraSelect();
         }
 
-        projectile = GameObject.FindGameObjectWithTag("Projectile");
-        if (projectile.transform.tag == "Projectile") {
-            target = projectile.transform;
+        if (GameObject.FindGameObjectWithTag("Projectile")) {
+            projectile = GameObject.FindGameObjectWithTag("Projectile");
+            if (projectile.transform.tag == "Projectile") {
+                target = projectile.transform;
+            }            
         }
     }
 
