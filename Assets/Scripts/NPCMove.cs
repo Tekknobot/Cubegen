@@ -180,7 +180,7 @@ public class NPCMove : TacticsMove
                     animator.runtimeAnimatorController = this.GetComponent<NPCMove>().attackAnimation; 
                     if (animator.runtimeAnimatorController == this.GetComponent<NPCMove>().attackAnimation && this.GetComponent<NPCAttack>().meleeUnit == false) {
                         GetComponent<LaunchProjectile>().DrawPath(this.transform, hit.transform);
-                        this.GetComponent<TacticsAttack>().GetXP(1);
+                        this.GetComponent<NPCAttack>().GetXP(1);
                         Instantiate(bullet, this.transform.position, Quaternion.identity);                            
                     }                   
                 }   
@@ -195,7 +195,7 @@ public class NPCMove : TacticsMove
                             audioData.PlayOneShot(clip[2], 1); 
                             GetComponent<SpriteGhostTrailRenderer>().enabled = true;                                            
                             GetComponent<RushMelee>().DrawPath(this.transform, hit.transform);
-                            this.GetComponent<TacticsAttack>().GetXP(1);
+                            this.GetComponent<NPCAttack>().GetXP(1);
                             // this.GetComponent<NPCMove>().moveSpeed = 12;                            
                             // this.GetComponent<NPCMove>().MoveToTile(t2);
                             Instantiate(bullet, this.transform.position, Quaternion.identity); 
@@ -216,7 +216,7 @@ public class NPCMove : TacticsMove
         ComputeAdjacencyLists(this.GetComponent<NPCMove>().jumpHeight, this.GetComponent<NPCMove>().GetTargetTile(this.gameObject));
         attacking = true;
         hit.transform.gameObject.GetComponent<TacticsAttack>().TakeDamage(this.GetComponent<TacticsAttack>().damage);
-        this.GetComponent<TacticsAttack>().GetXP(1);
+        this.GetComponent<NPCAttack>().GetXP(1);
         Animator animator = this.gameObject.GetComponent<Animator>();
         animator.runtimeAnimatorController = this.gameObject.GetComponent<NPCMove>().attackAnimation;        
 		yield return new WaitForSeconds(1f);

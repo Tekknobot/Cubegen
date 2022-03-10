@@ -92,7 +92,7 @@ public class PlayerAttack : TacticsAttack
         audioData.PlayOneShot(clip[0], 1);       
 		yield return new WaitForSeconds(1f);
         hit.GetComponent<TacticsAttack>().TakeDamage(tempPlayerUnit.GetComponent<TacticsAttack>().damage);
-        tempPlayerUnit.GetComponent<TacticsAttack>().GetXP(1);
+        tempPlayerUnit.GetComponent<PlayerAttack>().GetXP(1);
         hit.GetComponentInChildren<HealthBarHandler>().SetHealthBarValue((float)hit.GetComponent<NPCAttack>().currentHP/(float)hit.GetComponent<NPCAttack>().maxHP);
         Instantiate(attackEffect, hit.transform.position, Quaternion.Euler(45, -45, 0)); 
         hit.GetComponent<NPCMove>().pushed = true;
@@ -160,7 +160,7 @@ public class PlayerAttack : TacticsAttack
                         animator.runtimeAnimatorController = tempPlayerUnit.GetComponent<PlayerMove>().attackAnimation; 
                         if (animator.runtimeAnimatorController == this.GetComponent<PlayerMove>().attackAnimation) {
                             GetComponent<LaunchProjectile>().DrawPath(tempPlayerUnit.transform, GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().target.transform);
-                            tempPlayerUnit.GetComponent<TacticsAttack>().GetXP(1);
+                            this.GetComponent<PlayerAttack>().GetXP(1);
                             Instantiate(bullet, this.transform.position, Quaternion.identity);
                             //GetComponent<LaunchProjectile>().Launch(tempPlayerUnit.transform, GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().target.transform);
                         }                            
@@ -185,7 +185,8 @@ public class PlayerAttack : TacticsAttack
                             audioData.PlayOneShot(clip[1], 1); 
                             GetComponent<SpriteGhostTrailRenderer>().enabled = true;
                             GetComponent<RushMelee>().DrawPath(tempPlayerUnit.transform, GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().target.transform);
-                            tempPlayerUnit.GetComponent<TacticsAttack>().GetXP(1);
+                            this.GetComponent<PlayerAttack>().GetXP(1);
+                            Debug.Log("XP given.");
                             tempPlayerUnit.GetComponent<PlayerMove>().moveSpeed = 12;                            
                             tempPlayerUnit.GetComponent<PlayerMove>().MoveToTile(t2);   
                         }                         
