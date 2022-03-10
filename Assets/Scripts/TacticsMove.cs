@@ -32,6 +32,8 @@ public class TacticsMove : MonoBehaviour
 
     public Tile actualTargetTile;
 
+    public Sprite[] portrait;
+
     public void Init()
     {
         tiles = GameObject.FindGameObjectsWithTag("Tile");

@@ -62,7 +62,7 @@ public class UI_Manager : MonoBehaviour
     {   
         if (tacticsCamera.GetComponent<TacticsCamera>().target) {
             if (tacticsCamera.GetComponent<TacticsCamera>().target.transform.tag == "Player") {
-                portrait.GetComponent<Image>().sprite = tacticsCamera.GetComponent<TacticsCamera>().target.GetComponent<SpriteRenderer>().sprite; 
+                portrait.GetComponent<UISpritesAnimation>().sprites = tacticsCamera.GetComponent<TacticsCamera>().target.GetComponent<PlayerMove>().portrait; 
                 portrait_mini.GetComponent<Image>().sprite = tacticsCamera.GetComponent<TacticsCamera>().target.GetComponent<SpriteRenderer>().sprite; 
                 unit_label.GetComponent<Text>().text = tacticsCamera.GetComponent<TacticsCamera>().target.GetComponent<PlayerAttack>().unitName;
                 healthbar_hp.text = Mathf.Round(tacticsCamera.GetComponent<TacticsCamera>().target.GetComponentInChildren<HealthBarHandler>().GetHealthBarValue() * tacticsCamera.GetComponent<TacticsCamera>().target.GetComponent<PlayerAttack>().maxHP) + " HP";
@@ -74,7 +74,7 @@ public class UI_Manager : MonoBehaviour
                 ActivateUI();
             }  
             if (tacticsCamera.GetComponent<TacticsCamera>().target.transform.tag == "NPC") {
-                portrait.GetComponent<Image>().sprite = tacticsCamera.GetComponent<TacticsCamera>().target.GetComponent<SpriteRenderer>().sprite; 
+                portrait.GetComponent<UISpritesAnimation>().sprites = tacticsCamera.GetComponent<TacticsCamera>().target.GetComponent<NPCMove>().portrait;
                 portrait_mini.GetComponent<Image>().sprite = tacticsCamera.GetComponent<TacticsCamera>().target.GetComponent<SpriteRenderer>().sprite; 
                 unit_label.GetComponent<Text>().text = tacticsCamera.GetComponent<TacticsCamera>().target.GetComponent<NPCAttack>().unitName;
                 healthbar_hp.text = Mathf.Round(tacticsCamera.GetComponent<TacticsCamera>().target.GetComponent<NPCAttack>().currentHP) + " HP";
