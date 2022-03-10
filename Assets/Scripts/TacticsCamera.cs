@@ -11,7 +11,9 @@ public class TacticsCamera : MonoBehaviour
     public GameObject[] playerPrefabs;
     public GameObject[] npcPrefabs;
 
-    int playerPrefabsIndex = 0;   
+    int playerPrefabsIndex = 0;  
+
+    GameObject projectile; 
 
     void Start() {
         playerPrefabs = GameObject.FindGameObjectsWithTag("Player");
@@ -41,6 +43,11 @@ public class TacticsCamera : MonoBehaviour
 
             GetComponent<TacticsCamera>().TurnOffAllOutlines();
             CameraSelect();
+        }
+
+        projectile = GameObject.FindGameObjectWithTag("Projectile");
+        if (projectile.transform.tag == "Projectile") {
+            target = projectile.transform;
         }
     }
 
