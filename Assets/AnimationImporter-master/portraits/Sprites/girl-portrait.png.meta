@@ -131,7 +131,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 128
+        y: 64
         width: 64
         height: 64
       alignment: 0
@@ -152,7 +152,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 64
-        y: 128
+        y: 64
         width: 64
         height: 64
       alignment: 0
@@ -173,7 +173,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 128
-        y: 128
+        y: 64
         width: 64
         height: 64
       alignment: 0
@@ -214,8 +214,8 @@ TextureImporter:
       name: girl-portrait 4
       rect:
         serializedVersion: 2
-        x: 64
-        y: 64
+        x: 0
+        y: 0
         width: 64
         height: 64
       alignment: 0
@@ -235,7 +235,7 @@ TextureImporter:
       name: girl-portrait 5
       rect:
         serializedVersion: 2
-        x: 128
+        x: 0
         y: 64
         width: 64
         height: 64
@@ -256,7 +256,7 @@ TextureImporter:
       name: girl-portrait 6
       rect:
         serializedVersion: 2
-        x: 128
+        x: 0
         y: 64
         width: 64
         height: 64
@@ -277,7 +277,7 @@ TextureImporter:
       name: girl-portrait 7
       rect:
         serializedVersion: 2
-        x: 0
+        x: 64
         y: 0
         width: 64
         height: 64
