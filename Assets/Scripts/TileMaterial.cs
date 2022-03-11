@@ -38,7 +38,7 @@ public class TileMaterial : MonoBehaviour
                 t.GetComponent<Renderer>().material.CopyPropertiesFromMaterial(materialToUse);
                 t.transform.position = new Vector3(t.transform.position.x, 0.125f, t.transform.position.z);
                 t.transform.localScale = new Vector3(t.transform.localScale.x, 1.25f, t.transform.localScale.z);
-                var miscTileGO = Instantiate(miscTile, new Vector3(t.transform.position.x, 1.25f, t.transform.position.z), Quaternion.Euler(45, -45, 0));               
+                var miscTileGO = Instantiate(miscTile, new Vector3(t.transform.position.x, 1.5f, t.transform.position.z), Quaternion.Euler(45, -45, 0));               
                 miscTileGO.transform.parent = t.transform;
             }
             if (calc_dropChance >= 24 && calc_dropChance <= 26) {
