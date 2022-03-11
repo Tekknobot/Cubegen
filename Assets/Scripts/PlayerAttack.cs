@@ -185,7 +185,9 @@ public class PlayerAttack : TacticsAttack
                             audioData.PlayOneShot(clip[1], 1); 
                             GetComponent<SpriteGhostTrailRenderer>().enabled = true;
                             GetComponent<RushMelee>().DrawPath(tempPlayerUnit.transform, GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().target.transform);
-                            this.GetComponent<PlayerAttack>().GetXP(1);
+                            if (animator.runtimeAnimatorController == this.GetComponent<PlayerMove>().attackAnimation) {
+                                this.GetComponent<PlayerAttack>().GetXP(1);
+                            }
                             Debug.Log("XP given.");
                             tempPlayerUnit.GetComponent<PlayerMove>().moveSpeed = 12;                            
                             tempPlayerUnit.GetComponent<PlayerMove>().MoveToTile(t2);   
