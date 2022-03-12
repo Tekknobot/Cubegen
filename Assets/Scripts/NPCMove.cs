@@ -46,6 +46,7 @@ public class NPCMove : TacticsMove
 
         if (turn) {
             Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
         }
 
         if (pushed) {
@@ -54,10 +55,13 @@ public class NPCMove : TacticsMove
         else if (!turn && !this.GetComponent<NPCMove>().attacking) {
             Animator animator = this.gameObject.GetComponent<Animator>();
             animator.runtimeAnimatorController = idleAnimation; 
-            moveSpeed = 2;  
+            moveSpeed = 2;
+            if (GameObject.Find("Map").GetComponent<SpawnUnits>().spawned == true) { 
+                this.transform.position = new Vector3(GetTargetTile(this.transform.gameObject).transform.position.x, 0.8712311f, GetTargetTile(this.transform.gameObject).transform.position.z);                                
+            }              
             if (GameObject.Find("Map").GetComponent<SpawnUnits>().spawned == true && GetComponent<NPCAttack>().meleeUnit == true) { 
                 GetComponent<SpriteGhostTrailRenderer>().enabled = false;        
-            }                                
+            }            
             return;
         }
 
@@ -82,6 +86,7 @@ public class NPCMove : TacticsMove
 
         if (moving) {
             Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
             if (GameObject.Find("Map").GetComponent<SpawnUnits>().spawned == true) {
                 GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().TargetCameraOnNPC();
             }

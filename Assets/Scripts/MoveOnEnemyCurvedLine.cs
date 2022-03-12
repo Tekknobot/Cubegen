@@ -44,19 +44,22 @@ public class MoveOnEnemyCurvedLine : MonoBehaviour
     {
         objectToMove.transform.position = Vector3.MoveTowards(objectToMove.transform.position, pos[index], speed * Time.deltaTime);
 
-        if (objectToMove.transform.position == pos[index])
-        {
+        if (objectToMove.transform.position == pos[index]) {
             index += 1;
         }
 
-        if (index == pos.Length)
+        if (index == pos.Length) {
             index = 0;
+        }
+
+        if (index == 0) {
+            this.GetComponent<MeshRenderer>().enabled = false;
+        }
     }
 
     void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Player" || collision.gameObject.tag == "Tile")
-        {
+        if (collision.gameObject.tag == "Player" || collision.gameObject.tag == "Tile") {
             Instantiate(explosion, transform.position, Quaternion.Euler(45, -45, 0));
             GameObject[] npcUnits;
             npcUnits = GameObject.FindGameObjectsWithTag("NPC");

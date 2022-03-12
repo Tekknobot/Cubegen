@@ -45,6 +45,7 @@ public class PlayerMove : TacticsMove
 	{
         if (turn) {
             Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
         }
 
         if (pushed) {
@@ -54,6 +55,9 @@ public class PlayerMove : TacticsMove
             Animator animator = this.gameObject.GetComponent<Animator>();
             animator.runtimeAnimatorController = idleAnimation;
             //this.GetComponent<cakeslice.Outline>().enabled = false;
+            if (GameObject.Find("Map").GetComponent<SpawnUnits>().spawned == true) { 
+                this.transform.position = new Vector3(GetTargetTile(this.transform.gameObject).transform.position.x, 0.8712311f, GetTargetTile(this.transform.gameObject).transform.position.z);                                
+            }             
             if (GameObject.Find("Map").GetComponent<SpawnUnits>().spawned == true && GetComponent<PlayerAttack>().meleeUnit == true) { 
                 GetComponent<SpriteGhostTrailRenderer>().enabled = false;        
             }
@@ -85,6 +89,7 @@ public class PlayerMove : TacticsMove
         
         if (moving) {
             Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
             GameObject.Find("PlayerTurnStatus_text").GetComponent<Text>().text = " ";
             GameObject.Find("EnemyTurnStatus_text").GetComponent<Text>().text = " ";            
             //GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().TargetCameraOnPlayer();

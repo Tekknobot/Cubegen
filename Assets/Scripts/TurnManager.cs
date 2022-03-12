@@ -81,5 +81,5 @@ public class TurnManager : MonoBehaviour
         }
 
         list.Add(unit);
-    }  
+    }
 }
