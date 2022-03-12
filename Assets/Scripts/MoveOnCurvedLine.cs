@@ -55,7 +55,7 @@ public class MoveOnCurvedLine : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "NPC")
+        if (collision.gameObject.tag == "NPC" || collision.gameObject.tag == "Tile")
         {
             Instantiate(explosion, transform.position, Quaternion.Euler(45, -45, 0));
             GameObject[] playerUnits;

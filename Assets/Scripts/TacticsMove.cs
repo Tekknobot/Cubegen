@@ -397,6 +397,9 @@ public class TacticsMove : MonoBehaviour
 
         //todo - what do you do if there is no path to the target tile?
         Debug.Log("Path not found");
+
+        StartCoroutine(this.GetComponent<NPCMove>().AttackNow());
+
         Tile tA = this.transform.GetComponent<NPCMove>().GetTargetTile(this.transform.gameObject);
         Tile tB = tA.adjacencyList[Random.Range(0,tA.adjacencyList.Count)];
         this.transform.GetComponent<NPCMove>().MoveToTile(tB);

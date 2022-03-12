@@ -21,13 +21,13 @@ public class PlayerDeath : MonoBehaviour
     }
 
     IEnumerator DestroyObject() {   
-        //this.transform.GetComponent<ObjectShake>().enabled = true;
-        this.transform.GetComponent<PlayerMove>().enabled = false;
-        this.transform.GetComponent<PlayerAttack>().enabled = false;          
+        this.transform.GetComponent<ObjectShake>().enabled = true;         
         yield return new WaitForSeconds(1);
         Instantiate(explosion, this.transform.position, Quaternion.Euler(45, -45, 0)); 
+        this.transform.GetComponent<PlayerMove>().enabled = false;
+        this.transform.GetComponent<PlayerAttack>().enabled = false;         
         this.transform.tag = "Dead";
-        //this.transform.GetComponent<ObjectShake>().enabled = false;
+        this.transform.GetComponent<ObjectShake>().enabled = false;
         this.transform.gameObject.SetActive(false);
     }
 }

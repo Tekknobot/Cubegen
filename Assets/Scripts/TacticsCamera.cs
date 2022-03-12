@@ -34,12 +34,12 @@ public class TacticsCamera : MonoBehaviour
         }
 
         if (Input.GetMouseButtonDown(1)) {
+            if (playerPrefabsIndex >= playerPrefabs.Length) {
+                playerPrefabsIndex = 0;
+            }            
             playerPrefabs[playerPrefabsIndex].GetComponent<PlayerMove>().tempGO = null;
             playerPrefabs = GameObject.FindGameObjectsWithTag("Player");            
             target = playerPrefabs[playerPrefabsIndex++].transform;            
-            if (playerPrefabsIndex >= playerPrefabs.Length) {
-                playerPrefabsIndex = 0;
-            }
 
             GetComponent<TacticsCamera>().TurnOffAllOutlines();
             CameraSelect();

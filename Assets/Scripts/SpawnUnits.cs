@@ -52,6 +52,10 @@ public class SpawnUnits : MonoBehaviour
             //SceneManager.LoadScene(0);
             flag = true;
         }
+
+        if (Input.GetKeyDown(KeyCode.Space)) { 
+            GetComponent<TurnManager>().EndTurn();                                    
+        }
     }
 
     IEnumerator Spawn() {
