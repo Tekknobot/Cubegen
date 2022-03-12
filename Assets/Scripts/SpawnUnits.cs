@@ -59,8 +59,6 @@ public class SpawnUnits : MonoBehaviour
     }
 
     IEnumerator Spawn() {
-        StartCoroutine(FadeAudioSource.StartFade(audioData, 16, 1f));
-
         foreach (GameObject tile in unit_spawn_points) {
             RaycastHit hit;
             if (Physics.Raycast(tile.transform.position, Vector3.up, out hit, 50)) {
