@@ -66,7 +66,7 @@ public class NPCMove : TacticsMove
                 GetComponent<SpriteGhostTrailRenderer>().enabled = false;        
             }            
             moveSpeed = 2;
-            MoveToTile(GetTargetTile(this.transform.gameObject));
+            //MoveToTile(GetTargetTile(this.transform.gameObject));
             FindNearestTarget();
             CalculatePath();
             FindSelectableTiles();           
@@ -193,7 +193,7 @@ public class NPCMove : TacticsMove
                         if (animator.runtimeAnimatorController == this.GetComponent<NPCMove>().attackAnimation && this.GetComponent<NPCAttack>().meleeUnit == true) {        
                             audioData = GetComponent<AudioSource>();
                             audioData.PlayOneShot(clip[2], 1); 
-                            GetComponent<SpriteGhostTrailRenderer>().enabled = true;                                            
+                            //GetComponent<SpriteGhostTrailRenderer>().enabled = true;                                            
                             GetComponent<RushMelee>().DrawPath(this.transform, hit.transform);
                             this.GetComponent<NPCAttack>().GetXP(1);
                             // this.GetComponent<NPCMove>().moveSpeed = 12;                            
