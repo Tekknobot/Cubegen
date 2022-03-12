@@ -125,7 +125,7 @@ public class TacticsMove : MonoBehaviour
         {
             path.Push(next);
             next = next.parent;
-        }  
+        }      
     }
 
     public void Move()
@@ -397,7 +397,10 @@ public class TacticsMove : MonoBehaviour
 
         //todo - what do you do if there is no path to the target tile?
         Debug.Log("Path not found");
-        GameObject.Find("Map").GetComponent<TurnManager>().EndTurn();
+        Tile tA = this.transform.GetComponent<NPCMove>().GetTargetTile(this.transform.gameObject);
+        Tile tB = tA.adjacencyList[Random.Range(0,tA.adjacencyList.Count)];
+        this.transform.GetComponent<NPCMove>().MoveToTile(tB);
+        //GameObject.Find("Map").GetComponent<TurnManager>().EndTurn();
     }
 
     public void BeginTurn()
