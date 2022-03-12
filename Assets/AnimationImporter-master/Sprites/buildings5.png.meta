@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 4067de911ae3b164da132fe7cca14fe4
+guid: b3dcd48f68b8741439d888d2f6d4c7cf
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 3682833592331998750
-    second: buildings 2 0
+      213: -3884391083509187497
+    second: buildings5 0
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -68,7 +68,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 36
+    maxTextureSize: 37
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
@@ -82,13 +82,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: buildings 2 0
+      name: buildings5 0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 34
-        height: 36
+        width: 32
+        height: 37
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -96,8 +96,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: e1613d5c3ad0c1330800000000000000
-      internalID: 3682833592331998750
+      spriteID: 75c7db2d3eed71ac0800000000000000
+      internalID: -3884391083509187497
       vertices: []
       indices: 
       edges: []

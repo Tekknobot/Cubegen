@@ -27,6 +27,8 @@ public class NPCMove : TacticsMove
     float speed;  
     public GameObject bullet; 
 
+    public bool attackFlag;
+
 	// Use this for initialization
 	void Start () 
 	{
@@ -66,7 +68,7 @@ public class NPCMove : TacticsMove
                 GetComponent<SpriteGhostTrailRenderer>().enabled = false;        
             }            
             moveSpeed = 2;
-            //MoveToTile(GetTargetTile(this.transform.gameObject));
+            MoveToTile(GetTargetTile(this.transform.gameObject));
             FindNearestTarget();
             CalculatePath();
             FindSelectableTiles();           

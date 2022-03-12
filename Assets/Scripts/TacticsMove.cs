@@ -125,7 +125,7 @@ public class TacticsMove : MonoBehaviour
         {
             path.Push(next);
             next = next.parent;
-        }      
+        }  
     }
 
     public void Move()
