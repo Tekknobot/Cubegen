@@ -9,6 +9,7 @@ public class Explosion : MonoBehaviour
     {
         GameObject.Find("Main Camera").GetComponent<CameraShake>().shakeDuration = 0.1f;
         GameObject.Find("Main Camera").GetComponent<CameraShake>().enabled = true;
+        GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().target = this.gameObject.transform;
     }
 
     // Update is called once per frame

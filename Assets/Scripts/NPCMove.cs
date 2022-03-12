@@ -88,7 +88,7 @@ public class NPCMove : TacticsMove
             Animator animator = this.gameObject.GetComponent<Animator>();
             animator.runtimeAnimatorController = moveAnimation;  
             Move();            
-        }
+        }        
 
         if (transform.position.x > oldPositionX) {
             GetComponent<SpriteRenderer>().flipX = false;
