@@ -147,14 +147,7 @@ MonoBehaviour:
   jumpVelocity: 4.5
   actualTargetTile: {fileID: 0}
   portrait:
-  - {fileID: 2673457766576801413, guid: a3cf592ab88e12d4685c93fe882e3638, type: 3}
-  - {fileID: -8818019219092867432, guid: a3cf592ab88e12d4685c93fe882e3638, type: 3}
-  - {fileID: 981740503265455495, guid: a3cf592ab88e12d4685c93fe882e3638, type: 3}
-  - {fileID: 4608121771604599874, guid: a3cf592ab88e12d4685c93fe882e3638, type: 3}
-  - {fileID: -1303610770165240125, guid: a3cf592ab88e12d4685c93fe882e3638, type: 3}
-  - {fileID: -3794853183496862685, guid: a3cf592ab88e12d4685c93fe882e3638, type: 3}
-  - {fileID: 8468425083447506434, guid: a3cf592ab88e12d4685c93fe882e3638, type: 3}
-  - {fileID: -6723767616513352622, guid: a3cf592ab88e12d4685c93fe882e3638, type: 3}
+  - {fileID: 21300000, guid: 7ae8f088c2afbd5429e41cf1f1a5ea4a, type: 3}
   selected: 0
   moveAnimation: {fileID: 9100000, guid: 30ed85d0c88ef274d93e33e286b61eff, type: 2}
   idleAnimation: {fileID: 9100000, guid: b31cf4e8300630147b149139ef1ae341, type: 2}

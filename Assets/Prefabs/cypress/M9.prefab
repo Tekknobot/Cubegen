@@ -437,14 +437,7 @@ MonoBehaviour:
   jumpVelocity: 4.5
   actualTargetTile: {fileID: 0}
   portrait:
-  - {fileID: -5435079064733734538, guid: b132b26ea4b8f48469e50b72ff7f10f7, type: 3}
-  - {fileID: -9210823839524356980, guid: b132b26ea4b8f48469e50b72ff7f10f7, type: 3}
-  - {fileID: -9174156481496518997, guid: b132b26ea4b8f48469e50b72ff7f10f7, type: 3}
-  - {fileID: 1410948757834836773, guid: b132b26ea4b8f48469e50b72ff7f10f7, type: 3}
-  - {fileID: 3076038619402336565, guid: b132b26ea4b8f48469e50b72ff7f10f7, type: 3}
-  - {fileID: -6591942669136795456, guid: b132b26ea4b8f48469e50b72ff7f10f7, type: 3}
-  - {fileID: -6625558871617910126, guid: b132b26ea4b8f48469e50b72ff7f10f7, type: 3}
-  - {fileID: -743962304579495028, guid: b132b26ea4b8f48469e50b72ff7f10f7, type: 3}
+  - {fileID: 21300000, guid: 6d7c5459689f1984c813e0eb5686b021, type: 3}
   target: {fileID: 0}
   moveAnimation: {fileID: 9100000, guid: 5cdd1849542ee3c4d9579f11a0340699, type: 2}
   idleAnimation: {fileID: 9100000, guid: a212ba303f2b5144783e84fe6e470786, type: 2}
@@ -460,6 +453,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: c554aee1ab3003b47bf6037e690fa46f, type: 3}
   - {fileID: 8300000, guid: fdb16b06855dc974b90d3c8e2dfdf8ca, type: 3}
   bullet: {fileID: 4700639010476381217, guid: 7e05d86366e18df48899bb328eaefc23, type: 3}
+  attackFlag: 0
 --- !u!114 &878692417999996971
 MonoBehaviour:
   m_ObjectHideFlags: 0
