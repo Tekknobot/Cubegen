@@ -266,7 +266,7 @@ MonoBehaviour:
   tacticsCamera: {fileID: 0}
   checkTile: 0
   attackEffect: {fileID: 1002605618548861685, guid: 29121037f1fb25d40940d875fbfcc030, type: 3}
-  healthEffect: {fileID: 7847509287896485424, guid: cd40745c91b744249a7326393ea33f57, type: 3}
+  healthEffect: {fileID: 4849196553822867025, guid: 3dd70781247eb074f9b56c07f709237c, type: 3}
   attacked: 0
   unitTurn: 0
   targetButton: {fileID: 0}

@@ -75,7 +75,7 @@ public class PlayerAttack : TacticsAttack
 
     public void OnHealthButton() {
         tempPlayerUnit = tacticsCamera.GetComponent<TacticsCamera>().target.gameObject;
-        Instantiate(healthEffect, new Vector3(tempPlayerUnit.transform.position.x, tempPlayerUnit.transform.position.y-0.5f, tempPlayerUnit.transform.position.z), Quaternion.Euler(270, 0, 0)); 
+        Instantiate(healthEffect, new Vector3(tempPlayerUnit.transform.position.x, tempPlayerUnit.transform.position.y, tempPlayerUnit.transform.position.z), Quaternion.Euler(45, -45, 0)); 
         tempPlayerUnit.GetComponent<PlayerAttack>().Heal(tempPlayerUnit.GetComponent<PlayerAttack>().healthUp);
         tempPlayerUnit.GetComponentInChildren<HealthBarHandler>().SetHealthBarValue(((float)tempPlayerUnit.GetComponent<PlayerAttack>().currentHP/(float)tempPlayerUnit.GetComponent<PlayerAttack>().maxHP));     
         StartCoroutine(PlayerDodge());
