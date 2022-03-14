@@ -11,6 +11,7 @@ public class UI_Manager : MonoBehaviour
     public GameObject movesLeft;
     public GameObject portrait;
     public GameObject portrait_mini;
+    public GameObject portrait_bg;
 
     public Transform M1Transform;
     public Transform M2Transform;
@@ -24,6 +25,8 @@ public class UI_Manager : MonoBehaviour
     public Sprite M4;
     public Sprite M5;
 
+    public Sprite greenTeam_bg;
+
     public Transform NPC1Transform;
     public Transform NPC2Transform;
     public Transform NPC3Transform;
@@ -34,7 +37,9 @@ public class UI_Manager : MonoBehaviour
     public Sprite NPC2;
     public Sprite NPC3;  
     public Sprite NPC4;
-    public Sprite NPC5;         
+    public Sprite NPC5;      
+
+    public Sprite blueTeam_bg;  
 
     public Text unit_label;
     public Text healthbar_hp;
@@ -64,6 +69,7 @@ public class UI_Manager : MonoBehaviour
             if (tacticsCamera.GetComponent<TacticsCamera>().target.transform.tag == "Player") {
                 portrait.GetComponent<UISpritesAnimation>().sprites = tacticsCamera.GetComponent<TacticsCamera>().target.GetComponent<PlayerMove>().portrait; 
                 portrait_mini.GetComponent<Image>().sprite = tacticsCamera.GetComponent<TacticsCamera>().target.GetComponent<SpriteRenderer>().sprite; 
+                portrait_bg.GetComponent<Image>().sprite = greenTeam_bg;
                 unit_label.GetComponent<Text>().text = tacticsCamera.GetComponent<TacticsCamera>().target.GetComponent<PlayerAttack>().unitName;
                 healthbar_hp.text = Mathf.Round(tacticsCamera.GetComponent<TacticsCamera>().target.GetComponentInChildren<HealthBarHandler>().GetHealthBarValue() * tacticsCamera.GetComponent<TacticsCamera>().target.GetComponent<PlayerAttack>().maxHP) + " HP";
                 xp_Level.text = "LV. " + tacticsCamera.GetComponent<TacticsCamera>().target.GetComponent<PlayerAttack>().currentLevel.ToString();
@@ -76,6 +82,7 @@ public class UI_Manager : MonoBehaviour
             if (tacticsCamera.GetComponent<TacticsCamera>().target.transform.tag == "NPC") {
                 portrait.GetComponent<UISpritesAnimation>().sprites = tacticsCamera.GetComponent<TacticsCamera>().target.GetComponent<NPCMove>().portrait;
                 portrait_mini.GetComponent<Image>().sprite = tacticsCamera.GetComponent<TacticsCamera>().target.GetComponent<SpriteRenderer>().sprite; 
+                portrait_bg.GetComponent<Image>().sprite = blueTeam_bg;
                 unit_label.GetComponent<Text>().text = tacticsCamera.GetComponent<TacticsCamera>().target.GetComponent<NPCAttack>().unitName;
                 healthbar_hp.text = Mathf.Round(tacticsCamera.GetComponent<TacticsCamera>().target.GetComponent<NPCAttack>().currentHP) + " HP";
                 xp_Level.text = "LV. " + tacticsCamera.GetComponent<TacticsCamera>().target.GetComponent<NPCAttack>().currentLevel.ToString();
