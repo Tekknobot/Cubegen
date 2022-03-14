@@ -106,9 +106,9 @@ public class UI_Manager : MonoBehaviour
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit)) {
                 if (hit.collider.tag == "Player") {
-                    targetButton.SetActive(true);    
-                    healthButton.SetActive(true); 
-                    launchButton.SetActive(true);
+                    targetButton.SetActive(true);
+                    launchButton.SetActive(true);     
+                    healthButton.SetActive(true);
                     audioData = hit.transform.GetComponent<AudioSource>();
                     audioData.PlayOneShot(hit.transform.GetComponent<PlayerMove>().clip[0], 1);
                 }

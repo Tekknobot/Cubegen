@@ -33,6 +33,8 @@ public class PlayerAttack : TacticsAttack
 
     public GameObject bullet;
 
+    public bool healthFlag = false;
+
 	// Use this for initialization
 	void Start () 
 	{
@@ -75,7 +77,10 @@ public class PlayerAttack : TacticsAttack
 
     public void OnHealthButton() {
         tempPlayerUnit = tacticsCamera.GetComponent<TacticsCamera>().target.gameObject;
-        Instantiate(healthEffect, new Vector3(tempPlayerUnit.transform.position.x, tempPlayerUnit.transform.position.y-0.5f, tempPlayerUnit.transform.position.z), Quaternion.Euler(270, 0, 0)); 
+        if (tempPlayerUnit.GetComponent<PlayerAttack>().healthFlag == false) {
+            Instantiate(healthEffect, new Vector3(tempPlayerUnit.transform.position.x, tempPlayerUnit.transform.position.y-0.5f, tempPlayerUnit.transform.position.z), Quaternion.Euler(270, 0, 0)); 
+            tempPlayerUnit.GetComponent<PlayerAttack>().healthFlag = true;
+        }
         tempPlayerUnit.GetComponent<PlayerAttack>().Heal(tempPlayerUnit.GetComponent<PlayerAttack>().healthUp);
         tempPlayerUnit.GetComponentInChildren<HealthBarHandler>().SetHealthBarValue(((float)tempPlayerUnit.GetComponent<PlayerAttack>().currentHP/(float)tempPlayerUnit.GetComponent<PlayerAttack>().maxHP));     
         StartCoroutine(PlayerDodge());
@@ -127,6 +132,7 @@ public class PlayerAttack : TacticsAttack
             GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().target.transform.GetComponent<PlayerMove>().MoveToTile(t2);                 
         }  
         GameObject.Find("Health_btn").SetActive(false);
+        healthFlag = false;
         yield return null;
     }
 
