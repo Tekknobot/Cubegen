@@ -50,9 +50,6 @@ public class MoveOnEnemyCurvedLine : MonoBehaviour
 
         if (index == pos.Length) {
             index = 0;
-        }
-
-        if (index == 0) {
             this.GetComponent<MeshRenderer>().enabled = false;
         }
     }

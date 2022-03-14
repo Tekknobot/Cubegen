@@ -83,6 +83,7 @@ public class PlayerAttack : TacticsAttack
         }
         tempPlayerUnit.GetComponent<PlayerAttack>().Heal(tempPlayerUnit.GetComponent<PlayerAttack>().healthUp);
         tempPlayerUnit.GetComponentInChildren<HealthBarHandler>().SetHealthBarValue(((float)tempPlayerUnit.GetComponent<PlayerAttack>().currentHP/(float)tempPlayerUnit.GetComponent<PlayerAttack>().maxHP));     
+        GameObject.Find("Map").GetComponent<TurnManager>().EndTurn();
         StartCoroutine(PlayerDodge());
     }    
 
@@ -118,7 +119,6 @@ public class PlayerAttack : TacticsAttack
         tempPlayerUnit.GetComponent<PlayerMove>().attacking = false;
         hit.GetComponent<NPCMove>().RemoveSelectableTiles();
         this.GetComponent<PlayerMove>().tempGO = null;
-        //TurnManager.EndTurn();
 	}  
 
     IEnumerator PlayerDodge() {
@@ -132,7 +132,7 @@ public class PlayerAttack : TacticsAttack
             GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().target.transform.GetComponent<PlayerMove>().MoveToTile(t2);                 
         }  
         GameObject.Find("Health_btn").SetActive(false);
-        healthFlag = false;
+        tempPlayerUnit.GetComponent<PlayerAttack>().healthFlag = false;
         yield return null;
     }
 
