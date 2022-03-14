@@ -340,6 +340,7 @@ public class TacticsMove : MonoBehaviour
     {
         StartCoroutine(this.GetComponent<NPCMove>().AttackNow());
         StartCoroutine(this.GetComponent<NPCMove>().LaunchNow());
+        StartCoroutine(this.GetComponent<NPCMove>().OnHealthButton());
         ComputeAdjacencyLists(jumpHeight, target);
         GetCurrentTile();
 

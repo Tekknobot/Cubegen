@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using ActionCode2D.Renderers;
 
 public class NPCMove : TacticsMove 
@@ -19,6 +20,7 @@ public class NPCMove : TacticsMove
 
     public GameObject tacticsCamera;
     public GameObject attackEffect;
+    public GameObject healthEffect;    
     public bool attacking = false;
 
     AudioSource audioData;
@@ -211,7 +213,7 @@ public class NPCMove : TacticsMove
                 }                                   
             }
         }         
-    }  
+    }
 
     public void NPCAttackFunction(GameObject target) {
         StartCoroutine(NPCAttackCoroutine(target));
@@ -279,5 +281,29 @@ public class NPCMove : TacticsMove
                 break;
             }
         }
-    }      
+    }  
+
+    public IEnumerator OnHealthButton() {
+        if (this.gameObject.GetComponent<NPCAttack>().currentHP < 2) {
+            Instantiate(healthEffect, new Vector3(this.transform.position.x, this.transform.position.y-0.5f, this.transform.position.z), Quaternion.Euler(270, 0, 0)); 
+            this.GetComponent<NPCAttack>().Heal(this.GetComponent<NPCAttack>().healthUp);
+            this.GetComponentInChildren<HealthBarHandler>().SetHealthBarValue(((float)this.GetComponent<NPCAttack>().currentHP/(float)this.GetComponent<NPCAttack>().maxHP));     
+            //StartCoroutine(EnemyDodge());
+        }
+        yield return null;
+    }        
+
+    IEnumerator EnemyDodge() {
+        Tile t = GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().target.transform.GetComponent<NPCMove>().GetTargetTile(GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().target.transform.gameObject);
+        if (t.adjacencyList.Count == 0) {  
+            GameObject.Find("Map").GetComponent<TurnManager>().EndTurn();
+            GameObject.Find("EnemyTurnStatus_text").GetComponent<Text>().text = "Enemy is trapped turn over.";
+        }          
+        Tile t2 = t.adjacencyList[Random.Range(0,t.adjacencyList.Count)];
+        if (t2.walkable == true) {
+            GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().target.transform.GetComponent<NPCMove>().MoveToTile(t2);                 
+        }  
+        GameObject.Find("Health_btn").SetActive(false);
+        yield return null;
+    }        
 }

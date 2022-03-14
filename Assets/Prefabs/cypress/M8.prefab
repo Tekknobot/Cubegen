@@ -233,6 +233,7 @@ MonoBehaviour:
   spriteOutline: {fileID: 2100000, guid: 79ad4ff4ee84c7e438c3623d2fb01849, type: 2}
   tacticsCamera: {fileID: 0}
   attackEffect: {fileID: 1002605618548861685, guid: 29121037f1fb25d40940d875fbfcc030, type: 3}
+  healthEffect: {fileID: 7847509287896485424, guid: cd40745c91b744249a7326393ea33f57, type: 3}
   attacking: 0
   clip:
   - {fileID: 8300000, guid: c554aee1ab3003b47bf6037e690fa46f, type: 3}
@@ -253,7 +254,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 1
-  healthUp: 0
+  healthUp: 1
   maxHP: 5
   currentHP: 5
   maxXP: 5
