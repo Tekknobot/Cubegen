@@ -36,7 +36,11 @@ public class TileMaterial : MonoBehaviour
                 Material materialToUse = newMats[2];
                 t.GetComponent<Renderer>().material.CopyPropertiesFromMaterial(materialToUse);
             }
-            if (calc_dropChance >= 27 && calc_dropChance <= 29) {
+            if (calc_dropChance >= 8 && calc_dropChance <= 29) {
+                Material materialToUse = newMats[4];
+                t.GetComponent<Renderer>().material.CopyPropertiesFromMaterial(materialToUse);
+            }   
+            if (calc_dropChance == 7) {
                 Material materialToUse = newMats[3];
                 t.GetComponent<Renderer>().material.CopyPropertiesFromMaterial(materialToUse);
                 t.transform.position = new Vector3(t.transform.position.x, 0.125f, t.transform.position.z);
@@ -44,58 +48,54 @@ public class TileMaterial : MonoBehaviour
                 var antenaGO = Instantiate(antena, new Vector3(t.transform.position.x, 1.5f, t.transform.position.z), Quaternion.Euler(45, -45, 0));               
                 antenaGO.transform.parent = t.transform;
             }
-            if (calc_dropChance >= 24 && calc_dropChance <= 26) {
+            if (calc_dropChance == 6) {
                 Material materialToUse = newMats[4];
                 t.GetComponent<Renderer>().material.CopyPropertiesFromMaterial(materialToUse);
                 t.transform.position = new Vector3(t.transform.position.x, -0.125f, t.transform.position.z);
                 t.transform.localScale = new Vector3(t.transform.localScale.x, 0.75f, t.transform.localScale.z);
                 var waterTileGO = Instantiate(waterTile, new Vector3(t.transform.position.x, 0.26f, t.transform.position.z), Quaternion.Euler(90, 0, 0));
                 waterTileGO.transform.parent = t.transform;
-            }  
-            if (calc_dropChance >= 5 && calc_dropChance <= 23) {
-                Material materialToUse = newMats[4];
-                t.GetComponent<Renderer>().material.CopyPropertiesFromMaterial(materialToUse);
-            }   
+            }
 
             //buildings
-            if (calc_dropChance >= 4 && calc_dropChance <= 5) {
+            if (calc_dropChance == 5) {
                 Material materialToUse = newMats[4];
                 t.GetComponent<Renderer>().material.CopyPropertiesFromMaterial(materialToUse);
                 var complexGO = Instantiate(complex, new Vector3(t.transform.position.x, 1f, t.transform.position.z), Quaternion.Euler(45, -45, 0));
                 complexGO.transform.parent = t.transform;
             } 
-            if (calc_dropChance >= 2 && calc_dropChance <= 3) {
+            if (calc_dropChance == 4) {
                 Material materialToUse = newMats[4];
                 t.GetComponent<Renderer>().material.CopyPropertiesFromMaterial(materialToUse);
                 var towerGO = Instantiate(tower, new Vector3(t.transform.position.x, 1.2f, t.transform.position.z), Quaternion.Euler(45, -45, 0));
                 towerGO.transform.parent = t.transform;
             }
-            if (calc_dropChance >= 0 && calc_dropChance <= 1) {
+            if (calc_dropChance == 3) {
                 Material materialToUse = newMats[4];
                 t.GetComponent<Renderer>().material.CopyPropertiesFromMaterial(materialToUse);
                 var arenaGO = Instantiate(arena, new Vector3(t.transform.position.x, 1f, t.transform.position.z), Quaternion.Euler(45, -45, 0));
                 arenaGO.transform.parent = t.transform;
             }   
 
-            // //common buidlings
-            // if (calc_dropChance >= 4 && calc_dropChance <= 5) {
-            //     Material materialToUse = newMats[4];
-            //     t.GetComponent<Renderer>().material.CopyPropertiesFromMaterial(materialToUse);
-            //     var building_3GO = Instantiate(building_3, new Vector3(t.transform.position.x, 1f, t.transform.position.z), Quaternion.Euler(45, -45, 0));
-            //     building_3.transform.parent = t.transform;
-            // } 
-            // if (calc_dropChance >= 2 && calc_dropChance <= 3) {
-            //     Material materialToUse = newMats[4];
-            //     t.GetComponent<Renderer>().material.CopyPropertiesFromMaterial(materialToUse);
-            //     var building_4GO = Instantiate(building_4, new Vector3(t.transform.position.x, 1f, t.transform.position.z), Quaternion.Euler(45, -45, 0));
-            //     building_4GO.transform.parent = t.transform;
-            // }
-            // if (calc_dropChance >= 0 && calc_dropChance <= 1) {
-            //     Material materialToUse = newMats[4];
-            //     t.GetComponent<Renderer>().material.CopyPropertiesFromMaterial(materialToUse);
-            //     var building_5GO = Instantiate(buidling_5, new Vector3(t.transform.position.x, 1f, t.transform.position.z), Quaternion.Euler(45, -45, 0));
-            //     building_5GO.transform.parent = t.transform;
-            // }                      
+            //common buidlings
+            if (calc_dropChance == 2) {
+                Material materialToUse = newMats[4];
+                t.GetComponent<Renderer>().material.CopyPropertiesFromMaterial(materialToUse);
+                var building_3GO = Instantiate(building_3, new Vector3(t.transform.position.x, 1f, t.transform.position.z), Quaternion.Euler(45, -45, 0));
+                building_3GO.transform.parent = t.transform;
+            } 
+            if (calc_dropChance == 1) {
+                Material materialToUse = newMats[4];
+                t.GetComponent<Renderer>().material.CopyPropertiesFromMaterial(materialToUse);
+                var building_4GO = Instantiate(building_4, new Vector3(t.transform.position.x, 1f, t.transform.position.z), Quaternion.Euler(45, -45, 0));
+                building_4GO.transform.parent = t.transform;
+            }
+            if (calc_dropChance == 0) {
+                Material materialToUse = newMats[4];
+                t.GetComponent<Renderer>().material.CopyPropertiesFromMaterial(materialToUse);
+                var building_5GO = Instantiate(buidling_5, new Vector3(t.transform.position.x, 1f, t.transform.position.z), Quaternion.Euler(45, -45, 0));
+                building_5GO.transform.parent = t.transform;
+            }                      
         }
     }
 }

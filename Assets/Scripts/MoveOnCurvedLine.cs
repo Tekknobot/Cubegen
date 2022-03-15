@@ -68,7 +68,7 @@ public class MoveOnCurvedLine : MonoBehaviour
             collision.transform.GetComponent<NPCMove>().pushed = true;
             Tile t = collision.transform.GetComponent<NPCMove>().GetTargetTile(collision.transform.gameObject);
             Tile t2 = t.adjacencyList[Random.Range(0,t.adjacencyList.Count)];
-            if (t2.walkable == true) {
+            if (t2.walkable == true && t.adjacencyList.Count > 0) {
                 collision.transform.GetComponent<NPCMove>().MoveToTile(t2);           
                 collision.transform.GetComponent<NPCMove>().moveSpeed = 4;      
             }              

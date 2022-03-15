@@ -215,7 +215,7 @@ public class PlayerAttack : TacticsAttack
                 collision.transform.GetComponent<TacticsAttack>().TakeDamage(playerUnit.GetComponent<PlayerAttack>().tempPlayerUnit.GetComponent<PlayerAttack>().damage);
                 break;
             }            
-            collision.transform.GetComponentInChildren<HealthBarHandler>().SetHealthBarValue((float)collision.transform.GetComponent<NPCAttack>().currentHP/(float)collision.transform.GetComponent<NPCAttack>().maxHP);
+            collision.transform.GetComponentInChildren<HealthBarHandler>().SetHealthBarValue((float)collision.transform.GetComponent<NPCAttack>().currentHP/(float)collision.transform.GetComponent<NPCAttack>().maxHP);         
         }
 
         if (collision.gameObject.tag == "Player" && GameObject.Find("Map").GetComponent<SpawnUnits>().spawned == true)
