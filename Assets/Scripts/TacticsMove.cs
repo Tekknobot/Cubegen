@@ -34,6 +34,8 @@ public class TacticsMove : MonoBehaviour
 
     public Sprite[] portrait;
 
+    public GameObject noPath_Obj;
+
     public void Init()
     {
         tiles = GameObject.FindGameObjectsWithTag("Tile");
@@ -404,6 +406,7 @@ public class TacticsMove : MonoBehaviour
         Tile tA = this.transform.GetComponent<NPCMove>().GetTargetTile(this.transform.gameObject);
         Tile tB = tA.adjacencyList[Random.Range(0,tA.adjacencyList.Count)];
         this.transform.GetComponent<NPCMove>().MoveToTile(tB);
+        Instantiate(noPath_Obj, this.transform.position, Quaternion.Euler(45, -45, 0));
         //GameObject.Find("Map").GetComponent<TurnManager>().EndTurn();
     }
 

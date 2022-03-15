@@ -311,6 +311,7 @@ MonoBehaviour:
   actualTargetTile: {fileID: 0}
   portrait:
   - {fileID: 21300000, guid: 076750928e0756f40a0dad9a110c655a, type: 3}
+  noPath_Obj: {fileID: 1002605618548861685, guid: 6cc0336238eace2418eb68b03bf4406b, type: 3}
   target: {fileID: 0}
   moveAnimation: {fileID: 9100000, guid: 1c58be56d0305954f9efea89087d979b, type: 2}
   idleAnimation: {fileID: 9100000, guid: 6040bfc94bac31b479e1a6400e1bb780, type: 2}

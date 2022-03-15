@@ -275,6 +275,7 @@ MonoBehaviour:
   actualTargetTile: {fileID: 0}
   portrait:
   - {fileID: 21300000, guid: e734ea5d3fc43db4d832e234cff42b8a, type: 3}
+  noPath_Obj: {fileID: 1002605618548861685, guid: 6cc0336238eace2418eb68b03bf4406b, type: 3}
   selected: 0
   moveAnimation: {fileID: 9100000, guid: 695fcb40ab5ad97478c336e21cfa0161, type: 2}
   idleAnimation: {fileID: 9100000, guid: 364f54adbaaf9204db1ad2f5905a1f97, type: 2}
@@ -330,6 +331,7 @@ MonoBehaviour:
   clip:
   - {fileID: 8300000, guid: 2879a3cb3f8c888458a224600aa79f13, type: 3}
   bullet: {fileID: 4700639010476381217, guid: 934d5a5ab4b9dcb4f908341d8dee5911, type: 3}
+  healthFlag: 0
 --- !u!114 &7850476584328927512
 MonoBehaviour:
   m_ObjectHideFlags: 0

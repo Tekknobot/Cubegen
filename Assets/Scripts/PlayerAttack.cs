@@ -109,7 +109,7 @@ public class PlayerAttack : TacticsAttack
             this.GetComponent<PlayerMove>().tempGO = null;
         }
         Tile t2 = t.adjacencyList[Random.Range(0,t.adjacencyList.Count)];   
-        if (t2.walkable == true) {
+        if (t2.walkable == true && t.adjacencyList.Count > 0) {
             hit.GetComponent<NPCMove>().MoveToTile(t2);
             hit.GetComponent<NPCMove>().moveSpeed = 4;                
         }   
