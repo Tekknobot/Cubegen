@@ -171,6 +171,7 @@ public class TacticsMove : MonoBehaviour
             RemoveSelectableTiles();
             this.moving = false;
             this.pushed = false; 
+            //StartCoroutine(EndTurnAfter());
             GameObject.Find("Map").GetComponent<TurnManager>().EndTurn();
         }
     }
@@ -420,5 +421,10 @@ public class TacticsMove : MonoBehaviour
     public void FinishTurn()
     {
         turn = false;
+    }
+
+    IEnumerator EndTurnAfter() {
+        yield return new WaitForSeconds(0.1f);
+        GameObject.Find("Map").GetComponent<TurnManager>().EndTurn();
     }
 }
