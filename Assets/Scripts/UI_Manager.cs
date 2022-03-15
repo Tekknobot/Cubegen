@@ -100,7 +100,7 @@ public class UI_Manager : MonoBehaviour
             movesLeft.GetComponent<Text>().color = Color.white;
             movesLeft.GetComponent<Text>().text = GameObject.Find("Map").GetComponent<TurnManager>().turnTeam.Count.ToString() + " moves left";       
         }
-        else {
+        if (GameObject.Find("Map").GetComponent<TurnManager>().turnTeam.Count == 1) {
             movesLeft.GetComponent<Text>().color = Color.red;
             movesLeft.GetComponent<Text>().text = "last move";
         }

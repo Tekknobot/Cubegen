@@ -80,6 +80,7 @@ public class SpawnUnits : MonoBehaviour
         GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().playerPrefabs = GameObject.FindGameObjectsWithTag("Player"); 
         foreach (GameObject prefab in GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().playerPrefabs) {
             GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().playerPrefabs[k].GetComponent<PlayerMove>().Init();  
+            prefab.GetComponent<PlayerMove>().FinishTurn();
             k += 1;  
         }   
 
