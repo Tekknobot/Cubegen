@@ -249,7 +249,7 @@ public class NPCMove : TacticsMove
         yield return new WaitUntil(()=> moving == false);
         if (GameObject.Find("Map").GetComponent<SpawnUnits>().spawned == true) {
             this.GetComponent<NPCMove>().PlayerWithinRadius();
-            GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().target = GameObject.Find("Map").gameObject.transform; 
+            //GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().target = GameObject.Find("Map").gameObject.transform; 
         }        
     }
 
@@ -257,7 +257,7 @@ public class NPCMove : TacticsMove
         yield return new WaitUntil(()=> moving == false);
         if (GameObject.Find("Map").GetComponent<SpawnUnits>().spawned == true) {
             this.GetComponent<NPCMove>().PlayerWithinLaunchRadius();
-            GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().target = GameObject.Find("Map").gameObject.transform; 
+            //GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().target = GameObject.Find("Map").gameObject.transform; 
         }        
     }    
 
