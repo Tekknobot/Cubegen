@@ -171,7 +171,7 @@ public class TacticsMove : MonoBehaviour
             RemoveSelectableTiles();
             this.moving = false;
             this.pushed = false; 
-            GameObject.Find("Map").GetComponent<TurnManager>().EndTurn();                                        
+            GameObject.Find("Map").GetComponent<TurnManager>().EndTurn();
         }
     }
 
@@ -343,6 +343,7 @@ public class TacticsMove : MonoBehaviour
         StartCoroutine(this.GetComponent<NPCMove>().AttackNow());
         StartCoroutine(this.GetComponent<NPCMove>().LaunchNow());
         StartCoroutine(this.GetComponent<NPCMove>().OnHealthButton());
+
         ComputeAdjacencyLists(jumpHeight, target);
         GetCurrentTile();
 
