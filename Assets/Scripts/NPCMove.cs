@@ -86,7 +86,7 @@ public class NPCMove : TacticsMove
             animator.runtimeAnimatorController = attackAnimation;
         }
 
-        if (moving) {
+        if (this.GetComponent<NPCMove>().moving) {
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
             if (GameObject.Find("Map").GetComponent<SpawnUnits>().spawned == true) {

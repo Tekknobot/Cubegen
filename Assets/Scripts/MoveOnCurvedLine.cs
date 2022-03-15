@@ -44,13 +44,14 @@ public class MoveOnCurvedLine : MonoBehaviour
     {
         objectToMove.transform.position = Vector3.MoveTowards(objectToMove.transform.position, pos[index], speed * Time.deltaTime);
 
-        if (objectToMove.transform.position == pos[index])
-        {
+        if (objectToMove.transform.position == pos[index]) {
             index += 1;
         }
 
-        if (index == pos.Length)
+        if (index == pos.Length) {
+            Destroy(this.gameObject);
             index = 0;
+        }
     }
 
     void OnCollisionEnter(Collision collision)

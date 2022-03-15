@@ -49,14 +49,14 @@ public class MoveOnEnemyCurvedLine : MonoBehaviour
         }
 
         if (index == pos.Length) {
+            Destroy(this.gameObject);
             index = 0;
-            this.GetComponent<MeshRenderer>().enabled = false;
         }
     }
 
     void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Player" || collision.gameObject.tag == "Tile") {
+        if (collision.gameObject.tag == "Player") {
             Instantiate(explosion, transform.position, Quaternion.Euler(45, -45, 0));
             GameObject[] npcUnits;
             npcUnits = GameObject.FindGameObjectsWithTag("NPC");
