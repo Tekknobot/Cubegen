@@ -22450,7 +22450,12 @@ MonoBehaviour:
   - {fileID: 6298491596799051899, guid: fdfd55c8853d4ed4f8f8eb653293bd50, type: 3}
   - {fileID: 1726214198697984584, guid: f67af288a2f3c6c4cb735278f1549e5c, type: 3}
   playerPrefabs: []
-  npcPrefabs: []
+  npcPrefabs:
+  - {fileID: 1726214198697984584, guid: f67af288a2f3c6c4cb735278f1549e5c, type: 3}
+  - {fileID: 5600875751062173525, guid: f1106a07dcdef5b4d90489367519ad1d, type: 3}
+  - {fileID: 5533613025112814727, guid: decebbac17beded4a82858183ea1fadb, type: 3}
+  - {fileID: 1362236037087830658, guid: 0fadb70ed73b23748b648a60531c005c, type: 3}
+  - {fileID: 6298491596799051899, guid: fdfd55c8853d4ed4f8f8eb653293bd50, type: 3}
   npcDead: 0
   spawn_points_array: 
   spawned: 0

@@ -49,7 +49,7 @@ public class SpawnUnits : MonoBehaviour
         }
 
         if (npcDead == 5 && flag == false) {
-            //SceneManager.LoadScene(0);
+            //StartCoroutine(SpawnAgain());
             flag = true;
         }
 
@@ -116,5 +116,51 @@ public class SpawnUnits : MonoBehaviour
         yield return new WaitForSeconds(7);
         GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().enabled = true;
         spawned = true;
+    }
+
+    IEnumerator SpawnAgain() {
+        foreach (GameObject tile in unit_spawn_points) {
+            RaycastHit hit;
+            if (Physics.Raycast(tile.transform.position, Vector3.up, out hit, 50)) {
+                if (hit.transform.tag == "Building") {
+                    list_unit_spawn_points.Remove(tile);                 
+                }  
+                if (hit.transform.tag == "Player") {
+                    list_unit_spawn_points.Remove(tile);                 
+                }       
+                if (hit.transform.tag == "NPC") {
+                    list_unit_spawn_points.Remove(tile);                 
+                }                                      
+            }
+            if (tile.transform.localScale.y != 1) {
+                list_unit_spawn_points.Remove(tile);
+            }
+        }
+
+        foreach (GameObject prefab in npcPrefabs) {
+            spawn_points_index = Random.Range(0, list_unit_spawn_points.Count);
+            Instantiate(prefab, list_unit_spawn_points[spawn_points_index].transform);
+            list_unit_spawn_points.RemoveAt(spawn_points_index);
+        }        
+
+        GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().npcPrefabs = GameObject.FindGameObjectsWithTag("NPC");
+        foreach (GameObject prefab in GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().npcPrefabs) {
+            GameObject.Find("TacticsCamera").GetComponent<TacticsCamera>().npcPrefabs[j].GetComponent<NPCMove>().Init();           
+            prefab.GetComponent<NPCMove>().FinishTurn();
+            j += 1;  
+        }        
+
+        GameObject[] npcUnits = GameObject.FindGameObjectsWithTag("NPC");
+        foreach (GameObject npcUnit in npcUnits) {
+            npcUnit.transform.parent = null;
+            npcUnit.transform.localScale = new Vector3(1, 1, 1);
+            npcUnit.GetComponent<NPCMove>().FindSelectableTiles();
+            npcUnit.GetComponent<NPCMove>().MoveToTile(npcUnit.GetComponent<NPCMove>().GetTargetTile(npcUnit));
+            npcUnit.GetComponent<NPCMove>().RemoveSelectableTiles(); 
+        } 
+        
+        npcDead = 0;
+
+        yield return null;
     }
 }
