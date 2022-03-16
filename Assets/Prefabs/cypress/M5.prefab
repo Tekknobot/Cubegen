@@ -141,7 +141,7 @@ MonoBehaviour:
   turn: 0
   moving: 0
   pushed: 0
-  move: 5
+  move: 4
   jumpHeight: 1
   moveSpeed: 2
   jumpVelocity: 4.5
