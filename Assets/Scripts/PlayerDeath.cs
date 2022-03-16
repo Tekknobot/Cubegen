@@ -29,5 +29,6 @@ public class PlayerDeath : MonoBehaviour
         this.transform.tag = "Dead";
         this.transform.GetComponent<ObjectShake>().enabled = false;
         this.transform.gameObject.SetActive(false);
+        Destroy(this.gameObject);
     }
 }

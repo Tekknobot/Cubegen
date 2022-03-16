@@ -53,9 +53,15 @@ public class Tile : MonoBehaviour
 
         RaycastHit hit;
         if (Physics.Raycast(this.transform.position, Vector3.up, out hit, 50)) {
-            if (hit.transform.tag == "Player" || hit.transform.tag == "NPC" || hit.transform.tag == "Building") {
+            if (hit.transform.tag == "Player") {
                 this.walkable = false;                 
             }
+            if (hit.transform.tag == "NPC") {
+                this.walkable = false;                 
+            }
+            if (hit.transform.tag == "Building") {
+                this.walkable = false;                 
+            }                        
         }    
 
         if (this.transform.localScale.y > 1 || this.transform.localScale.y < 1) {
@@ -73,6 +79,19 @@ public class Tile : MonoBehaviour
         else {
             this.walkable = true;
         }
+        RaycastHit hit;
+        if (Physics.Raycast(this.transform.position, Vector3.up, out hit, 50)) {
+            if (hit.transform.tag == "Player") {
+                this.walkable = false;                 
+            }
+            if (hit.transform.tag == "NPC") {
+                this.walkable = false;                 
+            }
+            if (hit.transform.tag == "Building") {
+                this.walkable = false;                 
+            }                        
+        }        
+
         current = false;
         target = false;
         selectable = false;
