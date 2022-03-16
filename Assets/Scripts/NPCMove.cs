@@ -178,41 +178,99 @@ public class NPCMove : TacticsMove
     }   
 
     public void PlayerWithinLaunchRadius() {
-        RaycastHit hit;
-        if (Physics.Raycast(this.transform.position, new Vector3(0, 0, 1), out hit, 100) ||
-            Physics.Raycast(this.transform.position, new Vector3(0, 0, -1), out hit, 100) ||
-            Physics.Raycast(this.transform.position, new Vector3(1, 0, 0), out hit, 100) ||
-            Physics.Raycast(this.transform.position, new Vector3(-1, 0, 0), out hit, 100)) {
+        RaycastHit[] hits_forward;
+        hits_forward = Physics.RaycastAll(transform.position, new Vector3(0, 0, 1), 100);
+
+        RaycastHit[] hits_backward;
+        hits_backward = Physics.RaycastAll(transform.position, new Vector3(0, 0, -1), 100);
+
+        RaycastHit[] hits_right;
+        hits_right = Physics.RaycastAll(transform.position, new Vector3(1, 0, 0), 100);
+
+        RaycastHit[] hits_left;
+        hits_left = Physics.RaycastAll(transform.position, new Vector3(-1, 0, 0), 100);                        
+
+        for (int i = 0; i < hits_forward.Length; i++)
+        {
+            RaycastHit hit = hits_forward[i];
             if (hit.transform.tag == "Player") {
-                if (Vector3.Distance (hit.transform.position, this.transform.position) > 1.25f) {
+                Animator animator = this.GetComponent<Animator>();
+                animator.runtimeAnimatorController = this.GetComponent<NPCMove>().attackAnimation; 
+                if (animator.runtimeAnimatorController == this.GetComponent<NPCMove>().attackAnimation && this.GetComponent<NPCAttack>().meleeUnit == false) {
+                    GetComponent<LaunchProjectile>().DrawPath(this.transform, hit.transform);
+                    this.GetComponent<NPCAttack>().GetXP(1);
+                    Instantiate(bullet, this.transform.position, Quaternion.identity);                            
+                } 
+            }
+            break;
+        }    
+
+        for (int i = 0; i < hits_backward.Length; i++)
+        {
+            RaycastHit hit = hits_backward[i];
+            if (hit.transform.tag == "Player") {
+                Animator animator = this.GetComponent<Animator>();
+                animator.runtimeAnimatorController = this.GetComponent<NPCMove>().attackAnimation; 
+                if (animator.runtimeAnimatorController == this.GetComponent<NPCMove>().attackAnimation && this.GetComponent<NPCAttack>().meleeUnit == false) {
+                    GetComponent<LaunchProjectile>().DrawPath(this.transform, hit.transform);
+                    this.GetComponent<NPCAttack>().GetXP(1);
+                    Instantiate(bullet, this.transform.position, Quaternion.identity);                            
+                } 
+            }
+            break;
+        }   
+
+        for (int i = 0; i < hits_right.Length; i++)
+        {
+            RaycastHit hit = hits_right[i];
+            if (hit.transform.tag == "Player") {
+                Animator animator = this.GetComponent<Animator>();
+                animator.runtimeAnimatorController = this.GetComponent<NPCMove>().attackAnimation; 
+                if (animator.runtimeAnimatorController == this.GetComponent<NPCMove>().attackAnimation && this.GetComponent<NPCAttack>().meleeUnit == false) {
+                    GetComponent<LaunchProjectile>().DrawPath(this.transform, hit.transform);
+                    this.GetComponent<NPCAttack>().GetXP(1);
+                    Instantiate(bullet, this.transform.position, Quaternion.identity);                            
+                } 
+            }
+            break;
+        }    
+
+        for (int i = 0; i < hits_left.Length; i++)
+        {
+            RaycastHit hit = hits_left[i];
+            if (hit.transform.tag == "Player") {
+                Animator animator = this.GetComponent<Animator>();
+                animator.runtimeAnimatorController = this.GetComponent<NPCMove>().attackAnimation; 
+                if (animator.runtimeAnimatorController == this.GetComponent<NPCMove>().attackAnimation && this.GetComponent<NPCAttack>().meleeUnit == false) {
+                    GetComponent<LaunchProjectile>().DrawPath(this.transform, hit.transform);
+                    this.GetComponent<NPCAttack>().GetXP(1);
+                    Instantiate(bullet, this.transform.position, Quaternion.identity);                            
+                } 
+            }
+            break;
+        }                         
+    
+        RaycastHit hit_rush;
+        if (Physics.Raycast(this.transform.position, new Vector3(0, 0, 1), out hit_rush, 100) ||
+            Physics.Raycast(this.transform.position, new Vector3(0, 0, -1), out hit_rush, 100) ||
+            Physics.Raycast(this.transform.position, new Vector3(1, 0, 0), out hit_rush, 100) ||
+            Physics.Raycast(this.transform.position, new Vector3(-1, 0, 0), out hit_rush, 100)) {
+            if (hit_rush.transform.tag == "Player") {
+                Tile t = hit_rush.transform.GetComponent<PlayerMove>().GetTargetTile(hit_rush.transform.gameObject);
+                Tile t2 = t.adjacencyList[Random.Range(0,t.adjacencyList.Count)];
+                if (t2.walkable == true && t.adjacencyList.Count > 0) {                    
                     Animator animator = this.GetComponent<Animator>();
                     animator.runtimeAnimatorController = this.GetComponent<NPCMove>().attackAnimation; 
-                    if (animator.runtimeAnimatorController == this.GetComponent<NPCMove>().attackAnimation && this.GetComponent<NPCAttack>().meleeUnit == false) {
-                        GetComponent<LaunchProjectile>().DrawPath(this.transform, hit.transform);
+                    if (animator.runtimeAnimatorController == this.GetComponent<NPCMove>().attackAnimation && this.GetComponent<NPCAttack>().meleeUnit == true) {        
+                        audioData = GetComponent<AudioSource>();
+                        audioData.PlayOneShot(clip[2], 1);                                             
+                        GetComponent<RushMelee>().DrawPath(this.transform, hit_rush.transform);
                         this.GetComponent<NPCAttack>().GetXP(1);
-                        Instantiate(bullet, this.transform.position, Quaternion.identity);                            
-                    }                   
-                }   
-                if (Vector3.Distance (hit.transform.position, this.transform.position) > 1.25f) {
-                    Tile t = hit.transform.GetComponent<PlayerMove>().GetTargetTile(hit.transform.gameObject);
-                    Tile t2 = t.adjacencyList[Random.Range(0,t.adjacencyList.Count)];
-                    if (t2.walkable == true && t.adjacencyList.Count > 0) {                    
-                        Animator animator = this.GetComponent<Animator>();
-                        animator.runtimeAnimatorController = this.GetComponent<NPCMove>().attackAnimation; 
-                        if (animator.runtimeAnimatorController == this.GetComponent<NPCMove>().attackAnimation && this.GetComponent<NPCAttack>().meleeUnit == true) {        
-                            audioData = GetComponent<AudioSource>();
-                            audioData.PlayOneShot(clip[2], 1); 
-                            //GetComponent<SpriteGhostTrailRenderer>().enabled = true;                                            
-                            GetComponent<RushMelee>().DrawPath(this.transform, hit.transform);
-                            this.GetComponent<NPCAttack>().GetXP(1);
-                            // this.GetComponent<NPCMove>().moveSpeed = 12;                            
-                            // this.GetComponent<NPCMove>().MoveToTile(t2);
-                            Instantiate(bullet, this.transform.position, Quaternion.identity); 
-                        }     
-                    }                      
-                }                                   
+                        Instantiate(bullet, this.transform.position, Quaternion.identity); 
+                    }     
+                }                                                        
             }
-        }         
+        }                  
     }
 
     public void NPCAttackFunction(GameObject target) {
